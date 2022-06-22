@@ -5,18 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
+namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
-    public class Funcionario : EntidadeBase<Funcionario>
+    public class Cliente : EntidadeBase<Cliente>
     {
-        public int Salario
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
         public int Nome
         {
             get => default;
@@ -25,7 +17,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int DataDeAdmissao
+        public int CPF
         {
             get => default;
             set
@@ -33,7 +25,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int Login
+        public int CNPJ
         {
             get => default;
             set
@@ -41,7 +33,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int Senha
+        public int Endereco
         {
             get => default;
             set
@@ -49,7 +41,23 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int TipoPerfil
+        public int TipoCliente
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public int Telefone
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public int CNH
         {
             get => default;
             set

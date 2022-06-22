@@ -1,15 +1,15 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
+namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
 {
-    public class Funcionario : EntidadeBase<Funcionario>
+    public class GrupoDeVeiculos
     {
-        public int Salario
+        public int Veiculos
         {
             get => default;
             set
@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int DataDeAdmissao
+        public List<Taxa> Taxas
         {
             get => default;
             set
@@ -33,23 +33,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int Login
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int Senha
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int TipoPerfil
+        public int ValorDiaria
         {
             get => default;
             set
