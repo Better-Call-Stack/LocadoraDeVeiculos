@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.Dominio.Compartilhado
+namespace LocadoraDeVeiculos.Infra.Compartilhado
 {
-    public class EntidadeBase <T>
+    public class RepositorioBase <T>
     {
     }
 }
