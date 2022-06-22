@@ -9,7 +9,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
 {
     public class Funcionario : EntidadeBase<Funcionario>
     {
-        public int Salario
+        public decimal Salario
         {
             get => default;
             set
@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int Nome
+        public string Nome
         {
             get => default;
             set
@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int DataDeAdmissao
+        public DateTime DataDeAdmissao
         {
             get => default;
             set
@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int Login
+        public string Login
         {
             get => default;
             set
@@ -41,7 +41,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int Senha
+        public string Senha
         {
             get => default;
             set
@@ -49,7 +49,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             }
         }
 
-        public int TipoPerfil
+        public string TipoPerfil
         {
             get => default;
             set
