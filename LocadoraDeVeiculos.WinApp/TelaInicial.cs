@@ -28,18 +28,16 @@ namespace LocadoraDeVeiculos.WinApp
         private void InicializarControladores()
         {
             var repositorioFuncionario = new RepositorioFuncionario();
+            var repositorioCliente = new RepositorioCliente();
 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
+            controladores.Add("Clientes", new ControladorCliente(repositorioCliente))
         }
 
-        private void funcionáriosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void toolStripLabel1_Click(object sender, EventArgs e)
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

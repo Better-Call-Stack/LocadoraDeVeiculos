@@ -88,6 +88,7 @@
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -140,7 +141,6 @@
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(88, 22);
             this.toolStripLabel1.Text = "[Tipo Cadastro]";
-            this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // TelaInicial
             // 
