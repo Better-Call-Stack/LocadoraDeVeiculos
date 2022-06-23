@@ -1,5 +1,7 @@
-﻿using LocadoraDeVeiculos.Infra.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Infra.ModuloCliente;
+using LocadoraDeVeiculos.Infra.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using System;
 using System.Collections.Generic;
@@ -33,7 +35,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
-            controladores.Add("Clientes", new ControladorCliente(repositorioCliente))
+            controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
         }
 
 

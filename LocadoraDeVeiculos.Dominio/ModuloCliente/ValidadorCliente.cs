@@ -9,5 +9,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public class ValidadorCliente : AbstractValidator<Cliente>
     {
+        public ValidadorCliente()
+        {
+            
+        }
     }
 }

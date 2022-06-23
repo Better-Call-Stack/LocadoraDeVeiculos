@@ -9,7 +9,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public class Cliente : EntidadeBase<Cliente>
     {
-        public int Nome
+        private TipoPessoa tipoPessoa;
+
+        public string Nome
         {
             get => default;
             set
@@ -17,7 +19,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             }
         }
 
-        public int CPF
+        public string CPF
         {
             get => default;
             set
@@ -25,7 +27,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             }
         }
 
-        public int CNPJ
+        public string CNPJ
         {
             get => default;
             set
@@ -33,7 +35,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             }
         }
 
-        public int Endereco
+        public string Cidade { get; set; }
+
+        public string Endereco
         {
             get => default;
             set
@@ -41,7 +45,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             }
         }
 
-        public int TipoCliente
+        public string Telefone
         {
             get => default;
             set
@@ -49,7 +53,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             }
         }
 
-        public int Telefone
+        public string CNH
         {
             get => default;
             set
@@ -57,12 +61,17 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             }
         }
 
-        public int CNH
+        public string Email { get; set; }
+
+        public TipoPessoa TipoPessoa
         {
-            get => default;
+            get { return tipoPessoa; }
             set
             {
+                tipoPessoa = value;
+
+                }
             }
-        }
+        
     }
 }
