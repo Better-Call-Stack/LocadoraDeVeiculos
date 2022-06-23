@@ -1,6 +1,6 @@
 ﻿namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
 {
-    partial class TelaCadastroGrupoVeiculos
+    partial class TelaCadastroGrupoVeiculosForm
     {
         /// <summary>
         /// Required designer variable.
@@ -121,8 +121,9 @@
             this.btnSalvar.TabIndex = 9;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // TelaCadastroGrupoVeiculos
+            // TelaCadastroGrupoVeiculosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,7 +141,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TelaCadastroGrupoVeiculos";
+            this.Name = "TelaCadastroGrupoVeiculosForm";
             this.Text = "Cadastro Grupo de Veiculos";
             this.ResumeLayout(false);
             this.PerformLayout();

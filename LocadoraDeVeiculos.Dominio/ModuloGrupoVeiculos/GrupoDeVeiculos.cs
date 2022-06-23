@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
 {
+    [Serializable]
     public class GrupoDeVeiculos : EntidadeBase<GrupoDeVeiculos>
     {
         public int Veiculos
@@ -40,6 +41,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
             set
             {
             }
+        }
+
+        public GrupoDeVeiculos()
+        {
+
         }
 
         public GrupoDeVeiculos(string nome, decimal valorPlanoDiario,
