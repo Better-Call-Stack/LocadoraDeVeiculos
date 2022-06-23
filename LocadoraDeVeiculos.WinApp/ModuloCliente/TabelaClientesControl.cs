@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         public TabelaClientesControl()
         {
             InitializeComponent();
+            gridPessoaFisica.ConfigurarGridZebrado();
+            gridPessoaFisica.ConfigurarGridSomenteLeitura();
+        }
+
+        internal void AtualizarRegistros(List<Cliente> clientes)
+        {
+            gridPessoaFisica.Rows.Clear();
+
+            foreach (var c in clientes)
+            {
+                gridPessoaFisica.Rows.Add(c.Id, c.Nome, c.CPF, c.Telefone, c.Email);
+            }
+        }
+
+        public int ObtemIdClienteSelecionado()
+        {
+            return gridPessoaFisica.SelecionarId<int>();
         }
     }
 }

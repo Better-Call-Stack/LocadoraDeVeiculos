@@ -13,6 +13,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
     public class ControladorCliente : ControladorBase
     {
         private readonly RepositorioCliente repositorioCliente;
+        private TabelaClientesControl tabelaClientes;
 
         public ControladorCliente(RepositorioCliente repositorioCliente)
         {
@@ -21,12 +22,48 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            Cliente clienteSelecionado = ObtemClienteSelecionado();
+
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("Selecione um cliente primeiro",
+                "Edição de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            TelaCadastroClienteForm tela = new TelaCadastroClienteForm();
+
+            tela.Cliente = clienteSelecionado.Clonar();
+
+            tela.GravarRegistro = repositorioCliente.Editar;
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CarregarClientes();
+            }
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            Cliente clienteSelecionado = ObtemClienteSelecionado();
+
+            if (clienteSelecionado == null)
+            {
+                MessageBox.Show("Selecione um cliente primeiro",
+                "Exclusão de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a contato?",
+                "Exclusão de Contatos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.OK)
+            {
+                repositorioCliente.Excluir(clienteSelecionado);
+                CarregarClientes();
+            }
         }
 
         public override void Inserir()
@@ -44,9 +81,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             }
         }
 
+        private void CarregarClientes()
+        {
+            List<Cliente> clientes = repositorioCliente.SelecionarTodos();
+
+            tabelaClientes.AtualizarRegistros(clientes);
+
+            //TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {contatos.Count} contato(s)");
+        }
+
+        private Cliente ObtemClienteSelecionado()
+        {
+            var id = tabelaClientes.ObtemIdClienteSelecionado();
+
+            return repositorioCliente.SelecionarPorId(id);
+        }
+
         public override UserControl ObtemListagem()
         {
-            throw new NotImplementedException();
+            tabelaClientes = new TabelaClientesControl();
+
+            CarregarClientes();
+
+            return tabelaClientes;
         }
     }
 }

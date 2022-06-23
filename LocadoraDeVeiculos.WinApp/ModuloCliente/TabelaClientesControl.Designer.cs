@@ -28,10 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.gridPessoaFisica = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPessoaFisica)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -42,18 +51,40 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(617, 435);
+            this.tabControl1.Size = new System.Drawing.Size(688, 346);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.gridPessoaFisica);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(609, 407);
+            this.tabPage1.Size = new System.Drawing.Size(680, 318);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pessoa Física";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // gridPessoaFisica
+            // 
+            this.gridPessoaFisica.AllowUserToAddRows = false;
+            this.gridPessoaFisica.AllowUserToDeleteRows = false;
+            this.gridPessoaFisica.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            this.gridPessoaFisica.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridPessoaFisica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPessoaFisica.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Nome,
+            this.CPF,
+            this.Telefone,
+            this.Email});
+            this.gridPessoaFisica.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridPessoaFisica.Location = new System.Drawing.Point(3, 3);
+            this.gridPessoaFisica.Name = "gridPessoaFisica";
+            this.gridPessoaFisica.RowTemplate.Height = 25;
+            this.gridPessoaFisica.Size = new System.Drawing.Size(674, 312);
+            this.gridPessoaFisica.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -65,14 +96,43 @@
             this.tabPage2.Text = "Pessoa Jurídica";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Width = 40;
+            // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.Width = 200;
+            // 
+            // CPF
+            // 
+            this.CPF.HeaderText = "CPF";
+            this.CPF.Name = "CPF";
+            // 
+            // Telefone
+            // 
+            this.Telefone.HeaderText = "Telefone";
+            this.Telefone.Name = "Telefone";
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            // 
             // TabelaClientesControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl1);
             this.Name = "TabelaClientesControl";
-            this.Size = new System.Drawing.Size(617, 435);
+            this.Size = new System.Drawing.Size(688, 346);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridPessoaFisica)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -82,5 +142,11 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView gridPessoaFisica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
     }
 }

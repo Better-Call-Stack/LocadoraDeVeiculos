@@ -72,6 +72,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 
                 }
             }
-        
+
+
+        public Cliente Clonar()
+        {
+            return MemberwiseClone() as Cliente;
+        }
     }
 }
