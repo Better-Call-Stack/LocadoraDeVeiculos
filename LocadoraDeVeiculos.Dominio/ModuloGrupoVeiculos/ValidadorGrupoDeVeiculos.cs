@@ -11,7 +11,21 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
     {
         public ValidadorGrupoDeVeiculos()
         {
+            RuleFor(x => x.Nome)
+                .NotNull().WithMessage("O campo nome é obrigatório")
+                .NotEmpty().WithMessage("O campo nome é obrigatório");
 
+            RuleFor(x => x.ValorPlanoDiario)
+                .NotNull().WithMessage("O campo valor plano diario é obrigatório")
+                .NotEmpty().WithMessage("O campo título é obrigatório");
+
+            RuleFor(x => x.ValorDiariaKmControlado)
+                .NotNull().WithMessage("O campo valor diaria Km controlador é obrigatório")
+                .NotEmpty().WithMessage("O campo título é obrigatório");
+
+            RuleFor(x => x.ValorDiarioKmLivre)
+                .NotNull().WithMessage("O campo valor diario Km livre é obrigatório")
+                .NotEmpty().WithMessage("O campo título é obrigatório");
         }
     }
 }

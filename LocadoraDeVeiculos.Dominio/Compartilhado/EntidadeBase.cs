@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.Compartilhado
 {
-    public class EntidadeBase <T>
+    public abstract class EntidadeBase <T>
     {
         public int Id { get; set; }
-
+        public abstract void Atualizar(T registro);
     }
 }
