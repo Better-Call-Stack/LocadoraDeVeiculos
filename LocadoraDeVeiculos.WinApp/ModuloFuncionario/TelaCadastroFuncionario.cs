@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +18,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             InitializeComponent();
         }
+
+        private Funcionario funcionario;
+
+        public Func<Funcionario, ValidationResult> GravarRegistro { get; set; }
     }
 }
