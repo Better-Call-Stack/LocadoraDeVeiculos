@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
+namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
 {
-    public class ControladorGrupoVeiculos
+    public interface IRepositorioGrupoVeiculos
     {
     }
 }
