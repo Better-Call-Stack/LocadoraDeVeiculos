@@ -1,65 +1,22 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
 {
     public class Funcionario : EntidadeBase<Funcionario>
     {
-        public int Salario
+        
+        public Funcionario()
         {
-            get => default;
-            set
-            {
-            }
+            DataDeAdmissao = DateTime.Now;
         }
 
-        public int Nome
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public string Nome { get; set; }
+        public DateTime DataDeAdmissao { get; set; }
+        public decimal Salario { get; set; }
+        public PerfilEnum Perfil { get; set; }
+        public string Login { get; set; }
+        public string Senha { get; set; }
 
-        public int DataDeAdmissao
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int Login
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int Senha
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int TipoPerfil
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public override void Atualizar(Funcionario registro)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
