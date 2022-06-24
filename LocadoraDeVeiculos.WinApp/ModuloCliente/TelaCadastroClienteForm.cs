@@ -16,9 +16,30 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
     {
 
 
-        public TelaCadastroClienteForm()
+        public TelaCadastroClienteForm(string modoTela)
         {
             InitializeComponent();
+
+            if (modoTela == "Visualizacao")
+            {
+                DesativarCampos();
+            }
+        }
+
+        private void DesativarCampos()
+        {
+            btnCancelar.Text = "Ok";
+            btnSalvar.Visible = false;
+
+            cbxPessoa.Enabled = false;
+            txtNome.Enabled = false;
+            txtCpfCnpj.Enabled = false;
+            txtCNH.Enabled = false;
+            txtCidade.Enabled = false;
+            txtEmail.Enabled = false; 
+            txtTelefone.Enabled = false;
+            txtEndereco.Enabled = false;
+
         }
 
         public Func<Cliente, ValidationResult> GravarRegistro { get; set; }

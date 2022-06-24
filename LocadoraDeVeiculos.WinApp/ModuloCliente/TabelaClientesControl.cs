@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 {
     public partial class TabelaClientesControl : UserControl
     {
-        public TabelaClientesControl()
+        RepositorioCliente repositorio;
+        public TabelaClientesControl(RepositorioCliente repositorio)
         {
             InitializeComponent();
             gridPessoaFisica.ConfigurarGridZebrado();
             gridPessoaFisica.ConfigurarGridSomenteLeitura();
             gridPessoaJuridica.ConfigurarGridZebrado();
             gridPessoaJuridica.ConfigurarGridSomenteLeitura();
+
+            this.repositorio = repositorio;
         }
 
         internal void AtualizarRegistros(List<Cliente> clientes)
@@ -81,7 +85,22 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         private void gridPessoaFisica_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            TelaCadastroClienteForm tela = new TelaCadastroClienteForm();
+            GridDoubleClickGenerico();
+        }
+
+        private void GridDoubleClickGenerico()
+        {
+            TelaCadastroClienteForm tela = new TelaCadastroClienteForm("Visualizacao");
+            int id = ObtemIdClienteSelecionado();
+            Cliente c = repositorio.SelecionarPorId(id);
+
+            tela.Cliente = c;
+            tela.ShowDialog();
+        }
+
+        private void gridPessoaJuridica_DoubleClick(object sender, EventArgs e)
+        {
+            GridDoubleClickGenerico();
         }
     }
 }

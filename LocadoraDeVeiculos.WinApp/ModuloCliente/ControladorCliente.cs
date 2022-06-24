@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 return;
             }
 
-            TelaCadastroClienteForm tela = new TelaCadastroClienteForm();
+            TelaCadastroClienteForm tela = new TelaCadastroClienteForm("Edicao");
 
             tela.Cliente = clienteSelecionado.Clonar();
 
@@ -68,7 +68,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         public override void Inserir()
         {
-            TelaCadastroClienteForm tela = new TelaCadastroClienteForm();
+            TelaCadastroClienteForm tela = new TelaCadastroClienteForm("Insercao");
             tela.Cliente = new Cliente();
 
             tela.GravarRegistro = repositorioCliente.Inserir;
@@ -99,7 +99,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         public override UserControl ObtemListagem()
         {
-            tabelaClientes = new TabelaClientesControl();
+            tabelaClientes = new TabelaClientesControl(repositorioCliente);
 
             CarregarClientes();
 

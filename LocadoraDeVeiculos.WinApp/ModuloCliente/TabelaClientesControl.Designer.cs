@@ -148,6 +148,7 @@
             this.gridPessoaJuridica.RowTemplate.Height = 25;
             this.gridPessoaJuridica.Size = new System.Drawing.Size(674, 312);
             this.gridPessoaJuridica.TabIndex = 0;
+            this.gridPessoaJuridica.DoubleClick += new System.EventHandler(this.gridPessoaJuridica_DoubleClick);
             // 
             // IDJ
             // 
