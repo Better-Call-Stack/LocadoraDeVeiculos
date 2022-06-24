@@ -19,7 +19,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
        
         public RepositorioClienteTests()
         {
-            DB.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT (TBCLIENTE, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT (TBCLIENTE, RESEED, 0)");
 
             cliente = new Cliente();
             cliente.Nome = "Teste";

@@ -18,5 +18,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
         public string Login { get; set; }
         public string Senha { get; set; }
 
+        public override void Atualizar(Funcionario registro)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

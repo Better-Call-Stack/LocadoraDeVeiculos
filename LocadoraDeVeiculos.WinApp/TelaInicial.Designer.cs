@@ -1,4 +1,6 @@
-﻿namespace LocadoraDeVeiculos.WinApp
+﻿using System;
+
+namespace LocadoraDeVeiculos.WinApp
 {
     partial class TelaInicial
     {
@@ -116,12 +118,6 @@
             // 
             // btnInserir
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.streamlinehq_interface_add_square_interface_essential_600;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(29, 24);
-            this.toolStripButton1.Text = "toolStripButton1";
             this.btnInserir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnInserir.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.streamlinehq_interface_add_square_interface_essential_600;
             this.btnInserir.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -132,12 +128,6 @@
             // 
             // btnEditar
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.streamlinehq_interface_edit_write_1_interface_essential_600;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(29, 24);
-            this.toolStripButton2.Text = "toolStripButton2";
             this.btnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnEditar.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.streamlinehq_interface_edit_write_1_interface_essential_600;
             this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -148,12 +138,6 @@
             // 
             // btnExcluir
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.streamlinehq_interface_delete_bin_1_interface_essential_600;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(29, 24);
-            this.toolStripButton3.Text = "toolStripButton3";
             this.btnExcluir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.btnExcluir.Image = global::LocadoraDeVeiculos.WinApp.Properties.Resources.streamlinehq_interface_delete_bin_1_interface_essential_600;
             this.btnExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -206,6 +190,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void toolStripLabel1_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
