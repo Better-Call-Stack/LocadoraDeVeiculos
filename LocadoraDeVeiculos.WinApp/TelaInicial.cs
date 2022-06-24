@@ -1,6 +1,8 @@
-﻿using LocadoraDeVeiculos.Infra.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Infra.ModuloCliente;
+using LocadoraDeVeiculos.Infra.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using System;
@@ -30,22 +32,55 @@ namespace LocadoraDeVeiculos.WinApp
         private void InicializarControladores()
         {
             var repositorioFuncionario = new RepositorioFuncionario();
+            var repositorioCliente = new RepositorioCliente();
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
-            controladores.Add("Grupo de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
+            controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
         }
 
-        private void funcionáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
         {
+            var tipo = opcaoSelecionada.Text;
 
+            controlador = controladores[tipo];
+
+            ConfigurarListagem();
         }
 
-        private void toolStripLabel1_Click(object sender, EventArgs e)
+        private void ConfigurarListagem()
         {
+  
+            var listagemControl = controlador.ObtemListagem();
 
+            panelRegistros.Controls.Clear();
+
+            listagemControl.Dock = DockStyle.Fill;
+
+            panelRegistros.Controls.Add(listagemControl);
+        }
+
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            controlador.Inserir();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            controlador.Editar();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            controlador.Excluir();
         }
 
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)

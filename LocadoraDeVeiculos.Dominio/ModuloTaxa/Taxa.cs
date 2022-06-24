@@ -9,5 +9,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
 {
     public class Taxa : EntidadeBase<Taxa>
     {
+        public override void Atualizar(Taxa registro)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

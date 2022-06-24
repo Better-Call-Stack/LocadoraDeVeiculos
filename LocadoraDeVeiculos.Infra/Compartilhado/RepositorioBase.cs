@@ -4,9 +4,7 @@ using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LocadoraDeVeiculos.Infra.Compartilhado
 {
@@ -17,9 +15,7 @@ namespace LocadoraDeVeiculos.Infra.Compartilhado
     {
 
         protected string enderecoBanco =
-           @"Data Source=(LOCALDB)\MSSQLLOCALDB;
-              Initial Catalog=ControleMedicamentosDb;
-              Integrated Security=True";
+           @"Data Source=(LocalDB)\MSSqlLocalDB;Initial Catalog=LocadoraDeVeiculosDB;Integrated Security=True";
 
         protected abstract string sqlInserir { get; }
 

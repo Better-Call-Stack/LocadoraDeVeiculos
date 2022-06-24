@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.WinApp",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra", "LocadoraDeVeiculos.Infra\LocadoraDeVeiculos.Infra.csproj", "{F94193AA-0A8B-425C-BEC9-ADF0F86A3786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Dominio.Tests", "LocadoraDeVeiculos.Dominio.Tests\LocadoraDeVeiculos.Dominio.Tests.csproj", "{62B9FE33-26CC-49DE-85FA-41E993A5D470}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Dominio.Tests", "LocadoraDeVeiculos.Dominio.Tests\LocadoraDeVeiculos.Dominio.Tests.csproj", "{62B9FE33-26CC-49DE-85FA-41E993A5D470}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.Tests", "LocadoraDeVeiculos.Infra.Tests\LocadoraDeVeiculos.Infra.Tests.csproj", "{A3498585-BF29-4FC0-9312-DDF62A23E809}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.Tests", "LocadoraDeVeiculos.Infra.Tests\LocadoraDeVeiculos.Infra.Tests.csproj", "{A3498585-BF29-4FC0-9312-DDF62A23E809}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "LocadoraDeVeiculos.Projeto.BancoDeDados", "LocadoraDeVeiculos.Projeto.BancoDeDados\LocadoraDeVeiculos.Projeto.BancoDeDados.sqlproj", "{345D55DA-F194-47A1-86F9-2BE65D8287F2}"
 EndProject
