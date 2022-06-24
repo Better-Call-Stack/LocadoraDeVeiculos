@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.NumericUpDown TxtSalario;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastroFuncionario));
             this.lblNomeFuncionario = new System.Windows.Forms.Label();
             this.txtNomeFuncionario = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,13 +39,37 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtAdmissaoFuncionario = new System.Windows.Forms.DateTimePicker();
-            this.cmbPerfilFuncionario = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSalvarFuncionario = new System.Windows.Forms.Button();
             this.btnCancelarFuncionario = new System.Windows.Forms.Button();
+            this.cmbPerfilFuncionario = new System.Windows.Forms.ComboBox();
             TxtSalario = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(TxtSalario)).BeginInit();
             this.SuspendLayout();
+            // 
+            // TxtSalario
+            // 
+            TxtSalario.BackColor = System.Drawing.SystemColors.Window;
+            TxtSalario.DecimalPlaces = 2;
+            TxtSalario.Location = new System.Drawing.Point(442, 77);
+            TxtSalario.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            TxtSalario.Minimum = new decimal(new int[] {
+            185000,
+            0,
+            0,
+            131072});
+            TxtSalario.Name = "TxtSalario";
+            TxtSalario.Size = new System.Drawing.Size(140, 27);
+            TxtSalario.TabIndex = 10;
+            TxtSalario.Value = new decimal(new int[] {
+            185000,
+            0,
+            0,
+            131072});
             // 
             // lblNomeFuncionario
             // 
@@ -54,7 +79,6 @@
             this.lblNomeFuncionario.Size = new System.Drawing.Size(121, 20);
             this.lblNomeFuncionario.TabIndex = 0;
             this.lblNomeFuncionario.Text = "Nome completo:";
-            this.lblNomeFuncionario.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtNomeFuncionario
             // 
@@ -62,7 +86,6 @@
             this.txtNomeFuncionario.Name = "txtNomeFuncionario";
             this.txtNomeFuncionario.Size = new System.Drawing.Size(582, 27);
             this.txtNomeFuncionario.TabIndex = 1;
-            this.txtNomeFuncionario.TextChanged += new System.EventHandler(this.txtNomeFuncionario_TextChanged);
             // 
             // label2
             // 
@@ -124,38 +147,6 @@
             this.txtAdmissaoFuncionario.Value = new System.DateTime(2022, 6, 23, 16, 42, 33, 0);
             this.txtAdmissaoFuncionario.Visible = false;
             // 
-            // TxtSalario
-            // 
-            TxtSalario.BackColor = System.Drawing.SystemColors.Window;
-            TxtSalario.DecimalPlaces = 2;
-            TxtSalario.Location = new System.Drawing.Point(442, 77);
-            TxtSalario.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            TxtSalario.Minimum = new decimal(new int[] {
-            185000,
-            0,
-            0,
-            131072});
-            TxtSalario.Name = "TxtSalario";
-            TxtSalario.Size = new System.Drawing.Size(140, 27);
-            TxtSalario.TabIndex = 10;
-            TxtSalario.Value = new decimal(new int[] {
-            185000,
-            0,
-            0,
-            131072});
-            // 
-            // cmbPerfilFuncionario
-            // 
-            this.cmbPerfilFuncionario.FormattingEnabled = true;
-            this.cmbPerfilFuncionario.Location = new System.Drawing.Point(154, 132);
-            this.cmbPerfilFuncionario.Name = "cmbPerfilFuncionario";
-            this.cmbPerfilFuncionario.Size = new System.Drawing.Size(151, 28);
-            this.cmbPerfilFuncionario.TabIndex = 11;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -167,32 +158,42 @@
             // 
             // btnSalvarFuncionario
             // 
-            this.btnSalvarFuncionario.Location = new System.Drawing.Point(442, 350);
+            this.btnSalvarFuncionario.Location = new System.Drawing.Point(465, 391);
             this.btnSalvarFuncionario.Name = "btnSalvarFuncionario";
             this.btnSalvarFuncionario.Size = new System.Drawing.Size(134, 47);
             this.btnSalvarFuncionario.TabIndex = 13;
             this.btnSalvarFuncionario.Text = "Salvar";
             this.btnSalvarFuncionario.UseVisualStyleBackColor = true;
+            this.btnSalvarFuncionario.Click += new System.EventHandler(this.btnSalvarFuncionario_Click);
             // 
             // btnCancelarFuncionario
             // 
-            this.btnCancelarFuncionario.Location = new System.Drawing.Point(634, 350);
+            this.btnCancelarFuncionario.Location = new System.Drawing.Point(654, 391);
             this.btnCancelarFuncionario.Name = "btnCancelarFuncionario";
             this.btnCancelarFuncionario.Size = new System.Drawing.Size(134, 47);
             this.btnCancelarFuncionario.TabIndex = 14;
             this.btnCancelarFuncionario.Text = "Cancelar";
             this.btnCancelarFuncionario.UseVisualStyleBackColor = true;
             // 
+            // cmbPerfilFuncionario
+            // 
+            this.cmbPerfilFuncionario.FormattingEnabled = true;
+            this.cmbPerfilFuncionario.Location = new System.Drawing.Point(154, 137);
+            this.cmbPerfilFuncionario.Name = "cmbPerfilFuncionario";
+            this.cmbPerfilFuncionario.Size = new System.Drawing.Size(171, 28);
+            this.cmbPerfilFuncionario.TabIndex = 18;
+            // 
             // TelaCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CancelButton = this.btnCancelarFuncionario;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cmbPerfilFuncionario);
             this.Controls.Add(this.btnCancelarFuncionario);
             this.Controls.Add(this.btnSalvarFuncionario);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.cmbPerfilFuncionario);
             this.Controls.Add(TxtSalario);
             this.Controls.Add(this.txtAdmissaoFuncionario);
             this.Controls.Add(this.label5);
@@ -203,8 +204,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNomeFuncionario);
             this.Controls.Add(this.lblNomeFuncionario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaCadastroFuncionario";
-            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de colaborador";
             ((System.ComponentModel.ISupportInitialize)(TxtSalario)).EndInit();
             this.ResumeLayout(false);
@@ -223,9 +225,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker txtAdmissaoFuncionario;
-        private System.Windows.Forms.ComboBox cmbPerfilFuncionario;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSalvarFuncionario;
         private System.Windows.Forms.Button btnCancelarFuncionario;
+        private System.Windows.Forms.ComboBox cmbPerfilFuncionario;
     }
 }
