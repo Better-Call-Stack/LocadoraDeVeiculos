@@ -27,7 +27,7 @@ namespace LocadoraDeVeiculos.Infra.Compartilhado
 
         protected abstract string sqlSelecionarTodos { get; }
 
-        public ValidationResult Inserir(T registro)
+        public virtual ValidationResult Inserir(T registro)
         {
             var validador = new TValidador();
 
@@ -53,7 +53,7 @@ namespace LocadoraDeVeiculos.Infra.Compartilhado
             return resultadoValidacao;
         }
 
-        public ValidationResult Editar(T registro)
+        public virtual ValidationResult Editar(T registro)
         {
             var validador = new TValidador();
 
@@ -111,7 +111,7 @@ namespace LocadoraDeVeiculos.Infra.Compartilhado
             return registro;
         }
 
-        public List<T> SelecionarTodos()
+        public virtual List<T> SelecionarTodos()
         {
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
