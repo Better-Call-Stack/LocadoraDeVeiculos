@@ -13,6 +13,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         {
             CPF = "";
             CNPJ = "";
+            CNH = "";
         }
 
         private TipoPessoa tipoPessoa;

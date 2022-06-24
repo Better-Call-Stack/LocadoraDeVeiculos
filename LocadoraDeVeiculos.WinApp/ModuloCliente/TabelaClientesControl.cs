@@ -70,7 +70,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         public int ObtemIdClienteSelecionado()
         {
-            return gridPessoaFisica.SelecionarId<int>();
+            if (gridPessoaFisica.SelecionarId<int>() != 0)
+            {
+                return gridPessoaFisica.SelecionarId<int>();
+            }
+            else
+                return gridPessoaJuridica.SelecionarId<int>();
+
+            
         }
     }
 }
