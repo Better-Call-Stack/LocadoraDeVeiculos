@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.Compartilhado
 {
-    public class DB
+    public static class Db
     {
         private static string enderecoBanco =
-         @"Data Source=(LocalDB)\MSSqlLocalDB;Initial Catalog=LocadoraDeVeiculosDB;Integrated Security=True";
+            @"Data Source=(LocalDB)\MSSqlLocalDB;
+              Initial Catalog=LocadoraDeVeiculosDB;
+              Integrated Security=True";
+
         public static void ExecutarSql(string sql)
         {
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
@@ -21,5 +24,6 @@ namespace LocadoraDeVeiculos.Infra.Compartilhado
             comando.ExecuteNonQuery();
             conexaoComBanco.Close();
         }
+
     }
 }
