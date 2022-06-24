@@ -11,14 +11,17 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+    
+        //////////////// Codigo que estava dando erro //////////////////
+        
+        //   protected override void Dispose(bool disposing)
+     //   {
+     //       if (disposing && (components != null))
+     //       {
+     //           components.Dispose();
+     //       }
+     //       base.Dispose(disposing);
+     //   }
 
         #region Component Designer generated code
 
@@ -29,7 +32,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-           this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+          // this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         }
 
         #endregion

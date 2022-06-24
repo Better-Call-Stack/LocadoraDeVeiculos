@@ -43,6 +43,8 @@ namespace LocadoraDeVeiculos.WinApp
             var tipo = opcaoSelecionada.Text;
 
             controlador = controladores[tipo];
+
+            ConfigurarListagem();
         }
 
         private void ConfigurarListagem()
@@ -66,6 +68,16 @@ namespace LocadoraDeVeiculos.WinApp
         private void btnInserir_Click(object sender, EventArgs e)
         {
             controlador.Inserir();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            controlador.Editar();
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            controlador.Excluir();
         }
     }
 }
