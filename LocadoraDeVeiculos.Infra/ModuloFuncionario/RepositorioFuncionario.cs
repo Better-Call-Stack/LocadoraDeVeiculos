@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
 {
-    public class RepositorioFuncionario : RepositorioBase<Funcionario>
+    public class RepositorioFuncionario 
     {
     }
 }

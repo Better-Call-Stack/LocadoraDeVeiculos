@@ -9,60 +9,60 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
     public class Cliente : EntidadeBase<Cliente>
     {
-        public int Nome
+        public Cliente()
         {
-            get => default;
-            set
-            {
-            }
+            CPF = "";
+            CNPJ = "";
         }
 
-        public int CPF
+        private TipoPessoa tipoPessoa;
+
+        public string Nome { get; set; }
+       
+        public string CPF { get; set; }
+
+        public string CNPJ { get; set; }
+
+        public string Cidade { get; set; }
+
+        public string Endereco { get; set; }
+
+        public string Telefone { get; set; }
+        
+        public string CNH { get; set; }
+       
+        public string Email { get; set; }
+
+        public TipoPessoa TipoPessoa
         {
-            get => default;
+            get { return tipoPessoa; }
             set
             {
+                tipoPessoa = value;
+
+                }
             }
+
+
+        public Cliente Clonar()
+        {
+            return MemberwiseClone() as Cliente;
         }
 
-        public int CNPJ
+        public override bool Equals(object obj)
         {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int Endereco
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int TipoCliente
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int Telefone
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int CNH
-        {
-            get => default;
-            set
-            {
-            }
+            return obj is Cliente cliente &&
+                   Id == cliente.Id &&
+                   tipoPessoa == cliente.tipoPessoa &&
+                   Nome == cliente.Nome &&
+                   CPF == cliente.CPF &&
+                   CNPJ == cliente.CNPJ &&
+                   Cidade == cliente.Cidade &&
+                   Endereco == cliente.Endereco &&
+                   Telefone == cliente.Telefone &&
+                   CNH == cliente.CNH &&
+                   Email == cliente.Email &&
+                   TipoPessoa == cliente.TipoPessoa;
         }
     }
 }
