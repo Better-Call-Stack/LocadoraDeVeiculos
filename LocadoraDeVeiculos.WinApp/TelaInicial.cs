@@ -43,5 +43,10 @@ namespace LocadoraDeVeiculos.WinApp
         {
 
         }
+
+        private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
