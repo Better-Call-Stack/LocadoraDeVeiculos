@@ -64,5 +64,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                    Email == cliente.Email &&
                    TipoPessoa == cliente.TipoPessoa;
         }
+
+        public override void Atualizar(Cliente registro)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

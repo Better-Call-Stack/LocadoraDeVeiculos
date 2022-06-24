@@ -38,16 +38,34 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
         }
 
-        private void ConfigurarTelaPrincipal(ToolStripMenuItem sender)
+        private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
         {
-            throw new NotImplementedException();
+            var tipo = opcaoSelecionada.Text;
+
+            controlador = controladores[tipo];
         }
+
+        private void ConfigurarListagem()
+        {
+  
+            var listagemControl = controlador.ObtemListagem();
+
+            panelRegistros.Controls.Clear();
+
+            listagemControl.Dock = DockStyle.Fill;
+
+            panelRegistros.Controls.Add(listagemControl);
+        }
+
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
-       
+        private void btnInserir_Click(object sender, EventArgs e)
+        {
+            controlador.Inserir();
+        }
     }
 }

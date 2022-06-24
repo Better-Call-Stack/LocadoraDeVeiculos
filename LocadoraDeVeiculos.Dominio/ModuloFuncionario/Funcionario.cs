@@ -56,5 +56,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
             {
             }
         }
+
+        public override void Atualizar(Funcionario registro)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

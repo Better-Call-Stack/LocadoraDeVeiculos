@@ -28,19 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.gridPessoaFisica = new System.Windows.Forms.DataGridView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.gridPessoaJuridica = new System.Windows.Forms.DataGridView();
+            this.IDJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CNPJJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelefoneJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmailJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPessoaFisica)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridPessoaJuridica)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -70,8 +78,8 @@
             this.gridPessoaFisica.AllowUserToAddRows = false;
             this.gridPessoaFisica.AllowUserToDeleteRows = false;
             this.gridPessoaFisica.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
-            this.gridPessoaFisica.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
+            this.gridPessoaFisica.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.gridPessoaFisica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPessoaFisica.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -85,16 +93,6 @@
             this.gridPessoaFisica.RowTemplate.Height = 25;
             this.gridPessoaFisica.Size = new System.Drawing.Size(674, 312);
             this.gridPessoaFisica.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(609, 407);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Pessoa Jurídica";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // ID
             // 
@@ -123,6 +121,58 @@
             this.Email.HeaderText = "Email";
             this.Email.Name = "Email";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.gridPessoaJuridica);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(680, 318);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Pessoa Jurídica";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // gridPessoaJuridica
+            // 
+            this.gridPessoaJuridica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridPessoaJuridica.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IDJ,
+            this.NomeJ,
+            this.CNPJJ,
+            this.TelefoneJ,
+            this.EmailJ});
+            this.gridPessoaJuridica.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridPessoaJuridica.Location = new System.Drawing.Point(3, 3);
+            this.gridPessoaJuridica.Name = "gridPessoaJuridica";
+            this.gridPessoaJuridica.RowTemplate.Height = 25;
+            this.gridPessoaJuridica.Size = new System.Drawing.Size(674, 312);
+            this.gridPessoaJuridica.TabIndex = 0;
+            // 
+            // IDJ
+            // 
+            this.IDJ.HeaderText = "ID";
+            this.IDJ.Name = "IDJ";
+            // 
+            // NomeJ
+            // 
+            this.NomeJ.HeaderText = "Nome";
+            this.NomeJ.Name = "NomeJ";
+            // 
+            // CNPJJ
+            // 
+            this.CNPJJ.HeaderText = "CNPJ";
+            this.CNPJJ.Name = "CNPJJ";
+            // 
+            // TelefoneJ
+            // 
+            this.TelefoneJ.HeaderText = "Telefone";
+            this.TelefoneJ.Name = "TelefoneJ";
+            // 
+            // EmailJ
+            // 
+            this.EmailJ.HeaderText = "Email";
+            this.EmailJ.Name = "EmailJ";
+            // 
             // TabelaClientesControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -133,6 +183,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPessoaFisica)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridPessoaJuridica)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -148,5 +200,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CPF;
         private System.Windows.Forms.DataGridViewTextBoxColumn Telefone;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridView gridPessoaJuridica;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IDJ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeJ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CNPJJ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TelefoneJ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmailJ;
     }
 }
