@@ -64,6 +64,7 @@
             // 
             // cbxPessoa
             // 
+            this.cbxPessoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPessoa.FormattingEnabled = true;
             this.cbxPessoa.Items.AddRange(new object[] {
             "Física",

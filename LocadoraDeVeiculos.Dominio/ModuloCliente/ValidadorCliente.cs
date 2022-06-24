@@ -17,7 +17,21 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             
                 RuleFor(x => x.CNH).NotNull().NotEmpty()
                 );
-            
+
+            When(x => x.TipoPessoa == TipoPessoa.Fisica, () =>
+
+                 RuleFor(x => x.CPF).NotNull().NotEmpty()
+                 );
+                 
+             When(x => x.TipoPessoa == TipoPessoa.Juridica, () =>
+                 
+                 RuleFor(x => x.CNPJ).NotNull().NotEmpty()
+                 );
+
+            RuleFor(x => x.Cidade).NotNull().NotEmpty();
+            RuleFor(x => x.Endereco).NotNull().NotEmpty();  
+            RuleFor(x => x.Telefone).NotNull().NotEmpty();
+
         }
     }
 }
