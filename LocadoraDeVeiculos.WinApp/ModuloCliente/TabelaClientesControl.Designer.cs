@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.gridPessoaFisica = new System.Windows.Forms.DataGridView();
@@ -78,8 +78,8 @@
             this.gridPessoaFisica.AllowUserToAddRows = false;
             this.gridPessoaFisica.AllowUserToDeleteRows = false;
             this.gridPessoaFisica.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Silver;
-            this.gridPessoaFisica.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Silver;
+            this.gridPessoaFisica.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gridPessoaFisica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridPessoaFisica.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -93,6 +93,7 @@
             this.gridPessoaFisica.RowTemplate.Height = 25;
             this.gridPessoaFisica.Size = new System.Drawing.Size(674, 312);
             this.gridPessoaFisica.TabIndex = 0;
+            this.gridPessoaFisica.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gridPessoaFisica_MouseDoubleClick);
             // 
             // ID
             // 

@@ -32,7 +32,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             {
                 cliente = value;
 
-                //cbxPessoa.Enabled = false;
+                if(cliente.Id != 0)
+                    cbxPessoa.Enabled = false;
+
                 if (cliente.TipoPessoa == TipoPessoa.Fisica)
                 {
                     cbxPessoa.Text = "Física";

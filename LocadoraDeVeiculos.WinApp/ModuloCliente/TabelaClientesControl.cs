@@ -76,8 +76,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             }
             else
                 return gridPessoaJuridica.SelecionarId<int>();
+   
+        }
 
-            
+        private void gridPessoaFisica_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            TelaCadastroClienteForm tela = new TelaCadastroClienteForm();
         }
     }
 }
