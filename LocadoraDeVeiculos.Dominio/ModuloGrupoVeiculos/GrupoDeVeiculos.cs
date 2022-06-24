@@ -11,38 +11,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
     [Serializable]
     public class GrupoDeVeiculos : EntidadeBase<GrupoDeVeiculos>
     {
-        public int Veiculos
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        /*public int Nome
-        {
-            get => default;
-            set
-            {
-            }
-        }*/
-
-        public List<Taxa> Taxas
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int ValorDiaria
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
         public GrupoDeVeiculos()
         {
 
