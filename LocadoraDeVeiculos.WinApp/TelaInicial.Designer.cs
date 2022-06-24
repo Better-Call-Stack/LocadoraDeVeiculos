@@ -101,6 +101,7 @@ namespace LocadoraDeVeiculos.WinApp
             // 
             // toolbox
             // 
+            this.toolbox.Enabled = false;
             this.toolbox.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.toolbox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnInserir,

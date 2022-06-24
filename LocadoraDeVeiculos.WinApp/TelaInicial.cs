@@ -26,6 +26,8 @@ namespace LocadoraDeVeiculos.WinApp
         {
             InitializeComponent();
 
+            labelTipoCadastro.Text = String.Empty;
+
             InicializarControladores();
         }
 
@@ -103,19 +105,16 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            if(controlador != null)
                 controlador.Inserir();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (controlador != null)
                 controlador.Editar();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (controlador != null)
                 controlador.Excluir();
         }
 
