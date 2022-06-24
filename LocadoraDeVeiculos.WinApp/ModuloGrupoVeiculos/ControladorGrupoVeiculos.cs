@@ -112,5 +112,10 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 
             return repositorioGrupoVeiculos.SelecionarPorNumero(id);*/
         }
+
+        public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

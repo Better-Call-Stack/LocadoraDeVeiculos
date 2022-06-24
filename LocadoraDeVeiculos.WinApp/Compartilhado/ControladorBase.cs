@@ -25,6 +25,6 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado
 
         public abstract UserControl ObtemListagem();
 
-      //  public abstract ConfiguracaoToolboxBase ObtemConfiguracaoToolbox();
+        public abstract ConfiguracaoToolboxBase ObtemConfiguracaoToolbox();
     }
 }

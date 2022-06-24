@@ -33,6 +33,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             throw new NotImplementedException();
         }
 
+        public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
+        {
+            throw new NotImplementedException();
+        }
+
         public override UserControl ObtemListagem()
         {
             throw new NotImplementedException();

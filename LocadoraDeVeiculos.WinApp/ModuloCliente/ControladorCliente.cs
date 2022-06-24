@@ -105,5 +105,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             return tabelaClientes;
         }
+
+        public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
+        {
+            return new ConfiguracaoToolboxCliente();
+        }
     }
 }

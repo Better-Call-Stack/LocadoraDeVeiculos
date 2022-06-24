@@ -48,6 +48,8 @@ namespace LocadoraDeVeiculos.WinApp
             controlador = controladores[tipo];
 
             ConfigurarListagem();
+
+            ConfigurarToolbox();
         }
 
         private void ConfigurarListagem()
@@ -62,6 +64,37 @@ namespace LocadoraDeVeiculos.WinApp
             panelRegistros.Controls.Add(listagemControl);
         }
 
+        private void ConfigurarToolbox()
+        {
+            ConfiguracaoToolboxBase configuracao = controlador.ObtemConfiguracaoToolbox();
+
+            if (configuracao != null)
+            {
+                toolbox.Enabled = true;
+
+                labelTipoCadastro.Text = configuracao.TipoCadastro;
+
+                ConfigurarTooltips(configuracao);
+
+                ConfigurarBotoes(configuracao);
+            }
+        }
+
+        private void ConfigurarBotoes(ConfiguracaoToolboxBase configuracao)
+        {
+            btnInserir.Enabled = configuracao.InserirHabilitado;
+            btnEditar.Enabled = configuracao.EditarHabilitado;
+            btnExcluir.Enabled = configuracao.ExcluirHabilitado;
+        }
+
+        private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
+        {
+          
+            btnInserir.ToolTipText = configuracao.TooltipInserir;
+            btnEditar.ToolTipText = configuracao.TooltipEditar;
+            btnExcluir.ToolTipText = configuracao.TooltipExcluir;
+            
+        }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -70,17 +103,20 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            controlador.Inserir();
+            if(controlador != null)
+                controlador.Inserir();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            controlador.Editar();
+            if (controlador != null)
+                controlador.Editar();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            controlador.Excluir();
+            if (controlador != null)
+                controlador.Excluir();
         }
 
         private void funcionarioToolStripMenuItem_Click(object sender, EventArgs e)
