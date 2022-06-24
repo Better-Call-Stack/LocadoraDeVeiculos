@@ -38,10 +38,16 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
         }
 
+        private void ConfigurarTelaPrincipal(ToolStripMenuItem sender)
+        {
+            throw new NotImplementedException();
+        }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
+
+       
     }
 }
