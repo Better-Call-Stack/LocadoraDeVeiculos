@@ -1,5 +1,7 @@
 ﻿using LocadoraDeVeiculos.Infra.ModuloFuncionario;
+using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using System;
 using System.Collections.Generic;
@@ -28,10 +30,12 @@ namespace LocadoraDeVeiculos.WinApp
         private void InicializarControladores()
         {
             var repositorioFuncionario = new RepositorioFuncionario();
+            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
+            controladores.Add("Grupo de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
         }
 
         private void funcionáriosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -45,6 +49,11 @@ namespace LocadoraDeVeiculos.WinApp
         }
 
         private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grupoVeiculosToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
