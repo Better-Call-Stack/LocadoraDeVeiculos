@@ -28,31 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.gridGrupoVeiculos = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorPlanoDiario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorDiariaKmControlado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorDiarioKmLivre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridGrupoVeiculos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // gridGrupoVeiculos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gridGrupoVeiculos.AllowUserToAddRows = false;
+            this.gridGrupoVeiculos.AllowUserToDeleteRows = false;
+            this.gridGrupoVeiculos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.gridGrupoVeiculos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridGrupoVeiculos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridGrupoVeiculos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Nome,
             this.ValorPlanoDiario,
             this.ValorDiariaKmControlado,
             this.ValorDiarioKmLivre});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(767, 610);
-            this.dataGridView1.TabIndex = 0;
+            this.gridGrupoVeiculos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridGrupoVeiculos.Location = new System.Drawing.Point(0, 0);
+            this.gridGrupoVeiculos.Name = "gridGrupoVeiculos";
+            this.gridGrupoVeiculos.RowHeadersWidth = 51;
+            this.gridGrupoVeiculos.RowTemplate.Height = 29;
+            this.gridGrupoVeiculos.Size = new System.Drawing.Size(767, 610);
+            this.gridGrupoVeiculos.TabIndex = 0;
             // 
             // Id
             // 
@@ -93,17 +99,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gridGrupoVeiculos);
             this.Name = "TabelaGrupoVeiculosControl";
             this.Size = new System.Drawing.Size(767, 610);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridGrupoVeiculos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView gridGrupoVeiculos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorPlanoDiario;
