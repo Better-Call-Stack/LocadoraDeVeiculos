@@ -83,12 +83,17 @@ namespace LocadoraDeVeiculos.WinApp
             controlador.Excluir();
         }
 
-        private void funcionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void funcionarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
         private void grupoVeiculosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

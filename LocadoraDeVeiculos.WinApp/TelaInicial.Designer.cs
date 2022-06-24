@@ -76,24 +76,28 @@ namespace LocadoraDeVeiculos.WinApp
             this.funcionariosToolStripMenuItem.Name = "funcionariosToolStripMenuItem";
             this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.funcionariosToolStripMenuItem.Text = "Funcionários";
+            this.funcionariosToolStripMenuItem.Click += new System.EventHandler(this.funcionarioToolStripMenuItem_Click);
             // 
             // grupoDeVeiculosToolStripMenuItem
             // 
             this.grupoDeVeiculosToolStripMenuItem.Name = "grupoDeVeiculosToolStripMenuItem";
             this.grupoDeVeiculosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.grupoDeVeiculosToolStripMenuItem.Text = "Grupo de Veículos";
+            this.grupoDeVeiculosToolStripMenuItem.Click += new System.EventHandler(this.grupoVeiculosToolStripMenuItem_Click);
             // 
             // taxasToolStripMenuItem
             // 
             this.taxasToolStripMenuItem.Name = "taxasToolStripMenuItem";
             this.taxasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.taxasToolStripMenuItem.Text = "Taxas";
+            this.taxasToolStripMenuItem.Click += new System.EventHandler(this.taxasToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -150,7 +154,6 @@ namespace LocadoraDeVeiculos.WinApp
             this.TipoCadastro.Name = "TipoCadastro";
             this.TipoCadastro.Size = new System.Drawing.Size(88, 24);
             this.TipoCadastro.Text = "[Tipo Cadastro]";
-            this.TipoCadastro.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // toolStripLabel1
             // 
