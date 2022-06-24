@@ -45,6 +45,35 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
 
         }
 
+        [TestMethod]
+        public void Deve_Editar_Cliente()
+        {
+            repositorio.Inserir(cliente);
 
+            Cliente clienteAtualizado = repositorio.SelecionarPorId(cliente.Id);
+            clienteAtualizado.Nome = "Marcello";
+            clienteAtualizado.Telefone = "515615616";
+
+            //action
+            repositorio.Editar(clienteAtualizado);
+
+            //assert
+            Cliente c = repositorio.SelecionarPorId(cliente.Id);
+
+            c.Should().NotBeNull();
+            c.Nome.Should().Be("Marcello");
+            c.Endereco.Should().Be("Teste");
+            c.Telefone.Should().Be("515615616");
+        }
+
+        [TestMethod]
+        public void Deve_Excluir_Cliente()
+        {
+            repositorio.Inserir(cliente);
+
+            repositorio.Excluir(cliente);
+
+            repositorio.SelecionarTodos().Count().Should().Be(0);
+        }
     }
 }
