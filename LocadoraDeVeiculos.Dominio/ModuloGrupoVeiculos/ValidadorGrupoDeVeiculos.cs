@@ -15,8 +15,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
                 .NotNull().WithMessage("O campo nome é obrigatório")
                 .NotEmpty().WithMessage("O campo nome é obrigatório");
 
-            //Any(x => x.Nome == project.Nome && x.Nome == project.Nome);
-
             RuleFor(x => x.Nome)
                 .MinimumLength(2)
                 .NotNull().NotEmpty()
