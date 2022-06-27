@@ -93,10 +93,10 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
             return tabelaGrupoVeiculos;
         }
 
-        /*public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
+        public override ConfiguracaoToolboxGrupoDeVeiculos ObtemConfiguracaoToolbox()
         {
-            return new ConfiguracaoToolboxGrupoVeiculos();
-        }*/
+            return new ConfiguracaoToolboxGrupoDeVeiculos();
+        }
 
         private void CarregarGrupoVeiculos()
         {
@@ -112,9 +112,6 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
             return repositorioGrupoVeiculos.SelecionarPorId(id);
         }
 
-        public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }
