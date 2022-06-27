@@ -15,6 +15,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
                 .NotNull().WithMessage("O campo nome é obrigatório")
                 .NotEmpty().WithMessage("O campo nome é obrigatório");
 
+            /*RuleFor(x => x.Nome)
+                 .Must((primeiro, segundo) => primeiro.Nome.Count(comparer => Equals(segundo)) == 1)
+                 .WithMessage("Não pode haver nomes duplicados");*/
+
+            //RuleFor(x => x.Nome).NotEqual(x => x.Nome);
+
             RuleFor(x => x.Nome)
                 .MinimumLength(2)
                 .NotNull().NotEmpty()
