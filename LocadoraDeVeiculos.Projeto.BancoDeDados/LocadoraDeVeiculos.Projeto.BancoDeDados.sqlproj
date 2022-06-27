@@ -59,5 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="TBFuncionario.sql" />
+    <Build Include="TBGrupoVeiculos.sql" />
   </ItemGroup>
 </Project>
