@@ -16,7 +16,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
             comando.Parameters.AddWithValue("ID", grupoDeVeiculos.Id);
             comando.Parameters.AddWithValue("NOME", grupoDeVeiculos.Nome);
             comando.Parameters.AddWithValue("VALORPLANODIARIO", grupoDeVeiculos.ValorPlanoDiario);
-            comando.Parameters.AddWithValue("VALORDIARIOKMCONTROLADO", grupoDeVeiculos.ValorDiariaKmControlado);
+            comando.Parameters.AddWithValue("VALORDIARIAKMCONTROLADO", grupoDeVeiculos.ValorDiariaKmControlado);
             comando.Parameters.AddWithValue("VALORDIARIOKMLIVRE", grupoDeVeiculos.ValorDiarioKmLivre);
         }
 
@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
             var id = Convert.ToInt32(leitorGrupoDeVeiculos["ID"]);
             var nome = Convert.ToString(leitorGrupoDeVeiculos["NOME"]);
             var valorPlanoDiario = Convert.ToDecimal(leitorGrupoDeVeiculos["VALORPLANODIARIO"]);
-            var valorDiariaKmControlado = Convert.ToDecimal(leitorGrupoDeVeiculos["VALORDIARIOKMCONTROLADO"]);
+            var valorDiariaKmControlado = Convert.ToDecimal(leitorGrupoDeVeiculos["VALORDIARIAKMCONTROLADO"]);
             var valorDiarioKmLivre = Convert.ToDecimal(leitorGrupoDeVeiculos["VALORDIARIOKMLIVRE"]);
 
             GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos();

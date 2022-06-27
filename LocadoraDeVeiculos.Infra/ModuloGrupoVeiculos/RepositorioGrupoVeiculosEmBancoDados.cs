@@ -10,13 +10,13 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
                 (
                      [NOME],
                      [VALORPLANODIARIO],
-                     [VALORDIARIOKMCONTROLADO],
+                     [VALORDIARIAKMCONTROLADO],
                      [VALORDIARIOKMLIVRE])
             VALUES
                 (
                      @NOME,
                      @VALORPLANODIARIO,
-                     @VALORDIARIOKMCONTROLADO,
+                     @VALORDIARIAKMCONTROLADO,
                      @VALORDIARIOKMLIVRE
                 );SELECT SCOPE_IDENTITY();";
 
@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
                     SET 
                         [NOME] = @NOME,
                         [VALORPLANODIARIO] = @VALORPLANODIARIO,
-                        [VALORDIARIOKMCONTROLADO] = @VALORDIARIOKMCONTROLADO,
+                        [VALORDIARIAKMCONTROLADO] = @VALORDIARIAKMCONTROLADO,
                         [VALORDIARIOKMLIVRE] = @VALORDIARIOKMLIVRE
                     WHERE [ID] = @ID";
 
@@ -37,7 +37,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
             @"SELECT 
                 [NOME],
                 [VALORPLANODIARIO],
-                [VALORDIARIOKMCONTROLADO],
+                [VALORDIARIAKMCONTROLADO],
                 [VALORDIARIOKMLIVRE]
             FROM
                 [TBGRUPOVEICULOS]
@@ -48,7 +48,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
             @"SELECT 
                 [NOME],
                 [VALORPLANODIARIO],
-                [VALORDIARIOKMCONTROLADO],
+                [VALORDIARIAKMCONTROLADO],
                 [VALORDIARIOKMLIVRE]
             FROM
                 [TBGRUPOVEICULOS]";

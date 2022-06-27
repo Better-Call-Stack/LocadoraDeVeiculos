@@ -46,9 +46,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
             grupoDeVeiculos.ValorDiariaKmControlado = Convert.ToDecimal(txtValorDiariaKmControlado.Text);
             grupoDeVeiculos.ValorDiarioKmLivre = Convert.ToDecimal(txtValorDiariaKmLivre.Text);
 
-            /*var resultadoValidacao = GravarRegistro(grupoDeVeiculos);
+            var resultadoValidacao = GravarRegistro(grupoDeVeiculos);
 
-            if (resultadoValidacao.IsValid == false)
+            /*if (resultadoValidacao.IsValid == false)
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
 
