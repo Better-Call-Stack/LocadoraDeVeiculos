@@ -11,7 +11,15 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
     {
         public ValidadorTaxa()
         {
+            RuleFor(x => x.Nome).NotNull().WithMessage("O campo Nome é obrigatório")
+                .NotEmpty().WithMessage("O campo Nome é obrigatório");
 
+            RuleFor(x => x.Valor).NotNull().WithMessage("O campo Valor é obrigatório")
+            .NotEmpty().WithMessage("O campo Valor é obrigatório")
+            .GreaterThanOrEqualTo(0).WithMessage("Valor inválido");
+
+            RuleFor(x => x.Tipo).NotNull().WithMessage("O campo Tipo de Cobrança é obrigatório")
+                .NotEmpty().WithMessage("O campo Tipo de Cobrança é obrigatório");
         }
     }
 }
