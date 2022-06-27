@@ -32,7 +32,7 @@
             this.cbxPessoa = new System.Windows.Forms.ComboBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelCpfCnpj = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -66,6 +66,7 @@
             this.cbxPessoa.Name = "cbxPessoa";
             this.cbxPessoa.Size = new System.Drawing.Size(145, 23);
             this.cbxPessoa.TabIndex = 14;
+            this.cbxPessoa.SelectedIndexChanged += new System.EventHandler(this.cbxPessoa_SelectedIndexChanged);
             // 
             // txtNome
             // 
@@ -83,14 +84,14 @@
             this.label4.TabIndex = 12;
             this.label4.Text = "CNH:";
             // 
-            // label3
+            // labelCpfCnpj
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(32, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 15);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "CPF/CNPJ:";
+            this.labelCpfCnpj.AutoSize = true;
+            this.labelCpfCnpj.Location = new System.Drawing.Point(32, 150);
+            this.labelCpfCnpj.Name = "labelCpfCnpj";
+            this.labelCpfCnpj.Size = new System.Drawing.Size(31, 15);
+            this.labelCpfCnpj.TabIndex = 11;
+            this.labelCpfCnpj.Text = "CPF:";
             // 
             // label2
             // 
@@ -224,7 +225,7 @@
             this.Controls.Add(this.cbxPessoa);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelCpfCnpj);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
             this.Name = "TelaCadastroClienteForm";
@@ -240,7 +241,7 @@
         private System.Windows.Forms.ComboBox cbxPessoa;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelCpfCnpj;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtEmail;
