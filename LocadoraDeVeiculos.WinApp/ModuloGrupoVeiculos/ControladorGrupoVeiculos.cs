@@ -1,5 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos;
 using System;
@@ -13,9 +14,13 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 {
     public class ControladorGrupoVeiculos : ControladorBase
     {
-        private IRepositorioGrupoVeiculos repositorioGrupoVeiculos;
-        //private TabelaGrupoVeiculosControl tabelaGrupoVeiculos;
+        private RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
+        private TabelaGrupoVeiculosControl tabelaGrupoVeiculos;
 
+        public ControladorGrupoVeiculos(RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos)
+        {
+            this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
+        }
 
         public override void Inserir()
         {
@@ -80,14 +85,12 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 
         public override UserControl ObtemListagem()
         {
-            throw new NotImplementedException();
-
-            /*if (tabelaGrupoVeiculos == null)
+            if (tabelaGrupoVeiculos == null)
                 tabelaGrupoVeiculos = new TabelaGrupoVeiculosControl();
 
             CarregarGrupoVeiculos();
 
-            return tabelaGrupoVeiculos;*/
+            return tabelaGrupoVeiculos;
         }
 
         /*public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
@@ -97,20 +100,16 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 
         private void CarregarGrupoVeiculos()
         {
-            throw new NotImplementedException();
+            List<GrupoDeVeiculos> grupoDeVeiculos = repositorioGrupoVeiculos.SelecionarTodos();
 
-            /*List<GrupoDeVeiculos> grupoDeVeiculos = repositorioGrupoVeiculos.SelecionarTodos();
-
-            tabelaGrupoVeiculos.AtualizarRegistros(grupoDeVeiculos);*/
+            tabelaGrupoVeiculos.AtualizarRegistros(grupoDeVeiculos);
         }
 
         private GrupoDeVeiculos ObtemGrupoDeVeiculoSelecionado()
         {
-            throw new NotImplementedException();
+            var id = tabelaGrupoVeiculos.ObtemIdGrupoVeiculoSelecionado();
 
-            /*var id = tabelaGrupoVeiculos.ObtemGrupoDeVeiculoSelecionado();
-
-            return repositorioGrupoVeiculos.SelecionarPorNumero(id);*/
+            return repositorioGrupoVeiculos.SelecionarPorId(id);
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()

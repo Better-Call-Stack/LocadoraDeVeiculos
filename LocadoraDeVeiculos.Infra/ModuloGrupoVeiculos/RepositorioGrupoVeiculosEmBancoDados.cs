@@ -1,38 +1,59 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.Compartilhado;
 
 namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
 {
-    public class RepositorioGrupoVeiculosEmBancoDados : IRepositorioGrupoVeiculos
+    public class RepositorioGrupoVeiculosEmBancoDados : RepositorioBase<GrupoDeVeiculos, ValidadorGrupoDeVeiculos, MapeadorGrupoVeiculos>
     {
-        public ValidationResult Editar(GrupoDeVeiculos registro)
-        {
-            throw new NotImplementedException();
-        }
+        protected override string sqlInserir =>
+            @"INSERT INTO [TBGRUPOVEICULOS]
+                (
+                     [NOME],
+                     [VALORPLANODIARIO],
+                     [VALORDIARIAKMCONTROLADO],
+                     [VALORDIARIOKMLIVRE])
+            VALUES
+                (
+                     @NOME,
+                     @VALORPLANODIARIO,
+                     @VALORDIARIAKMCONTROLADO,
+                     @VALORDIARIOKMLIVRE
+                );SELECT SCOPE_IDENTITY();";
 
-        public ValidationResult Excluir(GrupoDeVeiculos registro)
-        {
-            throw new NotImplementedException();
-        }
+        protected override string sqlEditar =>
+            @" UPDATE [TBGRUPOVEICULOS]
+                    SET 
+                        [NOME] = @NOME,
+                        [VALORPLANODIARIO] = @VALORPLANODIARIO,
+                        [VALORDIARIAKMCONTROLADO] = @VALORDIARIAKMCONTROLADO,
+                        [VALORDIARIOKMLIVRE] = @VALORDIARIOKMLIVRE
+                    WHERE [ID] = @ID";
 
-        public ValidationResult Inserir(GrupoDeVeiculos novoRegistro)
-        {
-            throw new NotImplementedException();
-        }
+        protected override string sqlExcluir =>
+            @"DELETE FROM [TBGRUPOVEICULOS] 
+                    WHERE [ID] = @ID";
 
-        public GrupoDeVeiculos SelecionarPorId(int id)
-        {
-            throw new NotImplementedException();
-        }
+        protected override string sqlSelecionarPorId =>
+            @"SELECT 
+                [ID],
+                [NOME],
+                [VALORPLANODIARIO],
+                [VALORDIARIAKMCONTROLADO],
+                [VALORDIARIOKMLIVRE]
+            FROM
+                [TBGRUPOVEICULOS]
+            WHERE 
+                [ID] = @ID";
 
-        public List<GrupoDeVeiculos> SelecionarTodos()
-        {
-            throw new NotImplementedException();
-        }
+        protected override string sqlSelecionarTodos =>
+            @"SELECT 
+                [ID],
+                [NOME],
+                [VALORPLANODIARIO],
+                [VALORDIARIAKMCONTROLADO],
+                [VALORDIARIOKMLIVRE]
+            FROM
+                [TBGRUPOVEICULOS]";
     }
 }
+

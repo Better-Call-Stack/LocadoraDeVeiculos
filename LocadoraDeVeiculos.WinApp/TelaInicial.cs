@@ -33,6 +33,12 @@ namespace LocadoraDeVeiculos.WinApp
             InicializarControladores();
         }
 
+        public static TelaInicial Instancia
+        {
+            get;
+            private set;
+        }
+
         private void InicializarControladores()
         {
             var repositorioFuncionario = new RepositorioFuncionario();
@@ -44,6 +50,7 @@ namespace LocadoraDeVeiculos.WinApp
 
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
+            controladores.Add("Grupo de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
         }
 
@@ -129,7 +136,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void grupoVeiculosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
         private void taxasToolStripMenuItem_Click(object sender, EventArgs e)

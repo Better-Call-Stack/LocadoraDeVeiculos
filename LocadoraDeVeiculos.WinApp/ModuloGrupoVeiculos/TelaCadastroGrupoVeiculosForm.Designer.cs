@@ -43,82 +43,89 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 32);
+            this.label1.Location = new System.Drawing.Point(26, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 20);
+            this.label1.Size = new System.Drawing.Size(43, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome:";
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(30, 55);
+            this.txtNome.Location = new System.Drawing.Point(26, 41);
+            this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(330, 27);
+            this.txtNome.Size = new System.Drawing.Size(289, 23);
             this.txtNome.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 95);
+            this.label2.Location = new System.Drawing.Point(26, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 20);
+            this.label2.Size = new System.Drawing.Size(103, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Valor Plano Diário:";
             // 
             // txtValorPlanoDiario
             // 
-            this.txtValorPlanoDiario.Location = new System.Drawing.Point(30, 118);
+            this.txtValorPlanoDiario.Location = new System.Drawing.Point(26, 88);
+            this.txtValorPlanoDiario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorPlanoDiario.Name = "txtValorPlanoDiario";
-            this.txtValorPlanoDiario.Size = new System.Drawing.Size(330, 27);
+            this.txtValorPlanoDiario.Size = new System.Drawing.Size(289, 23);
             this.txtValorPlanoDiario.TabIndex = 3;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(30, 159);
+            this.label3.Location = new System.Drawing.Point(26, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(195, 20);
+            this.label3.Size = new System.Drawing.Size(153, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Valor Diária Km Controlado:";
             // 
             // txtValorDiariaKmControlado
             // 
-            this.txtValorDiariaKmControlado.Location = new System.Drawing.Point(30, 182);
+            this.txtValorDiariaKmControlado.Location = new System.Drawing.Point(26, 136);
+            this.txtValorDiariaKmControlado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorDiariaKmControlado.Name = "txtValorDiariaKmControlado";
-            this.txtValorDiariaKmControlado.Size = new System.Drawing.Size(330, 27);
+            this.txtValorDiariaKmControlado.Size = new System.Drawing.Size(289, 23);
             this.txtValorDiariaKmControlado.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(30, 224);
+            this.label4.Location = new System.Drawing.Point(26, 168);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 20);
+            this.label4.Size = new System.Drawing.Size(118, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "Valor Diária Km Livre:";
             // 
             // txtValorDiariaKmLivre
             // 
-            this.txtValorDiariaKmLivre.Location = new System.Drawing.Point(30, 247);
+            this.txtValorDiariaKmLivre.Location = new System.Drawing.Point(26, 185);
+            this.txtValorDiariaKmLivre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorDiariaKmLivre.Name = "txtValorDiariaKmLivre";
-            this.txtValorDiariaKmLivre.Size = new System.Drawing.Size(330, 27);
+            this.txtValorDiariaKmLivre.Size = new System.Drawing.Size(289, 23);
             this.txtValorDiariaKmLivre.TabIndex = 7;
             // 
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(266, 320);
+            this.btnCancelar.Location = new System.Drawing.Point(233, 240);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(94, 29);
+            this.btnCancelar.Size = new System.Drawing.Size(82, 22);
             this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(166, 320);
+            this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSalvar.Location = new System.Drawing.Point(145, 240);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(94, 29);
+            this.btnSalvar.Size = new System.Drawing.Size(82, 22);
             this.btnSalvar.TabIndex = 9;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -126,9 +133,9 @@
             // 
             // TelaCadastroGrupoVeiculosForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(388, 384);
+            this.ClientSize = new System.Drawing.Size(340, 288);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtValorDiariaKmLivre);
@@ -140,6 +147,7 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TelaCadastroGrupoVeiculosForm";
