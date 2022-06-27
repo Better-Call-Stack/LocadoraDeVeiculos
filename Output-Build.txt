@@ -1,0 +1,8 @@
+﻿Build started...
+1>------ Build started: Project: LocadoraDeVeiculos.Dominio, Configuration: Debug Any CPU ------
+1>Skipping analyzers to speed up the build. You can execute 'Build' or 'Rebuild' command to run analyzers.
+1>C:\Users\lisel\OneDrive\Documentos\Visual Studio Projetos\LocadoraDeVeiculos\LocadoraDeVeiculos.Dominio\ModuloCliente\Cliente.cs(10,18,10,25): warning CS0659: 'Cliente' overrides Object.Equals(object o) but does not override Object.GetHashCode()
+1>LocadoraDeVeiculos.Dominio -> C:\Users\lisel\OneDrive\Documentos\Visual Studio Projetos\LocadoraDeVeiculos\LocadoraDeVeiculos.Dominio\bin\Debug\net5.0\LocadoraDeVeiculos.Dominio.dll
+1>Done building project "LocadoraDeVeiculos.Dominio.csproj".
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Deploy: 0 succeeded, 0 failed, 0 skipped ==========
