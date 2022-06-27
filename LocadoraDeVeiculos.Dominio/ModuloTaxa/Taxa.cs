@@ -32,5 +32,15 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
         {
             throw new NotImplementedException();
         }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Taxa taxa &&
+                   Id == taxa.Id &&
+                   tipoCalculoTaxa == taxa.tipoCalculoTaxa &&
+                   Nome == taxa.Nome &&
+                   Valor == taxa.Valor &&
+                   Tipo == taxa.Tipo;
+        }
     }
 }

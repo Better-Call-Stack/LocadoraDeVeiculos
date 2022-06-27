@@ -11,15 +11,14 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.Tests.ModuloTaxa
 {
+    [TestClass]
     public class RepositorioTaxaTests
     {
-        [TestClass]
-        public class RepositorioClienteTests
-        {
+      
             Taxa taxa;
             RepositorioTaxa repositorio = new RepositorioTaxa();
 
-            public RepositorioClienteTests()
+            public RepositorioTaxaTests()
             {
                 Db.ExecutarSql("DELETE FROM TBTAXA; DBCC CHECKIDENT (TBTAXA, RESEED, 0)");
 
@@ -73,7 +72,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloTaxa
 
                 repositorio.SelecionarTodos().Count().Should().Be(0);
             }
-        }
     }
 }
+
 
