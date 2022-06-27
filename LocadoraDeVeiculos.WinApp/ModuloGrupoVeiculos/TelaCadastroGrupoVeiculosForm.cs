@@ -48,14 +48,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
 
             var resultadoValidacao = GravarRegistro(grupoDeVeiculos);
 
-            /*if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsValid == false)
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
 
-                TelaInicial.Instancia.AtualizarRodape(erro);
 
                 DialogResult = DialogResult.None;
-            }*/
+            }
 
         }
     }

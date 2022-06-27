@@ -26,7 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Número"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
 
@@ -51,7 +51,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
 
             foreach (GrupoDeVeiculos veiculo in veiculos)
             {
-                grid.Rows.Add(veiculo.Id, veiculo.ValorPlanoDiario, veiculo.ValorDiariaKmControlado, veiculo.ValorDiarioKmLivre);
+                grid.Rows.Add(veiculo.Id, veiculo.Nome, veiculo.ValorPlanoDiario, veiculo.ValorDiariaKmControlado, veiculo.ValorDiarioKmLivre);
             }
         }
     }

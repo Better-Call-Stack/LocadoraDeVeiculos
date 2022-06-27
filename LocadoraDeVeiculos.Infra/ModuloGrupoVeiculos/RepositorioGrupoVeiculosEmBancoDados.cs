@@ -35,6 +35,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
+                [ID],
                 [NOME],
                 [VALORPLANODIARIO],
                 [VALORDIARIAKMCONTROLADO],
@@ -46,6 +47,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
 
         protected override string sqlSelecionarTodos =>
             @"SELECT 
+                [ID],
                 [NOME],
                 [VALORPLANODIARIO],
                 [VALORDIARIAKMCONTROLADO],
