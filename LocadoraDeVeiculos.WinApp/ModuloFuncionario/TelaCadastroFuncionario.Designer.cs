@@ -51,7 +51,8 @@
             // 
             TxtSalario.BackColor = System.Drawing.SystemColors.Window;
             TxtSalario.DecimalPlaces = 2;
-            TxtSalario.Location = new System.Drawing.Point(442, 77);
+            TxtSalario.Location = new System.Drawing.Point(387, 58);
+            TxtSalario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             TxtSalario.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -63,7 +64,7 @@
             0,
             131072});
             TxtSalario.Name = "TxtSalario";
-            TxtSalario.Size = new System.Drawing.Size(140, 27);
+            TxtSalario.Size = new System.Drawing.Size(122, 23);
             TxtSalario.TabIndex = 10;
             TxtSalario.Value = new decimal(new int[] {
             185000,
@@ -74,75 +75,79 @@
             // lblNomeFuncionario
             // 
             this.lblNomeFuncionario.AutoSize = true;
-            this.lblNomeFuncionario.Location = new System.Drawing.Point(27, 29);
+            this.lblNomeFuncionario.Location = new System.Drawing.Point(24, 22);
             this.lblNomeFuncionario.Name = "lblNomeFuncionario";
-            this.lblNomeFuncionario.Size = new System.Drawing.Size(121, 20);
+            this.lblNomeFuncionario.Size = new System.Drawing.Size(97, 15);
             this.lblNomeFuncionario.TabIndex = 0;
             this.lblNomeFuncionario.Text = "Nome completo:";
             // 
             // txtNomeFuncionario
             // 
-            this.txtNomeFuncionario.Location = new System.Drawing.Point(154, 22);
+            this.txtNomeFuncionario.Location = new System.Drawing.Point(135, 16);
+            this.txtNomeFuncionario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNomeFuncionario.Name = "txtNomeFuncionario";
-            this.txtNomeFuncionario.Size = new System.Drawing.Size(582, 27);
+            this.txtNomeFuncionario.Size = new System.Drawing.Size(510, 23);
             this.txtNomeFuncionario.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(374, 79);
+            this.label2.Location = new System.Drawing.Point(327, 59);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 20);
+            this.label2.Size = new System.Drawing.Size(48, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Salário: ";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(95, 193);
+            this.label3.Location = new System.Drawing.Point(83, 145);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 20);
+            this.label3.Size = new System.Drawing.Size(43, 15);
             this.label3.TabIndex = 3;
             this.label3.Text = "Login: ";
             // 
             // txtSenhaFuncionario
             // 
-            this.txtSenhaFuncionario.Location = new System.Drawing.Point(154, 237);
+            this.txtSenhaFuncionario.Location = new System.Drawing.Point(135, 178);
+            this.txtSenhaFuncionario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSenhaFuncionario.Name = "txtSenhaFuncionario";
-            this.txtSenhaFuncionario.Size = new System.Drawing.Size(171, 27);
+            this.txtSenhaFuncionario.Size = new System.Drawing.Size(150, 23);
             this.txtSenhaFuncionario.TabIndex = 5;
             // 
             // txtLoginFuncionario
             // 
-            this.txtLoginFuncionario.Location = new System.Drawing.Point(154, 186);
+            this.txtLoginFuncionario.Location = new System.Drawing.Point(135, 140);
+            this.txtLoginFuncionario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtLoginFuncionario.Name = "txtLoginFuncionario";
-            this.txtLoginFuncionario.Size = new System.Drawing.Size(136, 27);
+            this.txtLoginFuncionario.Size = new System.Drawing.Size(120, 23);
             this.txtLoginFuncionario.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 79);
+            this.label4.Location = new System.Drawing.Point(10, 59);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(136, 20);
+            this.label4.Size = new System.Drawing.Size(106, 15);
             this.label4.TabIndex = 7;
             this.label4.Text = "Data de admissão: ";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(49, 140);
+            this.label5.Location = new System.Drawing.Point(43, 105);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 20);
+            this.label5.Size = new System.Drawing.Size(76, 15);
             this.label5.TabIndex = 8;
             this.label5.Text = "Tipo de perfil";
             // 
             // txtAdmissaoFuncionario
             // 
             this.txtAdmissaoFuncionario.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.txtAdmissaoFuncionario.Location = new System.Drawing.Point(154, 74);
+            this.txtAdmissaoFuncionario.Location = new System.Drawing.Point(135, 56);
+            this.txtAdmissaoFuncionario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtAdmissaoFuncionario.Name = "txtAdmissaoFuncionario";
-            this.txtAdmissaoFuncionario.Size = new System.Drawing.Size(116, 27);
+            this.txtAdmissaoFuncionario.Size = new System.Drawing.Size(102, 23);
             this.txtAdmissaoFuncionario.TabIndex = 4;
             this.txtAdmissaoFuncionario.Value = new System.DateTime(2022, 6, 23, 16, 42, 33, 0);
             this.txtAdmissaoFuncionario.Visible = false;
@@ -150,17 +155,18 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 244);
+            this.label6.Location = new System.Drawing.Point(20, 183);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(125, 20);
+            this.label6.Size = new System.Drawing.Size(99, 15);
             this.label6.TabIndex = 12;
             this.label6.Text = "Senha de acesso: ";
             // 
             // btnSalvarFuncionario
             // 
-            this.btnSalvarFuncionario.Location = new System.Drawing.Point(465, 391);
+            this.btnSalvarFuncionario.Location = new System.Drawing.Point(407, 293);
+            this.btnSalvarFuncionario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvarFuncionario.Name = "btnSalvarFuncionario";
-            this.btnSalvarFuncionario.Size = new System.Drawing.Size(134, 47);
+            this.btnSalvarFuncionario.Size = new System.Drawing.Size(117, 35);
             this.btnSalvarFuncionario.TabIndex = 13;
             this.btnSalvarFuncionario.Text = "Salvar";
             this.btnSalvarFuncionario.UseVisualStyleBackColor = true;
@@ -168,9 +174,10 @@
             // 
             // btnCancelarFuncionario
             // 
-            this.btnCancelarFuncionario.Location = new System.Drawing.Point(654, 391);
+            this.btnCancelarFuncionario.Location = new System.Drawing.Point(572, 293);
+            this.btnCancelarFuncionario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelarFuncionario.Name = "btnCancelarFuncionario";
-            this.btnCancelarFuncionario.Size = new System.Drawing.Size(134, 47);
+            this.btnCancelarFuncionario.Size = new System.Drawing.Size(117, 35);
             this.btnCancelarFuncionario.TabIndex = 14;
             this.btnCancelarFuncionario.Text = "Cancelar";
             this.btnCancelarFuncionario.UseVisualStyleBackColor = true;
@@ -178,18 +185,19 @@
             // cmbPerfilFuncionario
             // 
             this.cmbPerfilFuncionario.FormattingEnabled = true;
-            this.cmbPerfilFuncionario.Location = new System.Drawing.Point(154, 137);
+            this.cmbPerfilFuncionario.Location = new System.Drawing.Point(135, 103);
+            this.cmbPerfilFuncionario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbPerfilFuncionario.Name = "cmbPerfilFuncionario";
-            this.cmbPerfilFuncionario.Size = new System.Drawing.Size(171, 28);
+            this.cmbPerfilFuncionario.Size = new System.Drawing.Size(150, 23);
             this.cmbPerfilFuncionario.TabIndex = 18;
             // 
             // TelaCadastroFuncionario
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.CancelButton = this.btnCancelarFuncionario;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.cmbPerfilFuncionario);
             this.Controls.Add(this.btnCancelarFuncionario);
             this.Controls.Add(this.btnSalvarFuncionario);
@@ -204,7 +212,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNomeFuncionario);
             this.Controls.Add(this.lblNomeFuncionario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TelaCadastroFuncionario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de colaborador";

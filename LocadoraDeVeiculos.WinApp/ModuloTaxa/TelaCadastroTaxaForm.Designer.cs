@@ -125,6 +125,7 @@
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "TelaCadastroTaxaForm";
             this.Text = "TelaCadastroTaxa";
             this.ResumeLayout(false);
