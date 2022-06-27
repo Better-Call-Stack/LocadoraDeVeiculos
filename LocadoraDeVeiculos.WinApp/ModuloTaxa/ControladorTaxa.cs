@@ -22,12 +22,48 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         }
         public override void Editar()
         {
-            throw new NotImplementedException();
+            Taxa taxaSelecionada = ObtemTaxaSelecionada();
+
+            if (taxaSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma taxa primeiro",
+                "Edição de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            TelaCadastroTaxaForm tela = new TelaCadastroTaxaForm();
+
+            tela.Taxa = taxaSelecionada.Clonar();
+
+            tela.GravarRegistro = repositorio.Editar;
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CarregarTaxas();
+            }
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            Taxa taxaSelecionada = ObtemTaxaSelecionada();
+
+            if (taxaSelecionada == null)
+            {
+                MessageBox.Show("Selecione uma taxa primeiro",
+                "Exclusão de Taxas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            DialogResult resultado = MessageBox.Show("Deseja realmente excluir a taxa?",
+                "Exclusão de Taxas", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.OK)
+            {
+                repositorio.Excluir(taxaSelecionada);
+                CarregarTaxas();
+            }
         }
 
         public override void Inserir()
@@ -47,7 +83,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
         {
-            throw new NotImplementedException();
+            return new ConfiguracaoToolboxTaxa();
         }
 
         public override UserControl ObtemListagem()
@@ -65,6 +101,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tabelaTaxas.AtualizarRegistros(taxas);
 
+        }
+
+
+        private Taxa ObtemTaxaSelecionada()
+        {
+            var id = tabelaTaxas.ObtemIdTaxaSelecionada();
+
+            return repositorio.SelecionarPorId(id);
         }
     }
 }

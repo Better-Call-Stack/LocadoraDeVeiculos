@@ -23,6 +23,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
             }
         }
 
+        public Taxa Clonar()
+        {
+            return MemberwiseClone() as Taxa;
+        }
+
         public override void Atualizar(Taxa registro)
         {
             throw new NotImplementedException();

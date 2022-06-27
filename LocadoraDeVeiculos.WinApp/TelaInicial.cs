@@ -14,6 +14,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LocadoraDeVeiculos.Infra.ModuloTaxa;
+using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -36,11 +38,13 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioFuncionario = new RepositorioFuncionario();
             var repositorioCliente = new RepositorioCliente();
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
+            var repositorioTaxa = new RepositorioTaxa();
 
             controladores = new Dictionary<string, ControladorBase>();
 
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario));
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente));
+            controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa));
         }
 
         private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
@@ -130,7 +134,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
     }
 }

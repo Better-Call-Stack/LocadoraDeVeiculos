@@ -48,7 +48,7 @@
             this.grid.Location = new System.Drawing.Point(0, 0);
             this.grid.Name = "grid";
             this.grid.RowTemplate.Height = 25;
-            this.grid.Size = new System.Drawing.Size(446, 309);
+            this.grid.Size = new System.Drawing.Size(530, 309);
             this.grid.TabIndex = 0;
             // 
             // Id
@@ -77,7 +77,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grid);
             this.Name = "TabelaTaxaControl";
-            this.Size = new System.Drawing.Size(446, 309);
+            this.Size = new System.Drawing.Size(530, 309);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
 
