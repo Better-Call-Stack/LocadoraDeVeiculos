@@ -13,7 +13,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
     public class ControladorTaxa : ControladorBase
     {
 
-        RepositorioTaxa repositorio;
+        public RepositorioTaxa repositorio;
         private TabelaTaxaControl tabelaTaxas;
 
         public ControladorTaxa(RepositorioTaxa repositorio)

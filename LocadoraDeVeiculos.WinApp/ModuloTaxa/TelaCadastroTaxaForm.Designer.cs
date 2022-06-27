@@ -88,6 +88,7 @@
             this.btnInserir.TabIndex = 7;
             this.btnInserir.Text = "Inserir";
             this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnCancelar
             // 
@@ -101,6 +102,7 @@
             // 
             // cbxTipoCalculo
             // 
+            this.cbxTipoCalculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTipoCalculo.FormattingEnabled = true;
             this.cbxTipoCalculo.Items.AddRange(new object[] {
             "Diario",
