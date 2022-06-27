@@ -27,7 +27,6 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
             cliente.CNPJ = "915156161";
             cliente.Endereco = "Teste";
             cliente.Email = "teste@gmail.com";
-            cliente.CNH = "123123";
             cliente.Cidade = "Bonja";
             cliente.Telefone = "99934561236";
 
@@ -74,6 +73,43 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
             repositorio.Excluir(cliente);
 
             repositorio.SelecionarTodos().Count().Should().Be(0);
+        }
+
+        [TestMethod]
+        public void Deve_Selecionar_Todos()
+        {
+           
+            Cliente c1 = new Cliente();
+            {
+                c1.Nome = "Jimmy";
+                c1.TipoPessoa = TipoPessoa.Fisica;
+                c1.CPF = "915156161";
+                c1.Endereco = "Teste";
+                c1.Email = "teste@gmail.com";
+                c1.CNH = "123123";
+                c1.Cidade = "Bonja";
+                c1.Telefone = "99934561236";
+            }
+            Cliente c2 = new Cliente();
+            {
+                c2.Nome = "Neutro";
+                c2.TipoPessoa = TipoPessoa.Fisica;
+                c2.CPF = "14655";
+                c2.Endereco = "Teste";
+                c2.Email = "teste@gmail.com";
+                c2.CNH = "213";
+                c2.Cidade = "Bonja";
+                c2.Telefone = "99934561236";
+            }
+
+            repositorio.Inserir(cliente);
+            repositorio.Inserir(c1);
+            repositorio.Inserir(c2);
+
+            List<Cliente> l = repositorio.SelecionarTodos();
+
+            l[1].Should().Be(c1);
+            l.Count.Should().Be(3);
         }
     }
 }

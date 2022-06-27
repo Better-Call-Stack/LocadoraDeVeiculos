@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloTaxa
 
             public RepositorioClienteTests()
             {
-                Db.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT (TBCLIENTE, RESEED, 0)");
+                Db.ExecutarSql("DELETE FROM TBTAXA; DBCC CHECKIDENT (TBTAXA, RESEED, 0)");
 
                 taxa = new Taxa();
                 taxa.Nome = "Cadeira Bebe";
