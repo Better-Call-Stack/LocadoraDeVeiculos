@@ -33,7 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
                
                 txtNome.Text = taxa.Nome;
                 txtValor.Text = taxa.Valor.ToString();
-                cbxTipoCalculo.SelectedText = taxa.Tipo.ToString();
+                cbxTipoCalculo.SelectedItem = taxa.Tipo.ToString();
             }
         }
 
