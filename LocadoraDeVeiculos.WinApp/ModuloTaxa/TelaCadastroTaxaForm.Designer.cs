@@ -31,11 +31,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtValor = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnInserir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.cbxTipoCalculo = new System.Windows.Forms.ComboBox();
+            this.txtValor = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValor)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -62,13 +63,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(194, 23);
             this.txtNome.TabIndex = 4;
-            // 
-            // txtValor
-            // 
-            this.txtValor.Location = new System.Drawing.Point(84, 66);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(80, 23);
-            this.txtValor.TabIndex = 5;
             // 
             // label3
             // 
@@ -112,22 +106,30 @@
             this.cbxTipoCalculo.Size = new System.Drawing.Size(124, 23);
             this.cbxTipoCalculo.TabIndex = 9;
             // 
-            // TelaCadastroTaxaForm
+            // txtValor
+            // 
+            this.txtValor.Location = new System.Drawing.Point(84, 67);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(93, 23);
+            this.txtValor.TabIndex = 10;
+            // 
+            // TelaCadastroTaxa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 225);
+            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.cbxTipoCalculo);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnInserir);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "TelaCadastroTaxaForm";
-            this.Text = "TelaCadastroTaxa";
+            this.Name = "TelaCadastroTaxa";
+            this.Text = "Cadastro de Taxas";
+            ((System.ComponentModel.ISupportInitialize)(this.txtValor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,10 +140,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ComboBox cbxTipoCalculo;
+        private System.Windows.Forms.NumericUpDown txtValor;
     }
 }

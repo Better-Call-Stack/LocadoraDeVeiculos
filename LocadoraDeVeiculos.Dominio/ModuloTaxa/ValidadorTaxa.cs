@@ -18,8 +18,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
             .NotEmpty().WithMessage("O campo Valor é obrigatório")
             .GreaterThanOrEqualTo(0).WithMessage("Valor inválido");
 
-            RuleFor(x => x.Tipo).NotNull().WithMessage("O campo Tipo de Cobrança é obrigatório")
-                .NotEmpty().WithMessage("O campo Tipo de Cobrança é obrigatório");
+            RuleFor(x => x.Tipo).NotNull().WithMessage("O campo Tipo de Calculo é obrigatório")
+                .NotEmpty().WithMessage("O campo Tipo de Calculo é obrigatório");
         }
     }
 }
