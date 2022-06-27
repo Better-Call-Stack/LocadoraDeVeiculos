@@ -61,5 +61,6 @@
     <Build Include="TBFuncionario.sql" />
     <Build Include="TBGrupoVeiculos.sql" />
     <Build Include="TBTaxa.sql" />
+    <Build Include="TBCliente.sql" />
   </ItemGroup>
 </Project>

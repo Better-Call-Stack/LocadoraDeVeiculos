@@ -21,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloGrupoVeiculos
         {
             Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS; DBCC CHECKIDENT (TBGRUPOVEICULOS, RESEED, 0)");
 
-            GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos();
+            grupoVeiculos = new GrupoDeVeiculos();
             grupoVeiculos.Nome = "Impala";
             grupoVeiculos.ValorPlanoDiario = 300;
             grupoVeiculos.ValorDiariaKmControlado = 120;
@@ -58,9 +58,9 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloGrupoVeiculos
 
             gv.Should().NotBeNull();
             gv.Nome.Should().Be("Gol");
-            gv.ValorPlanoDiario.Should().Be(90);
-            gv.ValorDiariaKmControlado.Should().Be(190);
-            gv.ValorDiarioKmLivre.Should().Be(300);
+            gv.ValorPlanoDiario.Should().Be(150);
+            gv.ValorDiariaKmControlado.Should().Be(170);
+            gv.ValorDiarioKmLivre.Should().Be(450);
         }
 
         [TestMethod]
