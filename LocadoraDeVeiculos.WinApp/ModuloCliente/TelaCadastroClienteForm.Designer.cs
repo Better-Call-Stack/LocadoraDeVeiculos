@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.txtCNH = new System.Windows.Forms.TextBox();
-            this.txtCpfCnpj = new System.Windows.Forms.TextBox();
             this.cbxPessoa = new System.Windows.Forms.ComboBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,9 +42,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.txtEndereco = new System.Windows.Forms.TextBox();
-            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.txtCpfCnpj = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // txtCNH
@@ -54,13 +54,6 @@
             this.txtCNH.Name = "txtCNH";
             this.txtCNH.Size = new System.Drawing.Size(228, 23);
             this.txtCNH.TabIndex = 16;
-            // 
-            // txtCpfCnpj
-            // 
-            this.txtCpfCnpj.Location = new System.Drawing.Point(34, 168);
-            this.txtCpfCnpj.Name = "txtCpfCnpj";
-            this.txtCpfCnpj.Size = new System.Drawing.Size(228, 23);
-            this.txtCpfCnpj.TabIndex = 15;
             // 
             // cbxPessoa
             // 
@@ -174,13 +167,6 @@
             this.txtEndereco.Size = new System.Drawing.Size(228, 23);
             this.txtEndereco.TabIndex = 27;
             // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Location = new System.Drawing.Point(357, 168);
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(228, 23);
-            this.txtTelefone.TabIndex = 28;
-            // 
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -202,14 +188,31 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // txtCpfCnpj
+            // 
+            this.txtCpfCnpj.Location = new System.Drawing.Point(32, 168);
+            this.txtCpfCnpj.Mask = "999.999.999-99";
+            this.txtCpfCnpj.Name = "txtCpfCnpj";
+            this.txtCpfCnpj.Size = new System.Drawing.Size(230, 23);
+            this.txtCpfCnpj.TabIndex = 32;
+            // 
+            // txtTelefone
+            // 
+            this.txtTelefone.Location = new System.Drawing.Point(357, 168);
+            this.txtTelefone.Mask = "(99) 9 9999-9999";
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(228, 23);
+            this.txtTelefone.TabIndex = 33;
+            // 
             // TelaCadastroClienteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(652, 323);
+            this.Controls.Add(this.txtTelefone);
+            this.Controls.Add(this.txtCpfCnpj);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtEndereco);
             this.Controls.Add(this.txtCidade);
             this.Controls.Add(this.txtEmail);
@@ -218,7 +221,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCNH);
-            this.Controls.Add(this.txtCpfCnpj);
             this.Controls.Add(this.cbxPessoa);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label4);
@@ -235,7 +237,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtCNH;
-        private System.Windows.Forms.TextBox txtCpfCnpj;
         private System.Windows.Forms.ComboBox cbxPessoa;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label4;
@@ -249,8 +250,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.TextBox txtEndereco;
-        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.MaskedTextBox txtCpfCnpj;
+        private System.Windows.Forms.MaskedTextBox txtTelefone;
     }
 }
