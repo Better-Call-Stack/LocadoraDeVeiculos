@@ -13,8 +13,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         public override string TooltipInserir => "Inserir um novo cliente";
 
-        public override string TooltipEditar => "Editar um compromisso cliente";
+        public override string TooltipEditar => "Editar um cliente";
 
-        public override string TooltipExcluir => "Excluir um compromisso cliente";
+        public override string TooltipExcluir => "Excluir um cliente";
     }
 }

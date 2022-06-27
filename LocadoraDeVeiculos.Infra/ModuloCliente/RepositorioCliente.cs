@@ -125,7 +125,9 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 			}
 
 			if (resultadoValidacao.IsValid == false)
+			{
 				return resultadoValidacao;
+			}
 
 			SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
@@ -146,52 +148,86 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 
         public override ValidationResult Editar(Cliente registro)
         {
-			var validador = new ValidadorCliente();
+            var validador = new ValidadorCliente();
 
-			var resultadoValidacao = validador.Validate(registro);
+            var resultadoValidacao = validador.Validate(registro);
 
-			bool cpfRepetido = SelecionarTodos().Any(x => x.CPF == registro.CPF);
-			bool cnpjRepetido = SelecionarTodos().Any(x => x.CNPJ == registro.CNPJ);
-			bool cnhRepetida = SelecionarTodos().Any(x => x.CNH == registro.CNH);
+            ValidacaoDuplicadosEditar(registro, resultadoValidacao);
 
-			if (cpfRepetido && registro.TipoPessoa == TipoPessoa.Fisica)
+            if (resultadoValidacao.IsValid == false)
+                return resultadoValidacao;
+
+            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+
+            SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
+
+            var mapeador = new MapeadorCliente();
+
+            mapeador.ConfigurarParametros(registro, comandoEdicao);
+
+            conexaoComBanco.Open();
+            comandoEdicao.ExecuteNonQuery();
+            conexaoComBanco.Close();
+
+            return resultadoValidacao;
+        }
+
+        private void ValidacaoDuplicadosEditar(Cliente registro, ValidationResult resultadoValidacao)
+        {
+			Cliente cRepetido = new Cliente();
+
+			bool cpfRepetido = false;
+			foreach (var c in SelecionarTodos())
 			{
-				resultadoValidacao
-				  .Errors
-				  .Add(new ValidationFailure("", "CPF já existe."));
+				if (registro.CPF == c.CPF)
+				{
+					cpfRepetido = true;
+					cRepetido = c;
+				}
 			}
 
-			if (cnpjRepetido && registro.TipoPessoa == TipoPessoa.Juridica)
+			bool cnpjRepetido = false;
+			foreach (var c in SelecionarTodos())
 			{
-				resultadoValidacao
-				  .Errors
-				  .Add(new ValidationFailure("", "CNPJ já existe."));
+				if (registro.CNPJ == c.CNPJ)
+				{
+					cnpjRepetido = true;
+					cRepetido = c;
+				}
 			}
 
-			if (cnhRepetida && registro.TipoPessoa == TipoPessoa.Fisica)
-			{
-				resultadoValidacao
-				  .Errors
-				  .Add(new ValidationFailure("", "CNH já existe."));
+			bool cnhRepetida = false;
+            foreach (var c in SelecionarTodos())
+            {
+				if (registro.CNH == c.CNH)
+				{
+					cnhRepetida = true;
+					cRepetido = c;
+				}
 			}
 
-			if (resultadoValidacao.IsValid == false)
-				return resultadoValidacao;
 
-			SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+            if (cpfRepetido && registro.TipoPessoa == TipoPessoa.Fisica && registro.Id != cRepetido.Id)
+            {
+                resultadoValidacao
+                  .Errors
+                  .Add(new ValidationFailure("", "CPF já existe."));
+            }
 
-			SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
+            if (cnpjRepetido && registro.TipoPessoa == TipoPessoa.Juridica && registro.Id != cRepetido.Id)
+            {
+                resultadoValidacao
+                  .Errors
+                  .Add(new ValidationFailure("", "CNPJ já existe."));
+            }
 
-			var mapeador = new MapeadorCliente();
-
-			mapeador.ConfigurarParametros(registro, comandoEdicao);
-
-			conexaoComBanco.Open();
-			comandoEdicao.ExecuteNonQuery();
-			conexaoComBanco.Close();
-
-			return resultadoValidacao;
-		}
+            if (cnhRepetida && registro.TipoPessoa == TipoPessoa.Fisica && registro.Id != cRepetido.Id)
+            {
+                resultadoValidacao
+                  .Errors
+                  .Add(new ValidationFailure("", "CNH já existe."));
+            }
+        }
 
         public override List<Cliente> SelecionarTodos()
         {

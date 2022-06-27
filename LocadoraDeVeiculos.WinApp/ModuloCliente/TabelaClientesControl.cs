@@ -16,6 +16,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
     public partial class TabelaClientesControl : UserControl
     {
         RepositorioCliente repositorio;
+      
         public TabelaClientesControl(RepositorioCliente repositorio)
         {
             InitializeComponent();
