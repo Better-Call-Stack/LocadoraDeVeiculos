@@ -131,7 +131,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void funcionarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
 
         private void grupoVeiculosToolStripMenuItem_Click(object sender, EventArgs e)
