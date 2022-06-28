@@ -22,27 +22,27 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
             //RuleFor(x => x.Nome).NotEqual(x => x.Nome);
 
             RuleFor(x => x.Nome)
-                .MinimumLength(2)
-                .NotNull().NotEmpty()
-                .WithMessage("O campo nome é obrigatório ter no minimo duas letras");
+                .MinimumLength(2).WithMessage("O campo nome é obrigatório ter no minimo duas letras")
+                .NotNull().WithMessage("O campo nome é obrigatório ter no minimo duas letras")
+                .NotEmpty().WithMessage("O campo nome é obrigatório ter no minimo duas letras");
 
             RuleFor(x => x.ValorPlanoDiario)
                 .NotNull().WithMessage("O campo valor plano diario é obrigatório")
                 .NotEmpty().WithMessage("O campo título é obrigatório");
 
             RuleFor(x => x.ValorPlanoDiario)
-                .NotNull()
-                .NotEmpty()
-                .GreaterThan(0);
+                .NotNull().WithMessage("O campo Plano Diário deve ser maior que zero")
+                .NotEmpty().WithMessage("O campo Plano Diário deve ser maior que zero")
+                .GreaterThan(0).WithMessage("O campo Plano Diário deve ser maior que zero"); 
 
             RuleFor(x => x.ValorDiariaKmControlado)
                 .NotNull().WithMessage("O campo valor diaria Km controlador é obrigatório")
                 .NotEmpty().WithMessage("O campo título é obrigatório");
 
             RuleFor(x => x.ValorDiariaKmControlado)
-                .NotNull()
-                .NotEmpty()
-                .GreaterThan(0);
+                .NotNull().WithMessage("O campo Diária Km Controlado deve ser maior que zero")
+                .NotEmpty().WithMessage("O campo Diária Km Controlado deve ser maior que zero")
+                .GreaterThan(0).WithMessage("O campo Diária Km Controlado deve ser maior que zero");
 
 
             RuleFor(x => x.ValorDiarioKmLivre)
@@ -50,9 +50,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
                 .NotEmpty().WithMessage("O campo título é obrigatório");
 
             RuleFor(x => x.ValorDiarioKmLivre)
-                .NotNull()
-                .NotEmpty()
-                .GreaterThan(0);
+                .NotNull().WithMessage("O campo Diária Km Livre deve ser maior que zero")
+                .NotEmpty().WithMessage("O campo Diária Km Controlado deve ser maior que zero")
+                .GreaterThan(0).WithMessage("O campo Diária Km Controlado deve ser maior que zero");
         }
     }
 }
