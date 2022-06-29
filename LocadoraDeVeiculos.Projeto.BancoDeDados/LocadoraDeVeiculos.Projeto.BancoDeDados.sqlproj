@@ -63,4 +63,7 @@
     <Build Include="TBTaxa.sql" />
     <Build Include="TBCliente.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="LocadoraDeVeiculos.Projeto.BancoDeDados.refactorlog" />
+  </ItemGroup>
 </Project>

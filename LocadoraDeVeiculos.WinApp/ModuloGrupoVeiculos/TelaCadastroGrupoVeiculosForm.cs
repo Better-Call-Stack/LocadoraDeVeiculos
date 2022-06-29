@@ -52,10 +52,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
             {
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
 
+                MessageBox.Show(erro, "Erro");
 
                 DialogResult = DialogResult.None;
             }
 
         }
+
+       
     }
 }

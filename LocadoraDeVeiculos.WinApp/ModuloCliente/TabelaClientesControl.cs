@@ -16,7 +16,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
     public partial class TabelaClientesControl : UserControl
     {
         RepositorioCliente repositorio;
-      
+
+
         public TabelaClientesControl(RepositorioCliente repositorio)
         {
             InitializeComponent();
@@ -24,6 +25,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             gridPessoaFisica.ConfigurarGridSomenteLeitura();
             gridPessoaJuridica.ConfigurarGridZebrado();
             gridPessoaJuridica.ConfigurarGridSomenteLeitura();
+            gridPessoaFisica.ConfigurarColunaId();
+            gridPessoaJuridica.ConfigurarColunaId();
 
             this.repositorio = repositorio;
         }
@@ -53,8 +56,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             foreach (var c in clientes)
             {
-                if(c.TipoPessoa == TipoPessoa.Fisica)
-                pessoasFisicas.Add(c);
+                if (c.TipoPessoa == TipoPessoa.Fisica)
+                    pessoasFisicas.Add(c);
             }
 
             return pessoasFisicas;
@@ -75,13 +78,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         public int ObtemIdClienteSelecionado()
         {
-            if (gridPessoaFisica.SelecionarId<int>() != 0)
+            if (tabControl.SelectedTab.Name == "tabPessoaFisica")
             {
                 return gridPessoaFisica.SelecionarId<int>();
             }
             else
                 return gridPessoaJuridica.SelecionarId<int>();
-   
+
         }
 
         private void gridPessoaFisica_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -103,5 +106,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             GridDoubleClickGenerico();
         }
+
     }
 }

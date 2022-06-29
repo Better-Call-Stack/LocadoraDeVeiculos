@@ -29,49 +29,49 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPessoaFisica = new System.Windows.Forms.TabPage();
             this.gridPessoaFisica = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPessoaJuridica = new System.Windows.Forms.TabPage();
             this.gridPessoaJuridica = new System.Windows.Forms.DataGridView();
             this.IDJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNPJJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TelefoneJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmailJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabPessoaFisica.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPessoaFisica)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabPessoaJuridica.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridPessoaJuridica)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tabControl
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(688, 346);
-            this.tabControl1.TabIndex = 0;
+            this.tabControl.Controls.Add(this.tabPessoaFisica);
+            this.tabControl.Controls.Add(this.tabPessoaJuridica);
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Location = new System.Drawing.Point(0, 0);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(688, 346);
+            this.tabControl.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPessoaFisica
             // 
-            this.tabPage1.Controls.Add(this.gridPessoaFisica);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(680, 318);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Pessoa Física";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPessoaFisica.Controls.Add(this.gridPessoaFisica);
+            this.tabPessoaFisica.Location = new System.Drawing.Point(4, 24);
+            this.tabPessoaFisica.Name = "tabPessoaFisica";
+            this.tabPessoaFisica.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPessoaFisica.Size = new System.Drawing.Size(680, 318);
+            this.tabPessoaFisica.TabIndex = 0;
+            this.tabPessoaFisica.Text = "Pessoa Física";
+            this.tabPessoaFisica.UseVisualStyleBackColor = true;
             // 
             // gridPessoaFisica
             // 
@@ -122,16 +122,16 @@
             this.Email.HeaderText = "Email";
             this.Email.Name = "Email";
             // 
-            // tabPage2
+            // tabPessoaJuridica
             // 
-            this.tabPage2.Controls.Add(this.gridPessoaJuridica);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(680, 318);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Pessoa Jurídica";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPessoaJuridica.Controls.Add(this.gridPessoaJuridica);
+            this.tabPessoaJuridica.Location = new System.Drawing.Point(4, 24);
+            this.tabPessoaJuridica.Name = "tabPessoaJuridica";
+            this.tabPessoaJuridica.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPessoaJuridica.Size = new System.Drawing.Size(680, 318);
+            this.tabPessoaJuridica.TabIndex = 1;
+            this.tabPessoaJuridica.Text = "Pessoa Jurídica";
+            this.tabPessoaJuridica.UseVisualStyleBackColor = true;
             // 
             // gridPessoaJuridica
             // 
@@ -179,13 +179,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tabControl);
             this.Name = "TabelaClientesControl";
             this.Size = new System.Drawing.Size(688, 346);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.tabPessoaFisica.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPessoaFisica)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            this.tabPessoaJuridica.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridPessoaJuridica)).EndInit();
             this.ResumeLayout(false);
 
@@ -193,9 +193,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPessoaFisica;
+        private System.Windows.Forms.TabPage tabPessoaJuridica;
         private System.Windows.Forms.DataGridView gridPessoaFisica;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
