@@ -21,7 +21,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 					[CIDADE],
 					[ENDERECO],
 					[TELEFONE],
-					[CNH],
 					[TIPOPESSOA],
 					[EMAIL]
 				)
@@ -33,7 +32,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 					@CIDADE,
 					@ENDERECO,
 					@TELEFONE,
-					@CNH,
 					@TIPOPESSOA,
 					@EMAIL
 				)
@@ -48,7 +46,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 					[CIDADE] = @CIDADE,
 					[ENDERECO] = @ENDERECO,
 					[TELEFONE] = @TELEFONE,
-					[CNH] = @CNH,
 					[TIPOPESSOA] = @TIPOPESSOA,
 					[EMAIL] = @EMAIL
 				WHERE
@@ -69,7 +66,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				[CIDADE],
 				[ENDERECO],
 				[TELEFONE],
-				[CNH],
 				[TIPOPESSOA],
 				[EMAIL]
 			FROM
@@ -86,7 +82,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				[CIDADE],
 				[ENDERECO],
 				[TELEFONE],
-				[CNH],
 				[TIPOPESSOA],
 				[EMAIL]
 			FROM
@@ -144,8 +139,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
             return resultadoValidacao;
         }
 
-        private void ValidacaoDuplicados(Cliente registro, ValidationResult resultadoValidacao)
-        {
+		private void ValidacaoDuplicados(Cliente registro, ValidationResult resultadoValidacao)
+		{
 			Cliente cRepetido = new Cliente();
 
 			bool cpfRepetido = false;
@@ -168,38 +163,23 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				}
 			}
 
-			bool cnhRepetida = false;
-            foreach (var c in SelecionarTodos())
-            {
-				if (registro.CNH == c.CNH)
-				{
-					cnhRepetida = true;
-					cRepetido = c;
-				}
+
+
+			if (cpfRepetido && registro.TipoPessoa == TipoPessoa.Fisica && registro.Id != cRepetido.Id)
+			{
+				resultadoValidacao
+				  .Errors
+				  .Add(new ValidationFailure("", "CPF já existe."));
 			}
 
+			if (cnpjRepetido && registro.TipoPessoa == TipoPessoa.Juridica && registro.Id != cRepetido.Id)
+			{
+				resultadoValidacao
+				  .Errors
+				  .Add(new ValidationFailure("", "CNPJ já existe."));
+			}
+		}
 
-            if (cpfRepetido && registro.TipoPessoa == TipoPessoa.Fisica && registro.Id != cRepetido.Id)
-            {
-                resultadoValidacao
-                  .Errors
-                  .Add(new ValidationFailure("", "CPF já existe."));
-            }
-
-            if (cnpjRepetido && registro.TipoPessoa == TipoPessoa.Juridica && registro.Id != cRepetido.Id)
-            {
-                resultadoValidacao
-                  .Errors
-                  .Add(new ValidationFailure("", "CNPJ já existe."));
-            }
-
-            if (cnhRepetida && registro.TipoPessoa == TipoPessoa.Fisica && registro.Id != cRepetido.Id)
-            {
-                resultadoValidacao
-                  .Errors
-                  .Add(new ValidationFailure("", "CNH já existe."));
-            }
-        }
 
         public override List<Cliente> SelecionarTodos()
         {

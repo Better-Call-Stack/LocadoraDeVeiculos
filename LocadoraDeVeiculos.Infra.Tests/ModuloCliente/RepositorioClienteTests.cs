@@ -86,7 +86,6 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
                 c1.CPF = "915156161";
                 c1.Endereco = "Teste";
                 c1.Email = "teste@gmail.com";
-                c1.CNH = "123123";
                 c1.Cidade = "Bonja";
                 c1.Telefone = "99934561236";
             }
@@ -97,7 +96,6 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
                 c2.CPF = "14655";
                 c2.Endereco = "Teste";
                 c2.Email = "teste@gmail.com";
-                c2.CNH = "213";
                 c2.Cidade = "Bonja";
                 c2.Telefone = "99934561236";
             }

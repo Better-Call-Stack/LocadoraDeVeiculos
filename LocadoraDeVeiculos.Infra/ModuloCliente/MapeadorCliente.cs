@@ -20,7 +20,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
             comando.Parameters.AddWithValue("CIDADE", cliente.Cidade);
             comando.Parameters.AddWithValue("CPF", cliente.CPF);
             comando.Parameters.AddWithValue("CNPJ", cliente.CNPJ);
-            comando.Parameters.AddWithValue("CNH", cliente.CNH);
             comando.Parameters.AddWithValue("TIPOPESSOA", cliente.TipoPessoa);
             comando.Parameters.AddWithValue("ENDERECO", cliente.Endereco);
         }
@@ -34,7 +33,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
             var cidade = Convert.ToString(leitorCliente["CIDADE"]);
             var cpf = Convert.ToString(leitorCliente["CPF"]);
             var cnpj = Convert.ToString(leitorCliente["CNPJ"]);
-            var cnh = Convert.ToString(leitorCliente["CNH"]);
             var tipoPessoa = (TipoPessoa)leitorCliente["TIPOPESSOA"];
             var endereco = Convert.ToString(leitorCliente["ENDERECO"]);
 
@@ -46,7 +44,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
             cliente.Cidade = cidade;
             cliente.CPF = cpf;
             cliente.CNPJ = cnpj;
-            cliente.CNH = cnh;
             cliente.TipoPessoa = tipoPessoa;
             cliente.Endereco = endereco;
 

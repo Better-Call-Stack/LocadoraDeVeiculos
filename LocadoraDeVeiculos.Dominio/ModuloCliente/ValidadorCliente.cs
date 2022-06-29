@@ -14,11 +14,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             RuleFor(x => x.Nome).NotNull().WithMessage("O campo Nome é obrigatório")
                 .NotEmpty().WithMessage("O campo Nome é obrigatório");
 
-            When(x => x.TipoPessoa == TipoPessoa.Fisica, () =>
-            
-                RuleFor(x => x.CNH).NotNull().WithMessage("O campo CNH é obrigatório para pessoa física")
-                .NotEmpty().WithMessage("O campo CNH é obrigatório para pessoa física")
-                );
 
             When(x => x.TipoPessoa == TipoPessoa.Fisica, () =>
 
