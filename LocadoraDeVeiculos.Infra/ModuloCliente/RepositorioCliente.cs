@@ -98,36 +98,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 			var validador = new ValidadorCliente();
 
 			var resultadoValidacao = validador.Validate(registro);
-
-			bool cpfRepetido = SelecionarTodos().Any(x => x.CPF == registro.CPF);
-			bool cnpjRepetido = SelecionarTodos().Any(x => x.CNPJ == registro.CNPJ);
-			bool cnhRepetida = SelecionarTodos().Any(x => x.CNH == registro.CNH);
-
-			if (cpfRepetido && registro.TipoPessoa == TipoPessoa.Fisica)
-			{
-				resultadoValidacao
-				  .Errors
-				  .Add(new ValidationFailure("", "CPF já existe."));
-			}
-
-			if (cnpjRepetido && registro.TipoPessoa == TipoPessoa.Juridica)
-			{
-				resultadoValidacao
-				  .Errors
-				  .Add(new ValidationFailure("", "CNPJ já existe."));
-			}
-
-			if (cnhRepetida && registro.TipoPessoa == TipoPessoa.Fisica)
-			{
-				resultadoValidacao
-				  .Errors
-				  .Add(new ValidationFailure("", "CNH já existe."));
-			}
-
-			if (resultadoValidacao.IsValid == false)
-			{
-				return resultadoValidacao;
-			}
+			
+			ValidacaoDuplicados(registro, resultadoValidacao);
 
 			SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
 
@@ -152,7 +124,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 
             var resultadoValidacao = validador.Validate(registro);
 
-            ValidacaoDuplicadosEditar(registro, resultadoValidacao);
+            ValidacaoDuplicados(registro, resultadoValidacao);
 
             if (resultadoValidacao.IsValid == false)
                 return resultadoValidacao;
@@ -172,7 +144,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
             return resultadoValidacao;
         }
 
-        private void ValidacaoDuplicadosEditar(Cliente registro, ValidationResult resultadoValidacao)
+        private void ValidacaoDuplicados(Cliente registro, ValidationResult resultadoValidacao)
         {
 			Cliente cRepetido = new Cliente();
 

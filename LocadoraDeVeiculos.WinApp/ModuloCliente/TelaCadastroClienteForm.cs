@@ -114,5 +114,21 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 DialogResult = DialogResult.None;
             }
         }
+
+        private void cbxPessoa_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxPessoa.SelectedItem == "Física")
+            {
+                txtCpfCnpj.Mask = "999.999.999-99";
+                labelCpfCnpj.Text = "CPF:";
+                txtCNH.Enabled = true;
+            }
+
+            if (cbxPessoa.SelectedItem == "Jurídica") {
+                txtCpfCnpj.Mask = "99.999.999/9999-99";
+                labelCpfCnpj.Text = "CNPJ:";
+                txtCNH.Enabled = false;
+            }
+        }
     }
 }

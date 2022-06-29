@@ -31,13 +31,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtValorPlanoDiario = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtValorDiariaKmControlado = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtValorDiariaKmLivre = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
+            this.txtValorPlanoDiario = new System.Windows.Forms.NumericUpDown();
+            this.txtValorDiariaKmControlado = new System.Windows.Forms.NumericUpDown();
+            this.txtValorDiariaKmLivre = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorPlanoDiario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDiariaKmControlado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDiariaKmLivre)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -66,14 +69,6 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Valor Plano Diário:";
             // 
-            // txtValorPlanoDiario
-            // 
-            this.txtValorPlanoDiario.Location = new System.Drawing.Point(26, 88);
-            this.txtValorPlanoDiario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtValorPlanoDiario.Name = "txtValorPlanoDiario";
-            this.txtValorPlanoDiario.Size = new System.Drawing.Size(289, 23);
-            this.txtValorPlanoDiario.TabIndex = 3;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -83,30 +78,14 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Valor Diária Km Controlado:";
             // 
-            // txtValorDiariaKmControlado
-            // 
-            this.txtValorDiariaKmControlado.Location = new System.Drawing.Point(26, 136);
-            this.txtValorDiariaKmControlado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtValorDiariaKmControlado.Name = "txtValorDiariaKmControlado";
-            this.txtValorDiariaKmControlado.Size = new System.Drawing.Size(289, 23);
-            this.txtValorDiariaKmControlado.TabIndex = 5;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 168);
+            this.label4.Location = new System.Drawing.Point(26, 179);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 15);
             this.label4.TabIndex = 6;
             this.label4.Text = "Valor Diária Km Livre:";
-            // 
-            // txtValorDiariaKmLivre
-            // 
-            this.txtValorDiariaKmLivre.Location = new System.Drawing.Point(26, 185);
-            this.txtValorDiariaKmLivre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtValorDiariaKmLivre.Name = "txtValorDiariaKmLivre";
-            this.txtValorDiariaKmLivre.Size = new System.Drawing.Size(289, 23);
-            this.txtValorDiariaKmLivre.TabIndex = 7;
             // 
             // btnCancelar
             // 
@@ -131,18 +110,39 @@
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // txtValorPlanoDiario
+            // 
+            this.txtValorPlanoDiario.Location = new System.Drawing.Point(26, 89);
+            this.txtValorPlanoDiario.Name = "txtValorPlanoDiario";
+            this.txtValorPlanoDiario.Size = new System.Drawing.Size(178, 23);
+            this.txtValorPlanoDiario.TabIndex = 10;
+            // 
+            // txtValorDiariaKmControlado
+            // 
+            this.txtValorDiariaKmControlado.Location = new System.Drawing.Point(26, 142);
+            this.txtValorDiariaKmControlado.Name = "txtValorDiariaKmControlado";
+            this.txtValorDiariaKmControlado.Size = new System.Drawing.Size(178, 23);
+            this.txtValorDiariaKmControlado.TabIndex = 11;
+            // 
+            // txtValorDiariaKmLivre
+            // 
+            this.txtValorDiariaKmLivre.Location = new System.Drawing.Point(26, 197);
+            this.txtValorDiariaKmLivre.Name = "txtValorDiariaKmLivre";
+            this.txtValorDiariaKmLivre.Size = new System.Drawing.Size(178, 23);
+            this.txtValorDiariaKmLivre.TabIndex = 12;
+            // 
             // TelaCadastroGrupoVeiculosForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 288);
+            this.Controls.Add(this.txtValorDiariaKmLivre);
+            this.Controls.Add(this.txtValorDiariaKmControlado);
+            this.Controls.Add(this.txtValorPlanoDiario);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.txtValorDiariaKmLivre);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtValorDiariaKmControlado);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtValorPlanoDiario);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label1);
@@ -152,6 +152,9 @@
             this.MinimizeBox = false;
             this.Name = "TelaCadastroGrupoVeiculosForm";
             this.Text = "Cadastro Grupo de Veiculos";
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorPlanoDiario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDiariaKmControlado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorDiariaKmLivre)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -162,12 +165,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtValorPlanoDiario;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtValorDiariaKmControlado;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtValorDiariaKmLivre;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.NumericUpDown txtValorPlanoDiario;
+        private System.Windows.Forms.NumericUpDown txtValorDiariaKmControlado;
+        private System.Windows.Forms.NumericUpDown txtValorDiariaKmLivre;
     }
 }

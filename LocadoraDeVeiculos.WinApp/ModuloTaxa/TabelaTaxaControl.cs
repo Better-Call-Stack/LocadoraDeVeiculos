@@ -23,6 +23,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             InitializeComponent();
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
+            grid.ConfigurarColunaId();
 
             this.repositorio = repositorio;
         }
