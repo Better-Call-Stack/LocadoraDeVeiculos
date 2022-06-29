@@ -23,9 +23,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloGrupoVeiculos
 
             grupoVeiculos = new GrupoDeVeiculos();
             grupoVeiculos.Nome = "Impala";
-            grupoVeiculos.ValorPlanoDiario = 300;
-            grupoVeiculos.ValorDiariaKmControlado = 120;
-            grupoVeiculos.ValorDiarioKmLivre = 500;
+
         }
 
         [TestMethod]
@@ -46,9 +44,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloGrupoVeiculos
 
             GrupoDeVeiculos grupoEditado = repositorio.SelecionarPorId(grupoVeiculos.Id);
             grupoEditado.Nome = "Gol";
-            grupoEditado.ValorPlanoDiario = 150;
-            grupoEditado.ValorDiariaKmControlado = 170;
-            grupoEditado.ValorDiarioKmLivre = 450;
+
 
             //action
             repositorio.Editar(grupoEditado);
@@ -58,9 +54,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloGrupoVeiculos
 
             gv.Should().NotBeNull();
             gv.Nome.Should().Be("Gol");
-            gv.ValorPlanoDiario.Should().Be(150);
-            gv.ValorDiariaKmControlado.Should().Be(170);
-            gv.ValorDiarioKmLivre.Should().Be(450);
+
         }
 
         [TestMethod]

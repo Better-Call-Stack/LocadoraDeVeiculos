@@ -20,33 +20,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
                 .NotNull().NotEmpty()
                 .WithMessage("O campo nome é obrigatório ter no minimo duas letras");
 
-            RuleFor(x => x.ValorPlanoDiario)
-                .NotNull().WithMessage("O campo valor plano diario é obrigatório")
-                .NotEmpty().WithMessage("O campo título é obrigatório");
-
-            RuleFor(x => x.ValorPlanoDiario)
-                .NotNull()
-                .NotEmpty()
-                .GreaterThan(0);
-
-            RuleFor(x => x.ValorDiariaKmControlado)
-                .NotNull().WithMessage("O campo valor diaria Km controlador é obrigatório")
-                .NotEmpty().WithMessage("O campo título é obrigatório");
-
-            RuleFor(x => x.ValorDiariaKmControlado)
-                .NotNull()
-                .NotEmpty()
-                .GreaterThan(0);
-
-
-            RuleFor(x => x.ValorDiarioKmLivre)
-                .NotNull().WithMessage("O campo valor diario Km livre é obrigatório")
-                .NotEmpty().WithMessage("O campo título é obrigatório");
-
-            RuleFor(x => x.ValorDiarioKmLivre)
-                .NotNull()
-                .NotEmpty()
-                .GreaterThan(0);
         }
     }
 }

@@ -15,25 +15,19 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
         {
             comando.Parameters.AddWithValue("ID", grupoDeVeiculos.Id);
             comando.Parameters.AddWithValue("NOME", grupoDeVeiculos.Nome);
-            comando.Parameters.AddWithValue("VALORPLANODIARIO", grupoDeVeiculos.ValorPlanoDiario);
-            comando.Parameters.AddWithValue("VALORDIARIAKMCONTROLADO", grupoDeVeiculos.ValorDiariaKmControlado);
-            comando.Parameters.AddWithValue("VALORDIARIOKMLIVRE", grupoDeVeiculos.ValorDiarioKmLivre);
+
         }
 
         public override GrupoDeVeiculos ConverterRegistro(SqlDataReader leitorGrupoDeVeiculos)
         {
             var id = Convert.ToInt32(leitorGrupoDeVeiculos["ID"]);
             var nome = Convert.ToString(leitorGrupoDeVeiculos["NOME"]);
-            var valorPlanoDiario = Convert.ToDecimal(leitorGrupoDeVeiculos["VALORPLANODIARIO"]);
-            var valorDiariaKmControlado = Convert.ToDecimal(leitorGrupoDeVeiculos["VALORDIARIAKMCONTROLADO"]);
-            var valorDiarioKmLivre = Convert.ToDecimal(leitorGrupoDeVeiculos["VALORDIARIOKMLIVRE"]);
+
 
             GrupoDeVeiculos grupoDeVeiculos = new GrupoDeVeiculos();
             grupoDeVeiculos.Id = id;
             grupoDeVeiculos.Nome = nome;
-            grupoDeVeiculos.ValorPlanoDiario = valorPlanoDiario;
-            grupoDeVeiculos.ValorDiariaKmControlado = valorDiariaKmControlado;
-            grupoDeVeiculos.ValorDiarioKmLivre = valorDiarioKmLivre;
+
 
             return grupoDeVeiculos;
         }

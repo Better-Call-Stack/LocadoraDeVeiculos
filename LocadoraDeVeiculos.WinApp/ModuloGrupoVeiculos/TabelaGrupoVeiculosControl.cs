@@ -31,11 +31,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "ValorPlanoDiario", HeaderText = "Plano Diário"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "ValorDiariaKmControlado", HeaderText = "Diária Km Controlado"},
-
-                new DataGridViewTextBoxColumn { DataPropertyName = "ValorDiarioKmLivre", HeaderText = "Diária Km Livre"},
             };
 
             return colunas;
@@ -52,7 +48,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
 
             foreach (GrupoDeVeiculos veiculo in veiculos)
             {
-                grid.Rows.Add(veiculo.Id, veiculo.Nome, veiculo.ValorPlanoDiario, veiculo.ValorDiariaKmControlado, veiculo.ValorDiarioKmLivre);
+                grid.Rows.Add(veiculo.Id, veiculo.Nome);
             }
         }
     }
