@@ -5,6 +5,11 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
 {
     public class RepositorioGrupoVeiculosEmBancoDados : RepositorioBase<GrupoDeVeiculos, ValidadorGrupoDeVeiculos, MapeadorGrupoVeiculos>
     {
+
+        public RepositorioGrupoVeiculosEmBancoDados()
+        {
+            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS; DBCC CHECKIDENT (TBGRUPOVEICULOS, RESEED, 0)");
+        }
         protected override string sqlInserir =>
             @"INSERT INTO [TBGRUPOVEICULOS]
                 (
@@ -41,6 +46,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
                 [NOME]
             FROM
                 [TBGRUPOVEICULOS]";
+
+
     }
 }
 
