@@ -228,6 +228,7 @@
             this.Controls.Add(this.labelCpfCnpj);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "TelaCadastroClienteForm";
             this.Text = "Cadastro Cliente";
             this.ResumeLayout(false);
