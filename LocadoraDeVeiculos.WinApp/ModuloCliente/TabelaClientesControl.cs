@@ -25,6 +25,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             gridPessoaFisica.ConfigurarGridSomenteLeitura();
             gridPessoaJuridica.ConfigurarGridZebrado();
             gridPessoaJuridica.ConfigurarGridSomenteLeitura();
+            gridPessoaFisica.ConfigurarColunaId();
+            gridPessoaJuridica.ConfigurarColunaId();
 
             this.repositorio = repositorio;
         }

@@ -15,6 +15,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
             GridFuncionarios.ConfigurarGridZebrado();
             GridFuncionarios.ConfigurarGridSomenteLeitura();
             GridFuncionarios.Columns.AddRange(ObterColunas());
+            GridFuncionarios.ConfigurarColunaId();
             this.repositorio = repositorio;
         }
 

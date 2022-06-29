@@ -20,6 +20,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
             grid.Columns.AddRange(ObterColunas());
+            grid.ConfigurarColunaId();
         }
 
         public DataGridViewColumn[] ObterColunas()
