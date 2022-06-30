@@ -4,7 +4,6 @@ using LocadoraDeVeiculos.Infra.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
 {
