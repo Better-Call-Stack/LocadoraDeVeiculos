@@ -16,7 +16,6 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
     {
         private RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
         private TabelaGrupoVeiculosControl tabelaGrupoVeiculos;
-
         public ControladorGrupoVeiculos(RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos)
         {
             this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
