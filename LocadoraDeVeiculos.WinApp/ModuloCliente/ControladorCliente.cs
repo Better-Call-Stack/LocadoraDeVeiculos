@@ -87,7 +87,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tabelaClientes.AtualizarRegistros(clientes);
 
-            //TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {contatos.Count} contato(s)");
         }
 
         private Cliente ObtemClienteSelecionado()
