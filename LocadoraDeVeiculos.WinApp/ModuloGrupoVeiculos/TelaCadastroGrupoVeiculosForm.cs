@@ -33,18 +33,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
             {
                 grupoDeVeiculos = value;
                 txtNome.Text = grupoDeVeiculos.Nome;
-                txtValorPlanoDiario.Text = grupoDeVeiculos.ValorPlanoDiario.ToString();
-                txtValorDiariaKmControlado.Text = grupoDeVeiculos.ValorDiariaKmControlado.ToString();
-                txtValorDiariaKmLivre.Text = grupoDeVeiculos.ValorDiarioKmLivre.ToString();
+
             }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             grupoDeVeiculos.Nome = txtNome.Text;
-            grupoDeVeiculos.ValorPlanoDiario = Convert.ToDecimal(txtValorPlanoDiario.Text);
-            grupoDeVeiculos.ValorDiariaKmControlado = Convert.ToDecimal(txtValorDiariaKmControlado.Text);
-            grupoDeVeiculos.ValorDiarioKmLivre = Convert.ToDecimal(txtValorDiariaKmLivre.Text);
+        
 
             var resultadoValidacao = GravarRegistro(grupoDeVeiculos);
 

@@ -13,25 +13,17 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
         protected override string sqlInserir =>
             @"INSERT INTO [TBGRUPOVEICULOS]
                 (
-                     [NOME],
-                     [VALORPLANODIARIO],
-                     [VALORDIARIAKMCONTROLADO],
-                     [VALORDIARIOKMLIVRE])
+                     [NOME]
+                )
             VALUES
                 (
-                     @NOME,
-                     @VALORPLANODIARIO,
-                     @VALORDIARIAKMCONTROLADO,
-                     @VALORDIARIOKMLIVRE
+                     @NOME
                 );SELECT SCOPE_IDENTITY();";
 
         protected override string sqlEditar =>
             @" UPDATE [TBGRUPOVEICULOS]
                     SET 
-                        [NOME] = @NOME,
-                        [VALORPLANODIARIO] = @VALORPLANODIARIO,
-                        [VALORDIARIAKMCONTROLADO] = @VALORDIARIAKMCONTROLADO,
-                        [VALORDIARIOKMLIVRE] = @VALORDIARIOKMLIVRE
+                        [NOME] = @NOME
                     WHERE [ID] = @ID";
 
         protected override string sqlExcluir =>
@@ -41,10 +33,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
         protected override string sqlSelecionarPorId =>
             @"SELECT 
                 [ID],
-                [NOME],
-                [VALORPLANODIARIO],
-                [VALORDIARIAKMCONTROLADO],
-                [VALORDIARIOKMLIVRE]
+                [NOME]
+
             FROM
                 [TBGRUPOVEICULOS]
             WHERE 
@@ -53,10 +43,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
         protected override string sqlSelecionarTodos =>
             @"SELECT 
                 [ID],
-                [NOME],
-                [VALORPLANODIARIO],
-                [VALORDIARIAKMCONTROLADO],
-                [VALORDIARIOKMLIVRE]
+                [NOME]
             FROM
                 [TBGRUPOVEICULOS]";
 

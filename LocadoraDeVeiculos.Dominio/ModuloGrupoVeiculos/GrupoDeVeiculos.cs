@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using System;
 using System.Collections.Generic;
@@ -16,21 +17,20 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
 
         }
 
-        public GrupoDeVeiculos(string nome, decimal valorPlanoDiario,
-            decimal valorDiariaKmControlado, decimal valorDiarioKmLivre)
+        public GrupoDeVeiculos(string nome)
         {
             Nome = nome;
-            ValorPlanoDiario = valorPlanoDiario;
-            ValorDiariaKmControlado = valorDiariaKmControlado;
-            ValorDiarioKmLivre = valorDiarioKmLivre;
+
         }
         public string Nome { get; set; }
-        public decimal ValorPlanoDiario { get; set; }
-        public decimal ValorDiariaKmControlado { get; set; }
-        public decimal ValorDiarioKmLivre { get; set; }
+
+     //   public List<PlanoDeCobranca> planos = new List<PlanoDeCobranca>();
+
+     //   public List<PlanoDeCobranca> Planos { get { return planos; }  }
+
         public override string ToString()
         {
-            return $"Nome: {Nome}, Valor Plano Diário: {ValorPlanoDiario}, Valor Diaria Km Controlado: {ValorDiariaKmControlado}, Valor Diario Km Livre: {ValorDiarioKmLivre}";
+            return $"Nome: {Nome}";
         }
 
         public GrupoDeVeiculos Clonar()
@@ -41,22 +41,18 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
         public override void Atualizar(GrupoDeVeiculos registro)
         {
             Nome = registro.Nome;
-            ValorPlanoDiario = registro.ValorPlanoDiario;
-            ValorDiariaKmControlado = registro.ValorDiariaKmControlado;
-            ValorDiarioKmLivre = registro.ValorDiarioKmLivre;
+
         }
 
         public override bool Equals(object obj)
         {
             return obj is GrupoDeVeiculos controladorGrupoVeiculos &&
-                   Nome == controladorGrupoVeiculos.Nome &&
-                   ValorPlanoDiario == controladorGrupoVeiculos.ValorPlanoDiario &&
-                   ValorDiariaKmControlado == controladorGrupoVeiculos.ValorDiariaKmControlado &&
-                   ValorDiarioKmLivre == controladorGrupoVeiculos.ValorDiarioKmLivre;
+                   Nome == controladorGrupoVeiculos.Nome;
+
         }
         public override int GetHashCode()
         {
-            return HashCode.Combine(Nome, ValorPlanoDiario, ValorDiariaKmControlado, ValorDiarioKmLivre);
+            return HashCode.Combine(Nome);
         }
     }
 }

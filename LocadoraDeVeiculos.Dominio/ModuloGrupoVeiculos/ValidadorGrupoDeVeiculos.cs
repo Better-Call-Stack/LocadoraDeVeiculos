@@ -20,33 +20,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
                 .NotNull().WithMessage("O campo nome é obrigatório ter no minimo duas letras")
                 .NotEmpty().WithMessage("O campo nome é obrigatório ter no minimo duas letras");
 
-            RuleFor(x => x.ValorPlanoDiario)
-                .NotNull().WithMessage("O campo valor plano diario é obrigatório")
-                .NotEmpty().WithMessage("O campo título é obrigatório");
-
-            RuleFor(x => x.ValorPlanoDiario)
-                .NotNull().WithMessage("O campo Plano Diário deve ser maior que zero")
-                .NotEmpty().WithMessage("O campo Plano Diário deve ser maior que zero")
-                .GreaterThan(0).WithMessage("O campo Plano Diário deve ser maior que zero"); 
-
-            RuleFor(x => x.ValorDiariaKmControlado)
-                .NotNull().WithMessage("O campo valor diaria Km controlador é obrigatório")
-                .NotEmpty().WithMessage("O campo título é obrigatório");
-
-            RuleFor(x => x.ValorDiariaKmControlado)
-                .NotNull().WithMessage("O campo Diária Km Controlado deve ser maior que zero")
-                .NotEmpty().WithMessage("O campo Diária Km Controlado deve ser maior que zero")
-                .GreaterThan(0).WithMessage("O campo Diária Km Controlado deve ser maior que zero");
-
-
-            RuleFor(x => x.ValorDiarioKmLivre)
-                .NotNull().WithMessage("O campo valor diario Km livre é obrigatório")
-                .NotEmpty().WithMessage("O campo título é obrigatório");
-
-            RuleFor(x => x.ValorDiarioKmLivre)
-                .NotNull().WithMessage("O campo Diária Km Livre deve ser maior que zero")
-                .NotEmpty().WithMessage("O campo Diária Km Controlado deve ser maior que zero")
-                .GreaterThan(0).WithMessage("O campo Diária Km Controlado deve ser maior que zero");
         }
     }
 }

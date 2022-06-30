@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtCNH = new System.Windows.Forms.TextBox();
             this.cbxPessoa = new System.Windows.Forms.ComboBox();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.labelCpfCnpj = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,13 +45,6 @@
             this.txtCpfCnpj = new System.Windows.Forms.MaskedTextBox();
             this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
-            // 
-            // txtCNH
-            // 
-            this.txtCNH.Location = new System.Drawing.Point(34, 222);
-            this.txtCNH.Name = "txtCNH";
-            this.txtCNH.Size = new System.Drawing.Size(228, 23);
-            this.txtCNH.TabIndex = 16;
             // 
             // cbxPessoa
             // 
@@ -74,15 +65,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(228, 23);
             this.txtNome.TabIndex = 13;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(34, 204);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(36, 15);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "CNH:";
             // 
             // labelCpfCnpj
             // 
@@ -221,10 +203,8 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtCNH);
             this.Controls.Add(this.cbxPessoa);
             this.Controls.Add(this.txtNome);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.labelCpfCnpj);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label5);
@@ -237,11 +217,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtCNH;
         private System.Windows.Forms.ComboBox cbxPessoa;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelCpfCnpj;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;

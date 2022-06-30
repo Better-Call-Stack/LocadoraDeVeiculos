@@ -30,11 +30,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         {
             btnCancelar.Text = "Ok";
             btnSalvar.Visible = false;
-
             cbxPessoa.Enabled = false;
             txtNome.Enabled = false;
             txtCpfCnpj.Enabled = false;
-            txtCNH.Enabled = false;
             txtCidade.Enabled = false;
             txtEmail.Enabled = false; 
             txtTelefone.Enabled = false;
@@ -60,7 +58,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 {
                     cbxPessoa.Text = "Física";
                     txtCpfCnpj.Text = cliente.CPF;
-                    txtCNH.Text = cliente.CNH;
                 }
                 else
                 {
@@ -86,7 +83,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             {
                 cliente.TipoPessoa = TipoPessoa.Fisica;
                 cliente.CPF = txtCpfCnpj.Text;
-                cliente.CNH = txtCNH.Text;
             }
             else
             {
@@ -121,13 +117,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             {
                 txtCpfCnpj.Mask = "999.999.999-99";
                 labelCpfCnpj.Text = "CPF:";
-                txtCNH.Enabled = true;
             }
 
             if (cbxPessoa.SelectedItem == "Jurídica") {
                 txtCpfCnpj.Mask = "99.999.999/9999-99";
                 labelCpfCnpj.Text = "CNPJ:";
-                txtCNH.Enabled = false;
             }
         }
     }
