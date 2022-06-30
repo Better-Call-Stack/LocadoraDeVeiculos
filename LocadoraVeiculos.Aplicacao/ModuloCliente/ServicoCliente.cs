@@ -30,6 +30,16 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             return resultadoValidacao;
         }
 
+        public ValidationResult Editar(Cliente cliente)
+        {
+            var resultadoValidacao = Validar(cliente);
+
+            if (resultadoValidacao.IsValid)
+                repositorioCliente.Editar(cliente);
+
+            return resultadoValidacao;
+        }
+
         private ValidationResult Validar(Cliente cliente)
         {
             validadorCliente = new ValidadorCliente();
