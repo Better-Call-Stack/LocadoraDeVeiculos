@@ -67,6 +67,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				[EMAIL]
 			FROM
 				[TBCLIENTE]
+
 			WHERE
 				[ID] = @ID";
 
