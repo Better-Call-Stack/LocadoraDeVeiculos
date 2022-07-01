@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tela.Cliente = clienteSelecionado.Clonar();
 
-            tela.GravarRegistro = repositorioCliente.Editar;
+            tela.GravarRegistro = servicoCliente.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 

@@ -18,6 +18,7 @@ using LocadoraDeVeiculos.Infra.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
+using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -50,6 +51,7 @@ namespace LocadoraDeVeiculos.WinApp
 
             var servicoCliente = new ServicoCliente(repositorioCliente);
             var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
+            var servicoTaxa = new ServicoTaxa(repositorioTaxa);
 
             controladores = new Dictionary<string, ControladorBase>();
 
