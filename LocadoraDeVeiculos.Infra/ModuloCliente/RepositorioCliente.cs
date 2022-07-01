@@ -55,8 +55,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
                 WHERE [ID] = @ID";
 
 		protected override string sqlSelecionarPorId =>
-			
-			// REPOSITORIO CLIENTE //
+
 			
 			@"SELECT
 			 CLIENTE.[ID] CLIENTE_ID,

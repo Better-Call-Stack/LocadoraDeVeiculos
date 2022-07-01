@@ -54,7 +54,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloCondutor
                     [ID] = @ID";
 
 
-        // REPOSITORIO CONDUTOR //
         protected override string sqlSelecionarPorId =>
             @"SELECT
                    CONDUTOR.[ID] CONDUTOR_ID,
