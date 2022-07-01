@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Infra.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,5 +113,80 @@ namespace LocadoraDeVeiculos.Infra.ModuloCondutor
 
                 ON 
                     CLIENTE.[ID] = CONDUTOR.[CLIENTE_ID] ";
+
+        private string sqlSelecionarPorCPF =>
+            @"SELECT
+                   CONDUTOR.[ID] CONDUTOR_ID,
+                   CONDUTOR.[NOME] CONDUTOR_NOME,
+                   CONDUTOR.[CPF] CONDUTOR_CPF,
+                   CONDUTOR.[CNH] CONDUTOR_CNH,
+                   CONDUTOR.[VALIDADECNH] CONDUTOR_VALIDADECNH,
+                   CONDUTOR.[CIDADE] CONDUTOR_CIDADE,
+                   CONDUTOR.[ENDERECO] CONDUTOR_ENDERECO,
+                   CONDUTOR.[TELEFONE] CONDUTOR_TELEFONE,
+                   CONDUTOR.[EMAIL] CONDUTOR_EMAIL
+                   
+                   CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
+              
+                FROM [TBCONDUTOR] AS CONDUTOR INNER JOIN
+				[TBCLIENTE] AS CLIENTE
+
+                ON 
+                    CLIENTE.[ID] = CONDUTOR.[CLIENTE_ID] 
+
+                WHERE 
+            	    CONDUTOR.[CPF] = @CPF";
+
+        private string sqlSelecionarPorCNH =>
+           @"SELECT
+                   CONDUTOR.[ID] CONDUTOR_ID,
+                   CONDUTOR.[NOME] CONDUTOR_NOME,
+                   CONDUTOR.[CPF] CONDUTOR_CPF,
+                   CONDUTOR.[CNH] CONDUTOR_CNH,
+                   CONDUTOR.[VALIDADECNH] CONDUTOR_VALIDADECNH,
+                   CONDUTOR.[CIDADE] CONDUTOR_CIDADE,
+                   CONDUTOR.[ENDERECO] CONDUTOR_ENDERECO,
+                   CONDUTOR.[TELEFONE] CONDUTOR_TELEFONE,
+                   CONDUTOR.[EMAIL] CONDUTOR_EMAIL
+                   
+                   CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
+              
+                FROM [TBCONDUTOR] AS CONDUTOR INNER JOIN
+				[TBCLIENTE] AS CLIENTE
+
+                ON 
+                    CLIENTE.[ID] = CONDUTOR.[CLIENTE_ID] 
+
+                WHERE 
+            	    CONDUTOR.[CNH] = @CNH";
+
+        public Condutor SelecionarCondutorPorCPF(string CPF)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorCPF, new SqlParameter("CPF", CPF));
+
+        }
+
+        public Condutor SelecionarCondutorPorCNH(string CNH)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorCNH, new SqlParameter("CNH", CNH));
+        }
+
     }
+   
 }
