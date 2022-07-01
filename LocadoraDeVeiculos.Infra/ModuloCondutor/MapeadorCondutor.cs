@@ -1,5 +1,7 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.Compartilhado;
+using LocadoraDeVeiculos.Infra.ModuloCliente;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -27,18 +29,17 @@ namespace LocadoraDeVeiculos.Infra.ModuloCondutor
 
         public override Condutor ConverterRegistro(SqlDataReader leitorCondutor)
         {
-            var id = Convert.ToInt32(leitorCondutor["ID"]);
-            var nome = Convert.ToString(leitorCondutor["NOME"]);
-            var telefone = Convert.ToString(leitorCondutor["TELEFONE"]);
-            var email = Convert.ToString(leitorCondutor["EMAIL"]);
-            var cidade = Convert.ToString(leitorCondutor["CIDADE"]);
-            var cnh = Convert.ToString(leitorCondutor["CNH"]);
-            var validadeCnh = Convert.ToDateTime(leitorCondutor["VALIDADECNH"]);
-            var cpf = Convert.ToString(leitorCondutor["CPF"]);
-            var endereco = Convert.ToString(leitorCondutor["ENDERECO"]);
-            var idCliente = Convert.ToInt32(leitorCondutor["CLIENTE_ID"]);
+            var id = Convert.ToInt32(leitorCondutor["CONDUTOR_ID"]);
+            var nome = Convert.ToString(leitorCondutor["CONDUTOR_NOME"]);
+            var telefone = Convert.ToString(leitorCondutor["CONDUTOR_TELEFONE"]);
+            var email = Convert.ToString(leitorCondutor["CONDUTOR_EMAIL"]);
+            var cidade = Convert.ToString(leitorCondutor["CONDUTOR_CIDADE"]);
+            var cnh = Convert.ToString(leitorCondutor["CONDUTOR_CNH"]);
+            var validadeCnh = Convert.ToDateTime(leitorCondutor["CONDUTOR_VALIDADECNH"]);
+            var cpf = Convert.ToString(leitorCondutor["CONDUTOR_CPF"]);
+            var endereco = Convert.ToString(leitorCondutor["CONDUTOR_ENDERECO"]);
 
-            var nomeCliente
+
 
             Condutor condutor = new Condutor();
             condutor.Id = id;
@@ -50,8 +51,9 @@ namespace LocadoraDeVeiculos.Infra.ModuloCondutor
             condutor.ValidadeCNH = validadeCnh;
             condutor.CPF = cpf;
             condutor.Endereco = endereco;
-            condutor.Cliente.Id = idCliente;
 
+            condutor.Cliente = new MapeadorCliente().ConverterRegistro(leitorCondutor);
+          
 
             return condutor;
         }

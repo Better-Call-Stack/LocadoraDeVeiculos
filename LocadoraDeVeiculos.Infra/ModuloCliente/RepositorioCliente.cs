@@ -55,16 +55,19 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
                 WHERE [ID] = @ID";
 
 		protected override string sqlSelecionarPorId =>
+			
+			// REPOSITORIO CLIENTE //
+			
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+			 CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
 				[TBCLIENTE]
 
@@ -73,30 +76,30 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 
 		protected override string sqlSelecionarTodos =>
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+				 CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
 				[TBCLIENTE]
 			";
 
 		private string sqlSelecionarPorCPF =>
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+				   CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
 				[TBCLIENTE]
 			WHERE
@@ -104,15 +107,15 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 
 		private string sqlSelecionarPorCNPJ =>
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+				 CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
 				[TBCLIENTE]
 			WHERE

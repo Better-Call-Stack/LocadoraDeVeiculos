@@ -53,27 +53,29 @@ namespace LocadoraDeVeiculos.Infra.ModuloCondutor
                 WHERE 
                     [ID] = @ID";
 
+
+        // REPOSITORIO CONDUTOR //
         protected override string sqlSelecionarPorId =>
             @"SELECT
-                   CONDUTOR.[ID]
-                   CONDUTOR.[NOME],
-                   CONDUTOR.[CPF],
-                   CONDUTOR.[CNH],
-                   CONDUTOR.[VALIDADECNH],
-                   CONDUTOR.[CIDADE],
-                   CONDUTOR.[ENDERECO],
-                   CONDUTOR.[TELEFONE],
-                   CONDUTOR.[EMAIL],
-                   CONDUTOR.[CLIENTE_ID]
-
-                   CLIENTE.[NOME],
-                   CLIENTE.[CPF],
-		           CLIENTE.[CNPJ],
-			   	   CLIENTE.[CIDADE],
-				   CLIENTE.[ENDERECO],
-				   CLIENTE.[TELEFONE],
-				   CLIENTE.[TIPOPESSOA],
-				   CLIENTE.[EMAIL]
+                   CONDUTOR.[ID] CONDUTOR_ID,
+                   CONDUTOR.[NOME] CONDUTOR_NOME,
+                   CONDUTOR.[CPF] CONDUTOR_CPF,
+                   CONDUTOR.[CNH] CONDUTOR_CNH,
+                   CONDUTOR.[VALIDADECNH] CONDUTOR_VALIDADECNH,
+                   CONDUTOR.[CIDADE] CONDUTOR_CIDADE,
+                   CONDUTOR.[ENDERECO] CONDUTOR_ENDERECO,
+                   CONDUTOR.[TELEFONE] CONDUTOR_TELEFONE,
+                   CONDUTOR.[EMAIL] CONDUTOR_EMAIL
+                   
+                   CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
               
                 FROM [TBCONDUTOR] AS CONDUTOR INNER JOIN
 				[TBCLIENTE] AS CLIENTE
