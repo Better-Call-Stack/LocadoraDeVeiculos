@@ -4,7 +4,7 @@ using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
 {
-    public class RepositorioGrupoVeiculosEmBancoDados : RepositorioBase<GrupoDeVeiculos, ValidadorGrupoDeVeiculos, MapeadorGrupoVeiculos>
+    public class RepositorioGrupoVeiculosEmBancoDados : RepositorioBase<GrupoDeVeiculos, ValidadorGrupoDeVeiculos, MapeadorGrupoVeiculos>, IRepositorioGrupoVeiculos
     {
 
         public RepositorioGrupoVeiculosEmBancoDados()
