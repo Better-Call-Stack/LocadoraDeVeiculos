@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 {
-    public class ConiguracaoToolboxCondutor : ConfiguracaoToolboxBase
+    public class ConfiguracaoToolboxCondutor : ConfiguracaoToolboxBase
     {
 
         public override string TipoCadastro => "Controle de Condutores";
