@@ -32,5 +32,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         {
             throw new NotImplementedException();
         }
+
+        public Condutor Clonar()
+        {
+            return MemberwiseClone() as Condutor;
+        }
+
     }
 }
