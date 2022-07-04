@@ -14,7 +14,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
         private RepositorioFuncionario repositorioFuncionario;
         private ValidadorFuncionario validadorFuncionario;
 
-        public ServicoFuncionario(RepositorioFuncionario repositorioFuncionario, ValidadorFuncionario validadorFuncionario)
+        public ServicoFuncionario(RepositorioFuncionario repositorioFuncionario)
         {
             this.repositorioFuncionario=repositorioFuncionario;
         }
