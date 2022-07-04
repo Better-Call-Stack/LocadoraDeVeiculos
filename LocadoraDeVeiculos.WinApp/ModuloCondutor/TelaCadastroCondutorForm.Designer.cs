@@ -38,21 +38,21 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
-            this.txtCPF = new System.Windows.Forms.TextBox();
-            this.txtCNH = new System.Windows.Forms.TextBox();
             this.datePicker = new System.Windows.Forms.DateTimePicker();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnInserir = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtTelefone = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelTelefone = new System.Windows.Forms.Label();
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.txtCNH = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // cbxCliente
             // 
+            this.cbxCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCliente.FormattingEnabled = true;
             this.cbxCliente.Location = new System.Drawing.Point(161, 52);
             this.cbxCliente.Name = "cbxCliente";
@@ -138,20 +138,6 @@
             this.txtNome.Size = new System.Drawing.Size(145, 23);
             this.txtNome.TabIndex = 10;
             // 
-            // txtCPF
-            // 
-            this.txtCPF.Location = new System.Drawing.Point(90, 142);
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(145, 23);
-            this.txtCPF.TabIndex = 11;
-            // 
-            // txtCNH
-            // 
-            this.txtCNH.Location = new System.Drawing.Point(90, 186);
-            this.txtCNH.Name = "txtCNH";
-            this.txtCNH.Size = new System.Drawing.Size(145, 23);
-            this.txtCNH.TabIndex = 12;
-            // 
             // datePicker
             // 
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -200,48 +186,56 @@
             this.btnInserir.TabIndex = 18;
             this.btnInserir.Text = "Inserir";
             this.btnInserir.UseVisualStyleBackColor = true;
+            this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
-            // label9
+            // labelTelefone
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(0, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 15);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "label9";
+            this.labelTelefone.AutoSize = true;
+            this.labelTelefone.Location = new System.Drawing.Point(261, 227);
+            this.labelTelefone.Name = "labelTelefone";
+            this.labelTelefone.Size = new System.Drawing.Size(54, 15);
+            this.labelTelefone.TabIndex = 20;
+            this.labelTelefone.Text = "Telefone:";
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.Location = new System.Drawing.Point(90, 142);
+            this.txtCPF.Mask = "999.999.999-99";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(81, 23);
+            this.txtCPF.TabIndex = 22;
             // 
             // txtTelefone
             // 
-            this.txtTelefone.AutoSize = true;
-            this.txtTelefone.Location = new System.Drawing.Point(261, 227);
+            this.txtTelefone.Location = new System.Drawing.Point(321, 224);
+            this.txtTelefone.Mask = "(99) 9 9999-9999";
             this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(54, 15);
-            this.txtTelefone.TabIndex = 20;
-            this.txtTelefone.Text = "Telefone:";
+            this.txtTelefone.Size = new System.Drawing.Size(87, 23);
+            this.txtTelefone.TabIndex = 23;
             // 
-            // textBox1
+            // txtCNH
             // 
-            this.textBox1.Location = new System.Drawing.Point(321, 219);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 23);
-            this.textBox1.TabIndex = 21;
+            this.txtCNH.Location = new System.Drawing.Point(99, 187);
+            this.txtCNH.Mask = "99999999999";
+            this.txtCNH.Name = "txtCNH";
+            this.txtCNH.Size = new System.Drawing.Size(81, 23);
+            this.txtCNH.TabIndex = 24;
             // 
             // TelaCadastroCondutorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 328);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCNH);
             this.Controls.Add(this.txtTelefone);
-            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtCPF);
+            this.Controls.Add(this.labelTelefone);
             this.Controls.Add(this.btnInserir);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtEndereco);
             this.Controls.Add(this.txtCidade);
             this.Controls.Add(this.datePicker);
-            this.Controls.Add(this.txtCNH);
-            this.Controls.Add(this.txtCPF);
             this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -272,16 +266,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtNome;
-        private System.Windows.Forms.TextBox txtCPF;
-        private System.Windows.Forms.TextBox txtCNH;
         private System.Windows.Forms.DateTimePicker datePicker;
         private System.Windows.Forms.TextBox txtCidade;
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnInserir;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label txtTelefone;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelTelefone;
+        private System.Windows.Forms.MaskedTextBox txtCPF;
+        private System.Windows.Forms.MaskedTextBox txtTelefone;
+        private System.Windows.Forms.MaskedTextBox txtCNH;
     }
 }
