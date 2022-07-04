@@ -1,25 +1,19 @@
 ﻿using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
-using LocadoraDeVeiculos.WinApp.Compartilhado;
-using LocadoraDeVeiculos.WinApp.ModuloCliente;
-using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
-using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
+using LocadoraDeVeiculos.WinApp.ModuloCliente;
+using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
+using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
-using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -76,7 +70,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarListagem()
         {
-  
+
             var listagemControl = controlador.ObtemListagem();
 
             panelRegistros.Controls.Clear();
@@ -111,11 +105,11 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
         {
-          
+
             btnInserir.ToolTipText = configuracao.TooltipInserir;
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
-            
+
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -125,17 +119,17 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-                controlador.Inserir();
+            controlador.Inserir();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-                controlador.Editar();
+            controlador.Editar();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-                controlador.Excluir();
+            controlador.Excluir();
         }
 
         private void funcionarioToolStripMenuItem_Click(object sender, EventArgs e)
