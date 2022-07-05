@@ -68,13 +68,20 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCondutor
         [TestMethod]
         public void Deve_Editar_Condutor()
         {
+            repositorioCliente.Inserir(cliente);
             repositorioCondutor.Inserir(condutor);
 
             Condutor condutorAtualizado = repositorioCondutor.SelecionarPorId(condutor.Id);
             condutorAtualizado.Nome = "Braian";
-            condutorAtualizado.Telefone = "515615616";
+            condutorAtualizado.Telefone = "(49) 9 9999-9999";
             condutorAtualizado.Email = "ehOBraian@gmail.com";
-            
+            condutorAtualizado.CPF = "000.000.000-00";
+            condutorAtualizado.Cliente = cliente;
+            condutorAtualizado.Endereco = "132";
+            condutorAtualizado.CNH = "111111111111";
+            condutorAtualizado.ValidadeCNH = new DateTime(2023, 10, 10);
+
+
 
             //action
             repositorioCondutor.Editar(condutorAtualizado);
@@ -84,13 +91,14 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCondutor
 
             cEncontrado.Should().NotBeNull();
             cEncontrado.Nome.Should().Be("Braian");
-            cEncontrado.Email.Should().Be("ehOBraian");
-            cEncontrado.Telefone.Should().Be("515615616");
+            cEncontrado.Email.Should().Be("ehOBraian@gmail.com");
+            cEncontrado.Telefone.Should().Be("(49) 9 9999-9999");
         }
 
         [TestMethod]
         public void Deve_Excluir_Condutor()
         {
+            repositorioCliente.Inserir(cliente);
             repositorioCondutor.Inserir(condutor);
 
             repositorioCondutor.Excluir(condutor);
