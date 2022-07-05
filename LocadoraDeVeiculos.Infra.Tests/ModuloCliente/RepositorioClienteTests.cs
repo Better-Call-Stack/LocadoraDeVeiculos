@@ -38,7 +38,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
         {
             repositorio.Inserir(cliente);
 
-            Cliente c = repositorio.SelecionarPorId(1);
+            Cliente c = repositorio.SelecionarPorId(cliente.Id);
 
             c.Should().NotBeNull().And.Be(cliente);
 
