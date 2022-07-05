@@ -88,7 +88,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             condutor.Cliente = (Cliente)cbxCliente.SelectedItem;
             condutor.Nome = txtNome.Text;
             condutor.Email = txtEmail.Text;
-            condutor.Telefone = labelTelefone.Text;
+            condutor.Telefone = txtTelefone.Text;
             condutor.Cidade = txtCidade.Text;
             condutor.Endereco = txtEndereco.Text;
             condutor.Email = txtEmail.Text;

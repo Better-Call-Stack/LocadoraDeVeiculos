@@ -218,7 +218,7 @@
             // txtCNH
             // 
             this.txtCNH.Location = new System.Drawing.Point(99, 187);
-            this.txtCNH.Mask = "99999999999";
+            this.txtCNH.Mask = "999999999999";
             this.txtCNH.Name = "txtCNH";
             this.txtCNH.Size = new System.Drawing.Size(81, 23);
             this.txtCNH.TabIndex = 24;
