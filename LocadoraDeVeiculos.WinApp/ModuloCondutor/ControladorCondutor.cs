@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraVeiculos.Aplicacao.ModuloCondutor;
@@ -14,13 +15,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
     public class ControladorCondutor : ControladorBase
     {
         private readonly RepositorioCondutor repositorioCondutor;
+        private readonly RepositorioCliente repositorioCliente;
         private TabelaCondutoresControl tabelaCondutor;
         private ServicoCondutor servicoCondutor;
 
-        public ControladorCondutor(RepositorioCondutor repositorioCondutor, ServicoCondutor servicoCondutor)
+        public ControladorCondutor(RepositorioCondutor repositorioCondutor, ServicoCondutor servicoCondutor, RepositorioCliente repositorioCliente)
         {
             this.repositorioCondutor = repositorioCondutor;
             this.servicoCondutor = servicoCondutor;
+            this.repositorioCliente = repositorioCliente;
         }
 
         public override void Editar()
@@ -34,7 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
                 return;
             }
 
-            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm("Edicao");
+            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(repositorioCliente.SelecionarTodos(), "Edicao");
 
             tela.Condutor = condutorSelecionado.Clonar();
 
@@ -71,7 +74,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         public override void Inserir()
         {
-            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm("Insercao");
+            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(repositorioCliente.SelecionarTodos(), "Insercao");
             tela.Condutor = new Condutor();
 
             tela.GravarRegistro = servicoCondutor.Inserir;
@@ -106,7 +109,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         public override UserControl ObtemListagem()
         {
-            tabelaCondutor = new TabelaCondutoresControl(repositorioCondutor);
+            tabelaCondutor = new TabelaCondutoresControl(repositorioCondutor, repositorioCliente);
 
             CarregarCondutores();
 

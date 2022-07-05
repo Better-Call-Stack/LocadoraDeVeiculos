@@ -58,7 +58,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 
 			
 			@"SELECT
-			 CLIENTE.[ID] CLIENTE_ID,
+				   CLIENTE.[ID] CLIENTE_ID,
                    CLIENTE.[NOME] CLIENTE_NOME,
                    CLIENTE.[CPF] CLIENTE_CPF,
 		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
@@ -68,7 +68,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
 				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
 
 			WHERE
 				[ID] = @ID";
@@ -85,7 +85,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
 				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
 			";
 
 		private string sqlSelecionarPorCPF =>
@@ -100,7 +100,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
 				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
 			WHERE
 				[CPF] = @CPF";
 
@@ -116,7 +116,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
 				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
 			WHERE
 				[CNPJ] = @CNPJ";
 

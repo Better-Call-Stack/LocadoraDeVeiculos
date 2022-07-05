@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
@@ -16,7 +17,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
     public partial class TabelaCondutoresControl : UserControl
     {
         RepositorioCondutor repositorioCondutor;
-        public TabelaCondutoresControl(RepositorioCondutor repositorioCondutor)
+        RepositorioCliente repositorioCliente;
+        public TabelaCondutoresControl(RepositorioCondutor repositorioCondutor, RepositorioCliente repositorioCliente)
         {
             InitializeComponent();
 
@@ -25,6 +27,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             gridCondutores.ConfigurarGridZebrado();
 
             this.repositorioCondutor = repositorioCondutor;
+            this.repositorioCliente = repositorioCliente;
         }
 
         internal void AtualizarRegistros(List<Condutor> condutores)
@@ -33,7 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             foreach (var c in condutores)
             {
-                gridCondutores.Rows.Add(c.Id, c.Nome, c.CPF, c.CNH, c.ValidadeCNH, c.Cliente);
+                gridCondutores.Rows.Add(c.Id, c.Nome, c.CPF, c.CNH, c.ValidadeCNH.ToShortDateString(), c.Cliente.Nome);
             }
         }
 
@@ -44,7 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         private void gridCondutores_DoubleClick(object sender, EventArgs e)
         {
-            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm("Visualizacao");
+            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(repositorioCliente.SelecionarTodos(), "Visualizacao");
             int id = ObtemIdCondutorSelecionado();
             Condutor c = repositorioCondutor.SelecionarPorId(id);
 

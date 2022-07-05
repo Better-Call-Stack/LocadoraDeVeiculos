@@ -52,6 +52,7 @@
             // 
             // cbxCliente
             // 
+            this.cbxCliente.DisplayMember = "Nome";
             this.cbxCliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCliente.FormattingEnabled = true;
             this.cbxCliente.Location = new System.Drawing.Point(161, 52);
@@ -142,6 +143,7 @@
             // 
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datePicker.Location = new System.Drawing.Point(130, 235);
+            this.datePicker.MinDate = new System.DateTime(2001, 1, 1, 0, 0, 0, 0);
             this.datePicker.Name = "datePicker";
             this.datePicker.Size = new System.Drawing.Size(112, 23);
             this.datePicker.TabIndex = 13;
@@ -191,7 +193,7 @@
             // labelTelefone
             // 
             this.labelTelefone.AutoSize = true;
-            this.labelTelefone.Location = new System.Drawing.Point(261, 227);
+            this.labelTelefone.Location = new System.Drawing.Point(282, 227);
             this.labelTelefone.Name = "labelTelefone";
             this.labelTelefone.Size = new System.Drawing.Size(54, 15);
             this.labelTelefone.TabIndex = 20;
@@ -207,7 +209,7 @@
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(321, 224);
+            this.txtTelefone.Location = new System.Drawing.Point(355, 224);
             this.txtTelefone.Mask = "(99) 9 9999-9999";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(87, 23);

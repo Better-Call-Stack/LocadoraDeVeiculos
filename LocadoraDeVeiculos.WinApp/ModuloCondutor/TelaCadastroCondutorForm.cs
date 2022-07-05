@@ -15,18 +15,21 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 {
     public partial class TelaCadastroCondutorForm : Form
     {
-        public TelaCadastroCondutorForm(string modoTela)
+        List<Cliente> listaClientes;
+        public TelaCadastroCondutorForm( List<Cliente> listaClientes, string modoTela)
         {
             InitializeComponent();
+
+            this.listaClientes = listaClientes;
+
+            InicializaComboBox();
 
             if (modoTela == "Visualizacao")
             {
                 DesativarCampos();
             }
-            InicializaComboBox();
-
-            
         }
+
 
         private void DesativarCampos()
         {
@@ -38,14 +41,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             txtCPF.Enabled = false;
             txtCidade.Enabled = false;
             txtEmail.Enabled = false;
-            labelTelefone.Enabled = false;
+            txtTelefone.Enabled = false;
             txtEndereco.Enabled = false;
             datePicker.Enabled = false;
         }
 
         private void InicializaComboBox()
         {
-
+            foreach (Cliente c in listaClientes)
+            {
+                cbxCliente.Items.Add(c);
+            }
         }
 
         public Func<Condutor, ValidationResult> GravarRegistro { get; set; }
@@ -59,16 +65,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             {
                 condutor = value;
 
-                cbxCliente.SelectedValue = condutor.Cliente;
+                cbxCliente.SelectedItem = condutor.Cliente;
 
                 txtNome.Text = condutor.Nome;
                 txtEmail.Text = condutor.Email;
                 txtCPF.Text = condutor.CPF;
                 txtCNH.Text = condutor.CNH;
-                datePicker.Value = condutor.ValidadeCNH;
-                labelTelefone.Text = condutor.Telefone;
+                txtTelefone.Text = condutor.Telefone;
                 txtCidade.Text = condutor.Cidade;
                 txtEndereco.Text = condutor.Endereco;
+
+                if (condutor.ValidadeCNH != new DateTime(01 , 01 , 0001 , 00,00,00))
+                    datePicker.Value = condutor.ValidadeCNH;
             }
 
 
@@ -77,7 +85,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         private void btnInserir_Click(object sender, EventArgs e)
         {
 
-            condutor.Cliente = (Cliente)cbxCliente.SelectedValue;
+            condutor.Cliente = (Cliente)cbxCliente.SelectedItem;
             condutor.Nome = txtNome.Text;
             condutor.Email = txtEmail.Text;
             condutor.Telefone = labelTelefone.Text;

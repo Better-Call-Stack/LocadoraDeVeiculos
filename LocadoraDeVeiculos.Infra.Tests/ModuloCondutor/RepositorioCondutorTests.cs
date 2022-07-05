@@ -6,10 +6,8 @@ using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloCondutor;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace LocadoraDeVeiculos.Infra.Tests.ModuloCondutor
 {
@@ -20,9 +18,26 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCondutor
         RepositorioCliente repositorioCliente = new RepositorioCliente();
 
         Condutor condutor;
+        Cliente cliente;
         public RepositorioCondutorTests()
         {
             Db.ExecutarSql("DELETE FROM TBCONDUTOR; DBCC CHECKIDENT (TBCONDUTOR, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT (TBCLIENTE, RESEED, 0)");
+
+            
+
+            cliente = new Cliente()
+            {
+                Nome = "O Pedra",
+                CPF = "222.222.222-22",
+                Telefone = "13168865",
+                TipoPessoa = TipoPessoa.Fisica,
+                Cidade = "Capital Lageana",
+                Endereco = "ddsadas",
+                Email = "dnsdnosandas",
+
+
+            };
 
             condutor = new Condutor();
             condutor.Nome = "Bandolero";
@@ -31,25 +46,21 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCondutor
             condutor.ValidadeCNH = new DateTime(2024,10,10);
             condutor.Endereco = "R. Redenção, 105";
             condutor.Email = "ElBandolero@gmail.com";
+            condutor.Telefone = "11111111";
+            condutor.Cidade = "NY";
 
-            condutor.Cliente = new Cliente()
-            {
-                Nome = "O Pedra",
-                CPF = "222.222.222-22",
-                Telefone = "13168865",
-                TipoPessoa = TipoPessoa.Juridica,
-                Cidade = "Capital Lageana",
-                Endereco = "ddsadas"
-            };
+            condutor.Cliente = cliente;
 
         }
 
         [TestMethod]
         public void Deve_Inserir_Condutor()
         {
+            repositorioCliente.Inserir(cliente);
             repositorioCondutor.Inserir(condutor);
+       
 
-            Condutor cEncontrado = repositorioCondutor.SelecionarPorId(1);
+            Condutor cEncontrado = repositorioCondutor.SelecionarPorId(condutor.Id);
 
             cEncontrado.Should().NotBeNull().And.Be(condutor);
         }
