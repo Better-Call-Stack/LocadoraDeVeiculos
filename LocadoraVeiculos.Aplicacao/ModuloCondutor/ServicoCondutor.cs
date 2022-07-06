@@ -65,7 +65,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
 
         private bool CnhDuplicada(Condutor condutor)
         {
-            var condutorEncontrado = repositorioCondutor.SelecionarCondutorPorCNH(condutor.CPF);
+            var condutorEncontrado = repositorioCondutor.SelecionarCondutorPorCNH(condutor.CNH);
 
             return condutorEncontrado != null &&
                    condutorEncontrado.CNH == condutor.CNH &&

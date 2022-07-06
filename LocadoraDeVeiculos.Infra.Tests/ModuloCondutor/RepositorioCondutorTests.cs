@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCondutor
             cliente = new Cliente()
             {
                 Nome = "O Pedra",
-                CPF = "222.222.222-22",
+                CPF = "222,222,222-22",
                 Telefone = "13168865",
                 TipoPessoa = TipoPessoa.Fisica,
                 Cidade = "Capital Lageana",

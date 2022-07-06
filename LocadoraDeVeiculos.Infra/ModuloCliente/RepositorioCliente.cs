@@ -102,7 +102,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 			FROM
 				[TBCLIENTE] AS CLIENTE
 			WHERE
-				[CPF] = @CPF";
+				CLIENTE.[CPF] = @CPF";
 
 		private string sqlSelecionarPorCNPJ =>
 			@"SELECT
@@ -118,7 +118,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 			FROM
 				[TBCLIENTE] AS CLIENTE
 			WHERE
-				[CNPJ] = @CNPJ";
+				CLIENTE.[CNPJ] = @CNPJ";
 
 		public Cliente SelecionarClientePorCPF(string CPF)
 		{

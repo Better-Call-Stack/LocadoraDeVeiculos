@@ -84,7 +84,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
 				[DATADEADMISSAO],
 				[LOGIN],
 				[SENHA],
-				[PERFIL],
+				[PERFIL]
 			FROM
 				[TBFUNCIONARIO]
 			WHERE
