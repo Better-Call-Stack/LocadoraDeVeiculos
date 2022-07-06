@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Infra.Compartilhado;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +75,23 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             WHERE
                 [ID] = @ID";
 
+        protected override string sqlSelecionarPorPlaca =>
+            @"SELECT 
+                [ID],       
+                [MODELO],
+                [FABRICANTE],
+                [PLACA],             
+                [COR],                    
+                [TIPOCOMBUSTIVEL],
+                [CAPACIDADEDOTANQUE],
+                [ANO],
+                [[KMPERCORRIDO],
+                [GRUPOVEICULOS_ID]
+            FROM
+                [TBFORNECEDOR]
+            WHERE
+                [PLACA] = @PLACA";
+
         protected override string sqlSelecionarTodos =>
             @"SELECT 
                 [ID],       
@@ -88,5 +106,11 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                 [GRUPOVEICULOS_ID]
             FROM
                 [TBFORNECEDOR]";
+
+        public Veiculo SelecionarVeiculoPorPlaca(string placa)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorPlaca, new SqlParameter("PLACA", placa));
+        }
+             
     }
 }
