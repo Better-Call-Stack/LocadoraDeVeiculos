@@ -19,7 +19,9 @@ using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
-using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
+using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
+using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
+using LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -48,10 +50,12 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioFuncionario = new RepositorioFuncionario();
             var repositorioCliente = new RepositorioCliente();
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
+            var repositorioPlanoDeCobranca = new RepositorioPlanoDeCobrancaEmBancoDados();
             var repositorioTaxa = new RepositorioTaxa();
 
             var servicoCliente = new ServicoCliente(repositorioCliente);
             var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
+            var servicoPlanoDeCobranca = new ServicoPlanoDeCobranca(repositorioPlanoDeCobranca);
             var servicoTaxa = new ServicoTaxa(repositorioTaxa);
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
 
@@ -60,6 +64,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente, servicoCliente));
             controladores.Add("Grupo de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
+            controladores.Add("Plano de Cobrança", new ControladorPlanoDeCobranca(repositorioPlanoDeCobranca, servicoPlanoDeCobranca));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
         }
 
@@ -70,7 +75,7 @@ namespace LocadoraDeVeiculos.WinApp
             controlador = controladores[tipo];
 
             ConfigurarListagem();
-
+             
             ConfigurarToolbox();
         }
 
@@ -149,6 +154,11 @@ namespace LocadoraDeVeiculos.WinApp
         }
 
         private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void planosDeCobrançaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }
