@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.Compartilhado;
 using System;
 using System.Collections.Generic;

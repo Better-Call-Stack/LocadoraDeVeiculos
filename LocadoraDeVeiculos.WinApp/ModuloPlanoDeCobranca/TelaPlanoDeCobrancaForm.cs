@@ -18,10 +18,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
         public TelaPlanoDeCobrancaForm(List<GrupoDeVeiculos> grupoDeVeiculos)
         {
             InitializeComponent();
-            CarregarContatos(grupoDeVeiculos);
+            CarregarGrupoDeVeiculos(grupoDeVeiculos);
         }
 
-        private void CarregarContatos(List<GrupoDeVeiculos> grupoDeVeiculos)
+        private void CarregarGrupoDeVeiculos(List<GrupoDeVeiculos> grupoDeVeiculos)
         {
             comboBoxGrupoVeiculos.Items.Clear();
 

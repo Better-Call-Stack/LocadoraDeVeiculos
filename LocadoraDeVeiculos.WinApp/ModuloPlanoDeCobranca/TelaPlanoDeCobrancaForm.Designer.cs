@@ -237,6 +237,7 @@
             // 
             // comboBoxGrupoVeiculos
             // 
+            this.comboBoxGrupoVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGrupoVeiculos.FormattingEnabled = true;
             this.comboBoxGrupoVeiculos.Location = new System.Drawing.Point(37, 62);
             this.comboBoxGrupoVeiculos.Name = "comboBoxGrupoVeiculos";

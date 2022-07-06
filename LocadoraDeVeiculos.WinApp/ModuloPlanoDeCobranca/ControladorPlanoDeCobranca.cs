@@ -1,4 +1,6 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
@@ -13,22 +15,24 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 {
     public class ControladorPlanoDeCobranca : ControladorBase
     {
-        private RepositorioPlanoDeCobrancaEmBancoDados repositorioGrupoVeiculos;
-        private TabelaPlanoDeCobrancaControl tabelaGrupoVeiculos;
-        private readonly ServicoPlanoDeCobranca servicoGrupoVeiculos;
+        private RepositorioPlanoDeCobrancaEmBancoDados repositorioPlanoDeCobranca;
+        private TabelaPlanoDeCobrancaControl tabelaPlanoDeCobranca;
+        private readonly ServicoPlanoDeCobranca servicoPlanoDeCobranca;
+        private RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
 
-        public ControladorPlanoDeCobranca(RepositorioPlanoDeCobrancaEmBancoDados repositorioPlanoDeCobranca, ServicoPlanoDeCobranca servicoPlanoDeCobranca)
+        public ControladorPlanoDeCobranca(RepositorioPlanoDeCobrancaEmBancoDados repositorioPlanoDeCobranca, ServicoPlanoDeCobranca servicoPlanoDeCobranca, RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos)
         {
             this.repositorioPlanoDeCobranca = repositorioPlanoDeCobranca;
             this.servicoPlanoDeCobranca = servicoPlanoDeCobranca;
+            this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
         }
 
         public override void Inserir()
         {
-            TelaPlanoDeCobrancaForm tela = new TelaPlanoDeCobrancaForm();
+            TelaPlanoDeCobrancaForm tela = new TelaPlanoDeCobrancaForm(repositorioGrupoVeiculos.SelecionarTodos());
             tela.PlanoDeCobranca = new PlanoDeCobranca();
 
-            tela.GravarRegistro = servicoPlanoDeCobrancas.Inserir;
+            tela.GravarRegistro = servicoPlanoDeCobranca.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -49,7 +53,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
                 return;
             }
 
-            TelaPlanoDeCobrancaForm tela = new TelaPlanoDeCobrancaForm();
+            TelaPlanoDeCobrancaForm tela = new TelaPlanoDeCobrancaForm(repositorioGrupoVeiculos.SelecionarTodos());
 
             tela.PlanoDeCobranca = planoDeCobrancaSelecionado.Clonar();
 
@@ -89,7 +93,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
             if (tabelaPlanoDeCobranca == null)
                 tabelaPlanoDeCobranca = new TabelaPlanoDeCobrancaControl();
 
-            CarregarGrupoVeiculos();
+            CarregarPlanoDeCobranca();
 
             return tabelaPlanoDeCobranca;
         }

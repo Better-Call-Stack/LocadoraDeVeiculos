@@ -10,6 +10,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 {
     public class PlanoDeCobranca : EntidadeBase<PlanoDeCobranca>
     {
+        public PlanoDeCobranca()
+        {
+
+        }
+
         public string Nome { get; set; }
 
         public GrupoDeVeiculos GrupoDeVeiculos { get; set; }

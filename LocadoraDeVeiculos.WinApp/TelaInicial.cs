@@ -22,6 +22,7 @@ using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca;
+using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -64,7 +65,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente, servicoCliente));
             controladores.Add("Grupo de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
-            controladores.Add("Plano de Cobrança", new ControladorPlanoDeCobranca(repositorioPlanoDeCobranca, servicoPlanoDeCobranca));
+            controladores.Add("Planos de Cobrança", new ControladorPlanoDeCobranca(repositorioPlanoDeCobranca, servicoPlanoDeCobranca, repositorioGrupoVeiculos));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
         }
 

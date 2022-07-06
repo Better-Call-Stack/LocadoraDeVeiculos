@@ -68,18 +68,20 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
 
         protected override string sqlSelecionarTodos =>
             @"SELECT 
-                [ID],
-                [TXTVALORKMRODADO_PLANODIARIO],
-                [TXTVALORPORDIA_PLANODIARIO],
-                [TXTVALORKMRODADO_PLANOKMCONTROLADO],
-                [TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
-                [TXTVALORPORDIA_PLANOKMCONTROLADO],
-                [TXTVALORPORDIA_PLANOKMLIVRE]
+                PC.[ID],
+                PC.[TXTVALORKMRODADO_PLANODIARIO],
+                PC.[TXTVALORPORDIA_PLANODIARIO],
+                PC.[TXTVALORKMRODADO_PLANOKMCONTROLADO],
+                PC.[TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
+                PC.[TXTVALORPORDIA_PLANOKMCONTROLADO],
+                PC.[TXTVALORPORDIA_PLANOKMLIVRE],
+                PC.[GRUPOVEICULOS_ID]
+
             FROM
                 [TBPLANODECOBRANCA] AS PC LEFT JOIN
                 [TBGRUPOVEICULOS] AS GV
             ON
-                GV.ID = PC.ID";
+                GV.[ID] = PC.[ID]";
 
         public PlanoDeCobranca SelecionarPlanoDeCobrancaPorId(string id)
         {
