@@ -1,7 +1,9 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos;
+using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,16 +15,22 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 {
     public class ControladorGrupoVeiculos : ControladorBase
     {
-        private IRepositorioGrupoVeiculos repositorioGrupoVeiculos;
-        //private TabelaGrupoVeiculosControl tabelaGrupoVeiculos;
+        private RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
+        private TabelaGrupoVeiculosControl tabelaGrupoVeiculos;
+        private readonly ServicoGrupoVeiculos servicoGrupoVeiculos;
 
+        public ControladorGrupoVeiculos(RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos, ServicoGrupoVeiculos servicoGrupoVeiculos)
+        {
+            this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
+            this.servicoGrupoVeiculos = servicoGrupoVeiculos;
+        }
 
         public override void Inserir()
         {
             TelaCadastroGrupoVeiculosForm tela = new TelaCadastroGrupoVeiculosForm();
             tela.GrupoDeVeiculos = new GrupoDeVeiculos();
 
-            tela.GravarRegistro = repositorioGrupoVeiculos.Inserir;
+            tela.GravarRegistro = servicoGrupoVeiculos.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -47,7 +55,7 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 
             tela.GrupoDeVeiculos = grupoDeVeiculoSelecionado.Clonar();
 
-            tela.GravarRegistro = repositorioGrupoVeiculos.Editar;
+            tela.GravarRegistro = servicoGrupoVeiculos.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -80,37 +88,33 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 
         public override UserControl ObtemListagem()
         {
-            throw new NotImplementedException();
-
-            /*if (tabelaGrupoVeiculos == null)
+            if (tabelaGrupoVeiculos == null)
                 tabelaGrupoVeiculos = new TabelaGrupoVeiculosControl();
 
             CarregarGrupoVeiculos();
 
-            return tabelaGrupoVeiculos;*/
+            return tabelaGrupoVeiculos;
         }
 
-        /*public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
+        public override ConfiguracaoToolboxGrupoDeVeiculos ObtemConfiguracaoToolbox()
         {
-            return new ConfiguracaoToolboxGrupoVeiculos();
-        }*/
+            return new ConfiguracaoToolboxGrupoDeVeiculos();
+        }
 
         private void CarregarGrupoVeiculos()
         {
-            throw new NotImplementedException();
+            List<GrupoDeVeiculos> grupoDeVeiculos = repositorioGrupoVeiculos.SelecionarTodos();
 
-            /*List<GrupoDeVeiculos> grupoDeVeiculos = repositorioGrupoVeiculos.SelecionarTodos();
-
-            tabelaGrupoVeiculos.AtualizarRegistros(grupoDeVeiculos);*/
+            tabelaGrupoVeiculos.AtualizarRegistros(grupoDeVeiculos);
         }
 
         private GrupoDeVeiculos ObtemGrupoDeVeiculoSelecionado()
         {
-            throw new NotImplementedException();
+            var id = tabelaGrupoVeiculos.ObtemIdGrupoVeiculoSelecionado();
 
-            /*var id = tabelaGrupoVeiculos.ObtemGrupoDeVeiculoSelecionado();
-
-            return repositorioGrupoVeiculos.SelecionarPorNumero(id);*/
+            return repositorioGrupoVeiculos.SelecionarPorId(id);
         }
+
+      
     }
 }

@@ -64,6 +64,11 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado
             };
         }
 
+        public static void ConfigurarColunaId(this DataGridView grid)
+        {
+            grid.Columns[0].Width = 40;
+        }
+
         public static T SelecionarId<T>(this DataGridView grid)
         {
             const int firstLine = 0, firstColumn = 0;

@@ -1,5 +1,9 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.Compartilhado;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
 {
@@ -9,6 +13,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
             @"INSERT INTO [TBFUNCIONARIO]
                 (
                      [NOME],
+                     [CPF],
                      [SALARIO],
                      [DATADEADMISSAO],
                      [LOGIN],
@@ -17,17 +22,20 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
             VALUES
                 (
                      @NOME,
+                     @CPF,
                      @SALARIO,
                      @DATADEADMISSAO,
                      @LOGIN,
                      @SENHA,
                      @PERFIL
-                );SELECT SCOPE_IDENTITY();";
+                )
+                    SELECT SCOPE_IDENTITY();";
 
         protected override string sqlEditar =>
             @" UPDATE [TBFUNCIONARIO]
                     SET 
                         [NOME] = @NOME,
+                        [CPF] = @CPF,
                         [SALARIO] = @SALARIO,
                         [DATADEADMISSAO] = @DATADEADMISSAO,
                         [LOGIN] = @LOGIN, 
@@ -41,7 +49,9 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
+                [ID],
                 [NOME],
+                [CPF],
                 [SALARIO],
                 [DATADEADMISSAO],
                 [LOGIN],
@@ -53,8 +63,10 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
                 [ID] = @ID";
 
         protected override string sqlSelecionarTodos =>
-            @"SELECT 
+            @"SELECT
+                [ID],
                 [NOME],
+                [CPF],
                 [SALARIO],
                 [DATADEADMISSAO],
                 [LOGIN],
@@ -62,5 +74,25 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
                 [PERFIL]
             FROM
                 [TBFUNCIONARIO]";
+
+        private string sqlSelecionarPorCPF =>
+            @"SELECT
+				[ID],
+				[NOME],
+				[CPF],
+				[SALARIO],
+				[DATADEADMISSAO],
+				[LOGIN],
+				[SENHA],
+				[PERFIL],
+			FROM
+				[TBFUNCIONARIO]
+			WHERE
+				[CPF] = @CPF";
+
+       public Funcionario SelecionarFuncionarioPorCPF(string CPF)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorCPF, new SqlParameter("CPF", CPF));
+        }
     }
 }

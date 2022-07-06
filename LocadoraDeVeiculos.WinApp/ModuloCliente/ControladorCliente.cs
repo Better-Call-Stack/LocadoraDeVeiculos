@@ -1,6 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
     {
         private readonly RepositorioCliente repositorioCliente;
         private TabelaClientesControl tabelaClientes;
+        private ServicoCliente servicoCliente;
 
-        public ControladorCliente(RepositorioCliente repositorioCliente)
+        public ControladorCliente(RepositorioCliente repositorioCliente, ServicoCliente servicoCliente)
         {
             this.repositorioCliente = repositorioCliente;
+            this.servicoCliente = servicoCliente;
         }
 
         public override void Editar()
@@ -35,7 +38,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tela.Cliente = clienteSelecionado.Clonar();
 
-            tela.GravarRegistro = repositorioCliente.Editar;
+            tela.GravarRegistro = servicoCliente.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -71,7 +74,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             TelaCadastroClienteForm tela = new TelaCadastroClienteForm("Insercao");
             tela.Cliente = new Cliente();
 
-            tela.GravarRegistro = repositorioCliente.Inserir;
+            tela.GravarRegistro = servicoCliente.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -87,7 +90,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tabelaClientes.AtualizarRegistros(clientes);
 
-            //TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {contatos.Count} contato(s)");
         }
 
         private Cliente ObtemClienteSelecionado()
@@ -104,6 +106,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             CarregarClientes();
 
             return tabelaClientes;
+        }
+
+        public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
+        {
+            return new ConfiguracaoToolboxCliente();
         }
     }
 }

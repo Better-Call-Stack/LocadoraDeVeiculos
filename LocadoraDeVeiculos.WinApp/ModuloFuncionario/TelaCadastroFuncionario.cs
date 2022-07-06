@@ -26,6 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
                 funcionario = value;
 
                 txtNomeFuncionario.Text = funcionario.Nome;
+                txtCPFFuncionario.Text = funcionario.CPF;
                 txtAdmissaoFuncionario.Value = funcionario.DataDeAdmissao;
                 txtLoginFuncionario.Text = funcionario.Login;
                 txtSenhaFuncionario.Text = funcionario.Senha;
@@ -46,11 +47,24 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         private void btnSalvarFuncionario_Click(object sender, EventArgs e)
         {
             funcionario.Nome = txtNomeFuncionario.Text;
+            funcionario.CPF = txtCPFFuncionario.Text;
             funcionario.DataDeAdmissao = txtAdmissaoFuncionario.Value;
+            funcionario.Salario = txtSalario.Value;
             funcionario.Login = txtLoginFuncionario.Text;
             funcionario.Senha = txtSenhaFuncionario.Text;
             funcionario.Perfil = (PerfilEnum)cmbPerfilFuncionario.SelectedItem;
-            
+
+            var resultadoValidacao = GravarRegistro(funcionario);
+
+            if (resultadoValidacao.IsValid == false)
+            {
+                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+
+                MessageBox.Show(erro, "Erro");
+
+                DialogResult = DialogResult.None;
+            }
         }
+
     }
 }

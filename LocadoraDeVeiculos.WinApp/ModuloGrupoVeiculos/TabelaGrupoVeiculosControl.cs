@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,23 +17,39 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
         public TabelaGrupoVeiculosControl()
         {
             InitializeComponent();
-
+            grid.ConfigurarGridZebrado();
+            grid.ConfigurarGridSomenteLeitura();
+            grid.Columns.AddRange(ObterColunas());
+            grid.ConfigurarColunaId();
         }
 
-        internal void AtualizarRegistro(List<GrupoDeVeiculos> grupoVeiculos)
+        public DataGridViewColumn[] ObterColunas()
         {
-            gridGrupoVeiculos.Rows.Clear();
-
-            foreach (GrupoDeVeiculos grupoDeVeiculo in grupoVeiculos)
+            var colunas = new DataGridViewColumn[]
             {
-                gridGrupoVeiculos.Rows.Add(grupoDeVeiculo.Id, grupoDeVeiculo.Nome, grupoDeVeiculo.ValorPlanoDiario, 
-                    grupoDeVeiculo.ValorDiariaKmControlado, grupoDeVeiculo.ValorDiarioKmLivre);
-            }
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
+
+
+            };
+
+            return colunas;
         }
 
-        internal GrupoDeVeiculos SelecionarGrupoVeiculos()
+        public int ObtemIdGrupoVeiculoSelecionado()
         {
-            return new GrupoDeVeiculos();
+            return grid.SelecionarId<int>();
+        }
+
+        public void AtualizarRegistros(List<GrupoDeVeiculos> veiculos)
+        {
+            grid.Rows.Clear();
+
+            foreach (GrupoDeVeiculos veiculo in veiculos)
+            {
+                grid.Rows.Add(veiculo.Id, veiculo.Nome);
+            }
         }
     }
 }

@@ -13,8 +13,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         {
             CPF = "";
             CNPJ = "";
-            CNH = "";
         }
+
+
 
         private TipoPessoa tipoPessoa;
 
@@ -29,8 +30,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         public string Endereco { get; set; }
 
         public string Telefone { get; set; }
-        
-        public string CNH { get; set; }
        
         public string Email { get; set; }
 
@@ -61,7 +60,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
                    Cidade == cliente.Cidade &&
                    Endereco == cliente.Endereco &&
                    Telefone == cliente.Telefone &&
-                   CNH == cliente.CNH &&
                    Email == cliente.Email &&
                    TipoPessoa == cliente.TipoPessoa;
         }

@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LocadoraDeVeiculos.WinApp.Compartilhado;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 {
-    public class ConfiguracaoToolboxFuncionario
+    public class ConfiguracaoToolboxFuncionario : ConfiguracaoToolboxBase
     {
-        public  string TipoCadastro => "Cadastro de Contatos";
+        public override string TipoCadastro => "Cadastro de Colaboradores.";
 
-        public  string TooltipInserir { get { return "Inserir um novo contato"; } }
+        public override string TooltipInserir { get { return "Cadastrar novo colaborador."; } }
 
-        public  string TooltipEditar { get { return "Editar um contato existente"; } }
+        public override string TooltipEditar { get { return "Editar dados do colaborador."; } }
 
-        public  string TooltipExcluir { get { return "Excluir um contato existente"; } }
+        public override string TooltipExcluir { get { return "Excluir dados do colaborador."; } }
 
-        public  string TooltipAgrupar { get { return "Agrupar contatos"; } }
-
-        public  bool AgruparHabilitado { get { return true; } }
     }
 }
