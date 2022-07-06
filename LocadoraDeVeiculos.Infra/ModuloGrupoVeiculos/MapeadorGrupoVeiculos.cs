@@ -27,5 +27,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
 
             return grupoDeVeiculos;
         }
+
     }
 }
