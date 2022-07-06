@@ -36,7 +36,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 
             if (resultadoValidacao.IsValid)
                 repositorioCliente.Editar(cliente);
-
+      
             return resultadoValidacao;
         }
 
