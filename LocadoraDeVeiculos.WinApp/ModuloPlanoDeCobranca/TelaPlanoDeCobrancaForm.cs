@@ -42,9 +42,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
             {
                 planoDeCobranca = value;
 
-                if(planoDeCobranca.Id != 0)
-                    comboBoxGrupoVeiculos.Enabled = false;
-
                 txtValorKmRodado_PlanoDiario.Text = planoDeCobranca.txtValorKmRodado_PlanoDiario.ToString();
                 txtValorPorDia_PlanoDiario.Text = planoDeCobranca.txtValorPorDia_PlanoDiario.ToString();
                 txtValorKmRodado_PlanoKmControlado.Text = planoDeCobranca.txtValorKmRodado_PlanoKmControlado.ToString();
