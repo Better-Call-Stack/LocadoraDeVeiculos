@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
 {
-    public enum TipoCombustivel
+    public enum TipoCombustivelEnum
     {
-        Gasolina, Alcool, Diesel, Flex, Etanol
+        Gasolina, Etanol, Diesel, Flex
     }
 }

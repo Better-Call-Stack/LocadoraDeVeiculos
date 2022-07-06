@@ -9,5 +9,23 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
 {
     public class ValidadorVeiculo : AbstractValidator<Veiculo>
     {
+        public ValidadorVeiculo()
+        {
+            RuleFor(x => x.Placa)
+               .Length(7)
+               .NotNull().NotEmpty();
+
+            RuleFor(x => x.Modelo)
+                .NotNull().NotEmpty();
+
+            RuleFor(x => x.Fabricante)
+                 .NotNull().NotEmpty();
+
+            RuleFor(x => x.CapacidadeTanque)
+                .NotNull().NotEmpty();
+
+            RuleFor(x => x.Ano)
+                .NotNull().NotEmpty();
+        }
     }
 }
