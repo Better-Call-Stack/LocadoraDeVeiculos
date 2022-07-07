@@ -75,7 +75,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             WHERE
                 [ID] = @ID";
 
-        protected override string sqlSelecionarPorPlaca =>
+        protected string sqlSelecionarPorPlaca =>
             @"SELECT 
                 [ID],       
                 [MODELO],

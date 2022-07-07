@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             comando.Parameters.AddWithValue("CAPACIDADEDOTANQUE", veiculo.CapacidadeTanque);
             comando.Parameters.AddWithValue("ANO", veiculo.Ano);
             comando.Parameters.AddWithValue("KMPERCORRIDO", veiculo.KmPercorrido);
-            //comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", veiculo.Grupo);
+            comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", veiculo.Grupo);
         }
 
         public override Veiculo ConverterRegistro(SqlDataReader leitorVeiculo)
@@ -36,7 +36,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             var capacidadeDoTanque = Convert.ToDecimal(leitorVeiculo["CAPACIDADEDOTANQUE"]);
             var ano = Convert.ToInt32(leitorVeiculo["ANO"]);
             var kmpercorrido = Convert.ToInt32(leitorVeiculo["KMPERCORRIDO"]);
-            //var grupoveiculos_id = Convert.ToString(leitorVeiculo["GRUPOVEICULOS_ID"]);
+            var grupoveiculos_id = Convert.ToString(leitorVeiculo["GRUPOVEICULOS_ID"]);
 
             Veiculo veiculo = new Veiculo();
             veiculo.Id = id;
@@ -48,13 +48,9 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             veiculo.CapacidadeTanque = capacidadeDoTanque;
             veiculo.Ano = ano;
             veiculo.KmPercorrido = kmpercorrido;
-            //veiculo.Grupo = grupoveiculos_id;
+            veiculo.Grupo = grupoveiculos_id;
 
-
-
-
-
-            return taxa;
+            return veiculo;
         }
     }
 }
