@@ -15,8 +15,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 
         }
 
-        public string Nome { get; set; }
-
         public GrupoDeVeiculos GrupoDeVeiculos { get; set; }
 
         public decimal txtValorKmRodado_PlanoDiario { get; set; }
@@ -45,7 +43,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 
         public override void Atualizar(PlanoDeCobranca registro)
         {
-            Nome = registro.Nome;
             txtValorKmRodado_PlanoDiario = registro.txtValorKmRodado_PlanoDiario;
             txtValorPorDia_PlanoDiario = registro.txtValorPorDia_PlanoDiario;
             txtValorKmRodado_PlanoKmControlado = registro.txtValorKmRodado_PlanoKmControlado;
@@ -60,7 +57,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         {
             return obj is PlanoDeCobranca cobranca &&
                    Id == cobranca.Id &&
-                   Nome == cobranca.Nome &&
                    EqualityComparer<GrupoDeVeiculos>.Default.Equals(GrupoDeVeiculos, cobranca.GrupoDeVeiculos) &&
                    txtValorKmRodado_PlanoDiario == cobranca.txtValorKmRodado_PlanoDiario &&
                    txtValorPorDia_PlanoDiario == cobranca.txtValorPorDia_PlanoDiario &&

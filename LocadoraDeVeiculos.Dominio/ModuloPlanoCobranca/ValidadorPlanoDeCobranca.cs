@@ -34,6 +34,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
             RuleFor(x => x.txtValorPorDia_PlanoKmLivre)
                     .NotNull().WithMessage("O campo valor diario Km livre é obrigatório")
                     .NotEmpty().WithMessage("O campo valor diario Km livre é obrigatório");
+
+            RuleFor(x => x.GrupoDeVeiculos).NotNull().WithMessage("Selecione um Grupo de Veículos")
+                .NotEmpty().WithMessage("Selecione um Grupo de Veículos");
         }
 
     }

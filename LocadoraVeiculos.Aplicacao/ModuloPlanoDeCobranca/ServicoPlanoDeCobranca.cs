@@ -52,7 +52,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
         private bool IdDuplicado(PlanoDeCobranca planoDeCobranca)
         {
-            var planoDeCobrancaEncontrado = repositorioPlanoDeCobranca.SelecionarPlanoDeCobrancaPorId(planoDeCobranca.Nome);
+            var planoDeCobrancaEncontrado = repositorioPlanoDeCobranca.SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(planoDeCobranca.GrupoDeVeiculos.Id);
 
             return planoDeCobrancaEncontrado != null &&
                    planoDeCobrancaEncontrado.Id != planoDeCobranca.Id;

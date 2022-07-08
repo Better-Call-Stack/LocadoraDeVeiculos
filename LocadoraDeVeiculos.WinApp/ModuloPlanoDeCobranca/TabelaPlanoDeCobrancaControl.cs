@@ -30,12 +30,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "comboBoxGrupoVeiculos", HeaderText = "Grupo de Veículos"},
 
-                new DataGridViewTextBoxColumn { DataPropertyName = "ValorPlanoDiario", HeaderText = "Plano Diário"},
-
-                new DataGridViewTextBoxColumn { DataPropertyName = "ValorDiariaKmControlado", HeaderText = "Diária Km Controlado"},
-
-                new DataGridViewTextBoxColumn { DataPropertyName = "ValorDiariaKmLivre", HeaderText = "Diária Km Livre"},
-
             };
 
             return colunas;
@@ -52,7 +46,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 
             foreach (PlanoDeCobranca cobranca in cobrancas)
             {
-                grid.Rows.Add(cobranca.Id, cobranca.Nome);
+                grid.Rows.Add(cobranca.Id, cobranca.GrupoDeVeiculos.Nome);
             }
         }
     }

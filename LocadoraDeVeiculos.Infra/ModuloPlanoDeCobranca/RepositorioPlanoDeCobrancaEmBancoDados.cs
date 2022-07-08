@@ -23,7 +23,9 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                      [TXTVALORKMRODADO_PLANOKMCONTROLADO],
                      [TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
                      [TXTVALORPORDIA_PLANOKMCONTROLADO],
-                     [TXTVALORPORDIA_PLANOKMLIVRE])
+                     [TXTVALORPORDIA_PLANOKMLIVRE],
+                     [GRUPODEVEICULOS_ID]
+               )
             VALUES
                 (
                      @TXTVALORKMRODADO_PLANODIARIO,
@@ -31,7 +33,10 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                      @TXTVALORKMRODADO_PLANOKMCONTROLADO,
                      @TXTKMLIVREINCLUSO_PLANOKMCONTROLADO,
                      @TXTVALORPORDIA_PLANOKMCONTROLADO,
-                     @TXTVALORPORDIA_PLANOKMLIVRE
+                     @TXTVALORPORDIA_PLANOKMLIVRE,
+                     @GRUPODEVEICULOS_ID
+
+
                 );SELECT SCOPE_IDENTITY();";
 
         protected override string sqlEditar =>
@@ -42,7 +47,10 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                         [TXTVALORKMRODADO_PLANOKMCONTROLADO] = @TXTVALORKMRODADO_PLANOKMCONTROLADO,
                         [TXTKMLIVREINCLUSO_PLANOKMCONTROLADO] =@TXTKMLIVREINCLUSO_PLANOKMCONTROLADO,
                         [TXTVALORPORDIA_PLANOKMCONTROLADO] = @TXTVALORPORDIA_PLANOKMCONTROLADO,
-                        [TXTVALORPORDIA_PLANOKMLIVRE] = @TXTVALORPORDIA_PLANOKMLIVRE
+                        [TXTVALORPORDIA_PLANOKMLIVRE] = @TXTVALORPORDIA_PLANOKMLIVRE,
+                        [GRUPODEVEICULOS_ID] = @GRUPODEVEICULOS_ID
+
+
                     WHERE [ID] = @ID";
 
         protected override string sqlExcluir =>
@@ -51,18 +59,21 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
-                [ID],
-                [TXTVALORKMRODADO_PLANODIARIO],
-                [TXTVALORPORDIA_PLANODIARIO],
-                [TXTVALORKMRODADO_PLANOKMCONTROLADO],
-                [TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
-                [TXTVALORPORDIA_PLANOKMCONTROLADO],
-                [TXTVALORPORDIA_PLANOKMLIVRE]
+                PC.[ID],
+                PC.[TXTVALORKMRODADO_PLANODIARIO],
+                PC.[TXTVALORPORDIA_PLANODIARIO],
+                PC.[TXTVALORKMRODADO_PLANOKMCONTROLADO],
+                PC.[TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
+                PC.[TXTVALORPORDIA_PLANOKMCONTROLADO],
+                PC.[TXTVALORPORDIA_PLANOKMLIVRE],
+                
+                GV.[ID],
+                GV.[NOME]
             FROM
-                [TBPLANODECOBRANCA] AS PC LEFT JOIN
+                [TBPLANODECOBRANCA] AS PC INNER JOIN
                 [TBGRUPOVEICULOS] AS GV
             ON
-                GV.ID = PC.ID
+                PC.[GRUPOVEICULOS_ID] = GV.[ID]
             WHERE
                 PC.[ID] = @ID";
 
@@ -75,15 +86,17 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                 PC.[TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
                 PC.[TXTVALORPORDIA_PLANOKMCONTROLADO],
                 PC.[TXTVALORPORDIA_PLANOKMLIVRE],
-                PC.[GRUPOVEICULOS_ID]
-
+                
+                GV.[ID],
+                GV.[NOME]
             FROM
-                [TBPLANODECOBRANCA] AS PC LEFT JOIN
+                [TBPLANODECOBRANCA] AS PC INNER JOIN
                 [TBGRUPOVEICULOS] AS GV
             ON
-                GV.[ID] = PC.[ID]";
+                GV.[ID] = PC.[GRUPOVEICULOS_ID]
+            ";
 
-        public PlanoDeCobranca SelecionarPlanoDeCobrancaPorId(string id)
+        public PlanoDeCobranca SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(int id)
         {
             return SelecionarPorParametro(sqlSelecionarPorId, new SqlParameter("Id", id));
         }

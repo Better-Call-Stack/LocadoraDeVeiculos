@@ -21,6 +21,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
             comando.Parameters.AddWithValue("TXTKMLIVREINCLUSO_PLANOKMCONTROLADO", planoDeCobranca.txtKmLivreIncluso_PlanoKmControlado);
             comando.Parameters.AddWithValue("TXTVALORPORDIA_PLANOKMCONTROLADO", planoDeCobranca.txtValorPorDia_PlanoKmControlado);
             comando.Parameters.AddWithValue("TXTVALORPORDIA_PLANOKMLIVRE", planoDeCobranca.txtValorPorDia_PlanoKmLivre);
+            comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", planoDeCobranca.GrupoDeVeiculos.Id);
+
         }
 
         public override PlanoDeCobranca ConverterRegistro(SqlDataReader leitorPlanoDeCobranca)

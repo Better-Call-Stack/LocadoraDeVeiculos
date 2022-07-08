@@ -59,10 +59,11 @@
             this.tabControlPlanos.Controls.Add(this.tabPage1);
             this.tabControlPlanos.Controls.Add(this.tabPage2);
             this.tabControlPlanos.Controls.Add(this.tabPage3);
-            this.tabControlPlanos.Location = new System.Drawing.Point(12, 125);
+            this.tabControlPlanos.Location = new System.Drawing.Point(10, 94);
+            this.tabControlPlanos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControlPlanos.Name = "tabControlPlanos";
             this.tabControlPlanos.SelectedIndex = 0;
-            this.tabControlPlanos.Size = new System.Drawing.Size(455, 240);
+            this.tabControlPlanos.Size = new System.Drawing.Size(398, 180);
             this.tabControlPlanos.TabIndex = 0;
             // 
             // tabPage1
@@ -71,44 +72,47 @@
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.txtValorKmRodado_PlanoDiario);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(447, 207);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(390, 152);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Plano Diário";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // txtValorPorDia_PlanoDiario
             // 
-            this.txtValorPorDia_PlanoDiario.Location = new System.Drawing.Point(21, 130);
+            this.txtValorPorDia_PlanoDiario.Location = new System.Drawing.Point(18, 98);
+            this.txtValorPorDia_PlanoDiario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorPorDia_PlanoDiario.Name = "txtValorPorDia_PlanoDiario";
-            this.txtValorPorDia_PlanoDiario.Size = new System.Drawing.Size(186, 27);
+            this.txtValorPorDia_PlanoDiario.Size = new System.Drawing.Size(163, 23);
             this.txtValorPorDia_PlanoDiario.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 107);
+            this.label2.Location = new System.Drawing.Point(18, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 20);
+            this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Valor Por Dia:";
             // 
             // txtValorKmRodado_PlanoDiario
             // 
-            this.txtValorKmRodado_PlanoDiario.Location = new System.Drawing.Point(21, 63);
+            this.txtValorKmRodado_PlanoDiario.Location = new System.Drawing.Point(18, 47);
+            this.txtValorKmRodado_PlanoDiario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorKmRodado_PlanoDiario.Name = "txtValorKmRodado_PlanoDiario";
-            this.txtValorKmRodado_PlanoDiario.Size = new System.Drawing.Size(186, 27);
+            this.txtValorKmRodado_PlanoDiario.Size = new System.Drawing.Size(163, 23);
             this.txtValorKmRodado_PlanoDiario.TabIndex = 1;
             this.txtValorKmRodado_PlanoDiario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 40);
+            this.label1.Location = new System.Drawing.Point(18, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 20);
+            this.label1.Size = new System.Drawing.Size(101, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Valor Km Rodado:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -121,10 +125,11 @@
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.txtValorKmRodado_PlanoKmControlado);
             this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(447, 207);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Size = new System.Drawing.Size(390, 152);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Plano Km Controlado";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -132,48 +137,51 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(237, 43);
+            this.label5.Location = new System.Drawing.Point(207, 32);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 20);
+            this.label5.Size = new System.Drawing.Size(97, 15);
             this.label5.TabIndex = 9;
             this.label5.Text = "Km Livre Incluso:";
             // 
             // txtKmLivreIncluso_PlanoKmControlado
             // 
-            this.txtKmLivreIncluso_PlanoKmControlado.Location = new System.Drawing.Point(237, 66);
+            this.txtKmLivreIncluso_PlanoKmControlado.Location = new System.Drawing.Point(207, 50);
+            this.txtKmLivreIncluso_PlanoKmControlado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtKmLivreIncluso_PlanoKmControlado.Name = "txtKmLivreIncluso_PlanoKmControlado";
-            this.txtKmLivreIncluso_PlanoKmControlado.Size = new System.Drawing.Size(186, 27);
+            this.txtKmLivreIncluso_PlanoKmControlado.Size = new System.Drawing.Size(163, 23);
             this.txtKmLivreIncluso_PlanoKmControlado.TabIndex = 8;
             // 
             // txtValorPorDia_PlanoKmControlado
             // 
-            this.txtValorPorDia_PlanoKmControlado.Location = new System.Drawing.Point(22, 141);
+            this.txtValorPorDia_PlanoKmControlado.Location = new System.Drawing.Point(19, 106);
+            this.txtValorPorDia_PlanoKmControlado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorPorDia_PlanoKmControlado.Name = "txtValorPorDia_PlanoKmControlado";
-            this.txtValorPorDia_PlanoKmControlado.Size = new System.Drawing.Size(186, 27);
+            this.txtValorPorDia_PlanoKmControlado.Size = new System.Drawing.Size(163, 23);
             this.txtValorPorDia_PlanoKmControlado.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(22, 118);
+            this.label3.Location = new System.Drawing.Point(19, 88);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 20);
+            this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 6;
             this.label3.Text = "Valor Por Dia:";
             // 
             // txtValorKmRodado_PlanoKmControlado
             // 
-            this.txtValorKmRodado_PlanoKmControlado.Location = new System.Drawing.Point(22, 66);
+            this.txtValorKmRodado_PlanoKmControlado.Location = new System.Drawing.Point(19, 50);
+            this.txtValorKmRodado_PlanoKmControlado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorKmRodado_PlanoKmControlado.Name = "txtValorKmRodado_PlanoKmControlado";
-            this.txtValorKmRodado_PlanoKmControlado.Size = new System.Drawing.Size(186, 27);
+            this.txtValorKmRodado_PlanoKmControlado.Size = new System.Drawing.Size(163, 23);
             this.txtValorKmRodado_PlanoKmControlado.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 43);
+            this.label4.Location = new System.Drawing.Point(19, 32);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(129, 20);
+            this.label4.Size = new System.Drawing.Size(101, 15);
             this.label4.TabIndex = 4;
             this.label4.Text = "Valor Km Rodado:";
             // 
@@ -181,36 +189,39 @@
             // 
             this.tabPage3.Controls.Add(this.txtValorPorDia_PlanoKmLivre);
             this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(447, 207);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage3.Size = new System.Drawing.Size(390, 152);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Plano Km Livre";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // txtValorPorDia_PlanoKmLivre
             // 
-            this.txtValorPorDia_PlanoKmLivre.Location = new System.Drawing.Point(21, 68);
+            this.txtValorPorDia_PlanoKmLivre.Location = new System.Drawing.Point(18, 51);
+            this.txtValorPorDia_PlanoKmLivre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtValorPorDia_PlanoKmLivre.Name = "txtValorPorDia_PlanoKmLivre";
-            this.txtValorPorDia_PlanoKmLivre.Size = new System.Drawing.Size(186, 27);
+            this.txtValorPorDia_PlanoKmLivre.Size = new System.Drawing.Size(163, 23);
             this.txtValorPorDia_PlanoKmLivre.TabIndex = 9;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(21, 45);
+            this.label6.Location = new System.Drawing.Point(18, 34);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 20);
+            this.label6.Size = new System.Drawing.Size(77, 15);
             this.label6.TabIndex = 8;
             this.label6.Text = "Valor Por Dia:";
             // 
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(369, 371);
+            this.btnCancelar.Location = new System.Drawing.Point(323, 278);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(94, 29);
+            this.btnCancelar.Size = new System.Drawing.Size(82, 22);
             this.btnCancelar.TabIndex = 1;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -218,9 +229,10 @@
             // btnSalvar
             // 
             this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSalvar.Location = new System.Drawing.Point(269, 371);
+            this.btnSalvar.Location = new System.Drawing.Point(235, 278);
+            this.btnSalvar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(94, 29);
+            this.btnSalvar.Size = new System.Drawing.Size(82, 22);
             this.btnSalvar.TabIndex = 2;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -229,32 +241,35 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(37, 39);
+            this.label7.Location = new System.Drawing.Point(32, 29);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(132, 20);
+            this.label7.Size = new System.Drawing.Size(105, 15);
             this.label7.TabIndex = 3;
             this.label7.Text = "Grupo de Veículos:";
             // 
             // comboBoxGrupoVeiculos
             // 
+            this.comboBoxGrupoVeiculos.DisplayMember = "Nome";
             this.comboBoxGrupoVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGrupoVeiculos.FormattingEnabled = true;
-            this.comboBoxGrupoVeiculos.Location = new System.Drawing.Point(37, 62);
+            this.comboBoxGrupoVeiculos.Location = new System.Drawing.Point(32, 46);
+            this.comboBoxGrupoVeiculos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxGrupoVeiculos.Name = "comboBoxGrupoVeiculos";
-            this.comboBoxGrupoVeiculos.Size = new System.Drawing.Size(186, 28);
+            this.comboBoxGrupoVeiculos.Size = new System.Drawing.Size(163, 23);
             this.comboBoxGrupoVeiculos.TabIndex = 4;
             // 
             // TelaPlanoDeCobrancaForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 425);
+            this.ClientSize = new System.Drawing.Size(419, 319);
             this.Controls.Add(this.comboBoxGrupoVeiculos);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.tabControlPlanos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TelaPlanoDeCobrancaForm";
