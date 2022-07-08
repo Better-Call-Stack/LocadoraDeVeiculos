@@ -15,6 +15,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override string TooltipEditar { get { return "Editar dados do veículo."; } }
 
-        public override string TooltipExcluir { get { return "Excluir veículo."; }
+        public override string TooltipExcluir
+        {
+            get { return "Excluir veículo."; }
+        }
     }
 }
