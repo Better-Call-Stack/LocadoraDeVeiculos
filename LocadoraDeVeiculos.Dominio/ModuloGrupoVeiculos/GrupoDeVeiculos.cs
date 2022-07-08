@@ -50,9 +50,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
                    Nome == controladorGrupoVeiculos.Nome;
 
         }
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Nome);
-        }
+
     }
 }

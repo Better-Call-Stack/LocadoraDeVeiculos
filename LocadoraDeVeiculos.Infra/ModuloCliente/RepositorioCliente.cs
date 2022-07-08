@@ -106,7 +106,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 
 		private string sqlSelecionarPorCNPJ =>
 			@"SELECT
-				 CLIENTE.[ID] CLIENTE_ID,
+				   CLIENTE.[ID] CLIENTE_ID,
                    CLIENTE.[NOME] CLIENTE_NOME,
                    CLIENTE.[CPF] CLIENTE_CPF,
 		           CLIENTE.[CNPJ] CLIENTE_CNPJ,

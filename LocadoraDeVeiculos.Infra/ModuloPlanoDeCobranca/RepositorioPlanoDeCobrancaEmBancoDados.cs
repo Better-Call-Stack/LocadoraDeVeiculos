@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                      [TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
                      [TXTVALORPORDIA_PLANOKMCONTROLADO],
                      [TXTVALORPORDIA_PLANOKMLIVRE],
-                     [GRUPODEVEICULOS_ID]
+                     [GRUPOVEICULOS_ID]
                )
             VALUES
                 (
@@ -34,7 +34,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                      @TXTKMLIVREINCLUSO_PLANOKMCONTROLADO,
                      @TXTVALORPORDIA_PLANOKMCONTROLADO,
                      @TXTVALORPORDIA_PLANOKMLIVRE,
-                     @GRUPODEVEICULOS_ID
+                     @GRUPOVEICULOS_ID
 
 
                 );SELECT SCOPE_IDENTITY();";
@@ -48,7 +48,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                         [TXTKMLIVREINCLUSO_PLANOKMCONTROLADO] =@TXTKMLIVREINCLUSO_PLANOKMCONTROLADO,
                         [TXTVALORPORDIA_PLANOKMCONTROLADO] = @TXTVALORPORDIA_PLANOKMCONTROLADO,
                         [TXTVALORPORDIA_PLANOKMLIVRE] = @TXTVALORPORDIA_PLANOKMLIVRE,
-                        [GRUPODEVEICULOS_ID] = @GRUPODEVEICULOS_ID
+                        [GRUPOVEICULOS_ID] = @GRUPOVEICULOS_ID
 
 
                     WHERE [ID] = @ID";
