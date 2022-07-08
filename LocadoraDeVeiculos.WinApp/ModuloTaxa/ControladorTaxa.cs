@@ -1,6 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 {
     public class ControladorTaxa : ControladorBase
     {
-
-        public RepositorioTaxa repositorio;
+        
+        private readonly RepositorioTaxa repositorio;
+        private ServicoTaxa servico;
         private TabelaTaxaControl tabelaTaxas;
 
-        public ControladorTaxa(RepositorioTaxa repositorio)
+        public ControladorTaxa(RepositorioTaxa repositorio, ServicoTaxa servico)
         {
-            this.repositorio = repositorio; 
+            this.repositorio = repositorio;
+            this.servico = servico;
         }
         public override void Editar()
         {
@@ -35,7 +38,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             tela.Taxa = taxaSelecionada.Clonar();
 
-            tela.GravarRegistro = repositorio.Editar;
+            tela.GravarRegistro = servico.Editar;
 
             DialogResult resultado = tela.ShowDialog();
 
@@ -71,7 +74,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             TelaCadastroTaxaForm tela = new TelaCadastroTaxaForm();
             tela.Taxa = new Taxa();
 
-            tela.GravarRegistro = repositorio.Inserir;
+            tela.GravarRegistro = servico.Inserir;
 
             DialogResult resultado = tela.ShowDialog();
 

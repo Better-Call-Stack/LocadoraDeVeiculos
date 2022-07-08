@@ -15,6 +15,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             CNPJ = "";
         }
 
+
+
         private TipoPessoa tipoPessoa;
 
         public string Nome { get; set; }

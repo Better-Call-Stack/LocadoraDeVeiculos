@@ -1,11 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.Compartilhado;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.ModuloTaxa
 {
@@ -24,7 +20,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloTaxa
             var id = Convert.ToInt32(leitorTaxa["ID"]);
             var nome = Convert.ToString(leitorTaxa["NOME"]);
             var valor = Convert.ToDecimal(leitorTaxa["VALOR"]);
-            var tipoCobranca =(TipoCalculoTaxa)(leitorTaxa["TIPOCOBRANCA"]);
+            var tipoCobranca = (TipoCalculoTaxa)(leitorTaxa["TIPOCOBRANCA"]);
 
 
             Taxa taxa = new Taxa();
@@ -32,7 +28,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloTaxa
             taxa.Nome = nome;
             taxa.Valor = valor;
             taxa.Tipo = tipoCobranca;
-            
+
 
 
 

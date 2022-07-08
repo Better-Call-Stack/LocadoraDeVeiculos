@@ -4,15 +4,12 @@ using LocadoraDeVeiculos.Infra.Compartilhado;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.ModuloCliente
 {
-    public class RepositorioCliente : RepositorioBase<Cliente, ValidadorCliente, MapeadorCliente>
-    {
-        protected override string sqlInserir => 
+	public class RepositorioCliente : RepositorioBase<Cliente, ValidadorCliente, MapeadorCliente>
+	{
+		protected override string sqlInserir =>
 			@"INSERT INTO [TBCLIENTE]
 				(
 					[NOME],
@@ -37,7 +34,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				)
 				SELECT SCOPE_IDENTITY();";
 
-        protected override string sqlEditar =>
+		protected override string sqlEditar =>
 			@" UPDATE [TBCLIENTE]
 				SET
 					[NOME] = @NOME,
@@ -53,137 +50,87 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 
 					";
 
-        protected override string sqlExcluir =>
+		protected override string sqlExcluir =>
 			@"DELETE FROM [TBCLIENTE]
                 WHERE [ID] = @ID";
 
-        protected override string sqlSelecionarPorId =>
+		protected override string sqlSelecionarPorId =>
+
+			
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+				   CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
+
 			WHERE
 				[ID] = @ID";
 
-        protected override string sqlSelecionarTodos =>
+		protected override string sqlSelecionarTodos =>
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+				 CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
 			";
 
-        public override ValidationResult Inserir(Cliente registro)
-        {
-			var validador = new ValidadorCliente();
+		private string sqlSelecionarPorCPF =>
+			@"SELECT
+				   CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
+			FROM
+				[TBCLIENTE] AS CLIENTE
+			WHERE
+				CLIENTE.[CPF] = @CPF";
 
-			var resultadoValidacao = validador.Validate(registro);
-			
-			ValidacaoDuplicados(registro, resultadoValidacao);
+		private string sqlSelecionarPorCNPJ =>
+			@"SELECT
+				 CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
+			FROM
+				[TBCLIENTE] AS CLIENTE
+			WHERE
+				CLIENTE.[CNPJ] = @CNPJ";
 
-			SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
-
-			SqlCommand comandoInsercao = new SqlCommand(sqlInserir, conexaoComBanco);
-
-			var mapeador = new MapeadorCliente();
-
-			mapeador.ConfigurarParametros(registro, comandoInsercao);
-
-			conexaoComBanco.Open();
-			var id = comandoInsercao.ExecuteScalar();
-			registro.Id = Convert.ToInt32(id);
-
-			conexaoComBanco.Close();
-
-			return resultadoValidacao;
-		}
-
-        public override ValidationResult Editar(Cliente registro)
-        {
-            var validador = new ValidadorCliente();
-
-            var resultadoValidacao = validador.Validate(registro);
-
-            ValidacaoDuplicados(registro, resultadoValidacao);
-
-            if (resultadoValidacao.IsValid == false)
-                return resultadoValidacao;
-
-            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
-
-            SqlCommand comandoEdicao = new SqlCommand(sqlEditar, conexaoComBanco);
-
-            var mapeador = new MapeadorCliente();
-
-            mapeador.ConfigurarParametros(registro, comandoEdicao);
-
-            conexaoComBanco.Open();
-            comandoEdicao.ExecuteNonQuery();
-            conexaoComBanco.Close();
-
-            return resultadoValidacao;
-        }
-
-		private void ValidacaoDuplicados(Cliente registro, ValidationResult resultadoValidacao)
+		public Cliente SelecionarClientePorCPF(string CPF)
 		{
-			Cliente cRepetido = new Cliente();
+			return SelecionarPorParametro(sqlSelecionarPorCPF, new SqlParameter("CPF", CPF));
 
-			bool cpfRepetido = false;
-			foreach (var c in SelecionarTodos())
-			{
-				if (registro.CPF == c.CPF)
-				{
-					cpfRepetido = true;
-					cRepetido = c;
-				}
-			}
-
-			bool cnpjRepetido = false;
-			foreach (var c in SelecionarTodos())
-			{
-				if (registro.CNPJ == c.CNPJ)
-				{
-					cnpjRepetido = true;
-					cRepetido = c;
-				}
-			}
-
-
-
-			if (cpfRepetido && registro.TipoPessoa == TipoPessoa.Fisica && registro.Id != cRepetido.Id)
-			{
-				resultadoValidacao
-				  .Errors
-				  .Add(new ValidationFailure("", "CPF já existe."));
-			}
-
-			if (cnpjRepetido && registro.TipoPessoa == TipoPessoa.Juridica && registro.Id != cRepetido.Id)
-			{
-				resultadoValidacao
-				  .Errors
-				  .Add(new ValidationFailure("", "CNPJ já existe."));
-			}
 		}
 
+		public Cliente SelecionarClientePorCNPJ(string CNPJ)
+		{
+			return SelecionarPorParametro(sqlSelecionarPorCNPJ, new SqlParameter("CNPJ", CNPJ));
 
-        public override List<Cliente> SelecionarTodos()
-        {
-            return base.SelecionarTodos();
-        }
-    }
+		}
+
+	}
 }

@@ -1,10 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.Compartilhado;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.ModuloTaxa
 {
@@ -51,7 +47,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloTaxa
 				[ID] = @ID";
 
         protected override string sqlSelecionarTodos =>
-				@"SELECT
+                @"SELECT
 				[ID],
 				[NOME],
 				[VALOR],
@@ -59,5 +55,22 @@ namespace LocadoraDeVeiculos.Infra.ModuloTaxa
 			FROM
 				[TBTAXA]
 			";
-	}
+
+        private string sqlSelecionarPorNome =>
+            @"SELECT
+				[ID],
+			    [NOME],
+                [VALOR],
+                [TIPOCOBRANCA]
+			FROM
+				[TBTAXA]
+			WHERE
+				[NOME] = @NOME";
+
+        
+        public Taxa SelecionarTaxaPorNome(string nome)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
+        } 
+    }
 }
