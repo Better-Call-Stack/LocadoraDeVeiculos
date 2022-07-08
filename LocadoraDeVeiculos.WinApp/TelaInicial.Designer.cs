@@ -70,9 +70,9 @@ namespace LocadoraDeVeiculos.WinApp
             this.grupoDeVeiculosToolStripMenuItem,
             this.taxasToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.planosDeCobrançaToolStripMenuItem});
+            this.planosDeCobrançaToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.condutoresToolStripMenuItem});
+            this.condutoresToolStripMenuItem });
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
