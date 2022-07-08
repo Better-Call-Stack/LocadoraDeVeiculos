@@ -37,6 +37,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 
             RuleFor(x => x.Endereco).NotNull().WithMessage("Campo Endereço é obrigatório")
               .NotEmpty().WithMessage("Campo Endereço é obrigatório");
+
+            RuleFor(x => x.ValidadeCNH.Year).GreaterThan(2000);
         }
     }
 }
