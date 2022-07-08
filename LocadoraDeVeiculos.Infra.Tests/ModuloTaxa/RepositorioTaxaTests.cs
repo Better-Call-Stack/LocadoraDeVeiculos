@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloTaxa
             }
 
             [TestMethod]
-            public void Deve_Inserir_Cliente()
+            public void Deve_Inserir_Taxa()
             {
                 repositorio.Inserir(taxa);
 

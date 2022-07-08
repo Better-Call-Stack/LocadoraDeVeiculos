@@ -55,67 +55,70 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
                 WHERE [ID] = @ID";
 
 		protected override string sqlSelecionarPorId =>
+
+			
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+				   CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
+
 			WHERE
 				[ID] = @ID";
 
 		protected override string sqlSelecionarTodos =>
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+				 CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
 			";
 
 		private string sqlSelecionarPorCPF =>
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+				   CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
 			WHERE
-				[CPF] = @CPF";
+				CLIENTE.[CPF] = @CPF";
 
 		private string sqlSelecionarPorCNPJ =>
 			@"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[CNPJ],
-				[CIDADE],
-				[ENDERECO],
-				[TELEFONE],
-				[TIPOPESSOA],
-				[EMAIL]
+				 CLIENTE.[ID] CLIENTE_ID,
+                   CLIENTE.[NOME] CLIENTE_NOME,
+                   CLIENTE.[CPF] CLIENTE_CPF,
+		           CLIENTE.[CNPJ] CLIENTE_CNPJ,
+			   	   CLIENTE.[CIDADE] CLIENTE_CIDADE,
+				   CLIENTE.[ENDERECO] CLIENTE_ENDERECO,
+				   CLIENTE.[TELEFONE] CLIENTE_TELEFONE,
+				   CLIENTE.[TIPOPESSOA] CLIENTE_TIPOPESSOA,
+				   CLIENTE.[EMAIL] CLIENTE_EMAIL
 			FROM
-				[TBCLIENTE]
+				[TBCLIENTE] AS CLIENTE
 			WHERE
-				[CNPJ] = @CNPJ";
+				CLIENTE.[CNPJ] = @CNPJ";
 
 		public Cliente SelecionarClientePorCPF(string CPF)
 		{

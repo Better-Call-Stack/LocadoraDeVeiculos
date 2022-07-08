@@ -64,8 +64,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             if (resultado == DialogResult.OK)
             {
-                repositorioCliente.Excluir(clienteSelecionado);
-                CarregarClientes();
+                try
+                {
+                    repositorioCliente.Excluir(clienteSelecionado);
+                    CarregarClientes();
+                }
+                catch(Exception e)
+                {
+                    MessageBox.Show("Cliente ligado com um Condutor não pode ser excluído",
+                "Exclusão de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
         }
 
@@ -90,7 +98,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             tabelaClientes.AtualizarRegistros(clientes);
 
-            //TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {contatos.Count} contato(s)");
         }
 
         private Cliente ObtemClienteSelecionado()

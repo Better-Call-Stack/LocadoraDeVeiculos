@@ -22,15 +22,15 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 
         public override Cliente ConverterRegistro(SqlDataReader leitorCliente)
         {
-            var id = Convert.ToInt32(leitorCliente["ID"]);
-            var nome = Convert.ToString(leitorCliente["NOME"]);
-            var telefone = Convert.ToString(leitorCliente["TELEFONE"]);
-            var email = Convert.ToString(leitorCliente["EMAIL"]);
-            var cidade = Convert.ToString(leitorCliente["CIDADE"]);
-            var cpf = Convert.ToString(leitorCliente["CPF"]);
-            var cnpj = Convert.ToString(leitorCliente["CNPJ"]);
-            var tipoPessoa = (TipoPessoa)leitorCliente["TIPOPESSOA"];
-            var endereco = Convert.ToString(leitorCliente["ENDERECO"]);
+            var id = Convert.ToInt32(leitorCliente["CLIENTE_ID"]);
+            var nome = Convert.ToString(leitorCliente["CLIENTE_NOME"]);
+            var telefone = Convert.ToString(leitorCliente["CLIENTE_TELEFONE"]);
+            var email = Convert.ToString(leitorCliente["CLIENTE_EMAIL"]);
+            var cidade = Convert.ToString(leitorCliente["CLIENTE_CIDADE"]);
+            var cpf = Convert.ToString(leitorCliente["CLIENTE_CPF"]);
+            var cnpj = Convert.ToString(leitorCliente["CLIENTE_CNPJ"]);
+            var tipoPessoa = (TipoPessoa)leitorCliente["CLIENTE_TIPOPESSOA"];
+            var endereco = Convert.ToString(leitorCliente["CLIENTE_ENDERECO"]);
 
             Cliente cliente = new Cliente();
             cliente.Id = id;
