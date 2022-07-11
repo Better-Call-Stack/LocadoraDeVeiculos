@@ -11,9 +11,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 {
     public class ServicoPlanoDeCobranca
     {
-        private RepositorioPlanoDeCobrancaEmBancoDados repositorioPlanoDeCobranca;
+        private RepositorioPlanoDeCobranca repositorioPlanoDeCobranca;
 
-        public ServicoPlanoDeCobranca(RepositorioPlanoDeCobrancaEmBancoDados repositorioPlanoDeCobranca)
+        public ServicoPlanoDeCobranca(RepositorioPlanoDeCobranca repositorioPlanoDeCobranca)
         {
             this.repositorioPlanoDeCobranca = repositorioPlanoDeCobranca;
         }
@@ -45,7 +45,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             var resultadoValidacao = validador.Validate(planoDeCobranca);
 
             if (IdDuplicado(planoDeCobranca))
-                resultadoValidacao.Errors.Add(new ValidationFailure("Id", "Id Duplicado"));
+                resultadoValidacao.Errors.Add(new ValidationFailure("Erro", "Grupo de veiculos já possue plano de cobrança"));
 
             return resultadoValidacao;
         }

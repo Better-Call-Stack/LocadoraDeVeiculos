@@ -9,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
 {
-    public class RepositorioPlanoDeCobrancaEmBancoDados : RepositorioBase<PlanoDeCobranca, ValidadorPlanoDeCobranca, MapeadorPlanoDeCobranca>, IRepositorioPlanoDeCobranca
+    public class RepositorioPlanoDeCobranca : RepositorioBase<PlanoDeCobranca, ValidadorPlanoDeCobranca, MapeadorPlanoDeCobranca>, IRepositorioPlanoDeCobranca
     {
-        public RepositorioPlanoDeCobrancaEmBancoDados()
+        public RepositorioPlanoDeCobranca()
         {
-            Db.ExecutarSql("DELETE FROM TBPLANODECOBRANCA; DBCC CHECKIDENT (TBPLANODECOBRANCA, RESEED, 0)");
         }
         protected override string sqlInserir =>
             @"INSERT INTO [TBPLANODECOBRANCA]

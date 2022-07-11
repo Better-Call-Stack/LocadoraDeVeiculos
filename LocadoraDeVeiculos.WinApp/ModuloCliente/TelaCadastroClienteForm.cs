@@ -21,9 +21,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             InitializeComponent();
 
             if (modoTela == "Visualizacao")
-            {
                 DesativarCampos();
-            }
+
         }
 
         private void DesativarCampos()

@@ -37,19 +37,22 @@
             this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 0);
+            this.grid.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grid.Name = "grid";
             this.grid.RowHeadersWidth = 51;
             this.grid.RowTemplate.Height = 29;
-            this.grid.Size = new System.Drawing.Size(577, 573);
+            this.grid.Size = new System.Drawing.Size(505, 430);
             this.grid.TabIndex = 0;
+            this.grid.DoubleClick += new System.EventHandler(this.grid_DoubleClick);
             // 
             // TabelaPlanoDeCobrancaControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.grid);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TabelaPlanoDeCobrancaControl";
-            this.Size = new System.Drawing.Size(577, 573);
+            this.Size = new System.Drawing.Size(505, 430);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
 
