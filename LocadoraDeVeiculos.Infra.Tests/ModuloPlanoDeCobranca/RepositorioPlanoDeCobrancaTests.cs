@@ -15,7 +15,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
     public class RepositorioPlanoDeCobrancaTests
     {
         PlanoDeCobranca planoDeCobranca;
-        RepositorioPlanoDeCobrancaEmBancoDados repositorio = new RepositorioPlanoDeCobrancaEmBancoDados();
+        RepositorioPlanoDeCobranca repositorio = new RepositorioPlanoDeCobranca();
 
         public RepositorioPlanoDeCobrancaTests()
         {
