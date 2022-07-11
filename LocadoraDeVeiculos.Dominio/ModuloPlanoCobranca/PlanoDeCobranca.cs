@@ -17,39 +17,39 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 
         public GrupoDeVeiculos GrupoDeVeiculos { get; set; }
 
-        public decimal txtValorKmRodado_PlanoDiario { get; set; }
+        public decimal ValorKmRodado_PlanoDiario { get; set; }
 
-        public decimal txtValorPorDia_PlanoDiario { get; set; }
+        public decimal ValorPorDia_PlanoDiario { get; set; }
 
-        public decimal txtValorKmRodado_PlanoKmControlado { get; set; }
+        public decimal ValorKmRodado_PlanoKmControlado { get; set; }
 
-        public decimal txtKmLivreIncluso_PlanoKmControlado { get; set; }
+        public decimal KmLivreIncluso_PlanoKmControlado { get; set; }
 
-        public decimal txtValorPorDia_PlanoKmControlado { get; set; }
+        public decimal ValorPorDia_PlanoKmControlado { get; set; }
 
-        public decimal txtValorPorDia_PlanoKmLivre { get; set; }
+        public decimal ValorPorDia_PlanoKmLivre { get; set; }
 
         public PlanoDeCobranca(decimal valorKmRodado_PlanoDiario, decimal valorPorDia_PlanoDiario, decimal valorKmRodado_PlanoKmControlado, decimal kmLivreIncluso_PlanoKmControlado,
         decimal valorPorDia_PlanoKmControlado, decimal valorPorDia_PlanoKmLivre, GrupoDeVeiculos grupoDeVeiculos)
         {
-            txtValorKmRodado_PlanoDiario = valorKmRodado_PlanoDiario;
-            txtValorPorDia_PlanoDiario = valorPorDia_PlanoDiario;
-            txtValorKmRodado_PlanoKmControlado = valorKmRodado_PlanoKmControlado;
-            txtKmLivreIncluso_PlanoKmControlado = kmLivreIncluso_PlanoKmControlado;
-            txtValorPorDia_PlanoKmControlado = valorPorDia_PlanoKmControlado;
-            txtValorPorDia_PlanoKmLivre = valorPorDia_PlanoKmLivre;
+            ValorKmRodado_PlanoDiario = valorKmRodado_PlanoDiario;
+            ValorPorDia_PlanoDiario = valorPorDia_PlanoDiario;
+            ValorKmRodado_PlanoKmControlado = valorKmRodado_PlanoKmControlado;
+            KmLivreIncluso_PlanoKmControlado = kmLivreIncluso_PlanoKmControlado;
+            ValorPorDia_PlanoKmControlado = valorPorDia_PlanoKmControlado;
+            ValorPorDia_PlanoKmLivre = valorPorDia_PlanoKmLivre;
             GrupoDeVeiculos = grupoDeVeiculos;
         }
 
         public override void Atualizar(PlanoDeCobranca registro)
         {
-            txtValorKmRodado_PlanoDiario = registro.txtValorKmRodado_PlanoDiario;
-            txtValorPorDia_PlanoDiario = registro.txtValorPorDia_PlanoDiario;
-            txtValorKmRodado_PlanoKmControlado = registro.txtValorKmRodado_PlanoKmControlado;
-            txtKmLivreIncluso_PlanoKmControlado = registro.txtKmLivreIncluso_PlanoKmControlado;
-            txtValorPorDia_PlanoKmControlado = registro.txtValorPorDia_PlanoKmControlado;
-            txtValorPorDia_PlanoKmLivre = registro.txtValorPorDia_PlanoKmLivre;
-            txtValorPorDia_PlanoKmLivre = registro.txtValorPorDia_PlanoKmLivre;
+            ValorKmRodado_PlanoDiario = registro.ValorKmRodado_PlanoDiario;
+            ValorPorDia_PlanoDiario = registro.ValorPorDia_PlanoDiario;
+            ValorKmRodado_PlanoKmControlado = registro.ValorKmRodado_PlanoKmControlado;
+            KmLivreIncluso_PlanoKmControlado = registro.KmLivreIncluso_PlanoKmControlado;
+            ValorPorDia_PlanoKmControlado = registro.ValorPorDia_PlanoKmControlado;
+            ValorPorDia_PlanoKmLivre = registro.ValorPorDia_PlanoKmLivre;
+            ValorPorDia_PlanoKmLivre = registro.ValorPorDia_PlanoKmLivre;
             GrupoDeVeiculos = registro.GrupoDeVeiculos;
         }
 
@@ -63,12 +63,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
         {
             HashCode hash = new HashCode();
             hash.Add(Id);
-            hash.Add(txtValorKmRodado_PlanoDiario);
-            hash.Add(txtValorPorDia_PlanoDiario);
-            hash.Add(txtValorKmRodado_PlanoKmControlado);
-            hash.Add(txtKmLivreIncluso_PlanoKmControlado);
-            hash.Add(txtValorPorDia_PlanoKmControlado);
-            hash.Add(txtValorPorDia_PlanoKmLivre);
+            hash.Add(ValorKmRodado_PlanoDiario);
+            hash.Add(ValorPorDia_PlanoDiario);
+            hash.Add(ValorKmRodado_PlanoKmControlado);
+            hash.Add(KmLivreIncluso_PlanoKmControlado);
+            hash.Add(ValorPorDia_PlanoKmControlado);
+            hash.Add(ValorPorDia_PlanoKmLivre);
             return hash.ToHashCode();
         }
 
@@ -77,12 +77,12 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
             return obj is PlanoDeCobranca cobranca &&
                    Id == cobranca.Id &&
                    EqualityComparer<GrupoDeVeiculos>.Default.Equals(GrupoDeVeiculos, cobranca.GrupoDeVeiculos) &&
-                   txtValorKmRodado_PlanoDiario == cobranca.txtValorKmRodado_PlanoDiario &&
-                   txtValorPorDia_PlanoDiario == cobranca.txtValorPorDia_PlanoDiario &&
-                   txtValorKmRodado_PlanoKmControlado == cobranca.txtValorKmRodado_PlanoKmControlado &&
-                   txtKmLivreIncluso_PlanoKmControlado == cobranca.txtKmLivreIncluso_PlanoKmControlado &&
-                   txtValorPorDia_PlanoKmControlado == cobranca.txtValorPorDia_PlanoKmControlado &&
-                   txtValorPorDia_PlanoKmLivre == cobranca.txtValorPorDia_PlanoKmLivre;
+                   ValorKmRodado_PlanoDiario == cobranca.ValorKmRodado_PlanoDiario &&
+                   ValorPorDia_PlanoDiario == cobranca.ValorPorDia_PlanoDiario &&
+                   ValorKmRodado_PlanoKmControlado == cobranca.ValorKmRodado_PlanoKmControlado &&
+                   KmLivreIncluso_PlanoKmControlado == cobranca.KmLivreIncluso_PlanoKmControlado &&
+                   ValorPorDia_PlanoKmControlado == cobranca.ValorPorDia_PlanoKmControlado &&
+                   ValorPorDia_PlanoKmLivre == cobranca.ValorPorDia_PlanoKmLivre;
         }
     }
 }

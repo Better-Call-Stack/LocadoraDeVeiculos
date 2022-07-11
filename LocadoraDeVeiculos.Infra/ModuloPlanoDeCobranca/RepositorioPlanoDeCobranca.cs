@@ -17,22 +17,22 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
         protected override string sqlInserir =>
             @"INSERT INTO [TBPLANODECOBRANCA]
                 (
-                     [TXTVALORKMRODADO_PLANODIARIO],
-                     [TXTVALORPORDIA_PLANODIARIO],
-                     [TXTVALORKMRODADO_PLANOKMCONTROLADO],
-                     [TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
-                     [TXTVALORPORDIA_PLANOKMCONTROLADO],
-                     [TXTVALORPORDIA_PLANOKMLIVRE],
+                     [VALORKMRODADO_PLANODIARIO],
+                     [VALORPORDIA_PLANODIARIO],
+                     [VALORKMRODADO_PLANOKMCONTROLADO],
+                     [KMLIVREINCLUSO_PLANOKMCONTROLADO],
+                     [VALORPORDIA_PLANOKMCONTROLADO],
+                     [VALORPORDIA_PLANOKMLIVRE],
                      [GRUPOVEICULOS_ID]
                )
             VALUES
                 (
-                     @TXTVALORKMRODADO_PLANODIARIO,
-                     @TXTVALORPORDIA_PLANODIARIO,
-                     @TXTVALORKMRODADO_PLANOKMCONTROLADO,
-                     @TXTKMLIVREINCLUSO_PLANOKMCONTROLADO,
-                     @TXTVALORPORDIA_PLANOKMCONTROLADO,
-                     @TXTVALORPORDIA_PLANOKMLIVRE,
+                     @VALORKMRODADO_PLANODIARIO,
+                     @VALORPORDIA_PLANODIARIO,
+                     @VALORKMRODADO_PLANOKMCONTROLADO,
+                     @KMLIVREINCLUSO_PLANOKMCONTROLADO,
+                     @VALORPORDIA_PLANOKMCONTROLADO,
+                     @VALORPORDIA_PLANOKMLIVRE,
                      @GRUPOVEICULOS_ID
 
 
@@ -41,12 +41,12 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
         protected override string sqlEditar =>
             @" UPDATE [TBPLANODECOBRANCA]
                     SET 
-                        [TXTVALORKMRODADO_PLANODIARIO] = @TXTVALORKMRODADO_PLANODIARIO,
-                        [TXTVALORPORDIA_PLANODIARIO] = @TXTVALORPORDIA_PLANODIARIO,
-                        [TXTVALORKMRODADO_PLANOKMCONTROLADO] = @TXTVALORKMRODADO_PLANOKMCONTROLADO,
-                        [TXTKMLIVREINCLUSO_PLANOKMCONTROLADO] =@TXTKMLIVREINCLUSO_PLANOKMCONTROLADO,
-                        [TXTVALORPORDIA_PLANOKMCONTROLADO] = @TXTVALORPORDIA_PLANOKMCONTROLADO,
-                        [TXTVALORPORDIA_PLANOKMLIVRE] = @TXTVALORPORDIA_PLANOKMLIVRE,
+                        [VALORKMRODADO_PLANODIARIO] = @TXTVALORKMRODADO_PLANODIARIO,
+                        [VALORPORDIA_PLANODIARIO] = @TXTVALORPORDIA_PLANODIARIO,
+                        [VALORKMRODADO_PLANOKMCONTROLADO] = @TXTVALORKMRODADO_PLANOKMCONTROLADO,
+                        [KMLIVREINCLUSO_PLANOKMCONTROLADO] =@TXTKMLIVREINCLUSO_PLANOKMCONTROLADO,
+                        [VALORPORDIA_PLANOKMCONTROLADO] = @TXTVALORPORDIA_PLANOKMCONTROLADO,
+                        [VALORPORDIA_PLANOKMLIVRE] = @TXTVALORPORDIA_PLANOKMLIVRE,
                         [GRUPOVEICULOS_ID] = @GRUPOVEICULOS_ID
 
 
@@ -59,12 +59,12 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
         protected override string sqlSelecionarPorId =>
             @"SELECT 
                 PC.[ID],
-                PC.[TXTVALORKMRODADO_PLANODIARIO],
-                PC.[TXTVALORPORDIA_PLANODIARIO],
-                PC.[TXTVALORKMRODADO_PLANOKMCONTROLADO],
-                PC.[TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
-                PC.[TXTVALORPORDIA_PLANOKMCONTROLADO],
-                PC.[TXTVALORPORDIA_PLANOKMLIVRE],
+                PC.[VALORKMRODADO_PLANODIARIO],
+                PC.[VALORPORDIA_PLANODIARIO],
+                PC.[VALORKMRODADO_PLANOKMCONTROLADO],
+                PC.[KMLIVREINCLUSO_PLANOKMCONTROLADO],
+                PC.[VALORPORDIA_PLANOKMCONTROLADO],
+                PC.[VALORPORDIA_PLANOKMLIVRE],
                 
                 GV.[ID],
                 GV.[NOME]
@@ -79,12 +79,12 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
         protected override string sqlSelecionarTodos =>
             @"SELECT 
                 PC.[ID],
-                PC.[TXTVALORKMRODADO_PLANODIARIO],
-                PC.[TXTVALORPORDIA_PLANODIARIO],
-                PC.[TXTVALORKMRODADO_PLANOKMCONTROLADO],
-                PC.[TXTKMLIVREINCLUSO_PLANOKMCONTROLADO],
-                PC.[TXTVALORPORDIA_PLANOKMCONTROLADO],
-                PC.[TXTVALORPORDIA_PLANOKMLIVRE],
+                PC.[VALORKMRODADO_PLANODIARIO],
+                PC.[VALORPORDIA_PLANODIARIO],
+                PC.[VALORKMRODADO_PLANOKMCONTROLADO],
+                PC.[KMLIVREINCLUSO_PLANOKMCONTROLADO],
+                PC.[VALORPORDIA_PLANOKMCONTROLADO],
+                PC.[VALORPORDIA_PLANOKMLIVRE],
                 
                 GV.[ID],
                 GV.[NOME]

@@ -16,12 +16,12 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
         public override void ConfigurarParametros(PlanoDeCobranca planoDeCobranca, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", planoDeCobranca.Id);
-            comando.Parameters.AddWithValue("TXTVALORKMRODADO_PLANODIARIO", planoDeCobranca.txtValorKmRodado_PlanoDiario);
-            comando.Parameters.AddWithValue("TXTVALORPORDIA_PLANODIARIO", planoDeCobranca.txtValorPorDia_PlanoDiario);
-            comando.Parameters.AddWithValue("TXTVALORKMRODADO_PLANOKMCONTROLADO", planoDeCobranca.txtValorKmRodado_PlanoKmControlado);
-            comando.Parameters.AddWithValue("TXTKMLIVREINCLUSO_PLANOKMCONTROLADO", planoDeCobranca.txtKmLivreIncluso_PlanoKmControlado);
-            comando.Parameters.AddWithValue("TXTVALORPORDIA_PLANOKMCONTROLADO", planoDeCobranca.txtValorPorDia_PlanoKmControlado);
-            comando.Parameters.AddWithValue("TXTVALORPORDIA_PLANOKMLIVRE", planoDeCobranca.txtValorPorDia_PlanoKmLivre);
+            comando.Parameters.AddWithValue("VALORKMRODADO_PLANODIARIO", planoDeCobranca.ValorKmRodado_PlanoDiario);
+            comando.Parameters.AddWithValue("VALORPORDIA_PLANODIARIO", planoDeCobranca.ValorPorDia_PlanoDiario);
+            comando.Parameters.AddWithValue("VALORKMRODADO_PLANOKMCONTROLADO", planoDeCobranca.ValorKmRodado_PlanoKmControlado);
+            comando.Parameters.AddWithValue("KMLIVREINCLUSO_PLANOKMCONTROLADO", planoDeCobranca.KmLivreIncluso_PlanoKmControlado);
+            comando.Parameters.AddWithValue("VALORPORDIA_PLANOKMCONTROLADO", planoDeCobranca.ValorPorDia_PlanoKmControlado);
+            comando.Parameters.AddWithValue("VALORPORDIA_PLANOKMLIVRE", planoDeCobranca.ValorPorDia_PlanoKmLivre);
             comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", planoDeCobranca.GrupoDeVeiculos.Id);
 
         }
@@ -29,21 +29,21 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
         public override PlanoDeCobranca ConverterRegistro(SqlDataReader leitorPlanoDeCobranca)
         {
             var id = Convert.ToInt32(leitorPlanoDeCobranca["ID"]);
-            var valorKmRodado_PlanoDiario = Convert.ToDecimal(leitorPlanoDeCobranca["TXTVALORKMRODADO_PLANODIARIO"]);
-            var valorPorDia_PlanoDiario = Convert.ToDecimal(leitorPlanoDeCobranca["TXTVALORPORDIA_PLANODIARIO"]);
-            var valorKmRodado_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["TXTVALORKMRODADO_PLANOKMCONTROLADO"]);
-            var kmLivreIncluso_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["TXTKMLIVREINCLUSO_PLANOKMCONTROLADO"]);
-            var valorPorDia_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["TXTVALORPORDIA_PLANOKMCONTROLADO"]);
-            var valorPorDia_PlanoKmLivre = Convert.ToDecimal(leitorPlanoDeCobranca["TXTVALORPORDIA_PLANOKMLIVRE"]);
+            var valorKmRodado_PlanoDiario = Convert.ToDecimal(leitorPlanoDeCobranca["VALORKMRODADO_PLANODIARIO"]);
+            var valorPorDia_PlanoDiario = Convert.ToDecimal(leitorPlanoDeCobranca["VALORPORDIA_PLANODIARIO"]);
+            var valorKmRodado_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["VALORKMRODADO_PLANOKMCONTROLADO"]);
+            var kmLivreIncluso_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["KMLIVREINCLUSO_PLANOKMCONTROLADO"]);
+            var valorPorDia_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["VALORPORDIA_PLANOKMCONTROLADO"]);
+            var valorPorDia_PlanoKmLivre = Convert.ToDecimal(leitorPlanoDeCobranca["VALORPORDIA_PLANOKMLIVRE"]);
 
             PlanoDeCobranca planoDeCobranca = new PlanoDeCobranca();
             planoDeCobranca.Id = id;
-            planoDeCobranca.txtValorKmRodado_PlanoDiario = valorKmRodado_PlanoDiario;
-            planoDeCobranca.txtValorPorDia_PlanoDiario = valorPorDia_PlanoDiario;
-            planoDeCobranca.txtValorKmRodado_PlanoKmControlado = valorKmRodado_PlanoKmControlado;
-            planoDeCobranca.txtKmLivreIncluso_PlanoKmControlado = kmLivreIncluso_PlanoKmControlado;
-            planoDeCobranca.txtValorPorDia_PlanoKmControlado = valorPorDia_PlanoKmControlado;
-            planoDeCobranca.txtValorPorDia_PlanoKmLivre = valorPorDia_PlanoKmLivre;
+            planoDeCobranca.ValorKmRodado_PlanoDiario = valorKmRodado_PlanoDiario;
+            planoDeCobranca.ValorPorDia_PlanoDiario = valorPorDia_PlanoDiario;
+            planoDeCobranca.ValorKmRodado_PlanoKmControlado = valorKmRodado_PlanoKmControlado;
+            planoDeCobranca.KmLivreIncluso_PlanoKmControlado = kmLivreIncluso_PlanoKmControlado;
+            planoDeCobranca.ValorPorDia_PlanoKmControlado = valorPorDia_PlanoKmControlado;
+            planoDeCobranca.ValorPorDia_PlanoKmLivre = valorPorDia_PlanoKmLivre;
 
             planoDeCobranca.GrupoDeVeiculos = new MapeadorGrupoVeiculos().ConverterRegistro(leitorPlanoDeCobranca);
 

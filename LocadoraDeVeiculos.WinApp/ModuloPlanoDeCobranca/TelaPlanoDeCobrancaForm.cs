@@ -35,12 +35,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 
         private void DesativarCampos()
         {
-            txtValorKmRodado_PlanoDiario.Enabled = false;
-            txtValorPorDia_PlanoDiario.Enabled = false;
-            txtValorKmRodado_PlanoKmControlado.Enabled = false;
-            txtKmLivreIncluso_PlanoKmControlado.Enabled = false;
-            txtValorPorDia_PlanoKmControlado.Enabled = false;
-            txtValorPorDia_PlanoKmLivre.Enabled = false;
+            ValorKmRodado_PlanoDiario.Enabled = false;
+            ValorPorDia_PlanoDiario.Enabled = false;
+            ValorKmRodado_PlanoKmControlado.Enabled = false;
+            KmLivreIncluso_PlanoKmControlado.Enabled = false;
+            ValorPorDia_PlanoKmControlado.Enabled = false;
+            ValorPorDia_PlanoKmLivre.Enabled = false;
             comboBoxGrupoVeiculos.Enabled = false;
             btnCancelar.Text = "Ok";
             btnSalvar.Visible = false;
@@ -68,23 +68,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
                 planoDeCobranca = value;
 
 
-                txtValorKmRodado_PlanoDiario.Text = planoDeCobranca.txtValorKmRodado_PlanoDiario.ToString();
-                txtValorPorDia_PlanoDiario.Text = planoDeCobranca.txtValorPorDia_PlanoDiario.ToString();
-                txtValorKmRodado_PlanoKmControlado.Text = planoDeCobranca.txtValorKmRodado_PlanoKmControlado.ToString();
-                txtKmLivreIncluso_PlanoKmControlado.Text = planoDeCobranca.txtKmLivreIncluso_PlanoKmControlado.ToString();
-                txtValorPorDia_PlanoKmControlado.Text = planoDeCobranca.txtValorPorDia_PlanoKmControlado.ToString();
-                txtValorPorDia_PlanoKmLivre.Text = planoDeCobranca.txtValorPorDia_PlanoKmLivre.ToString();
+                ValorKmRodado_PlanoDiario.Text = planoDeCobranca.ValorKmRodado_PlanoDiario.ToString();
+                ValorPorDia_PlanoDiario.Text = planoDeCobranca.ValorPorDia_PlanoDiario.ToString();
+                ValorKmRodado_PlanoKmControlado.Text = planoDeCobranca.ValorKmRodado_PlanoKmControlado.ToString();
+                KmLivreIncluso_PlanoKmControlado.Text = planoDeCobranca.KmLivreIncluso_PlanoKmControlado.ToString();
+                ValorPorDia_PlanoKmControlado.Text = planoDeCobranca.ValorPorDia_PlanoKmControlado.ToString();
+                ValorPorDia_PlanoKmLivre.Text = planoDeCobranca.ValorPorDia_PlanoKmLivre.ToString();
                 comboBoxGrupoVeiculos.SelectedItem = planoDeCobranca.GrupoDeVeiculos;
             }
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            planoDeCobranca.txtValorKmRodado_PlanoDiario = Convert.ToDecimal(txtValorKmRodado_PlanoDiario.Text);
-            planoDeCobranca.txtValorPorDia_PlanoDiario = Convert.ToDecimal(txtValorPorDia_PlanoDiario.Text);
-            planoDeCobranca.txtValorKmRodado_PlanoKmControlado = Convert.ToDecimal(txtValorKmRodado_PlanoKmControlado.Text);
-            planoDeCobranca.txtKmLivreIncluso_PlanoKmControlado = Convert.ToDecimal(txtKmLivreIncluso_PlanoKmControlado.Text);
-            planoDeCobranca.txtValorPorDia_PlanoKmControlado = Convert.ToDecimal(txtValorPorDia_PlanoKmControlado.Text);
-            planoDeCobranca.txtValorPorDia_PlanoKmLivre = Convert.ToDecimal(txtValorPorDia_PlanoKmLivre.Text);
+            planoDeCobranca.ValorKmRodado_PlanoDiario = Convert.ToDecimal(ValorKmRodado_PlanoDiario.Text);
+            planoDeCobranca.ValorPorDia_PlanoDiario = Convert.ToDecimal(ValorPorDia_PlanoDiario.Text);
+            planoDeCobranca.ValorKmRodado_PlanoKmControlado = Convert.ToDecimal(ValorKmRodado_PlanoKmControlado.Text);
+            planoDeCobranca.KmLivreIncluso_PlanoKmControlado = Convert.ToDecimal(KmLivreIncluso_PlanoKmControlado.Text);
+            planoDeCobranca.ValorPorDia_PlanoKmControlado = Convert.ToDecimal(ValorPorDia_PlanoKmControlado.Text);
+            planoDeCobranca.ValorPorDia_PlanoKmLivre = Convert.ToDecimal(ValorPorDia_PlanoKmLivre.Text);
             planoDeCobranca.GrupoDeVeiculos = (GrupoDeVeiculos)comboBoxGrupoVeiculos.SelectedItem;
 
             var resultadoValidacao = GravarRegistro(planoDeCobranca);

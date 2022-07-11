@@ -33,12 +33,12 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
             };
 
             planoDeCobranca = new PlanoDeCobranca();
-            planoDeCobranca.txtValorPorDia_PlanoDiario = 120;
-            planoDeCobranca.txtValorKmRodado_PlanoDiario = 130;
-            planoDeCobranca.txtValorPorDia_PlanoKmControlado = 280;
-            planoDeCobranca.txtValorKmRodado_PlanoKmControlado = 120;
-            planoDeCobranca.txtKmLivreIncluso_PlanoKmControlado = 190;
-            planoDeCobranca.txtValorPorDia_PlanoKmLivre = 350;
+            planoDeCobranca.ValorPorDia_PlanoDiario = 120;
+            planoDeCobranca.ValorKmRodado_PlanoDiario = 130;
+            planoDeCobranca.ValorPorDia_PlanoKmControlado = 280;
+            planoDeCobranca.ValorKmRodado_PlanoKmControlado = 120;
+            planoDeCobranca.KmLivreIncluso_PlanoKmControlado = 190;
+            planoDeCobranca.ValorPorDia_PlanoKmLivre = 350;
 
             planoDeCobranca.GrupoDeVeiculos = grupoDeVeiculos;
         }
@@ -61,12 +61,12 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
             repositorioplanoDeCobranca.Inserir(planoDeCobranca);
 
             PlanoDeCobranca planoDeCobrancaAtualizado = repositorioplanoDeCobranca.SelecionarPorId(planoDeCobranca.Id);
-            planoDeCobrancaAtualizado.txtValorPorDia_PlanoDiario = 100;
-            planoDeCobrancaAtualizado.txtValorKmRodado_PlanoDiario = 120;
-            planoDeCobrancaAtualizado.txtValorPorDia_PlanoKmControlado = 250;
-            planoDeCobrancaAtualizado.txtValorKmRodado_PlanoKmControlado = 150;
-            planoDeCobrancaAtualizado.txtKmLivreIncluso_PlanoKmControlado = 180;
-            planoDeCobrancaAtualizado.txtValorPorDia_PlanoKmLivre = 300;
+            planoDeCobrancaAtualizado.ValorPorDia_PlanoDiario = 100;
+            planoDeCobrancaAtualizado.ValorKmRodado_PlanoDiario = 120;
+            planoDeCobrancaAtualizado.ValorPorDia_PlanoKmControlado = 250;
+            planoDeCobrancaAtualizado.ValorKmRodado_PlanoKmControlado = 150;
+            planoDeCobrancaAtualizado.KmLivreIncluso_PlanoKmControlado = 180;
+            planoDeCobrancaAtualizado.ValorPorDia_PlanoKmLivre = 300;
 
             //action
             repositorioplanoDeCobranca.Editar(planoDeCobrancaAtualizado);
@@ -75,12 +75,12 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
             PlanoDeCobranca pc = repositorioplanoDeCobranca.SelecionarPorId(planoDeCobranca.Id);
 
             pc.Should().NotBeNull();
-            pc.txtValorPorDia_PlanoDiario.Should().Be(100);
-            pc.txtValorKmRodado_PlanoDiario.Should().Be(120);
-            pc.txtValorPorDia_PlanoKmControlado.Should().Be(250);
-            pc.txtValorKmRodado_PlanoKmControlado.Should().Be(150);
-            pc.txtKmLivreIncluso_PlanoKmControlado.Should().Be(180);
-            pc.txtValorPorDia_PlanoKmLivre.Should().Be(300);
+            pc.ValorPorDia_PlanoDiario.Should().Be(100);
+            pc.ValorKmRodado_PlanoDiario.Should().Be(120);
+            pc.ValorPorDia_PlanoKmControlado.Should().Be(250);
+            pc.ValorKmRodado_PlanoKmControlado.Should().Be(150);
+            pc.KmLivreIncluso_PlanoKmControlado.Should().Be(180);
+            pc.ValorPorDia_PlanoKmLivre.Should().Be(300);
         }
 
         [TestMethod]

@@ -11,27 +11,27 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
     {
         public ValidadorPlanoDeCobranca()
         {
-            RuleFor(x => x.txtValorKmRodado_PlanoDiario)
+            RuleFor(x => x.ValorKmRodado_PlanoDiario)
                     .NotNull().WithMessage("O campo valor plano diario é obrigatório")
                     .NotEmpty().WithMessage("O campo valor plano diario é obrigatório");
 
-            RuleFor(x => x.txtValorPorDia_PlanoDiario)
+            RuleFor(x => x.ValorPorDia_PlanoDiario)
                     .NotNull().WithMessage("O campo valor plano diario é obrigatório")
                     .NotEmpty().WithMessage("O campo valor plano diario é obrigatório");
 
-            RuleFor(x => x.txtValorKmRodado_PlanoKmControlado)
+            RuleFor(x => x.ValorKmRodado_PlanoKmControlado)
                     .NotNull().WithMessage("O campo valor diaria Km controlado é obrigatório")
                     .NotEmpty().WithMessage("O campo valor diaria Km controlado é obrigatório");
 
-            RuleFor(x => x.txtKmLivreIncluso_PlanoKmControlado)
+            RuleFor(x => x.KmLivreIncluso_PlanoKmControlado)
                     .NotNull().WithMessage("O campo valor diaria Km controlado é obrigatório")
                     .NotEmpty().WithMessage("O campo valor diaria Km controlado é obrigatório");
 
-            RuleFor(x => x.txtValorPorDia_PlanoKmControlado)
+            RuleFor(x => x.ValorPorDia_PlanoKmControlado)
                     .NotNull().WithMessage("O campo valor diaria Km controlado é obrigatório")
                     .NotEmpty().WithMessage("O campo valor diaria Km controlado é obrigatório");
 
-            RuleFor(x => x.txtValorPorDia_PlanoKmLivre)
+            RuleFor(x => x.ValorPorDia_PlanoKmLivre)
                     .NotNull().WithMessage("O campo valor diario Km livre é obrigatório")
                     .NotEmpty().WithMessage("O campo valor diario Km livre é obrigatório");
 
