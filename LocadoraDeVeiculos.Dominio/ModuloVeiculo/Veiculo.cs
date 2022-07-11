@@ -12,6 +12,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
     {
 
         TipoCombustivelEnum tipoCombustivel;
+        StatusVeiculoEnum statusVeiculo;
         
         public GrupoDeVeiculos Grupo { get; set; }
 
@@ -29,6 +30,15 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
             set
             {
                 tipoCombustivel = value;
+            }
+        }
+
+        public StatusVeiculoEnum StatusVeiculo
+        {
+            get { return statusVeiculo; }
+            set
+            {
+                statusVeiculo = value;
             }
         }
 

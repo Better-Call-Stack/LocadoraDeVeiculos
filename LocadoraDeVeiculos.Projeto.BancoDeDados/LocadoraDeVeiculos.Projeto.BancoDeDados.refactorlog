@@ -7,4 +7,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Nome" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="dfb10524-f7ef-4646-819d-6506efbdf156" ChangeDateTime="07/11/2022 13:38:03">
+    <Property Name="ElementName" Value="[dbo].[TbVeiculo].[GrupoVeiculos_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TbVeiculo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GrupoVeiculos.Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="acd9f82c-a201-4eb1-ab2d-79fbfd9f3953" ChangeDateTime="07/11/2022 13:38:19">
+    <Property Name="ElementName" Value="[dbo].[TbVeiculo].[GrupoVeiculos.Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[TbVeiculo]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="GrupoVeiculos_Id" />
+  </Operation>
 </Operations>

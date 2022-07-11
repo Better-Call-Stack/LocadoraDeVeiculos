@@ -1,5 +1,6 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.Compartilhado;
+using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,6 +12,11 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 {
     public class MapeadorVeiculo : MapeadorBase<Veiculo>
     {
+        MapeadorGrupoVeiculos mapeadorGrupoDeVeiculos;
+        public MapeadorVeiculo()
+        {
+            this.mapeadorGrupoDeVeiculos = new MapeadorGrupoVeiculos();
+        }
         public override void ConfigurarParametros(Veiculo veiculo, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", veiculo.Id);
@@ -22,7 +28,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             comando.Parameters.AddWithValue("CAPACIDADEDOTANQUE", veiculo.CapacidadeTanque);
             comando.Parameters.AddWithValue("ANO", veiculo.Ano);
             comando.Parameters.AddWithValue("KMPERCORRIDO", veiculo.KmPercorrido);
-            comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", veiculo.Grupo);
+            comando.Parameters.AddWithValue("STATUSVEICULO", veiculo.StatusVeiculo);
+            comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", veiculo.Grupo.Id);
         }
 
         public override Veiculo ConverterRegistro(SqlDataReader leitorVeiculo)
@@ -36,6 +43,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             var capacidadeDoTanque = Convert.ToDecimal(leitorVeiculo["CAPACIDADEDOTANQUE"]);
             var ano = Convert.ToInt32(leitorVeiculo["ANO"]);
             var kmpercorrido = Convert.ToInt32(leitorVeiculo["KMPERCORRIDO"]);
+            var statusVeiculo = Convert.ToInt32(leitorVeiculo["STATUSVEICULO"]);
             var grupoveiculos_id = Convert.ToString(leitorVeiculo["GRUPOVEICULOS_ID"]);
 
             Veiculo veiculo = new Veiculo();
@@ -48,7 +56,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             veiculo.CapacidadeTanque = capacidadeDoTanque;
             veiculo.Ano = ano;
             veiculo.KmPercorrido = kmpercorrido;
-            veiculo.Grupo = grupoveiculos_id;
+            veiculo.StatusVeiculo = (StatusVeiculoEnum)statusVeiculo;
+            var veiculoGrupo = mapeadorGrupoDeVeiculos.ConverterRegistro(leitorVeiculo);
 
             return veiculo;
         }

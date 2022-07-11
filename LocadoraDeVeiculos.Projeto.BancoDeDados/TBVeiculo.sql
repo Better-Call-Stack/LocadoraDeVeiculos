@@ -9,6 +9,7 @@
     [Ano]                INT            NOT NULL,
     [KmPercorrido]       INT            NULL,
     [GrupoVeiculos_Id]   INT            NOT NULL,
+    [StatusVeiculo] INT NOT NULL, 
     CONSTRAINT [PK_TbVeiculo] PRIMARY KEY CLUSTERED ([id] ASC),
     CONSTRAINT [FK_TbVeiculo_TBGrupoVeiculos] FOREIGN KEY ([GrupoVeiculos_Id]) REFERENCES [dbo].[TBGrupoVeiculos] ([Id])
 );
