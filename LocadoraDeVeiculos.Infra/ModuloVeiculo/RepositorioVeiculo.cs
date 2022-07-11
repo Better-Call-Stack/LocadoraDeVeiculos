@@ -124,7 +124,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 
         public Veiculo SelecionarVeiculoPorPlaca(string placa)
         {
-            return SelecionarPorParametro(sqlSelecionarPorPlaca, new SqlParameter("VEICULO.PLACA", placa));
+            return SelecionarPorParametro(sqlSelecionarPorPlaca, new SqlParameter("PLACA", placa));
         }
              
     }

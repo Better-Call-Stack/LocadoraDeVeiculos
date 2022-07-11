@@ -94,6 +94,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             veiculo.KmPercorrido = (int)numKmVeiculo.Value;
             veiculo.StatusVeiculo = (StatusVeiculoEnum)cmbStatusVeiculo.SelectedItem;
             veiculo.Grupo = (GrupoDeVeiculos)cmbGrupoVeiculo.SelectedItem;
+
+            var resultadoValidacao = GravarRegistro(veiculo);
+
+            if (resultadoValidacao.IsValid == false)
+            {
+                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+
+                MessageBox.Show(erro, "Erro");
+
+                DialogResult = DialogResult.None;
+            }
         }
     }
 }

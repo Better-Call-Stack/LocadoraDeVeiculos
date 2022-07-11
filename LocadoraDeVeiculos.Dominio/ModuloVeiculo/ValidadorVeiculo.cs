@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
                 .NotNull().NotEmpty();
 
             RuleFor(x => x.Ano)
-                .LessThan(2000)
+                .GreaterThan(2000)
                 .NotNull().NotEmpty();
         }
     }
