@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.Compartilhado;
+using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -15,7 +17,9 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
     public class RepositorioPlanoDeCobrancaTests
     {
         PlanoDeCobranca planoDeCobranca;
-        RepositorioPlanoDeCobranca repositorio = new RepositorioPlanoDeCobranca();
+        GrupoDeVeiculos grupoDeVeiculos;
+        RepositorioPlanoDeCobranca repositorioplanoDeCobranca = new RepositorioPlanoDeCobranca();
+        RepositorioGrupoVeiculos repositorioGrupoVeiculos = new RepositorioGrupoVeiculos();
 
         public RepositorioPlanoDeCobrancaTests()
         {
@@ -23,6 +27,10 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
 
             Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS; DBCC CHECKIDENT (TBGRUPOVEICULOS, RESEED, 0)");
 
+            grupoDeVeiculos = new GrupoDeVeiculos()
+            {
+                Nome = "Esportivo"
+            };
 
             planoDeCobranca = new PlanoDeCobranca();
             planoDeCobranca.txtValorPorDia_PlanoDiario = 120;
@@ -31,14 +39,17 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
             planoDeCobranca.txtValorKmRodado_PlanoKmControlado = 120;
             planoDeCobranca.txtKmLivreIncluso_PlanoKmControlado = 190;
             planoDeCobranca.txtValorPorDia_PlanoKmLivre = 350;
+
+            planoDeCobranca.GrupoDeVeiculos = grupoDeVeiculos;
         }
 
         [TestMethod]
         public void Deve_Inserir_PlanoDeCobranca()
         {
-            repositorio.Inserir(planoDeCobranca);
+            repositorioGrupoVeiculos.Inserir(grupoDeVeiculos);
+            repositorioplanoDeCobranca.Inserir(planoDeCobranca);
 
-            PlanoDeCobranca pc = repositorio.SelecionarPorId(planoDeCobranca.Id);
+            PlanoDeCobranca pc = repositorioplanoDeCobranca.SelecionarPorId(planoDeCobranca.Id);
 
             pc.Should().NotBeNull().And.Be(planoDeCobranca);
         }
@@ -46,9 +57,10 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
         [TestMethod]
         public void Deve_Editar_PlanoDeCobranca()
         {
-            repositorio.Inserir(planoDeCobranca);
+            repositorioGrupoVeiculos.Inserir(grupoDeVeiculos);
+            repositorioplanoDeCobranca.Inserir(planoDeCobranca);
 
-            PlanoDeCobranca planoDeCobrancaAtualizado = repositorio.SelecionarPorId(planoDeCobranca.Id);
+            PlanoDeCobranca planoDeCobrancaAtualizado = repositorioplanoDeCobranca.SelecionarPorId(planoDeCobranca.Id);
             planoDeCobrancaAtualizado.txtValorPorDia_PlanoDiario = 100;
             planoDeCobrancaAtualizado.txtValorKmRodado_PlanoDiario = 120;
             planoDeCobrancaAtualizado.txtValorPorDia_PlanoKmControlado = 250;
@@ -57,10 +69,10 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
             planoDeCobrancaAtualizado.txtValorPorDia_PlanoKmLivre = 300;
 
             //action
-            repositorio.Editar(planoDeCobrancaAtualizado);
+            repositorioplanoDeCobranca.Editar(planoDeCobrancaAtualizado);
 
             //assert
-            PlanoDeCobranca pc = repositorio.SelecionarPorId(planoDeCobranca.Id);
+            PlanoDeCobranca pc = repositorioplanoDeCobranca.SelecionarPorId(planoDeCobranca.Id);
 
             pc.Should().NotBeNull();
             pc.txtValorPorDia_PlanoDiario.Should().Be(100);
@@ -74,44 +86,12 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
         [TestMethod]
         public void Deve_Excluir_PlanoDeCobranca()
         {
-            repositorio.Inserir(planoDeCobranca);
+            repositorioGrupoVeiculos.Inserir(grupoDeVeiculos);
+            repositorioplanoDeCobranca.Inserir(planoDeCobranca);
 
-            repositorio.Excluir(planoDeCobranca);
+            repositorioplanoDeCobranca.Excluir(planoDeCobranca);
 
-            repositorio.SelecionarTodos().Count().Should().Be(0);
-        }
-
-        [TestMethod]
-        public void Deve_Selecionar_Todos()
-        {
-
-            PlanoDeCobranca pc1 = new PlanoDeCobranca();
-            {
-                pc1.txtValorPorDia_PlanoDiario = 90;
-                pc1.txtValorKmRodado_PlanoDiario = 140;
-                pc1.txtValorPorDia_PlanoKmControlado = 270;
-                pc1.txtValorKmRodado_PlanoKmControlado = 170;
-                pc1.txtKmLivreIncluso_PlanoKmControlado = 150;
-                pc1.txtValorPorDia_PlanoKmLivre = 250;
-            }
-            PlanoDeCobranca pc2 = new PlanoDeCobranca();
-            {
-                pc2.txtValorPorDia_PlanoDiario = 85;
-                pc2.txtValorKmRodado_PlanoDiario = 154;
-                pc2.txtValorPorDia_PlanoKmControlado = 240;
-                pc2.txtValorKmRodado_PlanoKmControlado = 190;
-                pc2.txtKmLivreIncluso_PlanoKmControlado = 170;
-                pc2.txtValorPorDia_PlanoKmLivre = 280;
-            }
-
-            repositorio.Inserir(planoDeCobranca);
-            repositorio.Inserir(pc1);
-            repositorio.Inserir(pc2);
-
-            List<PlanoDeCobranca> p = repositorio.SelecionarTodos();
-
-            p[1].Should().Be(pc1);
-            p.Count.Should().Be(3);
+            repositorioplanoDeCobranca.SelecionarTodos().Count().Should().Be(0);
         }
     }
 }

@@ -53,18 +53,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
             GrupoDeVeiculos = registro.GrupoDeVeiculos;
         }
 
-        public override bool Equals(object obj)
-        {
-            return obj is PlanoDeCobranca cobranca &&
-                   Id == cobranca.Id &&
-                   EqualityComparer<GrupoDeVeiculos>.Default.Equals(GrupoDeVeiculos, cobranca.GrupoDeVeiculos) &&
-                   txtValorKmRodado_PlanoDiario == cobranca.txtValorKmRodado_PlanoDiario &&
-                   txtValorPorDia_PlanoDiario == cobranca.txtValorPorDia_PlanoDiario &&
-                   txtValorKmRodado_PlanoKmControlado == cobranca.txtValorKmRodado_PlanoKmControlado &&
-                   txtKmLivreIncluso_PlanoKmControlado == cobranca.txtKmLivreIncluso_PlanoKmControlado &&
-                   txtValorPorDia_PlanoKmControlado == cobranca.txtValorPorDia_PlanoKmControlado &&
-                   txtValorPorDia_PlanoKmLivre == cobranca.txtValorPorDia_PlanoKmControlado;
-        }
+
+
         public PlanoDeCobranca Clonar()
         {
             return MemberwiseClone() as PlanoDeCobranca;
@@ -80,6 +70,19 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
             hash.Add(txtValorPorDia_PlanoKmControlado);
             hash.Add(txtValorPorDia_PlanoKmLivre);
             return hash.ToHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is PlanoDeCobranca cobranca &&
+                   Id == cobranca.Id &&
+                   EqualityComparer<GrupoDeVeiculos>.Default.Equals(GrupoDeVeiculos, cobranca.GrupoDeVeiculos) &&
+                   txtValorKmRodado_PlanoDiario == cobranca.txtValorKmRodado_PlanoDiario &&
+                   txtValorPorDia_PlanoDiario == cobranca.txtValorPorDia_PlanoDiario &&
+                   txtValorKmRodado_PlanoKmControlado == cobranca.txtValorKmRodado_PlanoKmControlado &&
+                   txtKmLivreIncluso_PlanoKmControlado == cobranca.txtKmLivreIncluso_PlanoKmControlado &&
+                   txtValorPorDia_PlanoKmControlado == cobranca.txtValorPorDia_PlanoKmControlado &&
+                   txtValorPorDia_PlanoKmLivre == cobranca.txtValorPorDia_PlanoKmLivre;
         }
     }
 }
