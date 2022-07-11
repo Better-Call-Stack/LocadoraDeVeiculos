@@ -2,15 +2,18 @@
 using LocadoraDeVeiculos.Infra.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.ModuloVeiculo;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
+using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
+using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -43,11 +46,13 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioCliente = new RepositorioCliente();
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
             var repositorioTaxa = new RepositorioTaxa();
+            var repositorioVeiculo = new RepositorioVeiculo();
 
             var servicoCliente = new ServicoCliente(repositorioCliente);
             var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
             var servicoTaxa = new ServicoTaxa(repositorioTaxa);
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+            var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo);
 
             controladores = new Dictionary<string, ControladorBase>();
 
@@ -55,6 +60,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente, servicoCliente));
             controladores.Add("Grupo de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
+            controladores.Add("Veículos", new ControladorVeiculo(repositorioVeiculo, servicoVeiculo, repositorioGrupoVeiculos));
         }
 
         private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
@@ -143,6 +149,11 @@ namespace LocadoraDeVeiculos.WinApp
         }
 
         private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void veiculosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }

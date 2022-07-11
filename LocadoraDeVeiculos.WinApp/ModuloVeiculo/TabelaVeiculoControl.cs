@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloVeiculo;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using System;
@@ -10,6 +11,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
     public partial class TabelaVeiculoControl : UserControl
     {
         RepositorioVeiculo repositorio;
+        RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
         public TabelaVeiculoControl(RepositorioVeiculo repositorio)
         {
             InitializeComponent();
@@ -17,6 +19,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             gridVeiculo.ConfigurarGridSomenteLeitura();
             gridVeiculo.ConfigurarColunaId();
             this.repositorio = repositorio;
+            this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
         }
         public void AtualizarRegistros(List<Veiculo> veiculos)
         {
@@ -32,6 +35,20 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         public int ObtemIdVeiculoSelecionado()
         {
             return gridVeiculo.SelecionarId<int>();
+        }
+        private void GridDoubleClickGenerico()
+{
+            TelaCadastroVeiculo tela = new TelaCadastroVeiculo("Visualizacao", repositorioGrupoVeiculos.SelecionarTodos());
+            int id = ObtemIdVeiculoSelecionado();
+            Veiculo v = repositorio.SelecionarPorId(id);
+
+            tela.Veiculo = v;
+            tela.ShowDialog();
+        }
+
+        private void gridPessoaJuridica_DoubleClick(object sender, EventArgs e)
+        {
+            GridDoubleClickGenerico();
         }
     }
 }

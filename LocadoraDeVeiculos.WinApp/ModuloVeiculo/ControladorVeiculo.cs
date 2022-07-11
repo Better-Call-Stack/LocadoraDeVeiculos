@@ -1,4 +1,6 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloVeiculo;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
@@ -13,15 +15,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         private readonly RepositorioVeiculo repositorioVeiculo;
         private TabelaVeiculoControl tabelaVeiculo;
         private ServicoVeiculo servicoVeiculo;
+        private RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
 
-        public ControladorVeiculo(RepositorioVeiculo repositorioVeiculo, ServicoVeiculo servicoVeiculo)
+        public ControladorVeiculo(RepositorioVeiculo repositorioVeiculo, ServicoVeiculo servicoVeiculo, RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos)
         {
             this.repositorioVeiculo=repositorioVeiculo;
             this.servicoVeiculo=servicoVeiculo;
+            this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
+
         }
         public override void Inserir()
         {
-            TelaCadastroVeiculo tela = new TelaCadastroVeiculo();
+            TelaCadastroVeiculo tela = new TelaCadastroVeiculo("Cadastro", repositorioGrupoVeiculos.SelecionarTodos());
             tela.Veiculo = new Veiculo();
             tela.GravarRegistro = servicoVeiculo.Inserir;
 
@@ -44,7 +49,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 return;
             }
 
-            TelaCadastroVeiculo tela = new TelaCadastroVeiculo();
+            TelaCadastroVeiculo tela = new TelaCadastroVeiculo("Edição", repositorioGrupoVeiculos.SelecionarTodos());
 
             tela.Veiculo = veiculoSelecionado.Clonar();
 

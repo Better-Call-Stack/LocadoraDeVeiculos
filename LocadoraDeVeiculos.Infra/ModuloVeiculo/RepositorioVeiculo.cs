@@ -19,8 +19,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                     [ANO],
                     [KMPERCORRIDO],
                     [STATUSVEICULO],
-                    [GRUPOVEICULOS_ID],
-                    [STATUSVEICULO]
+                    [GRUPOVEICULOS_ID]
                 )
                VALUES
                 (
@@ -50,8 +49,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                     [ANO] = @ANO,
                     [KMPERCORRIDO] = @KMPERCORRIDO,
                     [STATUSVEICULO] = @STATUSVEICULO,
-                    [GRUPOVEICULOS_ID] = @GRUPOVEICULOS_ID,
-                    [STATUSVEICULO] = @STATUSVEICULO
+                    [GRUPOVEICULOS_ID] = @GRUPOVEICULOS_ID
                 WHERE
                     [ID] = @ID";
 
@@ -64,13 +62,14 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             @"SELECT 
                 VEICULO.ID AS VEICULO_ID,                                                         
                 VEICULO.MODELO,                                                        
-                VEICULO.MARCA,                                                       
-                VEICULO.ENUMTIPODECOMBUSTIVEL,                                                       
-                VEICULO.COR,                                                       
+                VEICULO.FABRICANTE,                                                       
+                VEICULO.TIPOCOMBUSTIVEL,                                                       
+                VEICULO.COR,
+                VEICULO.ANO,
                 VEICULO.KMPERCORRIDO,                                                        
-                VEICULO.CAPACIDADETANQUE,                                                        
+                VEICULO.CAPACIDADEDOTANQUE,                                                        
                 VEICULO.PLACA,
-                VEICULO.FOTO,
+                VEICULO.STATUSVEICULO,
                 GRUPO.ID AS GRUPOVEICULOS_ID,
                 GRUPO.NOME AS GRUPOVEICULOS_NOME														 
                                                           
@@ -85,13 +84,14 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             @"SELECT 
                 VEICULO.ID AS VEICULO_ID,                                                         
                 VEICULO.MODELO,                                                        
-                VEICULO.MARCA,                                                       
-                VEICULO.ENUMTIPODECOMBUSTIVEL,                                                       
-                VEICULO.COR,                                                       
+                VEICULO.FABRICANTE,                                                       
+                VEICULO.TIPOCOMBUSTIVEL,                                                       
+                VEICULO.COR,
+                VEICULO.ANO,
                 VEICULO.KMPERCORRIDO,                                                        
-                VEICULO.CAPACIDADETANQUE,                                                        
+                VEICULO.CAPACIDADEDOTANQUE,                                                        
                 VEICULO.PLACA,
-                VEICULO.FOTO,
+                VEICULO.STATUSVEICULO,
                 GRUPO.ID AS GRUPOVEICULOS_ID,
                 GRUPO.NOME AS GRUPOVEICULOS_NOME														 
                                                           
@@ -106,15 +106,16 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             @"SELECT 
                 VEICULO.ID AS VEICULO_ID,                                                         
                 VEICULO.MODELO,                                                        
-                VEICULO.MARCA,                                                       
-                VEICULO.ENUMTIPODECOMBUSTIVEL,                                                       
-                VEICULO.COR,                                                       
+                VEICULO.FABRICANTE,                                                       
+                VEICULO.TIPOCOMBUSTIVEL,                                                       
+                VEICULO.COR,
+                VEICULO.ANO,
                 VEICULO.KMPERCORRIDO,                                                        
-                VEICULO.CAPACIDADETANQUE,                                                        
+                VEICULO.CAPACIDADEDOTANQUE,                                                        
                 VEICULO.PLACA,
-                VEICULO.FOTO,
+                VEICULO.STATUSVEICULO,
                 GRUPO.ID AS GRUPOVEICULOS_ID,
-                GRUPO.NOME AS GRUPOVEICULOS_NOME														 
+                GRUPO.NOME AS GRUPOVEICULOS_NOME													 
                                                           
               FROM 
                 [TBVEICULO] AS VEICULO
