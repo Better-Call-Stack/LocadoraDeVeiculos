@@ -23,6 +23,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
             CarregarGrupoDeVeiculos(grupoDeVeiculos);
         }
 
+        public TelaPlanoDeCobrancaForm(List<GrupoDeVeiculos> grupoDeVeiculos, string modoTela)
+        {
+            InitializeComponent();
+            CarregarGrupoDeVeiculos(grupoDeVeiculos);
+
+            if (modoTela == "Visualizacao")
+                DesativarCampos();
+
+        }
+
+        private void DesativarCampos()
+        {
+            txtValorKmRodado_PlanoDiario.Enabled = false;
+            txtValorPorDia_PlanoDiario.Enabled = false;
+            txtValorKmRodado_PlanoKmControlado.Enabled = false;
+            txtKmLivreIncluso_PlanoKmControlado.Enabled = false;
+            txtValorPorDia_PlanoKmControlado.Enabled = false;
+            txtValorPorDia_PlanoKmLivre.Enabled = false;
+            comboBoxGrupoVeiculos.Enabled = false;
+            btnCancelar.Text = "Ok";
+            btnSalvar.Visible = false;
+        }
+
         private void CarregarGrupoDeVeiculos(List<GrupoDeVeiculos> grupoDeVeiculos)
         {
             comboBoxGrupoVeiculos.Items.Clear();

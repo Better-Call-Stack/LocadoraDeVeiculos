@@ -1,6 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.Compartilhado;
+using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -43,6 +44,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
             planoDeCobranca.txtKmLivreIncluso_PlanoKmControlado = kmLivreIncluso_PlanoKmControlado;
             planoDeCobranca.txtValorPorDia_PlanoKmControlado = valorPorDia_PlanoKmControlado;
             planoDeCobranca.txtValorPorDia_PlanoKmLivre = valorPorDia_PlanoKmLivre;
+
+            planoDeCobranca.GrupoDeVeiculos = new MapeadorGrupoVeiculos().ConverterRegistro(leitorPlanoDeCobranca);
 
             return planoDeCobranca;
         }

@@ -15,12 +15,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 {
     public class ControladorPlanoDeCobranca : ControladorBase
     {
-        private RepositorioPlanoDeCobrancaEmBancoDados repositorioPlanoDeCobranca;
+        private RepositorioPlanoDeCobranca repositorioPlanoDeCobranca;
         private TabelaPlanoDeCobrancaControl tabelaPlanoDeCobranca;
         private readonly ServicoPlanoDeCobranca servicoPlanoDeCobranca;
-        private RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
+        private RepositorioGrupoVeiculos repositorioGrupoVeiculos;
 
-        public ControladorPlanoDeCobranca(RepositorioPlanoDeCobrancaEmBancoDados repositorioPlanoDeCobranca, ServicoPlanoDeCobranca servicoPlanoDeCobranca, RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos)
+        public ControladorPlanoDeCobranca(RepositorioPlanoDeCobranca repositorioPlanoDeCobranca, ServicoPlanoDeCobranca servicoPlanoDeCobranca, RepositorioGrupoVeiculos repositorioGrupoVeiculos)
         {
             this.repositorioPlanoDeCobranca = repositorioPlanoDeCobranca;
             this.servicoPlanoDeCobranca = servicoPlanoDeCobranca;
@@ -91,7 +91,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
         public override UserControl ObtemListagem()
         {
             if (tabelaPlanoDeCobranca == null)
-                tabelaPlanoDeCobranca = new TabelaPlanoDeCobrancaControl();
+                tabelaPlanoDeCobranca = new TabelaPlanoDeCobrancaControl(repositorioPlanoDeCobranca, repositorioGrupoVeiculos);
 
             CarregarPlanoDeCobranca();
 

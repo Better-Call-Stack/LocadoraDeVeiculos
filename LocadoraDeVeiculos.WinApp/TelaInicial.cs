@@ -47,8 +47,8 @@ namespace LocadoraDeVeiculos.WinApp
         {
             var repositorioFuncionario = new RepositorioFuncionario();
             var repositorioCliente = new RepositorioCliente();
-            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
-            var repositorioPlanoDeCobranca = new RepositorioPlanoDeCobrancaEmBancoDados();
+            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculos();
+            var repositorioPlanoDeCobranca = new RepositorioPlanoDeCobranca();
             var repositorioTaxa = new RepositorioTaxa();
             var repositorioCondutor = new RepositorioCondutor();
 

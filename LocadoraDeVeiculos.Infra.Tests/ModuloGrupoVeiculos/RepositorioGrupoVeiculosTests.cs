@@ -15,7 +15,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloGrupoVeiculos
     public class RepositorioGrupoVeiculosTests
     {
         GrupoDeVeiculos grupoVeiculos;
-        RepositorioGrupoVeiculosEmBancoDados repositorio = new RepositorioGrupoVeiculosEmBancoDados();
+        RepositorioGrupoVeiculos repositorio = new RepositorioGrupoVeiculos();
 
         public RepositorioGrupoVeiculosTests()
         {
