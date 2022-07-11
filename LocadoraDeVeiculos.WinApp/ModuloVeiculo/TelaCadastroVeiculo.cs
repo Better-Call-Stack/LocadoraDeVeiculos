@@ -36,23 +36,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 
             }
         }
-        private void DesativarCampos()
-        {
-            btnCancelarVeiculo.Text = "Ok";
-            btnSalvarVeiculo.Visible = false;
-            txtFabricanteVeiculo.Enabled = false;
-            txtCorVeiculo.Enabled = false;
-            txtPlacaVeiculo.Enabled = false;
-            txtModeloVeiculo.Enabled = false;
-            numCapTanqueVeiculo.Enabled = false;
-            numKmVeiculo.Enabled = false;
-            numAnoVeiculo.Enabled = false;
-            cmbCombustivelVeiculo.Enabled = false;
-            cmbGrupoVeiculo.Enabled = false;
-            cmbStatusVeiculo.Enabled = false;
-            btnAddFotoVeiculo.Enabled = false;
-
-        }
+        
         private void CarregarCombustivelVeiculo()
         {
             var opcoes = Enum.GetValues(typeof(TipoCombustivelEnum));
@@ -105,6 +89,24 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void DesativarCampos()
+        {
+            btnCancelarVeiculo.Text = "Ok";
+            btnSalvarVeiculo.Visible = false;
+            txtFabricanteVeiculo.Enabled = false;
+            txtCorVeiculo.Enabled = false;
+            txtPlacaVeiculo.Enabled = false;
+            txtModeloVeiculo.Enabled = false;
+            numCapTanqueVeiculo.Enabled = false;
+            numKmVeiculo.Enabled = false;
+            numAnoVeiculo.Enabled = false;
+            cmbCombustivelVeiculo.Enabled = false;
+            cmbGrupoVeiculo.Enabled = false;
+            cmbStatusVeiculo.Enabled = false;
+            btnAddFotoVeiculo.Enabled = false;
+
         }
     }
 }
