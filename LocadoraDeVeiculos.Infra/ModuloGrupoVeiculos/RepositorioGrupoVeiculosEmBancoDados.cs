@@ -9,7 +9,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
 
         public RepositorioGrupoVeiculosEmBancoDados()
         {
-            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS; DBCC CHECKIDENT (TBGRUPOVEICULOS, RESEED, 0)");
         }
         protected override string sqlInserir =>
             @"INSERT INTO [TBGRUPOVEICULOS]

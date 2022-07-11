@@ -180,6 +180,11 @@
             // numCapTanqueVeiculo
             // 
             this.numCapTanqueVeiculo.Location = new System.Drawing.Point(486, 102);
+            this.numCapTanqueVeiculo.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
             this.numCapTanqueVeiculo.Name = "numCapTanqueVeiculo";
             this.numCapTanqueVeiculo.Size = new System.Drawing.Size(141, 27);
             this.numCapTanqueVeiculo.TabIndex = 17;
@@ -187,6 +192,11 @@
             // numKmVeiculo
             // 
             this.numKmVeiculo.Location = new System.Drawing.Point(486, 135);
+            this.numKmVeiculo.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.numKmVeiculo.Name = "numKmVeiculo";
             this.numKmVeiculo.Size = new System.Drawing.Size(141, 27);
             this.numKmVeiculo.TabIndex = 18;
@@ -194,6 +204,11 @@
             // numAnoVeiculo
             // 
             this.numAnoVeiculo.Location = new System.Drawing.Point(152, 130);
+            this.numAnoVeiculo.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.numAnoVeiculo.Name = "numAnoVeiculo";
             this.numAnoVeiculo.Size = new System.Drawing.Size(125, 27);
             this.numAnoVeiculo.TabIndex = 19;
@@ -231,6 +246,7 @@
             this.btnSalvarVeiculo.TabIndex = 24;
             this.btnSalvarVeiculo.Text = "Salvar";
             this.btnSalvarVeiculo.UseVisualStyleBackColor = true;
+            this.btnSalvarVeiculo.Click += new System.EventHandler(this.btnSalvarVeiculo_Click);
             // 
             // btnCancelarVeiculo
             // 

@@ -81,6 +81,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 cmbGrupoVeiculo.Items.Add(item);
             }
         }
-        
+
+        private void btnSalvarVeiculo_Click(object sender, EventArgs e)
+        {
+            veiculo.Modelo = txtModeloVeiculo.Text;
+            veiculo.Fabricante = txtFabricanteVeiculo.Text;
+            veiculo.Placa = txtPlacaVeiculo.Text;
+            veiculo.Cor = txtCorVeiculo.Text;
+            veiculo.TipoCombustivel = (TipoCombustivelEnum)cmbCombustivelVeiculo.SelectedItem;
+            veiculo.CapacidadeTanque = numCapTanqueVeiculo.Value;
+            veiculo.Ano = (int)numAnoVeiculo.Value;
+            veiculo.KmPercorrido = (int)numKmVeiculo.Value;
+            veiculo.StatusVeiculo = (StatusVeiculoEnum)cmbStatusVeiculo.SelectedItem;
+            veiculo.Grupo = (GrupoDeVeiculos)cmbGrupoVeiculo.SelectedItem;
+        }
     }
 }

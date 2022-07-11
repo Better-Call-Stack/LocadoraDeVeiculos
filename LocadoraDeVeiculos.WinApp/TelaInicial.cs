@@ -34,12 +34,6 @@ namespace LocadoraDeVeiculos.WinApp
             InicializarControladores();
         }
 
-        public static TelaInicial Instancia
-        {
-            get;
-            private set;
-        }
-
         private void InicializarControladores()
         {
             var repositorioFuncionario = new RepositorioFuncionario();

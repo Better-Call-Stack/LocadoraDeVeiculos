@@ -17,6 +17,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
         {
             this.mapeadorGrupoDeVeiculos = new MapeadorGrupoVeiculos();
         }
+
         public override void ConfigurarParametros(Veiculo veiculo, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", veiculo.Id);
@@ -44,7 +45,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             var ano = Convert.ToInt32(leitorVeiculo["ANO"]);
             var kmpercorrido = Convert.ToInt32(leitorVeiculo["KMPERCORRIDO"]);
             var statusVeiculo = Convert.ToInt32(leitorVeiculo["STATUSVEICULO"]);
-            var grupoveiculos_id = Convert.ToString(leitorVeiculo["GRUPOVEICULOS_ID"]);
+            var grupo = Convert.ToInt32(leitorVeiculo["GRUPOVEICULOS_ID"]);
 
             Veiculo veiculo = new Veiculo();
             veiculo.Id = id;
@@ -57,7 +58,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             veiculo.Ano = ano;
             veiculo.KmPercorrido = kmpercorrido;
             veiculo.StatusVeiculo = (StatusVeiculoEnum)statusVeiculo;
-            var veiculoGrupo = mapeadorGrupoDeVeiculos.ConverterRegistro(leitorVeiculo);
+            veiculo.Grupo = new MapeadorGrupoVeiculos().ConverterRegistro(leitorVeiculo);
 
             return veiculo;
         }
