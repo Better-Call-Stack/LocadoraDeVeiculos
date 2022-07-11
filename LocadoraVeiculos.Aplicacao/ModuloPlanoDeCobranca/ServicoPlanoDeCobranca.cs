@@ -44,8 +44,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
             var resultadoValidacao = validador.Validate(planoDeCobranca);
 
-            if (IdDuplicado(planoDeCobranca))
-                resultadoValidacao.Errors.Add(new ValidationFailure("Erro", "Grupo de veiculos já possue plano de cobrança"));
+            if (planoDeCobranca.GrupoDeVeiculos != null)    
+                if (IdDuplicado(planoDeCobranca))
+                    resultadoValidacao.Errors.Add(new ValidationFailure("Erro", "Grupo de veiculos já possue plano de cobrança"));
 
             return resultadoValidacao;
         }
