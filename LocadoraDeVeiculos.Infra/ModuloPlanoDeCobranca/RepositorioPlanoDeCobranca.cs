@@ -13,7 +13,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
     {
         public RepositorioPlanoDeCobranca()
         {
-            Db.ExecutarSql("DELETE FROM TBPLANODECOBRANCA; DBCC CHECKIDENT (TBPLANODECOBRANCA, RESEED, 0)");
         }
         protected override string sqlInserir =>
             @"INSERT INTO [TBPLANODECOBRANCA]
