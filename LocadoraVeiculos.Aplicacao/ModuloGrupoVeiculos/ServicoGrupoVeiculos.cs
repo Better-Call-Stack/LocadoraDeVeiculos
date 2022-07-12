@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,21 +21,45 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 
         public ValidationResult Inserir(GrupoDeVeiculos grupoDeVeiculos)
         {
+            Log.Logger.Debug("Inserindo Grupo de Veiculos {@gv}", grupoDeVeiculos);
+
             ValidationResult resultadoValidacao = Validar(grupoDeVeiculos);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioGrupoVeiculos.Inserir(grupoDeVeiculos);
-
+                Log.Logger.Debug("Grupo de Veiculos {GrupoDeVeiculosNome} inserido", grupoDeVeiculos.Nome);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao inserir Grupo de Veiculos {GrupoDeVeiculosNome} - {Motivo}: ",
+                        grupoDeVeiculos.Nome, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 
         public ValidationResult Editar(GrupoDeVeiculos grupoDeVeiculos)
         {
+            Log.Logger.Debug("Editando Grupo de Veiculos {@pc}", grupoDeVeiculos);
+
             ValidationResult resultadoValidacao = Validar(grupoDeVeiculos);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioGrupoVeiculos.Editar(grupoDeVeiculos);
-
+                Log.Logger.Debug("Grupo de Veiculos {GrupoDeVeiculosNome} editado", grupoDeVeiculos.Nome);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao editar Grupo de Veiculos {GrupoDeVeiculosNome} - {Motivo}: ",
+                        grupoDeVeiculos.Nome, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 
