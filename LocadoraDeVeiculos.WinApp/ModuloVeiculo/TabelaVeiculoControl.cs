@@ -27,8 +27,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             foreach (Veiculo v in veiculos)
             {
-                gridVeiculo.Rows.Add(v.Id, v.Modelo, v.Fabricante, v.Placa, v.KmPercorrido, v.StatusVeiculo,
-                    v.TipoCombustivel, v.CapacidadeTanque);
+                gridVeiculo.Rows.Add(v.Id, v.Placa, v.Modelo, v.Fabricante, v.Grupo.Nome, v.StatusVeiculo, v.TipoCombustivel);
             }
         }
 

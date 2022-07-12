@@ -229,6 +229,7 @@
             // 
             // cmbGrupoVeiculo
             // 
+            this.cmbGrupoVeiculo.DisplayMember = "Nome";
             this.cmbGrupoVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGrupoVeiculo.FormattingEnabled = true;
             this.cmbGrupoVeiculo.Location = new System.Drawing.Point(486, 168);
