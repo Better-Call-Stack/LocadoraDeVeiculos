@@ -43,7 +43,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                     [FABRICANTE] = @FABRICANTE,
                     [PLACA] = @PLACA,
                     [COR] = @COR,
-                    [TIPOCOMBUSTIVEL] = @TIPOCOMBUSTIVEL
+                    [TIPOCOMBUSTIVEL] = @TIPOCOMBUSTIVEL,
                     [CAPACIDADEDOTANQUE] = @CAPACIDADEDOTANQUE,
                     [ANO] = @ANO,
                     [KMPERCORRIDO] = @KMPERCORRIDO,

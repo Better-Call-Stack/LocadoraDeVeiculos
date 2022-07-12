@@ -70,8 +70,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                     "Exclusão de dados de veículo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+
+            if (veiculoSelecionado.StatusVeiculo == StatusVeiculoEnum.Ativo ||
+                veiculoSelecionado.StatusVeiculo == StatusVeiculoEnum.Manutenção)
+            {
+                MessageBox.Show("Só é possível excluir os dados de veículos inativos.",
+                    "Veículo em uso.", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                return;
+            }
+
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir os dados?",
                     "Exclusão de dados de veículo.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
             if(resultado == DialogResult.OK)
             {
                 repositorioVeiculo.Excluir(veiculoSelecionado);
@@ -102,5 +112,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             var id = tabelaVeiculo.ObtemIdVeiculoSelecionado();
             return repositorioVeiculo.SelecionarPorId((int)id);
         }
+
+        //private bool ValidarVeiculoParaExcluir()
+        //{
+
+        //}
     }
 }

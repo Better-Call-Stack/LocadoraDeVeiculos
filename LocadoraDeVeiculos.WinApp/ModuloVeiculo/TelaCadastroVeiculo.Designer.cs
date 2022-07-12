@@ -205,7 +205,7 @@
             // 
             this.numAnoVeiculo.Location = new System.Drawing.Point(152, 131);
             this.numAnoVeiculo.Maximum = new decimal(new int[] {
-            9999,
+            99999,
             0,
             0,
             0});
