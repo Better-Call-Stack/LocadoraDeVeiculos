@@ -12,7 +12,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
     {
         RepositorioVeiculo repositorio;
         RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
-        public TabelaVeiculoControl(RepositorioVeiculo repositorio)
+        public TabelaVeiculoControl(RepositorioVeiculo repositorio, RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos)
         {
             InitializeComponent();
             gridVeiculo.ConfigurarGridZebrado();
@@ -27,7 +27,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             foreach (Veiculo v in veiculos)
             {
-                gridVeiculo.Rows.Add(v.Id, v.Grupo, v.Placa, v.Modelo, v.Fabricante, v.Cor,
+                gridVeiculo.Rows.Add(v.Id, v.Modelo, v.Fabricante, v.Placa, v.KmPercorrido, v.StatusVeiculo,
                     v.TipoCombustivel, v.CapacidadeTanque);
             }
         }
@@ -36,19 +36,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         {
             return gridVeiculo.SelecionarId<int>();
         }
-        private void GridDoubleClickGenerico()
-{
+
+        private void gridVeiculo_DoubleClick(object sender, EventArgs e)
+        {
             TelaCadastroVeiculo tela = new TelaCadastroVeiculo("Visualizacao", repositorioGrupoVeiculos.SelecionarTodos());
             int id = ObtemIdVeiculoSelecionado();
             Veiculo v = repositorio.SelecionarPorId(id);
 
             tela.Veiculo = v;
             tela.ShowDialog();
-        }
-
-        private void gridPessoaJuridica_DoubleClick(object sender, EventArgs e)
-        {
-            GridDoubleClickGenerico();
         }
     }
 }

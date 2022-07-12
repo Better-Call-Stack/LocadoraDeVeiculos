@@ -85,7 +85,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override UserControl ObtemListagem()
         {
-            tabelaVeiculo = new TabelaVeiculoControl(repositorioVeiculo);
+            tabelaVeiculo = new TabelaVeiculoControl(repositorioVeiculo, repositorioGrupoVeiculos);
 
             CarregarVeiculos();
 

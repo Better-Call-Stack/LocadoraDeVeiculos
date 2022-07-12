@@ -59,18 +59,18 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
-                VEICULO.ID,                                                         
-                VEICULO.MODELO,                                                        
-                VEICULO.FABRICANTE,                                                       
-                VEICULO.TIPOCOMBUSTIVEL,                                                       
-                VEICULO.COR,
-                VEICULO.ANO,
-                VEICULO.KMPERCORRIDO,                                                        
-                VEICULO.CAPACIDADEDOTANQUE,                                                        
-                VEICULO.PLACA,
-                VEICULO.STATUSVEICULO,
-                GRUPO.ID AS GRUPOVEICULOS_ID,
-                GRUPO.NOME AS GRUPOVEICULOS_NOME														 
+                VEICULO.[ID],                                                         
+                VEICULO.[MODELO],                                                        
+                VEICULO.[FABRICANTE],                                                       
+                VEICULO.[TIPOCOMBUSTIVEL],                                                       
+                VEICULO.[COR],
+                VEICULO.[ANO],
+                VEICULO.[KMPERCORRIDO],                                                        
+                VEICULO.[CAPACIDADEDOTANQUE],                                                        
+                VEICULO.[PLACA],
+                VEICULO.[STATUSVEICULO],
+                GRUPO.[ID],
+                GRUPO.[NOME]														 
                                                           
                 FROM 
                  [TBVEICULO] AS VEICULO
@@ -81,18 +81,18 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 
         protected string sqlSelecionarPorPlaca =>
             @"SELECT 
-                VEICULO.ID AS VEICULO_ID,                                                         
-                VEICULO.MODELO,                                                        
-                VEICULO.FABRICANTE,                                                       
-                VEICULO.TIPOCOMBUSTIVEL,                                                       
-                VEICULO.COR,
-                VEICULO.ANO,
-                VEICULO.KMPERCORRIDO,                                                        
-                VEICULO.CAPACIDADEDOTANQUE,                                                        
-                VEICULO.PLACA,
-                VEICULO.STATUSVEICULO,
-                GRUPO.ID AS GRUPOVEICULOS_ID,
-                GRUPO.NOME AS GRUPOVEICULOS_NOME														 
+                VEICULO.[ID],                                                         
+                VEICULO.[MODELO],                                                        
+                VEICULO.[FABRICANTE],                                                       
+                VEICULO.[TIPOCOMBUSTIVEL],                                                       
+                VEICULO.[COR],
+                VEICULO.[ANO],
+                VEICULO.[KMPERCORRIDO],                                                        
+                VEICULO.[CAPACIDADEDOTANQUE],                                                        
+                VEICULO.[PLACA],
+                VEICULO.[STATUSVEICULO],
+                GRUPO.[ID],
+                GRUPO.[NOME]													 
                                                           
                 FROM 
                  [TBVEICULO] AS VEICULO
@@ -103,18 +103,19 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 
         protected override string sqlSelecionarTodos =>
             @"SELECT 
-                VEICULO.ID,                                                         
-                VEICULO.MODELO,                                                        
-                VEICULO.FABRICANTE,                                                       
-                VEICULO.TIPOCOMBUSTIVEL,                                                       
-                VEICULO.COR,
-                VEICULO.ANO,
-                VEICULO.KMPERCORRIDO,                                                        
-                VEICULO.CAPACIDADEDOTANQUE,                                                        
-                VEICULO.PLACA,
-                VEICULO.STATUSVEICULO,
-                GRUPO.ID AS GRUPOVEICULOS_ID,
-                GRUPO.NOME AS GRUPOVEICULOS_NOME													 
+                VEICULO.[ID],                                                         
+                VEICULO.[MODELO],                                                        
+                VEICULO.[FABRICANTE],                                                       
+                VEICULO.[TIPOCOMBUSTIVEL],                                                       
+                VEICULO.[COR],
+                VEICULO.[ANO],
+                VEICULO.[KMPERCORRIDO],                                                        
+                VEICULO.[CAPACIDADEDOTANQUE],                                                        
+                VEICULO.[PLACA],
+                VEICULO.[STATUSVEICULO],
+                
+                GRUPO.[ID],
+                GRUPO.[NOME]
                                                           
               FROM 
                 [TBVEICULO] AS VEICULO

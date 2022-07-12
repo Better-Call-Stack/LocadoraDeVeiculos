@@ -30,13 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.gridVeiculo = new System.Windows.Forms.DataGridView();
-            this.veiculoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.IdVeiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModeloVeiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FabricanteVeiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PlacaVeiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KmPercorrido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatusVeiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.veiculoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.gridVeiculo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.veiculoBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -63,10 +63,7 @@
             this.gridVeiculo.RowTemplate.Height = 29;
             this.gridVeiculo.Size = new System.Drawing.Size(774, 477);
             this.gridVeiculo.TabIndex = 0;
-            // 
-            // veiculoBindingSource
-            // 
-            this.veiculoBindingSource.DataSource = typeof(LocadoraDeVeiculos.Dominio.ModuloVeiculo.Veiculo);
+            this.gridVeiculo.DoubleClick += new System.EventHandler(this.gridVeiculo_DoubleClick);
             // 
             // IdVeiculo
             // 
@@ -115,6 +112,10 @@
             this.StatusVeiculo.Name = "StatusVeiculo";
             this.StatusVeiculo.ReadOnly = true;
             this.StatusVeiculo.Width = 125;
+            // 
+            // veiculoBindingSource
+            // 
+            this.veiculoBindingSource.DataSource = typeof(LocadoraDeVeiculos.Dominio.ModuloVeiculo.Veiculo);
             // 
             // TabelaVeiculoControl
             // 
