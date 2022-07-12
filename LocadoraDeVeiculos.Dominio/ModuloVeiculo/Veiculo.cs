@@ -57,7 +57,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
 
         public Veiculo Clonar()
         {
-            throw new NotImplementedException();
+            return MemberwiseClone() as Veiculo;
         }
     }
 }
