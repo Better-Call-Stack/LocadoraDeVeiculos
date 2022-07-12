@@ -32,8 +32,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                     @ANO,
                     @KMPERCORRIDO,
                     @STATUSVEICULO,
-                    @GRUPOVEICULOS_ID,
-                    @STATUSVEICULO
+                    @GRUPOVEICULOS_ID
                 )
                     SELECT SCOPE_IDENTITY();";
 
@@ -60,7 +59,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
-                VEICULO.ID AS VEICULO_ID,                                                         
+                VEICULO.ID,                                                         
                 VEICULO.MODELO,                                                        
                 VEICULO.FABRICANTE,                                                       
                 VEICULO.TIPOCOMBUSTIVEL,                                                       
@@ -104,7 +103,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 
         protected override string sqlSelecionarTodos =>
             @"SELECT 
-                VEICULO.ID AS VEICULO_ID,                                                         
+                VEICULO.ID,                                                         
                 VEICULO.MODELO,                                                        
                 VEICULO.FABRICANTE,                                                       
                 VEICULO.TIPOCOMBUSTIVEL,                                                       

@@ -14,7 +14,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
                 .NotEmpty().WithMessage("Digite um modelo.");
 
             RuleFor(x => x.Fabricante)
-                 .NotNull().WithMessage("Digite um fabricante.")
+                .NotNull().WithMessage("Digite um fabricante.")
                 .NotEmpty().WithMessage("Digite um fabricante.");
 
 
@@ -27,16 +27,14 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
                 .NotNull().NotEmpty();
 
             RuleFor(x => x.StatusVeiculo)
-               .NotNull().WithMessage("Selecione um status para o veículo.")
-               .NotEmpty().WithMessage("Selecione um status para o veículo.");
+               .NotNull().WithMessage("Selecione um status para o veículo.");
 
             RuleFor(x => x.Cor)
                 .NotNull().WithMessage("Cadastre uma cor para o veículo.")
                 .NotEmpty().WithMessage("Cadastre uma cor para o veículo.");
 
             RuleFor(x => x.TipoCombustivel)
-                .NotNull().WithMessage("Selecione um tipo de combustível para o veículo.")
-                .NotEmpty().WithMessage("Selecione um tipo de combustível para o veículo.");
+                .NotNull().WithMessage("Selecione um tipo de combustível para o veículo.");
 
             RuleFor(x => x.Grupo)
                 .NotNull().WithMessage("Selecione um grupo para o veículo.")
