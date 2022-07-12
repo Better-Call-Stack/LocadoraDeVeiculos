@@ -1,11 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ModuloFuncionario;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
 {
@@ -41,7 +36,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             return resultadoValidacao;
         }
 
-        private bool CpfDuplicado (Funcionario funcionario)
+        private bool CpfDuplicado(Funcionario funcionario)
         {
             var funcionarioEncontrado = repositorioFuncionario.SelecionarFuncionarioPorCPF(funcionario.CPF);
 

@@ -1,16 +1,13 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloCliente;
+﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.Compartilhado;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.ModuloCliente
 {
-	public class RepositorioCliente : RepositorioBase<Cliente, ValidadorCliente, MapeadorCliente>
-	{
-		protected override string sqlInserir =>
-			@"INSERT INTO [TBCLIENTE]
+    public class RepositorioCliente : RepositorioBase<Cliente, ValidadorCliente, MapeadorCliente>
+    {
+        protected override string sqlInserir =>
+            @"INSERT INTO [TBCLIENTE]
 				(
 					[NOME],
 					[CPF],
@@ -34,8 +31,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				)
 				SELECT SCOPE_IDENTITY();";
 
-		protected override string sqlEditar =>
-			@" UPDATE [TBCLIENTE]
+        protected override string sqlEditar =>
+            @" UPDATE [TBCLIENTE]
 				SET
 					[NOME] = @NOME,
 					[CPF] = @CPF,
@@ -50,12 +47,12 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 
 					";
 
-		protected override string sqlExcluir =>
-			@"DELETE FROM [TBCLIENTE]
+        protected override string sqlExcluir =>
+            @"DELETE FROM [TBCLIENTE]
                 WHERE [ID] = @ID";
 
-		protected override string sqlSelecionarPorId =>
-			@"SELECT
+        protected override string sqlSelecionarPorId =>
+            @"SELECT
 				[ID],
 				[NOME],
 				[CPF],
@@ -70,8 +67,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 			WHERE
 				[ID] = @ID";
 
-		protected override string sqlSelecionarTodos =>
-			@"SELECT
+        protected override string sqlSelecionarTodos =>
+            @"SELECT
 				[ID],
 				[NOME],
 				[CPF],
@@ -85,8 +82,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 				[TBCLIENTE]
 			";
 
-		private string sqlSelecionarPorCPF =>
-			@"SELECT
+        private string sqlSelecionarPorCPF =>
+            @"SELECT
 				[ID],
 				[NOME],
 				[CPF],
@@ -101,8 +98,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 			WHERE
 				[CPF] = @CPF";
 
-		private string sqlSelecionarPorCNPJ =>
-			@"SELECT
+        private string sqlSelecionarPorCNPJ =>
+            @"SELECT
 				[ID],
 				[NOME],
 				[CPF],
@@ -117,17 +114,17 @@ namespace LocadoraDeVeiculos.Infra.ModuloCliente
 			WHERE
 				[CNPJ] = @CNPJ";
 
-		public Cliente SelecionarClientePorCPF(string CPF)
-		{
-			return SelecionarPorParametro(sqlSelecionarPorCPF, new SqlParameter("CPF", CPF));
+        public Cliente SelecionarClientePorCPF(string CPF)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorCPF, new SqlParameter("CPF", CPF));
 
-		}
+        }
 
-		public Cliente SelecionarClientePorCNPJ(string CNPJ)
-		{
-			return SelecionarPorParametro(sqlSelecionarPorCNPJ, new SqlParameter("CNPJ", CNPJ));
+        public Cliente SelecionarClientePorCNPJ(string CNPJ)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorCNPJ, new SqlParameter("CNPJ", CNPJ));
 
-		}
+        }
 
-	}
+    }
 }

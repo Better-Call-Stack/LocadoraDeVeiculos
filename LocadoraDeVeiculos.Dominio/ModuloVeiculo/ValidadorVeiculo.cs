@@ -8,7 +8,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         {
             RuleFor(x => x.Placa)
                 .Length(7).WithMessage("Placa deve ter 7 caracteres.");
-               
+
             RuleFor(x => x.Modelo)
                 .NotNull().WithMessage("Digite um modelo.")
                 .NotEmpty().WithMessage("Digite um modelo.");

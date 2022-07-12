@@ -4,11 +4,19 @@ using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.IO;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 {
     public partial class TelaCadastroVeiculo : Form
     {
+        string origemCompleto = "";
+        string foto = "";
+        string pastaDestino = "";
+        string destinoCompleto = caminhoFoto;
+        private static string caminho = System.Environment.CurrentDirectory;
+        private static string caminhoFoto = caminho + @"\foto\";
+
         public TelaCadastroVeiculo(string modoTela, List<GrupoDeVeiculos> grupoDeVeiculos)
         {
             InitializeComponent();
@@ -43,9 +51,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 numKmVeiculo.Value = veiculo.KmPercorrido;
                 cmbStatusVeiculo.SelectedItem = veiculo.StatusVeiculo;
                 cmbGrupoVeiculo.SelectedItem = veiculo.Grupo;
+                pb_Veiculo.ImageLocation = veiculo.FotoVeiculo;
             }
         }
-        
+
         private void CarregarCombustivelVeiculo()
         {
             var opcoes = Enum.GetValues(typeof(TipoCombustivelEnum));
@@ -55,12 +64,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 cmbCombustivelVeiculo.Items.Add(item);
             }
         }
-        
+
         private void CarregarStatusVeiculo()
         {
             var status = Enum.GetValues(typeof(StatusVeiculoEnum));
 
-            foreach(var item in status)
+            foreach (var item in status)
             {
                 cmbStatusVeiculo.Items.Add(item);
             }
@@ -77,6 +86,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         private void btnSalvarVeiculo_Click(object sender, EventArgs e)
         {
+            if(destinoCompleto == "")
+            {
+                if (MessageBox.Show("Nenhuma foto selecionada, cadastrar sem foto?", "Erro", 
+                    MessageBoxButtons.YesNo) == DialogResult.No)
+                    return;
+            }
+
+            if(destinoCompleto != "")
+            {
+                File.Copy(origemCompleto, destinoCompleto, true);
+
+                if (File.Exists(destinoCompleto))
+                {
+                    pb_Veiculo.ImageLocation = destinoCompleto;
+                }
+                else
+                {
+                    if (MessageBox.Show("Erro ao selecionar foto, deseja continuar?", "Erro", 
+                        MessageBoxButtons.YesNo) == DialogResult.No)
+                        return;
+                }
+            }
             veiculo.Modelo = txtModeloVeiculo.Text;
             veiculo.Fabricante = txtFabricanteVeiculo.Text;
             veiculo.Placa = txtPlacaVeiculo.Text;
@@ -87,6 +118,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             veiculo.KmPercorrido = (int)numKmVeiculo.Value;
             veiculo.StatusVeiculo = (StatusVeiculoEnum)cmbStatusVeiculo.SelectedItem;
             veiculo.Grupo = (GrupoDeVeiculos)cmbGrupoVeiculo.SelectedItem;
+            veiculo.FotoVeiculo = destinoCompleto;
 
             var resultadoValidacao = GravarRegistro(veiculo);
 
@@ -116,6 +148,32 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             cmbStatusVeiculo.Enabled = false;
             btnAddFotoVeiculo.Enabled = false;
 
+        }
+        
+        private void btnAddFotoVeiculo_Click(object sender, EventArgs e)
+        {
+            origemCompleto = "";
+            foto = "";
+            pastaDestino = caminhoFoto;
+            destinoCompleto = "";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                origemCompleto = openFileDialog1.FileName;
+                foto = openFileDialog1.SafeFileName;
+                destinoCompleto = pastaDestino + foto;
+            }
+
+            if (File.Exists(destinoCompleto))
+            {
+                if (MessageBox.Show("Arquivo já existe. Deseja substituir?", "Substituir", 
+                    MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    return;
+                }
+            }
+           
+            pb_Veiculo.ImageLocation = origemCompleto;
         }
     }
 }

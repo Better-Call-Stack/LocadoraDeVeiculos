@@ -52,11 +52,12 @@
             this.btnSalvarVeiculo = new System.Windows.Forms.Button();
             this.btnCancelarVeiculo = new System.Windows.Forms.Button();
             this.btnAddFotoVeiculo = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pb_Veiculo = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.numCapTanqueVeiculo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKmVeiculo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAnoVeiculo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Veiculo)).BeginInit();
             this.SuspendLayout();
             // 
             // lbFabricanteVeiculo
@@ -71,7 +72,7 @@
             // lbModeloVeiculo
             // 
             this.lbModeloVeiculo.AutoSize = true;
-            this.lbModeloVeiculo.Location = new System.Drawing.Point(416, 37);
+            this.lbModeloVeiculo.Location = new System.Drawing.Point(386, 38);
             this.lbModeloVeiculo.Name = "lbModeloVeiculo";
             this.lbModeloVeiculo.Size = new System.Drawing.Size(64, 20);
             this.lbModeloVeiculo.TabIndex = 1;
@@ -107,7 +108,7 @@
             // lbCombustivelVeiculo
             // 
             this.lbCombustivelVeiculo.AutoSize = true;
-            this.lbCombustivelVeiculo.Location = new System.Drawing.Point(386, 71);
+            this.lbCombustivelVeiculo.Location = new System.Drawing.Point(356, 71);
             this.lbCombustivelVeiculo.Name = "lbCombustivelVeiculo";
             this.lbCombustivelVeiculo.Size = new System.Drawing.Size(94, 20);
             this.lbCombustivelVeiculo.TabIndex = 5;
@@ -116,7 +117,7 @@
             // lbTanqueVeiculo
             // 
             this.lbTanqueVeiculo.AutoSize = true;
-            this.lbTanqueVeiculo.Location = new System.Drawing.Point(313, 104);
+            this.lbTanqueVeiculo.Location = new System.Drawing.Point(283, 104);
             this.lbTanqueVeiculo.Name = "lbTanqueVeiculo";
             this.lbTanqueVeiculo.Size = new System.Drawing.Size(167, 20);
             this.lbTanqueVeiculo.TabIndex = 6;
@@ -125,7 +126,7 @@
             // lbQuilometragemVeiculo
             // 
             this.lbQuilometragemVeiculo.AutoSize = true;
-            this.lbQuilometragemVeiculo.Location = new System.Drawing.Point(363, 137);
+            this.lbQuilometragemVeiculo.Location = new System.Drawing.Point(333, 137);
             this.lbQuilometragemVeiculo.Name = "lbQuilometragemVeiculo";
             this.lbQuilometragemVeiculo.Size = new System.Drawing.Size(117, 20);
             this.lbQuilometragemVeiculo.TabIndex = 7;
@@ -134,7 +135,7 @@
             // lbGrupoVeiculo
             // 
             this.lbGrupoVeiculo.AutoSize = true;
-            this.lbGrupoVeiculo.Location = new System.Drawing.Point(427, 167);
+            this.lbGrupoVeiculo.Location = new System.Drawing.Point(397, 167);
             this.lbGrupoVeiculo.Name = "lbGrupoVeiculo";
             this.lbGrupoVeiculo.Size = new System.Drawing.Size(53, 20);
             this.lbGrupoVeiculo.TabIndex = 8;
@@ -172,14 +173,14 @@
             // 
             // txtModeloVeiculo
             // 
-            this.txtModeloVeiculo.Location = new System.Drawing.Point(486, 35);
+            this.txtModeloVeiculo.Location = new System.Drawing.Point(456, 34);
             this.txtModeloVeiculo.Name = "txtModeloVeiculo";
             this.txtModeloVeiculo.Size = new System.Drawing.Size(141, 27);
             this.txtModeloVeiculo.TabIndex = 13;
             // 
             // numCapTanqueVeiculo
             // 
-            this.numCapTanqueVeiculo.Location = new System.Drawing.Point(486, 101);
+            this.numCapTanqueVeiculo.Location = new System.Drawing.Point(456, 97);
             this.numCapTanqueVeiculo.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -191,7 +192,7 @@
             // 
             // numKmVeiculo
             // 
-            this.numKmVeiculo.Location = new System.Drawing.Point(486, 135);
+            this.numKmVeiculo.Location = new System.Drawing.Point(456, 130);
             this.numKmVeiculo.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -222,7 +223,7 @@
             // 
             this.cmbCombustivelVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCombustivelVeiculo.FormattingEnabled = true;
-            this.cmbCombustivelVeiculo.Location = new System.Drawing.Point(486, 68);
+            this.cmbCombustivelVeiculo.Location = new System.Drawing.Point(456, 63);
             this.cmbCombustivelVeiculo.Name = "cmbCombustivelVeiculo";
             this.cmbCombustivelVeiculo.Size = new System.Drawing.Size(141, 28);
             this.cmbCombustivelVeiculo.TabIndex = 21;
@@ -232,7 +233,7 @@
             this.cmbGrupoVeiculo.DisplayMember = "Nome";
             this.cmbGrupoVeiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGrupoVeiculo.FormattingEnabled = true;
-            this.cmbGrupoVeiculo.Location = new System.Drawing.Point(486, 168);
+            this.cmbGrupoVeiculo.Location = new System.Drawing.Point(456, 163);
             this.cmbGrupoVeiculo.Name = "cmbGrupoVeiculo";
             this.cmbGrupoVeiculo.Size = new System.Drawing.Size(141, 28);
             this.cmbGrupoVeiculo.TabIndex = 22;
@@ -249,7 +250,7 @@
             // btnSalvarVeiculo
             // 
             this.btnSalvarVeiculo.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSalvarVeiculo.Location = new System.Drawing.Point(434, 385);
+            this.btnSalvarVeiculo.Location = new System.Drawing.Point(365, 321);
             this.btnSalvarVeiculo.Name = "btnSalvarVeiculo";
             this.btnSalvarVeiculo.Size = new System.Drawing.Size(117, 40);
             this.btnSalvarVeiculo.TabIndex = 24;
@@ -260,7 +261,7 @@
             // btnCancelarVeiculo
             // 
             this.btnCancelarVeiculo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelarVeiculo.Location = new System.Drawing.Point(555, 387);
+            this.btnCancelarVeiculo.Location = new System.Drawing.Point(488, 324);
             this.btnCancelarVeiculo.Name = "btnCancelarVeiculo";
             this.btnCancelarVeiculo.Size = new System.Drawing.Size(114, 37);
             this.btnCancelarVeiculo.TabIndex = 25;
@@ -269,28 +270,35 @@
             // 
             // btnAddFotoVeiculo
             // 
-            this.btnAddFotoVeiculo.Location = new System.Drawing.Point(66, 207);
+            this.btnAddFotoVeiculo.Location = new System.Drawing.Point(423, 250);
             this.btnAddFotoVeiculo.Name = "btnAddFotoVeiculo";
             this.btnAddFotoVeiculo.Size = new System.Drawing.Size(117, 29);
             this.btnAddFotoVeiculo.TabIndex = 26;
             this.btnAddFotoVeiculo.Text = "Adicionar foto";
             this.btnAddFotoVeiculo.UseVisualStyleBackColor = true;
+            this.btnAddFotoVeiculo.Click += new System.EventHandler(this.btnAddFotoVeiculo_Click);
             // 
-            // pictureBox1
+            // pb_Veiculo
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(27, 243);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(315, 173);
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
+            this.pb_Veiculo.Location = new System.Drawing.Point(24, 197);
+            this.pb_Veiculo.Name = "pb_Veiculo";
+            this.pb_Veiculo.Size = new System.Drawing.Size(335, 193);
+            this.pb_Veiculo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Veiculo.TabIndex = 27;
+            this.pb_Veiculo.TabStop = false;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "JPG(*jpg)|*.jpg|PNG(*.png)|*.png";
             // 
             // TelaCadastroVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(682, 437);
+            this.ClientSize = new System.Drawing.Size(614, 407);
             this.Controls.Add(this.cmbGrupoVeiculo);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pb_Veiculo);
             this.Controls.Add(this.btnAddFotoVeiculo);
             this.Controls.Add(this.btnCancelarVeiculo);
             this.Controls.Add(this.btnSalvarVeiculo);
@@ -322,7 +330,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numCapTanqueVeiculo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKmVeiculo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAnoVeiculo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Veiculo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,6 +361,7 @@
         private System.Windows.Forms.Button btnSalvarVeiculo;
         private System.Windows.Forms.Button btnCancelarVeiculo;
         private System.Windows.Forms.Button btnAddFotoVeiculo;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pb_Veiculo;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

@@ -19,7 +19,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                     [ANO],
                     [KMPERCORRIDO],
                     [STATUSVEICULO],
-                    [GRUPOVEICULOS_ID]
+                    [GRUPOVEICULOS_ID],
+                    [FOTOVEICULO]
                 )
                VALUES
                 (
@@ -32,7 +33,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                     @ANO,
                     @KMPERCORRIDO,
                     @STATUSVEICULO,
-                    @GRUPOVEICULOS_ID
+                    @GRUPOVEICULOS_ID,
+                    @FOTOVEICULO
                 )
                     SELECT SCOPE_IDENTITY();";
 
@@ -48,7 +50,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                     [ANO] = @ANO,
                     [KMPERCORRIDO] = @KMPERCORRIDO,
                     [STATUSVEICULO] = @STATUSVEICULO,
-                    [GRUPOVEICULOS_ID] = @GRUPOVEICULOS_ID
+                    [GRUPOVEICULOS_ID] = @GRUPOVEICULOS_ID,
+                    [FOTOVEICULO] = @FOTOVEICULO
                 WHERE
                     [ID] = @ID";
 
@@ -69,9 +72,10 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                 VEICULO.[CAPACIDADEDOTANQUE],                                                        
                 VEICULO.[PLACA],
                 VEICULO.[STATUSVEICULO],
+                VEICULO.[FOTOVEICULO],
                 GRUPO.[ID],
-                GRUPO.[NOME]														 
-                                                          
+                GRUPO.[NOME]
+
                 FROM 
                  [TBVEICULO] AS VEICULO
                   INNER JOIN [TBGRUPOVEICULOS] AS GRUPO ON 
@@ -91,6 +95,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                 VEICULO.[CAPACIDADEDOTANQUE],                                                        
                 VEICULO.[PLACA],
                 VEICULO.[STATUSVEICULO],
+                VEICULO.[FOTOVEICULO],
                 GRUPO.[ID],
                 GRUPO.[NOME]													 
                                                           
@@ -113,7 +118,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                 VEICULO.[CAPACIDADEDOTANQUE],                                                        
                 VEICULO.[PLACA],
                 VEICULO.[STATUSVEICULO],
-                
+                VEICULO.[FOTOVEICULO],
                 GRUPO.[ID],
                 GRUPO.[NOME]
                                                           
@@ -126,6 +131,6 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
         {
             return SelecionarPorParametro(sqlSelecionarPorPlaca, new SqlParameter("PLACA", placa));
         }
-             
+
     }
 }

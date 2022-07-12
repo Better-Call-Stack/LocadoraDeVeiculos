@@ -1,10 +1,8 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
-using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
+﻿using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloVeiculo;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
-using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -32,7 +30,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             DialogResult resultado = tela.ShowDialog();
 
-            if(resultado == DialogResult.OK)
+            if (resultado == DialogResult.OK)
             {
                 CarregarVeiculos();
             }
@@ -41,7 +39,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         {
             Veiculo veiculoSelecionado = ObtemVeiculoSelecionado();
 
-            if(veiculoSelecionado == null)
+            if (veiculoSelecionado == null)
             {
                 MessageBox.Show("Selecione um veículo primeiro",
                     "Edição de dados do veículo.", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -64,7 +62,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         {
             Veiculo veiculoSelecionado = ObtemVeiculoSelecionado();
 
-            if(veiculoSelecionado == null)
+            if (veiculoSelecionado == null)
             {
                 MessageBox.Show("Selecione um veículo primeiro",
                     "Exclusão de dados de veículo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -82,7 +80,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             DialogResult resultado = MessageBox.Show("Deseja realmente excluir os dados?",
                     "Exclusão de dados de veículo.", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-            if(resultado == DialogResult.OK)
+            if (resultado == DialogResult.OK)
             {
                 repositorioVeiculo.Excluir(veiculoSelecionado);
                 CarregarVeiculos();

@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System;
 using System.Collections.Generic;
@@ -121,27 +120,27 @@ namespace LocadoraDeVeiculos.Infra.Compartilhado
         }
 
         public virtual T SelecionarPorParametro(string sqlSelecionarPorParametro, SqlParameter parametro)
-          {
-              SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
-        
-              SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarPorParametro, conexaoComBanco);
-        
-              comandoSelecao.Parameters.Add(parametro);
-        
-              conexaoComBanco.Open();
-              SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();
-        
-              var Mapeador = new TMapeador();
-        
-              T registro = null;
-              if(leitorRegistro.Read())
-                  registro = Mapeador.ConverterRegistro(leitorRegistro);
+        {
+            SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
+
+            SqlCommand comandoSelecao = new SqlCommand(sqlSelecionarPorParametro, conexaoComBanco);
+
+            comandoSelecao.Parameters.Add(parametro);
+
+            conexaoComBanco.Open();
+            SqlDataReader leitorRegistro = comandoSelecao.ExecuteReader();
+
+            var Mapeador = new TMapeador();
+
+            T registro = null;
+            if (leitorRegistro.Read())
+                registro = Mapeador.ConverterRegistro(leitorRegistro);
 
             conexaoComBanco.Close();
 
             return registro;
-        
-          } 
+
+        }
 
     }
 }

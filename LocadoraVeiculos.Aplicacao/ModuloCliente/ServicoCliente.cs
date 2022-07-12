@@ -1,12 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloCliente;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 {
@@ -53,13 +47,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
                 resultadoValidacao.Errors.Add(new ValidationFailure("CNPJ", "CNPJ Duplicado"));
 
             return resultadoValidacao;
-        } 
+        }
 
         private bool CpfDuplicado(Cliente cliente)
         {
             var clienteEncontrado = repositorioCliente.SelecionarClientePorCPF(cliente.CPF);
 
-            return clienteEncontrado != null && 
+            return clienteEncontrado != null &&
                    cliente.TipoPessoa == TipoPessoa.Fisica &&
                    clienteEncontrado.CPF == cliente.CPF &&
                    clienteEncontrado.Id != cliente.Id;
