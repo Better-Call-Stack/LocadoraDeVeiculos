@@ -209,11 +209,6 @@
             0,
             0,
             0});
-            this.numAnoVeiculo.Minimum = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
             this.numAnoVeiculo.Name = "numAnoVeiculo";
             this.numAnoVeiculo.Size = new System.Drawing.Size(125, 27);
             this.numAnoVeiculo.TabIndex = 19;

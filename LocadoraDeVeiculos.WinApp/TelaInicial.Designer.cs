@@ -37,7 +37,6 @@ namespace LocadoraDeVeiculos.WinApp
             this.grupoDeVeiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadastrosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.veiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox = new System.Windows.Forms.ToolStrip();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
@@ -70,7 +69,6 @@ namespace LocadoraDeVeiculos.WinApp
             this.grupoDeVeiculosToolStripMenuItem,
             this.taxasToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.cadastrosToolStripMenuItem1,
             this.veiculosToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
@@ -103,12 +101,6 @@ namespace LocadoraDeVeiculos.WinApp
             this.clientesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
-            // 
-            // cadastrosToolStripMenuItem1
-            // 
-            this.cadastrosToolStripMenuItem1.Name = "cadastrosToolStripMenuItem1";
-            this.cadastrosToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.cadastrosToolStripMenuItem1.Text = "Cadastros";
             // 
             // veiculosToolStripMenuItem
             // 
@@ -227,7 +219,6 @@ namespace LocadoraDeVeiculos.WinApp
         private System.Windows.Forms.ToolStripLabel labelTipoCadastro;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.Panel panelRegistros;
-        private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem veiculosToolStripMenuItem;
     }
 }

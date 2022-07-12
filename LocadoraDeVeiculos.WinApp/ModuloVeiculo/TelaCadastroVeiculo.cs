@@ -33,7 +33,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             {
                 veiculo = value;
 
-                
+                txtFabricanteVeiculo.Text = veiculo.Fabricante;
+                txtModeloVeiculo.Text = veiculo.Modelo;
+                txtCorVeiculo.Text = veiculo.Cor;
+                cmbCombustivelVeiculo.SelectedItem = veiculo.TipoCombustivel;
+                txtPlacaVeiculo.Text = veiculo.Placa;
+                numCapTanqueVeiculo.Value = veiculo.CapacidadeTanque;
+                numAnoVeiculo.Value= veiculo.Ano;
+                numKmVeiculo.Value = veiculo.KmPercorrido;
+                cmbStatusVeiculo.SelectedItem = veiculo.StatusVeiculo;
+                cmbGrupoVeiculo.SelectedItem = veiculo.Grupo;
             }
         }
         

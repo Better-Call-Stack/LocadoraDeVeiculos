@@ -10,6 +10,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
 {
     public class Veiculo : EntidadeBase<Veiculo>
     {
+        public Veiculo()
+        {
+            Ano = 2022;
+        }
 
         TipoCombustivelEnum tipoCombustivel;
         StatusVeiculoEnum statusVeiculo;
