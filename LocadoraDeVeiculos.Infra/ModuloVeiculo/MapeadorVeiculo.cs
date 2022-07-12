@@ -26,6 +26,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             comando.Parameters.AddWithValue("ANO", veiculo.Ano);
             comando.Parameters.AddWithValue("KMPERCORRIDO", veiculo.KmPercorrido);
             comando.Parameters.AddWithValue("STATUSVEICULO", veiculo.StatusVeiculo);
+            comando.Parameters.AddWithValue("FOTOVEICULO", veiculo.FotoVeiculo);
             comando.Parameters.AddWithValue("GRUPOVEICULOS_ID", veiculo.Grupo.Id);
         }
 
@@ -41,6 +42,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             var ano = Convert.ToInt32(leitorVeiculo["ANO"]);
             var kmpercorrido = Convert.ToInt32(leitorVeiculo["KMPERCORRIDO"]);
             var statusVeiculo = Convert.ToInt32(leitorVeiculo["STATUSVEICULO"]);
+            var fotoVeiculo = Convert.ToString(leitorVeiculo["FOTOVEICULO"]);
 
 
             Veiculo veiculo = new Veiculo();
@@ -54,6 +56,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             veiculo.Ano = ano;
             veiculo.KmPercorrido = kmpercorrido;
             veiculo.StatusVeiculo = (StatusVeiculoEnum)statusVeiculo;
+            veiculo.FotoVeiculo = fotoVeiculo;
             veiculo.Grupo = new MapeadorGrupoVeiculos().ConverterRegistro(leitorVeiculo);
 
             return veiculo;

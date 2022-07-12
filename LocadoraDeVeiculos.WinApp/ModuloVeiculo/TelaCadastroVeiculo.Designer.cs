@@ -280,9 +280,10 @@
             // 
             // pb_Veiculo
             // 
-            this.pb_Veiculo.Location = new System.Drawing.Point(24, 197);
+            this.pb_Veiculo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pb_Veiculo.Location = new System.Drawing.Point(24, 213);
             this.pb_Veiculo.Name = "pb_Veiculo";
-            this.pb_Veiculo.Size = new System.Drawing.Size(335, 193);
+            this.pb_Veiculo.Size = new System.Drawing.Size(298, 177);
             this.pb_Veiculo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_Veiculo.TabIndex = 27;
             this.pb_Veiculo.TabStop = false;

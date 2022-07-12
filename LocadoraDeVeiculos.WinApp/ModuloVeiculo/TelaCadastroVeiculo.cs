@@ -14,7 +14,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         string foto = "";
         string pastaDestino = "";
         string destinoCompleto = caminhoFoto;
-        private static string caminho = System.Environment.CurrentDirectory;
+        private static string caminho = @"C:";
         private static string caminhoFoto = caminho + @"\foto\";
 
         public TelaCadastroVeiculo(string modoTela, List<GrupoDeVeiculos> grupoDeVeiculos)
