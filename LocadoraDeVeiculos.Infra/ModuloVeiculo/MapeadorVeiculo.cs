@@ -43,7 +43,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             var ano = Convert.ToInt32(leitorVeiculo["ANO"]);
             var kmpercorrido = Convert.ToInt32(leitorVeiculo["KMPERCORRIDO"]);
             var statusVeiculo = Convert.ToInt32(leitorVeiculo["STATUSVEICULO"]);
-            var fotoVeiculo = Encoding.ASCII.GetBytes(Convert.ToString(leitorVeiculo["FOTOVEICULO"]));
+            byte[] fotoVeiculo = (byte[])leitorVeiculo["FOTOVEICULO"];
 
 
             Veiculo veiculo = new Veiculo();

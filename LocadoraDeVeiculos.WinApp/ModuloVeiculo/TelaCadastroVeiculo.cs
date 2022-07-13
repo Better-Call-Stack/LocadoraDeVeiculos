@@ -11,12 +11,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 {
     public partial class TelaCadastroVeiculo : Form
     {
-        //string origemCompleto = "";
-        //string foto = "";
-        //string pastaDestino = "";
-        //string destinoCompleto = caminhoFoto;
-        //private static string caminho = Environment.CurrentDirectory;
-        //private static string caminhoFoto = caminho + @"\foto\";
+       
+      
         byte[] imagemSelecionada = null;
         Bitmap bmp;
 
@@ -54,12 +50,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 numKmVeiculo.Value = veiculo.KmPercorrido;
                 cmbStatusVeiculo.SelectedItem = veiculo.StatusVeiculo;
                 cmbGrupoVeiculo.SelectedItem = veiculo.Grupo;
-
-                if(veiculo.FotoVeiculo!= null)
-                {
-                    ConverterParaBitmapLoad(veiculo.FotoVeiculo);
-                    pb_Veiculo.Image = bmp;
-                }
+                imagemSelecionada = veiculo.FotoVeiculo;
+                pb_Veiculo.Image = veiculo.Imagem;
+  
             }
         }
 
@@ -94,28 +87,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         private void btnSalvarVeiculo_Click(object sender, EventArgs e)
         {
-            //if(destinoCompleto == "")
-            //{
-            //    if (MessageBox.Show("Nenhuma foto selecionada, cadastrar sem foto?", "Erro", 
-            //        MessageBoxButtons.YesNo) == DialogResult.No)
-            //        return;
-            //}
-
-            //if(destinoCompleto != "")
-            //{
-            //    File.Copy(origemCompleto, destinoCompleto, true);
-
-            //    if (File.Exists(destinoCompleto))
-            //    {
-            //        pb_Veiculo.ImageLocation = destinoCompleto;
-            //    }
-            //    else
-            //    {
-            //        if (MessageBox.Show("Erro ao selecionar foto, deseja continuar?", "Erro", 
-            //            MessageBoxButtons.YesNo) == DialogResult.No)
-            //            return;
-            //    }
-            //}
+          
             veiculo.Modelo = txtModeloVeiculo.Text;
             veiculo.Fabricante = txtFabricanteVeiculo.Text;
             veiculo.Placa = txtPlacaVeiculo.Text;
@@ -160,36 +132,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         
         private void btnAddFotoVeiculo_Click(object sender, EventArgs e)
         {
+            imagemSelecionada = veiculo.FotoVeiculo;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 imagemSelecionada = File.ReadAllBytes(openFileDialog1.FileName);
+                using (var ms = new MemoryStream(imagemSelecionada)) 
+                    pb_Veiculo.Image = new Bitmap(ms);
             }
-
-            ConverterParaBitmap(imagemSelecionada);
-
-            pb_Veiculo.Image = bmp;
-
-            veiculo.FotoVeiculo = imagemSelecionada;
         }
 
-        private Bitmap ConverterParaBitmap(byte[] imagemSelecionada)
-        {
-            using (MemoryStream ms = new MemoryStream(imagemSelecionada))
-            {
-                bmp = new Bitmap(ms);
-            }
 
-            return bmp;
-        }
 
-        private Bitmap ConverterParaBitmapLoad(byte[] fotoVeiculo)
-        {
-            using (MemoryStream ms = new MemoryStream(fotoVeiculo))
-            {
-                bmp = new Bitmap(ms);
-            }
-
-            return bmp;
-        }
     }
 }

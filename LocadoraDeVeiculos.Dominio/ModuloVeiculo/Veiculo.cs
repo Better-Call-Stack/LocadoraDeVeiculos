@@ -2,6 +2,8 @@
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
 {
@@ -50,6 +52,25 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         public int KmPercorrido { get; set; }
 
         public byte[] FotoVeiculo { get; set; }
+
+        public Bitmap Imagem
+        {
+            get
+            {
+                if (FotoVeiculo != null)
+                {
+
+                    using (MemoryStream ms = new MemoryStream(FotoVeiculo))
+                    {
+                        return new Bitmap(ms);
+                    }
+
+
+                }
+                return null;
+            }
+        }
+        
 
         public override void Atualizar(Veiculo registro)
         {
