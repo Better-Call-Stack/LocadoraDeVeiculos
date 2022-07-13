@@ -1,6 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using System;
+using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
 {
@@ -59,6 +60,25 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         public Veiculo Clonar()
         {
             return MemberwiseClone() as Veiculo;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Veiculo veiculo &&
+                   Id == veiculo.Id &&
+                   tipoCombustivel == veiculo.tipoCombustivel &&
+                   statusVeiculo == veiculo.statusVeiculo &&
+                   EqualityComparer<GrupoDeVeiculos>.Default.Equals(Grupo, veiculo.Grupo) &&
+                   Modelo == veiculo.Modelo &&
+                   Fabricante == veiculo.Fabricante &&
+                   Placa == veiculo.Placa &&
+                   Cor == veiculo.Cor &&
+                   TipoCombustivel == veiculo.TipoCombustivel &&
+                   StatusVeiculo == veiculo.StatusVeiculo &&
+                   CapacidadeTanque == veiculo.CapacidadeTanque &&
+                   Ano == veiculo.Ano &&
+                   KmPercorrido == veiculo.KmPercorrido &&
+                   FotoVeiculo == veiculo.FotoVeiculo;
         }
     }
 }
