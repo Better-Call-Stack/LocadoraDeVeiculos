@@ -28,12 +28,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             if (resultadoValidacao.IsValid)
             {
                 repositorioPlanoDeCobranca.Inserir(planoDeCobranca);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} inserido", planoDeCobranca.ValorPorDia_PlanoDiario);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} inserido", planoDeCobranca.ValorKmRodado_PlanoDiario);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} inserido", planoDeCobranca.ValorPorDia_PlanoKmControlado);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} inserido", planoDeCobranca.ValorKmRodado_PlanoKmControlado);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} inserido", planoDeCobranca.KmLivreIncluso_PlanoKmControlado);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} inserido", planoDeCobranca.ValorPorDia_PlanoKmLivre);
+                Log.Logger.Debug("Plano de Cobrança do Grupo de Veiculos {GrupoDeVeiculosNome} inserido", planoDeCobranca.GrupoDeVeiculos.Nome);
             }
             else
             {
@@ -57,12 +52,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             if (resultadoValidacao.IsValid)
             {
                 repositorioPlanoDeCobranca.Editar(planoDeCobranca);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} editado", planoDeCobranca.ValorPorDia_PlanoDiario);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} editado", planoDeCobranca.ValorKmRodado_PlanoDiario);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} editado", planoDeCobranca.ValorPorDia_PlanoKmControlado);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} editado", planoDeCobranca.ValorKmRodado_PlanoKmControlado);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} editado", planoDeCobranca.KmLivreIncluso_PlanoKmControlado);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaNome} editado", planoDeCobranca.ValorPorDia_PlanoKmLivre);
+                Log.Logger.Debug("Plano de Cobrança {GrupoDeVeiculosNome} editado", planoDeCobranca.GrupoDeVeiculos.Nome);
             }
             else
             {
