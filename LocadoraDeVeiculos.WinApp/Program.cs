@@ -17,13 +17,8 @@ namespace LocadoraDeVeiculos.WinApp
         [STAThread]
         static void Main()
         {
-            var configuracao = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("ConfiguracaoAplicacao.json")
-                .Build();
-
-            var nome = configuracao.GetSection("nome").Value;
             ConfiguracaoLogsLocadora.ConfigurarEscritaLogs();
+          
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

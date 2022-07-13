@@ -1,5 +1,6 @@
 {
- 
-  "nome" : "Joao Pedro"
-  ]
+
+  "ConfiguracaoLogs": {
+    "DiretorioSaida":  "C:\\logs"
+  }
 }
