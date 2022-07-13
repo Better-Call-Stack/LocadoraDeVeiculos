@@ -48,8 +48,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
 
         public int KmPercorrido { get; set; }
 
-        public string FotoVeiculo { get; set; }
-
+        public byte[] FotoVeiculo { get; set; }
 
         public override void Atualizar(Veiculo registro)
         {

@@ -3,6 +3,7 @@ using LocadoraDeVeiculos.Infra.Compartilhado;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using System;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 {
@@ -42,7 +43,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
             var ano = Convert.ToInt32(leitorVeiculo["ANO"]);
             var kmpercorrido = Convert.ToInt32(leitorVeiculo["KMPERCORRIDO"]);
             var statusVeiculo = Convert.ToInt32(leitorVeiculo["STATUSVEICULO"]);
-            var fotoVeiculo = Convert.ToString(leitorVeiculo["FOTOVEICULO"]);
+            var fotoVeiculo = Encoding.ASCII.GetBytes(Convert.ToString(leitorVeiculo["FOTOVEICULO"]));
 
 
             Veiculo veiculo = new Veiculo();
