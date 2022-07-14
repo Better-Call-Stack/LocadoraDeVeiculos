@@ -24,6 +24,7 @@ using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ModuloCondutor;
 using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
+using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 
 namespace LocadoraDeVeiculos.WinApp
 {

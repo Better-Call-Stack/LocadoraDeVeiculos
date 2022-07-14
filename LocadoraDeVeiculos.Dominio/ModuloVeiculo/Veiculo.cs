@@ -12,6 +12,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         public Veiculo()
         {
             Ano = 2022;
+            FotoVeiculo = default;
         }
 
         TipoCombustivelEnum tipoCombustivel;

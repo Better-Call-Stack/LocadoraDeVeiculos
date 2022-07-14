@@ -19,13 +19,13 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloVeiculo
         Veiculo veiculo;
         GrupoDeVeiculos gv;
         RepositorioVeiculo repositorioVeiculo = new RepositorioVeiculo();
-        RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
+        RepositorioGrupoVeiculos repositorioGrupoVeiculos = new RepositorioGrupoVeiculos();
 
         public RepositorioVeiculoTests()
         {
-            Db.ExecutarSql("DELETE FROM TBVEICULO; DBCC CHECKIDENT (TBVEICULO, RESEED, 0)");
-            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS; DBCC CHECKIDENT (TBGRUPOVEICULOS, RESEED, 0)");
-
+            Db.ExecutarSql("DELETE FROM TBVEICULO;");
+            //Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS;");
+            
             gv = new GrupoDeVeiculos();
 
             gv.Nome = "Entregador Tofu";

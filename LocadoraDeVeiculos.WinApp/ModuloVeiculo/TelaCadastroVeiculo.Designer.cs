@@ -41,7 +41,6 @@
             this.lbStatus = new System.Windows.Forms.Label();
             this.txtFabricanteVeiculo = new System.Windows.Forms.TextBox();
             this.txtCorVeiculo = new System.Windows.Forms.TextBox();
-            this.txtPlacaVeiculo = new System.Windows.Forms.TextBox();
             this.txtModeloVeiculo = new System.Windows.Forms.TextBox();
             this.numCapTanqueVeiculo = new System.Windows.Forms.NumericUpDown();
             this.numKmVeiculo = new System.Windows.Forms.NumericUpDown();
@@ -54,6 +53,7 @@
             this.btnAddFotoVeiculo = new System.Windows.Forms.Button();
             this.pb_Veiculo = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.txtPlacaVeiculo = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numCapTanqueVeiculo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numKmVeiculo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numAnoVeiculo)).BeginInit();
@@ -163,13 +163,6 @@
             this.txtCorVeiculo.Name = "txtCorVeiculo";
             this.txtCorVeiculo.Size = new System.Drawing.Size(125, 27);
             this.txtCorVeiculo.TabIndex = 11;
-            // 
-            // txtPlacaVeiculo
-            // 
-            this.txtPlacaVeiculo.Location = new System.Drawing.Point(152, 97);
-            this.txtPlacaVeiculo.Name = "txtPlacaVeiculo";
-            this.txtPlacaVeiculo.Size = new System.Drawing.Size(125, 27);
-            this.txtPlacaVeiculo.TabIndex = 12;
             // 
             // txtModeloVeiculo
             // 
@@ -281,10 +274,11 @@
             // pb_Veiculo
             // 
             this.pb_Veiculo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pb_Veiculo.InitialImage = null;
             this.pb_Veiculo.Location = new System.Drawing.Point(24, 213);
             this.pb_Veiculo.Name = "pb_Veiculo";
             this.pb_Veiculo.Size = new System.Drawing.Size(298, 177);
-            this.pb_Veiculo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_Veiculo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pb_Veiculo.TabIndex = 27;
             this.pb_Veiculo.TabStop = false;
             // 
@@ -293,11 +287,22 @@
             this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.Filter = "JPG(*jpg)|*.jpg|PNG(*.png)|*.png";
             // 
+            // txtPlacaVeiculo
+            // 
+            this.txtPlacaVeiculo.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.txtPlacaVeiculo.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Overwrite;
+            this.txtPlacaVeiculo.Location = new System.Drawing.Point(152, 98);
+            this.txtPlacaVeiculo.Mask = "CCCCCCC";
+            this.txtPlacaVeiculo.Name = "txtPlacaVeiculo";
+            this.txtPlacaVeiculo.Size = new System.Drawing.Size(125, 27);
+            this.txtPlacaVeiculo.TabIndex = 28;
+            // 
             // TelaCadastroVeiculo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 407);
+            this.Controls.Add(this.txtPlacaVeiculo);
             this.Controls.Add(this.cmbGrupoVeiculo);
             this.Controls.Add(this.pb_Veiculo);
             this.Controls.Add(this.btnAddFotoVeiculo);
@@ -309,7 +314,6 @@
             this.Controls.Add(this.numKmVeiculo);
             this.Controls.Add(this.numCapTanqueVeiculo);
             this.Controls.Add(this.txtModeloVeiculo);
-            this.Controls.Add(this.txtPlacaVeiculo);
             this.Controls.Add(this.txtCorVeiculo);
             this.Controls.Add(this.txtFabricanteVeiculo);
             this.Controls.Add(this.lbStatus);
@@ -351,7 +355,6 @@
         private System.Windows.Forms.Label lbStatus;
         private System.Windows.Forms.TextBox txtFabricanteVeiculo;
         private System.Windows.Forms.TextBox txtCorVeiculo;
-        private System.Windows.Forms.TextBox txtPlacaVeiculo;
         private System.Windows.Forms.TextBox txtModeloVeiculo;
         private System.Windows.Forms.NumericUpDown numCapTanqueVeiculo;
         private System.Windows.Forms.NumericUpDown numKmVeiculo;
@@ -364,5 +367,6 @@
         private System.Windows.Forms.Button btnAddFotoVeiculo;
         private System.Windows.Forms.PictureBox pb_Veiculo;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.MaskedTextBox txtPlacaVeiculo;
     }
 }

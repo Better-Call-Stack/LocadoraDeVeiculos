@@ -1,6 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System;
+using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 {

@@ -13,9 +13,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         private readonly RepositorioVeiculo repositorioVeiculo;
         private TabelaVeiculoControl tabelaVeiculo;
         private ServicoVeiculo servicoVeiculo;
-        private RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
+        private RepositorioGrupoVeiculos repositorioGrupoVeiculos;
 
-        public ControladorVeiculo(RepositorioVeiculo repositorioVeiculo, ServicoVeiculo servicoVeiculo, RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos)
+        public ControladorVeiculo(RepositorioVeiculo repositorioVeiculo, ServicoVeiculo servicoVeiculo, RepositorioGrupoVeiculos repositorioGrupoVeiculos)
         {
             this.repositorioVeiculo=repositorioVeiculo;
             this.servicoVeiculo=servicoVeiculo;
@@ -108,7 +108,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         private Veiculo ObtemVeiculoSelecionado()
         {
             var id = tabelaVeiculo.ObtemIdVeiculoSelecionado();
-            return repositorioVeiculo.SelecionarPorId((int)id);
+            return repositorioVeiculo.SelecionarPorId(id);
         }
 
         //private bool ValidarVeiculoParaExcluir()

@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 

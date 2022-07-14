@@ -2,6 +2,7 @@
 using LocadoraDeVeiculos.Infra.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -99,7 +100,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var id = tabelaFuncionarios.ObtemIdFuncionarioSelecionado();
 
-            return repositorioFuncionario.SelecionarPorId((Guid)id);
+            return repositorioFuncionario.SelecionarPorId(id);
         }
         private void CarregarFuncionarios()
         {

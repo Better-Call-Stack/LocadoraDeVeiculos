@@ -11,8 +11,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
     public partial class TabelaVeiculoControl : UserControl
     {
         RepositorioVeiculo repositorio;
-        RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos;
-        public TabelaVeiculoControl(RepositorioVeiculo repositorio, RepositorioGrupoVeiculosEmBancoDados repositorioGrupoVeiculos)
+        RepositorioGrupoVeiculos repositorioGrupoVeiculos;
+        public TabelaVeiculoControl(RepositorioVeiculo repositorio, RepositorioGrupoVeiculos repositorioGrupoVeiculos)
         {
             InitializeComponent();
             gridVeiculo.ConfigurarGridZebrado();
@@ -31,15 +31,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             }
         }
 
-        public int ObtemIdVeiculoSelecionado()
+        public Guid ObtemIdVeiculoSelecionado()
         {
-            return gridVeiculo.SelecionarId<int>();
+            return gridVeiculo.SelecionarId<Guid>();
         }
 
         private void gridVeiculo_DoubleClick(object sender, EventArgs e)
         {
             TelaCadastroVeiculo tela = new TelaCadastroVeiculo("Visualizacao", repositorioGrupoVeiculos.SelecionarTodos());
-            int id = ObtemIdVeiculoSelecionado();
+            Guid id = ObtemIdVeiculoSelecionado();
             Veiculo v = repositorio.SelecionarPorId(id);
 
             tela.Veiculo = v;

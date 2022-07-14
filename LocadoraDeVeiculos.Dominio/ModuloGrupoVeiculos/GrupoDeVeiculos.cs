@@ -1,5 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using System;
+using System.Collections.Generic;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
 {

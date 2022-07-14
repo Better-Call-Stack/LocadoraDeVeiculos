@@ -35,8 +35,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                     @STATUSVEICULO,
                     @GRUPOVEICULOS_ID,
                     @FOTOVEICULO
-                )
-                    SELECT SCOPE_IDENTITY();";
+                );";
 
         protected override string sqlEditar =>
             @"UPDATE [TBVEICULO]
