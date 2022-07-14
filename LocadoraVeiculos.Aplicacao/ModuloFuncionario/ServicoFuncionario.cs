@@ -73,15 +73,15 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             if (resultadoValidacao.IsValid)
             {
                 repositorioFuncionario.Editar(funcionario);
-                Log.Logger.Debug("Funcionario {FuncionarioNome} editado com sucesso", funcionario.Nome);
+                Log.Logger.Debug("Funcionario {FuncionarioId} editado com sucesso", funcionario.Id);
 
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar editar um Funcionario {FuncionarioNome} - {Motivo}",
-                        funcionario.Nome, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar editar um Funcionario {FuncionarioId} - {Motivo}",
+                        funcionario.Id, erro.ErrorMessage);
                 }
             }
 
