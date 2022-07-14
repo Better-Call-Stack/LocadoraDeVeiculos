@@ -99,7 +99,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         {
             var id = tabelaFuncionarios.ObtemIdFuncionarioSelecionado();
 
-            return repositorioFuncionario.SelecionarPorId((int)id);
+            return repositorioFuncionario.SelecionarPorId((Guid)id);
         }
         private void CarregarFuncionarios()
         {

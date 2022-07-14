@@ -17,6 +17,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
         protected override string sqlInserir =>
             @"INSERT INTO [TBPLANODECOBRANCA]
                 (
+                     [ID],
                      [VALORKMRODADO_PLANODIARIO],
                      [VALORPORDIA_PLANODIARIO],
                      [VALORKMRODADO_PLANOKMCONTROLADO],
@@ -27,6 +28,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                )
             VALUES
                 (
+                     @ID,
                      @VALORKMRODADO_PLANODIARIO,
                      @VALORPORDIA_PLANODIARIO,
                      @VALORKMRODADO_PLANOKMCONTROLADO,
@@ -36,17 +38,17 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                      @GRUPOVEICULOS_ID
 
 
-                );SELECT SCOPE_IDENTITY();";
+                );";
 
         protected override string sqlEditar =>
             @" UPDATE [TBPLANODECOBRANCA]
                     SET 
-                        [VALORKMRODADO_PLANODIARIO] = @TXTVALORKMRODADO_PLANODIARIO,
-                        [VALORPORDIA_PLANODIARIO] = @TXTVALORPORDIA_PLANODIARIO,
-                        [VALORKMRODADO_PLANOKMCONTROLADO] = @TXTVALORKMRODADO_PLANOKMCONTROLADO,
-                        [KMLIVREINCLUSO_PLANOKMCONTROLADO] =@TXTKMLIVREINCLUSO_PLANOKMCONTROLADO,
-                        [VALORPORDIA_PLANOKMCONTROLADO] = @TXTVALORPORDIA_PLANOKMCONTROLADO,
-                        [VALORPORDIA_PLANOKMLIVRE] = @TXTVALORPORDIA_PLANOKMLIVRE,
+                        [VALORKMRODADO_PLANODIARIO] = @VALORKMRODADO_PLANODIARIO,
+                        [VALORPORDIA_PLANODIARIO] = @VALORPORDIA_PLANODIARIO,
+                        [VALORKMRODADO_PLANOKMCONTROLADO] = @VALORKMRODADO_PLANOKMCONTROLADO,
+                        [KMLIVREINCLUSO_PLANOKMCONTROLADO] =@KMLIVREINCLUSO_PLANOKMCONTROLADO,
+                        [VALORPORDIA_PLANOKMCONTROLADO] = @VALORPORDIA_PLANOKMCONTROLADO,
+                        [VALORPORDIA_PLANOKMLIVRE] = @VALORPORDIA_PLANOKMLIVRE,
                         [GRUPOVEICULOS_ID] = @GRUPOVEICULOS_ID
 
 
@@ -95,7 +97,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                 GV.[ID] = PC.[GRUPOVEICULOS_ID]
             ";
 
-        public PlanoDeCobranca SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(int id)
+        public PlanoDeCobranca SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(Guid id)
         {
             return SelecionarPorParametro(sqlSelecionarPorId, new SqlParameter("Id", id));
         }

@@ -23,9 +23,9 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
 
         public RepositorioPlanoDeCobrancaTests()
         {
-            Db.ExecutarSql("DELETE FROM TBPLANODECOBRANCA; DBCC CHECKIDENT (TBPLANODECOBRANCA, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBPLANODECOBRANCA;");
 
-            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS; DBCC CHECKIDENT (TBGRUPOVEICULOS, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS;");
 
             grupoDeVeiculos = new GrupoDeVeiculos()
             {
@@ -67,6 +67,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
             planoDeCobrancaAtualizado.ValorKmRodado_PlanoKmControlado = 150;
             planoDeCobrancaAtualizado.KmLivreIncluso_PlanoKmControlado = 180;
             planoDeCobrancaAtualizado.ValorPorDia_PlanoKmLivre = 300;
+            planoDeCobrancaAtualizado.GrupoDeVeiculos = grupoDeVeiculos;
 
             //action
             repositorioplanoDeCobranca.Editar(planoDeCobrancaAtualizado);

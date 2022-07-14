@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,20 +21,45 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
         public ValidationResult Inserir(PlanoDeCobranca planoDeCobranca)
         {
+            Log.Logger.Debug("Inserindo Plano de Cobrança {@pc}", planoDeCobranca);
+
             ValidationResult resultadoValidacao = Validar(planoDeCobranca);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioPlanoDeCobranca.Inserir(planoDeCobranca);
+                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaId} inserido", planoDeCobranca.Id);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao inserir Plano de Cobrança {PlanoDeCobrancaId} - {Motivo}: ", 
+                        planoDeCobranca.Id, erro.ErrorMessage);
+                }
+            }
 
             return resultadoValidacao;
         }
 
         public ValidationResult Editar(PlanoDeCobranca planoDeCobranca)
         {
+            Log.Logger.Debug("Editando Plano de Cobrança {@pc}", planoDeCobranca);
+
             ValidationResult resultadoValidacao = Validar(planoDeCobranca);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioPlanoDeCobranca.Editar(planoDeCobranca);
+                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaId} editado", planoDeCobranca.Id);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao editar Plano de Cobrança {PlanoDeCobrancaId} - {Motivo}: ", planoDeCobranca.Id, erro.ErrorMessage);
+                }
+            }
 
             return resultadoValidacao;
         }

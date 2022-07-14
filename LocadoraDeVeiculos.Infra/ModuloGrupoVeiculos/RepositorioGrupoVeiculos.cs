@@ -13,10 +13,12 @@ namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
         protected override string sqlInserir =>
             @"INSERT INTO [TBGRUPOVEICULOS]
                 (
+                     [ID],
                      [NOME]
                 )
             VALUES
                 (
+                     @ID,   
                      @NOME
                 );SELECT SCOPE_IDENTITY();";
 

@@ -1,6 +1,12 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
+using Serilog;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 {
@@ -15,21 +21,45 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 
         public ValidationResult Inserir(GrupoDeVeiculos grupoDeVeiculos)
         {
+            Log.Logger.Debug("Inserindo Grupo de Veiculos {@gv}", grupoDeVeiculos);
+
             ValidationResult resultadoValidacao = Validar(grupoDeVeiculos);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioGrupoVeiculos.Inserir(grupoDeVeiculos);
-
+                Log.Logger.Debug("Grupo de Veiculos {GrupoDeVeiculosId} inserido", grupoDeVeiculos.Id);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao inserir Grupo de Veiculos {GrupoDeVeiculosId} - {Motivo}: ",
+                        grupoDeVeiculos.Id, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 
         public ValidationResult Editar(GrupoDeVeiculos grupoDeVeiculos)
         {
+            Log.Logger.Debug("Editando Grupo de Veiculos {@pc}", grupoDeVeiculos);
+
             ValidationResult resultadoValidacao = Validar(grupoDeVeiculos);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioGrupoVeiculos.Editar(grupoDeVeiculos);
-
+                Log.Logger.Debug("Grupo de Veiculos {GrupoDeVeiculosId} editado", grupoDeVeiculos.Id);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao editar Grupo de Veiculos {GrupoDeVeiculosId} - {Motivo}: ",
+                        grupoDeVeiculos.Id, erro.ErrorMessage);
+                }
+            }
             return resultadoValidacao;
         }
 

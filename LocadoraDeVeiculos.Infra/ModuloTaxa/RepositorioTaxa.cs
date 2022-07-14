@@ -9,18 +9,20 @@ namespace LocadoraDeVeiculos.Infra.ModuloTaxa
         protected override string sqlInserir => @"
          INSERT INTO [DBO].[TBTAXA]
                (
+               [ID],
 	    	   [NOME],
                [VALOR],
                [TIPOCOBRANCA]
 	    	   )
          VALUES
                (
+               @ID,
 	    	   @NOME,
                @VALOR,
                @TIPOCOBRANCA
 	    	   )
 		   
-		SELECT SCOPE_IDENTITY();";
+		";
 
         protected override string sqlEditar => @"
           UPDATE [dbo].[TbTaxa]

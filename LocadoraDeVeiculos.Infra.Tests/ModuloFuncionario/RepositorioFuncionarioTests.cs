@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloFuncionario
 
         public RepositorioFuncionarioTests()
         {
-            Db.ExecutarSql("DELETE FROM TBFUNCIONARIO; DBCC CHECKIDENT (TBFUNCIONARIO, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBFUNCIONARIO;");
 
             funcionario = new Funcionario();
             funcionario.Nome = "Teste";
@@ -34,7 +34,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloFuncionario
         {
             repositorio.Inserir(funcionario);
 
-            Funcionario f = repositorio.SelecionarPorId(1);
+            Funcionario f = repositorio.SelecionarPorId(funcionario.Id);
 
             f.Should().NotBeNull().And.Be(funcionario);
         }

@@ -1,5 +1,6 @@
 using LocadoraVeiculos.Infra.Logging;
 using Microsoft.Extensions.Configuration;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.IO;

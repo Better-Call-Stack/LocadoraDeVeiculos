@@ -8,11 +8,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
     public partial class TelaCadastroClienteForm : Form
     {
 
-
+        string modoTela;
         public TelaCadastroClienteForm(string modoTela)
         {
             InitializeComponent();
-
+            
+            this.modoTela = modoTela;
+            
             if (modoTela == "Visualizacao")
                 DesativarCampos();
 
@@ -43,7 +45,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             {
                 cliente = value;
 
-                if (cliente.Id != 0)
+                if(modoTela == "Visualizacao")
                     cbxPessoa.Enabled = false;
 
                 if (cliente.TipoPessoa == TipoPessoa.Fisica)
