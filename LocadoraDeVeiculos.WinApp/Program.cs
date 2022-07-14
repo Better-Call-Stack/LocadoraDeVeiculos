@@ -1,4 +1,10 @@
+using LocadoraVeiculos.Infra.Logging;
+using Microsoft.Extensions.Configuration;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp
@@ -11,6 +17,8 @@ namespace LocadoraDeVeiculos.WinApp
         [STAThread]
         static void Main()
         {
+            ConfiguracaoLogsLocadora.ConfigurarEscritaLogs();
+          
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

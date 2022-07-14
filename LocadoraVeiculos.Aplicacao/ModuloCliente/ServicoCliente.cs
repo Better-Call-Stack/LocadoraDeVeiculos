@@ -1,6 +1,9 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloCliente;
+using Serilog;
+using System;
+
 
 namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 {
@@ -8,6 +11,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
     {
         private RepositorioCliente repositorioCliente;
         private ValidadorCliente validadorCliente;
+        
 
         public ServicoCliente(RepositorioCliente repositorioCliente)
         {
@@ -16,20 +20,48 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 
         public ValidationResult Inserir(Cliente cliente)
         {
+            Log.Logger.Debug("Tentando inserir cliente... {@c}", cliente);
+
             var resultadoValidacao = Validar(cliente);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioCliente.Inserir(cliente);
+                Log.Logger.Debug("Cliente {ClienteNome} inserido com sucesso", cliente.Nome);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar inserir um Cliente {ClienteNome} - {Motivo}",
+                        cliente.Nome, erro.ErrorMessage);
+                }
 
+            }
             return resultadoValidacao;
         }
 
         public ValidationResult Editar(Cliente cliente)
         {
+
+
+            Log.Logger.Debug("Tentando editar cliente... {@c}", cliente);
             var resultadoValidacao = Validar(cliente);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioCliente.Editar(cliente);
+                Log.Logger.Debug("Cliente {ClienteNome} editado com sucesso", cliente.Nome);
+
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar editar um Cliente {ClienteNome} - {Motivo}",
+                        cliente.Nome, erro.ErrorMessage);
+                }
+            }
 
             return resultadoValidacao;
         }

@@ -7,16 +7,23 @@ using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
+using LocadoraDeVeiculos.Infra.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
-using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
+using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
+using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
+using LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca;
+using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
+using LocadoraDeVeiculos.Infra.ModuloCondutor;
+using LocadoraVeiculos.Aplicacao.ModuloCondutor;
+using LocadoraDeVeiculos.WinApp.ModuloCondutor;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -38,14 +45,18 @@ namespace LocadoraDeVeiculos.WinApp
         {
             var repositorioFuncionario = new RepositorioFuncionario();
             var repositorioCliente = new RepositorioCliente();
-            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosEmBancoDados();
+            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculos();
+            var repositorioPlanoDeCobranca = new RepositorioPlanoDeCobranca();
             var repositorioTaxa = new RepositorioTaxa();
+            var repositorioCondutor = new RepositorioCondutor();
             var repositorioVeiculo = new RepositorioVeiculo();
 
             var servicoCliente = new ServicoCliente(repositorioCliente);
             var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
+            var servicoPlanoDeCobranca = new ServicoPlanoDeCobranca(repositorioPlanoDeCobranca);
             var servicoTaxa = new ServicoTaxa(repositorioTaxa);
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+            var servicoCondutor = new ServicoCondutor(repositorioCondutor);
             var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo);
 
             controladores = new Dictionary<string, ControladorBase>();
@@ -53,7 +64,9 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
             controladores.Add("Clientes", new ControladorCliente(repositorioCliente, servicoCliente));
             controladores.Add("Grupo de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
+            controladores.Add("Planos de Cobrança", new ControladorPlanoDeCobranca(repositorioPlanoDeCobranca, servicoPlanoDeCobranca, repositorioGrupoVeiculos));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
+            controladores.Add("Condutores", new ControladorCondutor(repositorioCondutor, servicoCondutor, repositorioCliente));
             controladores.Add("Veículos", new ControladorVeiculo(repositorioVeiculo, servicoVeiculo, repositorioGrupoVeiculos));
         }
 
@@ -64,7 +77,7 @@ namespace LocadoraDeVeiculos.WinApp
             controlador = controladores[tipo];
 
             ConfigurarListagem();
-
+             
             ConfigurarToolbox();
         }
 
@@ -143,6 +156,16 @@ namespace LocadoraDeVeiculos.WinApp
         }
 
         private void taxasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void planosDeCobrançaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void condutoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }

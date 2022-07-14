@@ -19,6 +19,8 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
        
         public RepositorioClienteTests()
         {
+            Db.ExecutarSql("DELETE FROM TBCONDUTOR; DBCC CHECKIDENT (TBCONDUTOR, RESEED, 0)");
+
             Db.ExecutarSql("DELETE FROM TBCLIENTE; DBCC CHECKIDENT (TBCLIENTE, RESEED, 0)");
 
             cliente = new Cliente();
@@ -38,7 +40,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
         {
             repositorio.Inserir(cliente);
 
-            Cliente c = repositorio.SelecionarPorId(1);
+            Cliente c = repositorio.SelecionarPorId(cliente.Id);
 
             c.Should().NotBeNull().And.Be(cliente);
 

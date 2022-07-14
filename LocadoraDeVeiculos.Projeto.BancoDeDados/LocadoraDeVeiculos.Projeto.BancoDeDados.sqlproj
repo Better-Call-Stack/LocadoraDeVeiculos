@@ -62,6 +62,8 @@
     <Build Include="TBGrupoVeiculos.sql" />
     <Build Include="TBTaxa.sql" />
     <Build Include="TBCliente.sql" />
+    <Build Include="TBPlanoDeCobranca.sql" />
+    <Build Include="TBCondutor.sql" />
     <Build Include="TBVeiculo.sql" />
   </ItemGroup>
   <ItemGroup>

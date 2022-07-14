@@ -15,7 +15,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado
                 BackColor = Color.LightGray,
                 Font = font,
                 ForeColor = Color.Black,
-                SelectionBackColor = Color.LightYellow,
+                SelectionBackColor = Color.LightSteelBlue,
                 SelectionForeColor = Color.Black
             };
 
@@ -25,7 +25,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado
             {
                 BackColor = Color.White,
                 Font = font,
-                SelectionBackColor = Color.LightYellow,
+                SelectionBackColor = Color.LightSteelBlue,
                 SelectionForeColor = Color.Black
             };
 

@@ -28,5 +28,25 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
         {
             throw new NotImplementedException();
         }
+
+        public Condutor Clonar()
+        {
+            return MemberwiseClone() as Condutor;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Condutor condutor &&
+                   Id == condutor.Id &&
+                   Nome == condutor.Nome &&
+                   CPF == condutor.CPF &&
+                   CNH == condutor.CNH &&
+                   ValidadeCNH == condutor.ValidadeCNH &&
+                   Cidade == condutor.Cidade &&
+                   Endereco == condutor.Endereco &&
+                   Telefone == condutor.Telefone &&
+                   Email == condutor.Email &&
+                   EqualityComparer<Cliente>.Default.Equals(Cliente, condutor.Cliente);
+        }
     }
 }

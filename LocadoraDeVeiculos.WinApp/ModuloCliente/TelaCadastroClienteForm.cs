@@ -14,9 +14,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             InitializeComponent();
 
             if (modoTela == "Visualizacao")
-            {
                 DesativarCampos();
-            }
+
         }
 
         private void DesativarCampos()
@@ -98,7 +97,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 string erro = resultadoValidacao.Errors[0].ErrorMessage;
 
                 MessageBox.Show(erro, "Erro");
-                // TelaPrincipalForm.Instancia.AtualizarRodape(erro);
 
                 DialogResult = DialogResult.None;
             }

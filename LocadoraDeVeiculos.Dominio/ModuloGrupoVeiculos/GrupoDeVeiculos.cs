@@ -18,9 +18,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
         }
         public string Nome { get; set; }
 
-        //   public List<PlanoDeCobranca> planos = new List<PlanoDeCobranca>();
+        public List<PlanoDeCobranca> planos = new List<PlanoDeCobranca>();
 
-        //   public List<PlanoDeCobranca> Planos { get { return planos; }  }
+        public List<PlanoDeCobranca> Planos { get { return planos; }  }
 
         public override string ToString()
         {
@@ -44,9 +44,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos
                    Nome == controladorGrupoVeiculos.Nome;
 
         }
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Nome);
-        }
+
     }
 }

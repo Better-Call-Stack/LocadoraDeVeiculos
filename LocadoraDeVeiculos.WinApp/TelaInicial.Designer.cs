@@ -37,6 +37,7 @@ namespace LocadoraDeVeiculos.WinApp
             this.grupoDeVeiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.planosDeCobrançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.veiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox = new System.Windows.Forms.ToolStrip();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
@@ -46,6 +47,7 @@ namespace LocadoraDeVeiculos.WinApp
             this.labelTipoCadastro = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
+            this.condutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +70,10 @@ namespace LocadoraDeVeiculos.WinApp
             this.funcionariosToolStripMenuItem,
             this.grupoDeVeiculosToolStripMenuItem,
             this.taxasToolStripMenuItem,
+            this.clientesToolStripMenuItem,
+            this.planosDeCobrançaToolStripMenuItem,
+            this.clientesToolStripMenuItem,
+            this.condutoresToolStripMenuItem });
             this.clientesToolStripMenuItem,
             this.veiculosToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
@@ -108,6 +114,13 @@ namespace LocadoraDeVeiculos.WinApp
             this.veiculosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.veiculosToolStripMenuItem.Text = "Veículos";
             this.veiculosToolStripMenuItem.Click += new System.EventHandler(this.veiculosToolStripMenuItem_Click);
+            // 
+            // planosDeCobrançaToolStripMenuItem
+            // 
+            this.planosDeCobrançaToolStripMenuItem.Name = "planosDeCobrançaToolStripMenuItem";
+            this.planosDeCobrançaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.planosDeCobrançaToolStripMenuItem.Text = "Planos de Cobrança";
+            this.planosDeCobrançaToolStripMenuItem.Click += new System.EventHandler(this.planosDeCobrançaToolStripMenuItem_Click);
             // 
             // toolbox
             // 
@@ -180,6 +193,13 @@ namespace LocadoraDeVeiculos.WinApp
             this.panelRegistros.Size = new System.Drawing.Size(800, 394);
             this.panelRegistros.TabIndex = 3;
             // 
+            // condutoresToolStripMenuItem
+            // 
+            this.condutoresToolStripMenuItem.Name = "condutoresToolStripMenuItem";
+            this.condutoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.condutoresToolStripMenuItem.Text = "Condutores";
+            this.condutoresToolStripMenuItem.Click += new System.EventHandler(this.condutoresToolStripMenuItem_Click);
+            // 
             // TelaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -219,6 +239,8 @@ namespace LocadoraDeVeiculos.WinApp
         private System.Windows.Forms.ToolStripLabel labelTipoCadastro;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.Panel panelRegistros;
+        private System.Windows.Forms.ToolStripMenuItem planosDeCobrançaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem condutoresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem veiculosToolStripMenuItem;
     }
 }

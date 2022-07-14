@@ -4,10 +4,10 @@ using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos
 {
-    public class RepositorioGrupoVeiculosEmBancoDados : RepositorioBase<GrupoDeVeiculos, ValidadorGrupoDeVeiculos, MapeadorGrupoVeiculos>, IRepositorioGrupoVeiculos
+    public class RepositorioGrupoVeiculos : RepositorioBase<GrupoDeVeiculos, ValidadorGrupoDeVeiculos, MapeadorGrupoVeiculos>, IRepositorioGrupoVeiculos
     {
 
-        public RepositorioGrupoVeiculosEmBancoDados()
+        public RepositorioGrupoVeiculos()
         {
         }
         protected override string sqlInserir =>
