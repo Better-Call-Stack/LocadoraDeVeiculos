@@ -6,9 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentacao", "1 - Apresentacao", "{086EAF4D-4FAF-4A5D-AC3A-C48377A9E6C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Dominio", "3 - Dominio", "{44795F2C-FD49-49C2-8BB5-7C1297FF54B8}"
-	ProjectSection(SolutionItems) = preProject
-		LocadoraVeiculos.Aplicacao\ModuloPlanoDeCobranca\ServicoPlanoDeCobranca.cs = LocadoraVeiculos.Aplicacao\ModuloPlanoDeCobranca\ServicoPlanoDeCobranca.cs
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{F6164A7F-DA48-4377-9E09-8E808DC2F851}"
 EndProject
