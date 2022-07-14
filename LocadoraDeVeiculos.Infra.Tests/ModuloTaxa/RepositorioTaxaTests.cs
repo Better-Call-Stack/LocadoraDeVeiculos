@@ -20,7 +20,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloTaxa
 
             public RepositorioTaxaTests()
             {
-                Db.ExecutarSql("DELETE FROM TBTAXA; DBCC CHECKIDENT (TBTAXA, RESEED, 0)");
+                Db.ExecutarSql("DELETE FROM TBTAXA;");
 
                 taxa = new Taxa();
                 taxa.Nome = "Cadeira Bebe";
@@ -35,7 +35,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloTaxa
             {
                 repositorio.Inserir(taxa);
 
-                Taxa t = repositorio.SelecionarPorId(1);
+                Taxa t = repositorio.SelecionarPorId(taxa.Id);
 
                 t.Should().NotBeNull().And.Be(taxa);
 

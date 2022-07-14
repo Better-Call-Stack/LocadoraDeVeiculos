@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloCondutor
 
         public override Condutor ConverterRegistro(SqlDataReader leitorCondutor)
         {
-            var id = Convert.ToInt32(leitorCondutor["CONDUTOR_ID"]);
+            var id = Guid.Parse(leitorCondutor["CONDUTOR_ID"].ToString());
             var nome = Convert.ToString(leitorCondutor["CONDUTOR_NOME"]);
             var telefone = Convert.ToString(leitorCondutor["CONDUTOR_TELEFONE"]);
             var email = Convert.ToString(leitorCondutor["CONDUTOR_EMAIL"]);
