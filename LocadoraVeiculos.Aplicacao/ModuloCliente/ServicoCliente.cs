@@ -27,7 +27,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             if (resultadoValidacao.IsValid)
             {
                 repositorioCliente.Inserir(cliente);
-                Log.Logger.Debug("Cliente {ClienteNome} inserido com sucesso", cliente.Nome);
+                Log.Logger.Debug("Cliente {ClienteId} inserido com sucesso", cliente.Id);
             }
             else
             {
