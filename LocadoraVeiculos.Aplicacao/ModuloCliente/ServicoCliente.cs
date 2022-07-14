@@ -33,8 +33,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar inserir um Cliente {ClienteNome} - {Motivo}",
-                        cliente.Nome, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar inserir um Cliente {ClienteId} - {Motivo}",
+                        cliente.Id, erro.ErrorMessage);
                 }
 
             }

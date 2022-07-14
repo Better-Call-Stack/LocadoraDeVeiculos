@@ -28,15 +28,14 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             if (resultadoValidacao.IsValid)
             {
                 repositorioPlanoDeCobranca.Inserir(planoDeCobranca);
-                Log.Logger.Debug("Plano de Cobrança do Grupo de Veiculos {GrupoDeVeiculosNome} inserido", planoDeCobranca.GrupoDeVeiculos.Nome);
+                Log.Logger.Debug("Plano de Cobrança {GrupoDeVeiculosId} inserido", planoDeCobranca.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao inserir Plano de Cobrança {PlanoDeCobrancaNome} - {Motivo}: ",planoDeCobranca.ValorPorDia_PlanoDiario, 
-                        planoDeCobranca.ValorKmRodado_PlanoDiario, planoDeCobranca.ValorPorDia_PlanoKmControlado, planoDeCobranca.ValorKmRodado_PlanoKmControlado,
-                        planoDeCobranca.KmLivreIncluso_PlanoKmControlado, planoDeCobranca.ValorPorDia_PlanoKmLivre, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao inserir Plano de Cobrança {GrupoDeVeiculosId} - {Motivo}: ", 
+                        planoDeCobranca.Id, erro.ErrorMessage);
                 }
             }
 

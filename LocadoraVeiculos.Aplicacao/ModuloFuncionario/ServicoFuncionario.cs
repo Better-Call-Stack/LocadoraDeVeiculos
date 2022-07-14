@@ -29,14 +29,14 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             if (resultadoValidacao.IsValid)
             {
                 repositorioFuncionario.Inserir(funcionario);
-                Log.Logger.Debug("Funcionario {FuncionarioNome} inserido com sucesso", funcionario.Nome);
+                Log.Logger.Debug("Funcionario {FuncionarioId} inserido com sucesso", funcionario.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar inserir um Funcionario {FuncionarioNome} - {Motivo}",
-                        funcionario.Nome, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar inserir um Funcionario {FuncionarioId} - {Motivo}",
+                        funcionario.Id, erro.ErrorMessage);
                 }
 
             }

@@ -31,14 +31,14 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             if (resultadoValidacao.IsValid)
             {
                 repositorioCondutor.Inserir(condutor);
-                Log.Logger.Debug("Condutor {CondutoreNome} inserido com sucesso", condutor.Nome);
+                Log.Logger.Debug("Condutor {CondutoreId} inserido com sucesso", condutor.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar inserir um Condutor {CondutorNome} - {Motivo}",
-                        condutor.Nome, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar inserir um Condutor {CondutorId} - {Motivo}",
+                        condutor.Id, erro.ErrorMessage);
                 }
 
             }

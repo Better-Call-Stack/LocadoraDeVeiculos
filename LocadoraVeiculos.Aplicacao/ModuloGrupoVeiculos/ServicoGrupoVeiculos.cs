@@ -28,14 +28,14 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
             if (resultadoValidacao.IsValid)
             {
                 repositorioGrupoVeiculos.Inserir(grupoDeVeiculos);
-                Log.Logger.Debug("Grupo de Veiculos {GrupoDeVeiculosNome} inserido", grupoDeVeiculos.Nome);
+                Log.Logger.Debug("Grupo de Veiculos {GrupoDeVeiculosId} inserido", grupoDeVeiculos.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao inserir Grupo de Veiculos {GrupoDeVeiculosNome} - {Motivo}: ",
-                        grupoDeVeiculos.Nome, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao inserir Grupo de Veiculos {GrupoDeVeiculosId} - {Motivo}: ",
+                        grupoDeVeiculos.Id, erro.ErrorMessage);
                 }
             }
             return resultadoValidacao;

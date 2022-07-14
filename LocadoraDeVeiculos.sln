@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentacao", "1 - Apresentacao", "{086EAF4D-4FAF-4A5D-AC3A-C48377A9E6C7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Dominio", "3 - Dominio", "{44795F2C-FD49-49C2-8BB5-7C1297FF54B8}"
+	ProjectSection(SolutionItems) = preProject
+		LocadoraVeiculos.Aplicacao\ModuloPlanoDeCobranca\ServicoPlanoDeCobranca.cs = LocadoraVeiculos.Aplicacao\ModuloPlanoDeCobranca\ServicoPlanoDeCobranca.cs
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{F6164A7F-DA48-4377-9E09-8E808DC2F851}"
 EndProject
@@ -29,7 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Banco de Dados", "Banco de 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{892AD6AD-7C5F-47E6-9FE3-360C377384D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraVeiculos.Infra.Logging", "LocadoraVeiculos.Infra.Logging\LocadoraVeiculos.Infra.Logging.csproj", "{1ACD32FE-2471-45F7-8A29-924F7DB849E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraVeiculos.Infra.Logging", "LocadoraVeiculos.Infra.Logging\LocadoraVeiculos.Infra.Logging.csproj", "{1ACD32FE-2471-45F7-8A29-924F7DB849E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

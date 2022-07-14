@@ -30,14 +30,14 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
             if (resultadoValidacao.IsValid)
             {
                 repositorio.Inserir(taxa);
-                Log.Logger.Debug("Taxa {TaxaNome} inserida com sucesso", taxa.Nome);
+                Log.Logger.Debug("Taxa {TaxaId} inserida com sucesso", taxa.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar inserir uma Taxa {TaxaNome} - {Motivo}",
-                        taxa.Nome, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar inserir uma Taxa {TaxaId} - {Motivo}",
+                        taxa.Id, erro.ErrorMessage);
                 }
 
             }
