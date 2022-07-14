@@ -76,14 +76,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             return pessoasJuridicas;
         }
 
-        public int ObtemIdClienteSelecionado()
+        public Guid ObtemIdClienteSelecionado()
         {
             if (tabControl.SelectedTab.Name == "tabPessoaFisica")
             {
-                return gridPessoaFisica.SelecionarId<int>();
+                return gridPessoaFisica.SelecionarId<Guid>();
             }
             else
-                return gridPessoaJuridica.SelecionarId<int>();
+                return gridPessoaJuridica.SelecionarId<Guid>();
 
         }
 
@@ -95,7 +95,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         private void GridDoubleClickGenerico()
         {
             TelaCadastroClienteForm tela = new TelaCadastroClienteForm("Visualizacao");
-            int id = ObtemIdClienteSelecionado();
+            Guid id = ObtemIdClienteSelecionado();
             Cliente c = repositorio.SelecionarPorId(id);
 
             tela.Cliente = c;

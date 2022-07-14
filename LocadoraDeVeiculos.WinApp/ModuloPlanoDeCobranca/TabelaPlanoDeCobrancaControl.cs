@@ -42,9 +42,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
             return colunas;
         }
 
-        public int ObtemIdPlanoDeCobrancaSelecionado()
+        public Guid ObtemIdPlanoDeCobrancaSelecionado()
         {
-            return grid.SelecionarId<int>();
+            return grid.SelecionarId<Guid>();
         }
 
         public void AtualizarRegistros(List<PlanoDeCobranca> cobrancas)
@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
         private void grid_DoubleClick(object sender, EventArgs e)
         {
             TelaPlanoDeCobrancaForm tela = new TelaPlanoDeCobrancaForm(repositorioGrupoDeVeiculos.SelecionarTodos(),"Visualizacao");
-            int id = ObtemIdPlanoDeCobrancaSelecionado();
+            Guid id = ObtemIdPlanoDeCobrancaSelecionado();
             PlanoDeCobranca p = repositorioPlanoDeCobranca.SelecionarPorId(id);
 
             tela.PlanoDeCobranca = p;

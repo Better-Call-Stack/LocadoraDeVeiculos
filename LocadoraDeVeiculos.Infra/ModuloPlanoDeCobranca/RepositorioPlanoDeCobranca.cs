@@ -17,6 +17,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
         protected override string sqlInserir =>
             @"INSERT INTO [TBPLANODECOBRANCA]
                 (
+                     [ID],
                      [VALORKMRODADO_PLANODIARIO],
                      [VALORPORDIA_PLANODIARIO],
                      [VALORKMRODADO_PLANOKMCONTROLADO],
@@ -27,6 +28,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                )
             VALUES
                 (
+                     @ID,
                      @VALORKMRODADO_PLANODIARIO,
                      @VALORPORDIA_PLANODIARIO,
                      @VALORKMRODADO_PLANOKMCONTROLADO,
@@ -36,7 +38,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                      @GRUPOVEICULOS_ID
 
 
-                );SELECT SCOPE_IDENTITY();";
+                );";
 
         protected override string sqlEditar =>
             @" UPDATE [TBPLANODECOBRANCA]
@@ -95,7 +97,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
                 GV.[ID] = PC.[GRUPOVEICULOS_ID]
             ";
 
-        public PlanoDeCobranca SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(int id)
+        public PlanoDeCobranca SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(Guid id)
         {
             return SelecionarPorParametro(sqlSelecionarPorId, new SqlParameter("Id", id));
         }

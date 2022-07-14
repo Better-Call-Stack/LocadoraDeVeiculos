@@ -37,9 +37,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
             return colunas;
         }
 
-        public int ObtemIdGrupoVeiculoSelecionado()
+        public Guid ObtemIdGrupoVeiculoSelecionado()
         {
-            return grid.SelecionarId<int>();
+            return grid.SelecionarId<Guid>();
         }
 
         public void AtualizarRegistros(List<GrupoDeVeiculos> veiculos)
