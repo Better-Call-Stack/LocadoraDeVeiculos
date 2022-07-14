@@ -55,15 +55,15 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             if (resultadoValidacao.IsValid)
             {
                 repositorioCondutor.Editar(condutor);
-                Log.Logger.Debug("Condutor {CondutorNome} editado com sucesso", condutor.Nome);
+                Log.Logger.Debug("Condutor {CondutorId} editado com sucesso", condutor.Id);
 
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar editar um Condutor {CondutorNome} - {Motivo}",
-                        condutor.Nome, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar editar um Condutor {CondutorId} - {Motivo}",
+                        condutor.Id, erro.ErrorMessage);
                 }
             }
 

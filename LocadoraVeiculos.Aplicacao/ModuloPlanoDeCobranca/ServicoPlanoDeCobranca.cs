@@ -28,13 +28,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             if (resultadoValidacao.IsValid)
             {
                 repositorioPlanoDeCobranca.Inserir(planoDeCobranca);
-                Log.Logger.Debug("Plano de Cobrança {GrupoDeVeiculosId} inserido", planoDeCobranca.Id);
+                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaId} inserido", planoDeCobranca.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao inserir Plano de Cobrança {GrupoDeVeiculosId} - {Motivo}: ", 
+                    Log.Logger.Warning("Falha ao inserir Plano de Cobrança {PlanoDeCobrancaId} - {Motivo}: ", 
                         planoDeCobranca.Id, erro.ErrorMessage);
                 }
             }
@@ -51,15 +51,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             if (resultadoValidacao.IsValid)
             {
                 repositorioPlanoDeCobranca.Editar(planoDeCobranca);
-                Log.Logger.Debug("Plano de Cobrança {GrupoDeVeiculosNome} editado", planoDeCobranca.GrupoDeVeiculos.Nome);
+                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaId} editado", planoDeCobranca.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao editar Plano de Cobrança {PlanoDeCobrancaNome} - {Motivo}: ", planoDeCobranca.ValorPorDia_PlanoDiario,
-                        planoDeCobranca.ValorKmRodado_PlanoDiario, planoDeCobranca.ValorPorDia_PlanoKmControlado, planoDeCobranca.ValorKmRodado_PlanoKmControlado,
-                        planoDeCobranca.KmLivreIncluso_PlanoKmControlado, planoDeCobranca.ValorPorDia_PlanoKmLivre, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao editar Plano de Cobrança {PlanoDeCobrancaId} - {Motivo}: ", planoDeCobranca.Id, erro.ErrorMessage);
                 }
             }
 
