@@ -155,21 +155,21 @@
             this.txtFabricanteVeiculo.Location = new System.Drawing.Point(152, 31);
             this.txtFabricanteVeiculo.Name = "txtFabricanteVeiculo";
             this.txtFabricanteVeiculo.Size = new System.Drawing.Size(125, 27);
-            this.txtFabricanteVeiculo.TabIndex = 10;
+            this.txtFabricanteVeiculo.TabIndex = 1;
             // 
             // txtCorVeiculo
             // 
             this.txtCorVeiculo.Location = new System.Drawing.Point(152, 64);
             this.txtCorVeiculo.Name = "txtCorVeiculo";
             this.txtCorVeiculo.Size = new System.Drawing.Size(125, 27);
-            this.txtCorVeiculo.TabIndex = 11;
+            this.txtCorVeiculo.TabIndex = 3;
             // 
             // txtModeloVeiculo
             // 
             this.txtModeloVeiculo.Location = new System.Drawing.Point(456, 34);
             this.txtModeloVeiculo.Name = "txtModeloVeiculo";
             this.txtModeloVeiculo.Size = new System.Drawing.Size(141, 27);
-            this.txtModeloVeiculo.TabIndex = 13;
+            this.txtModeloVeiculo.TabIndex = 2;
             // 
             // numCapTanqueVeiculo
             // 
@@ -181,19 +181,19 @@
             0});
             this.numCapTanqueVeiculo.Name = "numCapTanqueVeiculo";
             this.numCapTanqueVeiculo.Size = new System.Drawing.Size(141, 27);
-            this.numCapTanqueVeiculo.TabIndex = 17;
+            this.numCapTanqueVeiculo.TabIndex = 6;
             // 
             // numKmVeiculo
             // 
             this.numKmVeiculo.Location = new System.Drawing.Point(456, 130);
             this.numKmVeiculo.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
+            -559939585,
+            902409669,
+            54,
             0});
             this.numKmVeiculo.Name = "numKmVeiculo";
             this.numKmVeiculo.Size = new System.Drawing.Size(141, 27);
-            this.numKmVeiculo.TabIndex = 18;
+            this.numKmVeiculo.TabIndex = 8;
             // 
             // numAnoVeiculo
             // 
@@ -205,7 +205,7 @@
             0});
             this.numAnoVeiculo.Name = "numAnoVeiculo";
             this.numAnoVeiculo.Size = new System.Drawing.Size(125, 27);
-            this.numAnoVeiculo.TabIndex = 19;
+            this.numAnoVeiculo.TabIndex = 7;
             this.numAnoVeiculo.Value = new decimal(new int[] {
             2000,
             0,
@@ -219,7 +219,7 @@
             this.cmbCombustivelVeiculo.Location = new System.Drawing.Point(456, 63);
             this.cmbCombustivelVeiculo.Name = "cmbCombustivelVeiculo";
             this.cmbCombustivelVeiculo.Size = new System.Drawing.Size(141, 28);
-            this.cmbCombustivelVeiculo.TabIndex = 21;
+            this.cmbCombustivelVeiculo.TabIndex = 4;
             // 
             // cmbGrupoVeiculo
             // 
@@ -229,7 +229,7 @@
             this.cmbGrupoVeiculo.Location = new System.Drawing.Point(456, 163);
             this.cmbGrupoVeiculo.Name = "cmbGrupoVeiculo";
             this.cmbGrupoVeiculo.Size = new System.Drawing.Size(141, 28);
-            this.cmbGrupoVeiculo.TabIndex = 22;
+            this.cmbGrupoVeiculo.TabIndex = 10;
             // 
             // cmbStatusVeiculo
             // 
@@ -238,7 +238,7 @@
             this.cmbStatusVeiculo.Location = new System.Drawing.Point(152, 163);
             this.cmbStatusVeiculo.Name = "cmbStatusVeiculo";
             this.cmbStatusVeiculo.Size = new System.Drawing.Size(125, 28);
-            this.cmbStatusVeiculo.TabIndex = 23;
+            this.cmbStatusVeiculo.TabIndex = 9;
             // 
             // btnSalvarVeiculo
             // 
@@ -246,7 +246,7 @@
             this.btnSalvarVeiculo.Location = new System.Drawing.Point(365, 321);
             this.btnSalvarVeiculo.Name = "btnSalvarVeiculo";
             this.btnSalvarVeiculo.Size = new System.Drawing.Size(117, 40);
-            this.btnSalvarVeiculo.TabIndex = 24;
+            this.btnSalvarVeiculo.TabIndex = 13;
             this.btnSalvarVeiculo.Text = "Salvar";
             this.btnSalvarVeiculo.UseVisualStyleBackColor = true;
             this.btnSalvarVeiculo.Click += new System.EventHandler(this.btnSalvarVeiculo_Click);
@@ -257,7 +257,7 @@
             this.btnCancelarVeiculo.Location = new System.Drawing.Point(488, 324);
             this.btnCancelarVeiculo.Name = "btnCancelarVeiculo";
             this.btnCancelarVeiculo.Size = new System.Drawing.Size(114, 37);
-            this.btnCancelarVeiculo.TabIndex = 25;
+            this.btnCancelarVeiculo.TabIndex = 12;
             this.btnCancelarVeiculo.Text = "Cancelar";
             this.btnCancelarVeiculo.UseVisualStyleBackColor = true;
             // 
@@ -266,7 +266,7 @@
             this.btnAddFotoVeiculo.Location = new System.Drawing.Point(423, 250);
             this.btnAddFotoVeiculo.Name = "btnAddFotoVeiculo";
             this.btnAddFotoVeiculo.Size = new System.Drawing.Size(117, 29);
-            this.btnAddFotoVeiculo.TabIndex = 26;
+            this.btnAddFotoVeiculo.TabIndex = 11;
             this.btnAddFotoVeiculo.Text = "Adicionar foto";
             this.btnAddFotoVeiculo.UseVisualStyleBackColor = true;
             this.btnAddFotoVeiculo.Click += new System.EventHandler(this.btnAddFotoVeiculo_Click);
@@ -278,7 +278,7 @@
             this.pb_Veiculo.Location = new System.Drawing.Point(24, 213);
             this.pb_Veiculo.Name = "pb_Veiculo";
             this.pb_Veiculo.Size = new System.Drawing.Size(298, 177);
-            this.pb_Veiculo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pb_Veiculo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_Veiculo.TabIndex = 27;
             this.pb_Veiculo.TabStop = false;
             // 
@@ -295,7 +295,7 @@
             this.txtPlacaVeiculo.Mask = "CCCCCCC";
             this.txtPlacaVeiculo.Name = "txtPlacaVeiculo";
             this.txtPlacaVeiculo.Size = new System.Drawing.Size(125, 27);
-            this.txtPlacaVeiculo.TabIndex = 28;
+            this.txtPlacaVeiculo.TabIndex = 5;
             // 
             // TelaCadastroVeiculo
             // 

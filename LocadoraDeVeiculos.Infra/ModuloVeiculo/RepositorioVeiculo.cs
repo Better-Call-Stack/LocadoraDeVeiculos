@@ -116,7 +116,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
                 VEICULO.[COR] AS VEICULO_COR,
                 VEICULO.[ANO] VEICULO_ANO,
                 VEICULO.[KMPERCORRIDO] AS VEICULO_KMPERCORRIDO,                                                        
-                VEICULO.[CAPACIDADEDOTANQUE] AS VEICULO_CAPACIDADEDOTANQUE,                                                        
+                VEICULO.[CAPACIDADEDOTANQUE] AS VEICULO_CAPACIDADE,                                                        
                 VEICULO.[PLACA] AS VEICULO_PLACA,
                 VEICULO.[STATUSVEICULO] AS VEICULO_STATUS,
                 VEICULO.[FOTOVEICULO] AS VEICULO_FOTO,
