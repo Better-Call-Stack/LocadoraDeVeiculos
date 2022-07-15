@@ -1,16 +1,20 @@
 ﻿using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.ModuloVeiculo;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
-using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
+using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.ModuloTaxa;
+using LocadoraDeVeiculos.WinApp.ModuloVeiculo;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
+using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
@@ -20,6 +24,7 @@ using LocadoraVeiculos.Aplicacao.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ModuloCondutor;
 using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
+using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 
 namespace LocadoraDeVeiculos.WinApp
 {
@@ -37,12 +42,6 @@ namespace LocadoraDeVeiculos.WinApp
             InicializarControladores();
         }
 
-        public static TelaInicial Instancia
-        {
-            get;
-            private set;
-        }
-
         private void InicializarControladores()
         {
             var repositorioFuncionario = new RepositorioFuncionario();
@@ -51,6 +50,7 @@ namespace LocadoraDeVeiculos.WinApp
             var repositorioPlanoDeCobranca = new RepositorioPlanoDeCobranca();
             var repositorioTaxa = new RepositorioTaxa();
             var repositorioCondutor = new RepositorioCondutor();
+            var repositorioVeiculo = new RepositorioVeiculo();
 
             var servicoCliente = new ServicoCliente(repositorioCliente);
             var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
@@ -58,6 +58,7 @@ namespace LocadoraDeVeiculos.WinApp
             var servicoTaxa = new ServicoTaxa(repositorioTaxa);
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
             var servicoCondutor = new ServicoCondutor(repositorioCondutor);
+            var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo);
 
             controladores = new Dictionary<string, ControladorBase>();
 
@@ -67,6 +68,7 @@ namespace LocadoraDeVeiculos.WinApp
             controladores.Add("Planos de Cobrança", new ControladorPlanoDeCobranca(repositorioPlanoDeCobranca, servicoPlanoDeCobranca, repositorioGrupoVeiculos));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
             controladores.Add("Condutores", new ControladorCondutor(repositorioCondutor, servicoCondutor, repositorioCliente));
+            controladores.Add("Veículos", new ControladorVeiculo(repositorioVeiculo, servicoVeiculo, repositorioGrupoVeiculos));
         }
 
         private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)
@@ -82,7 +84,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarListagem()
         {
-  
+
             var listagemControl = controlador.ObtemListagem();
 
             panelRegistros.Controls.Clear();
@@ -117,11 +119,11 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarTooltips(ConfiguracaoToolboxBase configuracao)
         {
-          
+
             btnInserir.ToolTipText = configuracao.TooltipInserir;
             btnEditar.ToolTipText = configuracao.TooltipEditar;
             btnExcluir.ToolTipText = configuracao.TooltipExcluir;
-            
+
         }
 
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -131,17 +133,17 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-                controlador.Inserir();
+            controlador.Inserir();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-                controlador.Editar();
+            controlador.Editar();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-                controlador.Excluir();
+            controlador.Excluir();
         }
 
         private void funcionarioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -165,6 +167,11 @@ namespace LocadoraDeVeiculos.WinApp
         }
 
         private void condutoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
+        }
+
+        private void veiculosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal((ToolStripMenuItem)sender);
         }

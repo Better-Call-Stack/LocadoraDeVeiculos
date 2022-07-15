@@ -69,10 +69,10 @@ namespace LocadoraDeVeiculos.Infra.ModuloTaxa
 			WHERE
 				[NOME] = @NOME";
 
-        
+
         public Taxa SelecionarTaxaPorNome(string nome)
         {
             return SelecionarPorParametro(sqlSelecionarPorNome, new SqlParameter("NOME", nome));
-        } 
+        }
     }
 }

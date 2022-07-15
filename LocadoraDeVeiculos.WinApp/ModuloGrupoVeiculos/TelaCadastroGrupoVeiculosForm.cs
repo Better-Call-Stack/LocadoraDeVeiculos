@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+using System;
+using System.Windows.Forms;
 
 
 namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
@@ -25,9 +18,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
 
         public GrupoDeVeiculos GrupoDeVeiculos
         {
-            get 
-            { 
-                return grupoDeVeiculos; 
+            get
+            {
+                return grupoDeVeiculos;
             }
             set
             {
@@ -40,7 +33,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             grupoDeVeiculos.Nome = txtNome.Text;
-        
+
 
             var resultadoValidacao = GravarRegistro(grupoDeVeiculos);
 
@@ -55,6 +48,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
 
         }
 
-       
+
     }
 }

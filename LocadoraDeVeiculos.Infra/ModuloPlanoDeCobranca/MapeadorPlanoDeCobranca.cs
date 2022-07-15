@@ -28,14 +28,14 @@ namespace LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca
 
         public override PlanoDeCobranca ConverterRegistro(SqlDataReader leitorPlanoDeCobranca)
         {
-            var id = Guid.Parse(leitorPlanoDeCobranca["ID"].ToString());
-            var valorKmRodado_PlanoDiario = Convert.ToDecimal(leitorPlanoDeCobranca["VALORKMRODADO_PLANODIARIO"]);
-            var valorPorDia_PlanoDiario = Convert.ToDecimal(leitorPlanoDeCobranca["VALORPORDIA_PLANODIARIO"]);
-            var valorKmRodado_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["VALORKMRODADO_PLANOKMCONTROLADO"]);
-            var kmLivreIncluso_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["KMLIVREINCLUSO_PLANOKMCONTROLADO"]);
-            var valorPorDia_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["VALORPORDIA_PLANOKMCONTROLADO"]);
-            var valorPorDia_PlanoKmLivre = Convert.ToDecimal(leitorPlanoDeCobranca["VALORPORDIA_PLANOKMLIVRE"]);
-
+            var id = Guid.Parse(leitorPlanoDeCobranca["PC_ID"].ToString());
+            var valorKmRodado_PlanoDiario = Convert.ToDecimal(leitorPlanoDeCobranca["PC_VALORKMRODADO_PLANODIARIO"]);
+            var valorPorDia_PlanoDiario = Convert.ToDecimal(leitorPlanoDeCobranca["PC_VALORPORDIA_PLANODIARIO"]);
+            var valorKmRodado_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["PC_VALORKMRODADO_PLANOKMCONTROLADO"]);
+            var kmLivreIncluso_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["PC_KMLIVREINCLUSO_PLANOKMCONTROLADO"]);
+            var valorPorDia_PlanoKmControlado = Convert.ToDecimal(leitorPlanoDeCobranca["PC_VALORPORDIA_PLANOKMCONTROLADO"]);
+            var valorPorDia_PlanoKmLivre = Convert.ToDecimal(leitorPlanoDeCobranca["PC_VALORPORDIA_PLANOKMLIVRE"]);
+            
             PlanoDeCobranca planoDeCobranca = new PlanoDeCobranca();
             planoDeCobranca.Id = id;
             planoDeCobranca.ValorKmRodado_PlanoDiario = valorKmRodado_PlanoDiario;
