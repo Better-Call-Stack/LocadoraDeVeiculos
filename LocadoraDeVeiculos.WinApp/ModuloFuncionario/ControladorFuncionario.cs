@@ -80,7 +80,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             if (resultado == DialogResult.OK)
             {
-                repositorioFuncionario.Excluir(funcionarioSelecionado);
+                servicoFuncionario.Excluir(funcionarioSelecionado);
                 CarregarFuncionarios();
             }
         }

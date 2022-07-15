@@ -66,7 +66,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             {
                 try
                 {
-                    repositorioCliente.Excluir(clienteSelecionado);
+                    servicoCliente.Excluir(clienteSelecionado);
                     CarregarClientes();
                 }
                 catch(Exception e)
