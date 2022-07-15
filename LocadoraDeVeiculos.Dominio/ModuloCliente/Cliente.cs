@@ -1,9 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Dominio.ModuloCliente
 {
@@ -20,7 +16,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         private TipoPessoa tipoPessoa;
 
         public string Nome { get; set; }
-       
+
         public string CPF { get; set; }
 
         public string CNPJ { get; set; }
@@ -30,7 +26,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
         public string Endereco { get; set; }
 
         public string Telefone { get; set; }
-       
+
         public string Email { get; set; }
 
         public TipoPessoa TipoPessoa
@@ -40,8 +36,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCliente
             {
                 tipoPessoa = value;
 
-                }
             }
+        }
 
 
         public Cliente Clonar()

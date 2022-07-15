@@ -23,6 +23,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloPlanoDeCobranca
 
         public RepositorioPlanoDeCobrancaTests()
         {
+            Db.ExecutarSql("DELETE FROM TBVEICULO;");
             Db.ExecutarSql("DELETE FROM TBPLANODECOBRANCA;");
 
             Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS;");

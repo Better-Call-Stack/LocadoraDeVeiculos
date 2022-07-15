@@ -2,18 +2,14 @@
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 {
     public class ControladorTaxa : ControladorBase
     {
-        
+
         private readonly RepositorioTaxa repositorio;
         private ServicoTaxa servico;
         private TabelaTaxaControl tabelaTaxas;
@@ -64,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (resultado == DialogResult.OK)
             {
-                repositorio.Excluir(taxaSelecionada);
+                servico.Excluir(taxaSelecionada);
                 CarregarTaxas();
             }
         }

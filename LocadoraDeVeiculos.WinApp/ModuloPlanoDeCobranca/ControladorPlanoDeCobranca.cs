@@ -83,7 +83,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 
             if (resultado == DialogResult.OK)
             {
-                repositorioPlanoDeCobranca.Excluir(planoDeCobrancaSelecionado);
+                servicoPlanoDeCobranca.Excluir(planoDeCobrancaSelecionado);
                 CarregarPlanoDeCobranca();
             }
         }

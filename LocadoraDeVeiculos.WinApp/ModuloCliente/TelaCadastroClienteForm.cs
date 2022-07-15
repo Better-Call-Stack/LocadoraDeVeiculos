@@ -2,13 +2,6 @@
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloCliente
@@ -36,7 +29,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             txtNome.Enabled = false;
             txtCpfCnpj.Enabled = false;
             txtCidade.Enabled = false;
-            txtEmail.Enabled = false; 
+            txtEmail.Enabled = false;
             txtTelefone.Enabled = false;
             txtEndereco.Enabled = false;
 
@@ -81,7 +74,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         private void btnSalvar_Click(object sender, EventArgs e)
         {
 
-            if(cbxPessoa.SelectedItem == "Física")
+            if (cbxPessoa.SelectedItem == "Física")
             {
                 cliente.TipoPessoa = TipoPessoa.Fisica;
                 cliente.CPF = txtCpfCnpj.Text;
@@ -126,7 +119,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 labelCpfCnpj.Text = "CPF:";
             }
 
-            if (cbxPessoa.SelectedItem == "Jurídica") {
+            if (cbxPessoa.SelectedItem == "Jurídica")
+            {
                 txtCpfCnpj.Mask = "99.999.999/9999-99";
                 labelCpfCnpj.Text = "CNPJ:";
             }

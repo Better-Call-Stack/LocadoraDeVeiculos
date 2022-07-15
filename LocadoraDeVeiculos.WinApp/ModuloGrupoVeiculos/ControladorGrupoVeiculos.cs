@@ -1,14 +1,9 @@
-﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
-using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
@@ -81,7 +76,7 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 
             if (resultado == DialogResult.OK)
             {
-                repositorioGrupoVeiculos.Excluir(grupoDeVeiculoSelecionado);
+                servicoGrupoVeiculos.Excluir(grupoDeVeiculoSelecionado);
                 CarregarGrupoVeiculos();
             }
         }
@@ -115,6 +110,6 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
             return repositorioGrupoVeiculos.SelecionarPorId(id);
         }
 
-      
+
     }
 }

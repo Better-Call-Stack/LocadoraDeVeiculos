@@ -1,13 +1,6 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
@@ -30,7 +23,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             {
                 taxa = value;
 
-               
+
                 txtNome.Text = taxa.Nome;
                 txtValor.Text = taxa.Valor.ToString();
                 cbxTipoCalculo.SelectedItem = taxa.Tipo.ToString();

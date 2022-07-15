@@ -183,7 +183,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
         {
             var clienteEncontrado = repositorioCliente.SelecionarClientePorCPF(cliente.CPF);
 
-            return clienteEncontrado != null && 
+            return clienteEncontrado != null &&
                    cliente.TipoPessoa == TipoPessoa.Fisica &&
                    clienteEncontrado.CPF == cliente.CPF &&
                    clienteEncontrado.Id != cliente.Id;

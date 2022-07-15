@@ -1,8 +1,5 @@
-﻿using FluentValidation.Results;
-using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.Compartilhado;
-using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
@@ -92,7 +89,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
 			WHERE
 				[CPF] = @CPF";
 
-       public Funcionario SelecionarFuncionarioPorCPF(string CPF)
+        public Funcionario SelecionarFuncionarioPorCPF(string CPF)
         {
             return SelecionarPorParametro(sqlSelecionarPorCPF, new SqlParameter("CPF", CPF));
         }

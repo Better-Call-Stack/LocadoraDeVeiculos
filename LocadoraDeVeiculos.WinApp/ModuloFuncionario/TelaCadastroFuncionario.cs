@@ -10,7 +10,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         public TelaCadastroFuncionario()
         {
             InitializeComponent();
-
             CarregarPerfilFuncionario();
         }
 

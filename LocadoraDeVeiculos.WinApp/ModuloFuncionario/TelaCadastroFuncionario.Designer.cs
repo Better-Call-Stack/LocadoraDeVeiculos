@@ -179,6 +179,7 @@
             // 
             // cmbPerfilFuncionario
             // 
+            this.cmbPerfilFuncionario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPerfilFuncionario.FormattingEnabled = true;
             this.cmbPerfilFuncionario.Location = new System.Drawing.Point(311, 105);
             this.cmbPerfilFuncionario.Name = "cmbPerfilFuncionario";

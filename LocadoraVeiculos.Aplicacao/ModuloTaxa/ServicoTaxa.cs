@@ -13,23 +13,23 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
     public class ServicoTaxa
     {
 
-        private RepositorioTaxa repositorio;
+        private RepositorioTaxa repositorioTaxa;
         private ValidadorTaxa validador;
 
         public ServicoTaxa(RepositorioTaxa repositorio)
         {
-            this.repositorio = repositorio;
+            this.repositorioTaxa = repositorio;
         }
 
         public ValidationResult Inserir(Taxa taxa)
         {
             Log.Logger.Debug("Tentando inserir taxa... {@t}", taxa);
 
-            var resultadoValidacao = Validar(taxa);
+            ValidationResult resultadoValidacao = Validar(taxa);
 
             if (resultadoValidacao.IsValid)
             {
-                repositorio.Inserir(taxa);
+                repositorioTaxa.Inserir(taxa);
                 Log.Logger.Debug("Taxa {TaxaId} inserida com sucesso", taxa.Id);
             }
             else
@@ -48,26 +48,37 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
         {
 
             Log.Logger.Debug("Tentando editar taxa... {@t}", taxa);
-            var resultadoValidacao = Validar(taxa);
+
+            ValidationResult resultadoValidacao = Validar(taxa);
 
             if (resultadoValidacao.IsValid)
             {
-                repositorio.Editar(taxa);
-                Log.Logger.Debug("Taxa {TaxaNome} editada com sucesso", taxa.Nome);
-
+                repositorioTaxa.Editar(taxa);
+                Log.Logger.Debug("Taxa {TaxaId} editada com sucesso", taxa.Id);
             }
             else
             {
                 foreach (var erro in resultadoValidacao.Errors)
                 {
-                    Log.Logger.Warning("Falha ao tentar editar uma Taxa {TaxaNome} - {Motivo}",
-                        taxa.Nome, erro.ErrorMessage);
+                    Log.Logger.Warning("Falha ao tentar editar uma Taxa {TaxaId} - {Motivo}",
+                        taxa.Id, erro.ErrorMessage);
                 }
             }
 
             return resultadoValidacao;
         }
-    
+
+        public ValidationResult Excluir(Taxa taxa)
+        {
+            Log.Logger.Debug("Tentando excluir Taxa... {@t}", taxa);
+
+            repositorioTaxa.Excluir(taxa);
+
+            Log.Logger.Debug("Taxa com Id = '{TaxaId}' excluído", taxa.Id);
+
+            return new ValidationResult();
+        }
+
 
         public ValidationResult Validar(Taxa taxa)
         {
@@ -84,7 +95,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
         private bool NomeDuplicado(Taxa taxa)
         {
 
-            var taxaEncontrada = repositorio.SelecionarTaxaPorNome(taxa.Nome);
+            var taxaEncontrada = repositorioTaxa.SelecionarTaxaPorNome(taxa.Nome);
 
             return taxaEncontrada != null &&
                    taxaEncontrada.Nome == taxa.Nome &&

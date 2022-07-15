@@ -19,6 +19,8 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloGrupoVeiculos
 
         public RepositorioGrupoVeiculosTests()
         {
+            Db.ExecutarSql("DELETE FROM TBVEICULO");
+
             Db.ExecutarSql("DELETE FROM TBPLANODECOBRANCA;");
 
             Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS;");

@@ -5,7 +5,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloFuncionario
 {
     public class Funcionario : EntidadeBase<Funcionario>
     {
-        
+
         public Funcionario()
         {
             DataDeAdmissao = DateTime.Now;
