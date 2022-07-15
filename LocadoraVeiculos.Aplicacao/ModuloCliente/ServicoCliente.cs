@@ -66,6 +66,18 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             return resultadoValidacao;
         }
 
+
+        public ValidationResult Excluir(Cliente cliente)
+        {
+            Log.Logger.Debug("Tentando excluir Cliente... {@Cliente}", cliente);
+
+            repositorioCliente.Excluir(cliente);
+
+            Log.Logger.Debug("Cliente com Id = '{ClienteId}' excluído com sucesso", cliente.Id);
+
+            return new ValidationResult();
+        }
+
         private ValidationResult Validar(Cliente cliente)
         {
             validadorCliente = new ValidadorCliente();
