@@ -67,7 +67,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             if (resultado == DialogResult.OK)
             {
-                repositorioCondutor.Excluir(condutorSelecionado);
+                servicoCondutor.Excluir(condutorSelecionado);
                 CarregarCondutores();
             }
         }

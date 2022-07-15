@@ -42,28 +42,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             }
             return resultadoValidacao;
         }
-
-        private ValidationResult Validar(Funcionario funcionario)
-        {
-            validadorFuncionario = new ValidadorFuncionario();
-
-            var resultadoValidacao = validadorFuncionario.Validate(funcionario);
-
-            if (CpfDuplicado(funcionario))
-                resultadoValidacao.Errors.Add(new ValidationFailure("CPF", "CPF já cadastrado."));
-
-            return resultadoValidacao;
-        }
-
-        private bool CpfDuplicado (Funcionario funcionario)
-        {
-            var funcionarioEncontrado = repositorioFuncionario.SelecionarFuncionarioPorCPF(funcionario.CPF);
-
-            return funcionarioEncontrado != null &&
-                   funcionarioEncontrado.CPF == funcionario.CPF &&
-                   funcionarioEncontrado.Id != funcionario.Id;
-        }
-
+       
         public ValidationResult Editar(Funcionario funcionario)
         {
 
@@ -87,6 +66,39 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
 
             return resultadoValidacao;
         }
+
+        public ValidationResult Excluir(Funcionario funcionario)
+        {
+            Log.Logger.Debug("Tentando excluir Funcionario... {@Funcionario}", funcionario);
+
+            repositorioFuncionario.Excluir(funcionario);
+
+            Log.Logger.Debug("Funcionario com Id = '{FuncionarioId}' excluído com sucesso", funcionario.Id);
+
+            return new ValidationResult();
+        }
+
+        private ValidationResult Validar(Funcionario funcionario)
+        {
+            validadorFuncionario = new ValidadorFuncionario();
+
+            var resultadoValidacao = validadorFuncionario.Validate(funcionario);
+
+            if (CpfDuplicado(funcionario))
+                resultadoValidacao.Errors.Add(new ValidationFailure("CPF", "CPF já cadastrado."));
+
+            return resultadoValidacao;
+        }
+
+        private bool CpfDuplicado (Funcionario funcionario)
+        {
+            var funcionarioEncontrado = repositorioFuncionario.SelecionarFuncionarioPorCPF(funcionario.CPF);
+
+            return funcionarioEncontrado != null &&
+                   funcionarioEncontrado.CPF == funcionario.CPF &&
+                   funcionarioEncontrado.Id != funcionario.Id;
+        }
+
     }
    
 }

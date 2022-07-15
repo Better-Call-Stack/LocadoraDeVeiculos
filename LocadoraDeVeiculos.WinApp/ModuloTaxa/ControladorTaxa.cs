@@ -64,7 +64,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
             if (resultado == DialogResult.OK)
             {
-                repositorio.Excluir(taxaSelecionada);
+                servico.Excluir(taxaSelecionada);
                 CarregarTaxas();
             }
         }

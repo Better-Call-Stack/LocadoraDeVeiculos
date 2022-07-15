@@ -43,7 +43,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 
         public ValidationResult Editar(GrupoDeVeiculos grupoDeVeiculos)
         {
-            Log.Logger.Debug("Editando Grupo de Veiculos {@pc}", grupoDeVeiculos);
+            Log.Logger.Debug("Editando Grupo de Veiculos {@gv}", grupoDeVeiculos);
 
             ValidationResult resultadoValidacao = Validar(grupoDeVeiculos);
 
@@ -61,6 +61,17 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
                 }
             }
             return resultadoValidacao;
+        }
+
+        public ValidationResult Excluir(GrupoDeVeiculos grupoDeVeiculos)
+        {
+            Log.Logger.Debug("Tentando excluir Grupo de Veiculos... {@gv}", grupoDeVeiculos);
+
+            repositorioGrupoVeiculos.Excluir(grupoDeVeiculos);
+
+            Log.Logger.Debug("Grupo de Veiculos com Id = '{GrupoDeVeiculosId}' excluído", grupoDeVeiculos.Id);
+
+            return new ValidationResult();
         }
 
         private ValidationResult Validar(GrupoDeVeiculos grupoDeVeiculos)

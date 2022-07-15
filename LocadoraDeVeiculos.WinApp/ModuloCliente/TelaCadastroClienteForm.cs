@@ -124,5 +124,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 labelCpfCnpj.Text = "CNPJ:";
             }
         }
+
+        private void TelaCadastroClienteForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -81,7 +81,7 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 
             if (resultado == DialogResult.OK)
             {
-                repositorioGrupoVeiculos.Excluir(grupoDeVeiculoSelecionado);
+                servicoGrupoVeiculos.Excluir(grupoDeVeiculoSelecionado);
                 CarregarGrupoVeiculos();
             }
         }

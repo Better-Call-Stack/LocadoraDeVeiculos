@@ -36,8 +36,9 @@ namespace LocadoraDeVeiculos.WinApp
             this.funcionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.grupoDeVeiculosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.taxasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planosDeCobrançaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.condutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolbox = new System.Windows.Forms.ToolStrip();
             this.btnInserir = new System.Windows.Forms.ToolStripButton();
             this.btnEditar = new System.Windows.Forms.ToolStripButton();
@@ -46,7 +47,6 @@ namespace LocadoraDeVeiculos.WinApp
             this.labelTipoCadastro = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.panelRegistros = new System.Windows.Forms.Panel();
-            this.condutoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolbox.SuspendLayout();
             this.SuspendLayout();
@@ -69,10 +69,9 @@ namespace LocadoraDeVeiculos.WinApp
             this.funcionariosToolStripMenuItem,
             this.grupoDeVeiculosToolStripMenuItem,
             this.taxasToolStripMenuItem,
-            this.clientesToolStripMenuItem,
             this.planosDeCobrançaToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.condutoresToolStripMenuItem });
+            this.condutoresToolStripMenuItem});
             this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
             this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.cadastrosToolStripMenuItem.Text = "Cadastros";
@@ -80,37 +79,44 @@ namespace LocadoraDeVeiculos.WinApp
             // funcionariosToolStripMenuItem
             // 
             this.funcionariosToolStripMenuItem.Name = "funcionariosToolStripMenuItem";
-            this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.funcionariosToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.funcionariosToolStripMenuItem.Text = "Funcionários";
             this.funcionariosToolStripMenuItem.Click += new System.EventHandler(this.funcionarioToolStripMenuItem_Click);
             // 
             // grupoDeVeiculosToolStripMenuItem
             // 
             this.grupoDeVeiculosToolStripMenuItem.Name = "grupoDeVeiculosToolStripMenuItem";
-            this.grupoDeVeiculosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.grupoDeVeiculosToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.grupoDeVeiculosToolStripMenuItem.Text = "Grupo de Veículos";
             this.grupoDeVeiculosToolStripMenuItem.Click += new System.EventHandler(this.grupoVeiculosToolStripMenuItem_Click);
             // 
             // taxasToolStripMenuItem
             // 
             this.taxasToolStripMenuItem.Name = "taxasToolStripMenuItem";
-            this.taxasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.taxasToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.taxasToolStripMenuItem.Text = "Taxas";
             this.taxasToolStripMenuItem.Click += new System.EventHandler(this.taxasToolStripMenuItem_Click);
-            // 
-            // clientesToolStripMenuItem
-            // 
-            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.clientesToolStripMenuItem.Text = "Clientes";
-            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // planosDeCobrançaToolStripMenuItem
             // 
             this.planosDeCobrançaToolStripMenuItem.Name = "planosDeCobrançaToolStripMenuItem";
-            this.planosDeCobrançaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.planosDeCobrançaToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
             this.planosDeCobrançaToolStripMenuItem.Text = "Planos de Cobrança";
             this.planosDeCobrançaToolStripMenuItem.Click += new System.EventHandler(this.planosDeCobrançaToolStripMenuItem_Click);
+            // 
+            // clientesToolStripMenuItem
+            // 
+            this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
+            // 
+            // condutoresToolStripMenuItem
+            // 
+            this.condutoresToolStripMenuItem.Name = "condutoresToolStripMenuItem";
+            this.condutoresToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.condutoresToolStripMenuItem.Text = "Condutores";
+            this.condutoresToolStripMenuItem.Click += new System.EventHandler(this.condutoresToolStripMenuItem_Click);
             // 
             // toolbox
             // 
@@ -183,13 +189,6 @@ namespace LocadoraDeVeiculos.WinApp
             this.panelRegistros.Size = new System.Drawing.Size(800, 394);
             this.panelRegistros.TabIndex = 3;
             // 
-            // condutoresToolStripMenuItem
-            // 
-            this.condutoresToolStripMenuItem.Name = "condutoresToolStripMenuItem";
-            this.condutoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.condutoresToolStripMenuItem.Text = "Condutores";
-            this.condutoresToolStripMenuItem.Click += new System.EventHandler(this.condutoresToolStripMenuItem_Click);
-            // 
             // TelaInicial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -198,10 +197,12 @@ namespace LocadoraDeVeiculos.WinApp
             this.Controls.Add(this.panelRegistros);
             this.Controls.Add(this.toolbox);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TelaInicial";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Locadora de Veículos 1.0";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
