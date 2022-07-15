@@ -36,6 +36,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
             RuleFor(x => x.TipoCombustivel)
                 .NotNull().WithMessage("Selecione um tipo de combustível para o veículo.");
 
+            RuleFor(x => x.FotoVeiculo)
+                .NotNull().WithMessage("É necessário adicionar uma foto para o veículo.");
+
             RuleFor(x => x.Grupo)
                 .NotNull().WithMessage("Selecione um grupo para o veículo.")
                 .NotEmpty().WithMessage("Selecione um grupo para o veículo.");

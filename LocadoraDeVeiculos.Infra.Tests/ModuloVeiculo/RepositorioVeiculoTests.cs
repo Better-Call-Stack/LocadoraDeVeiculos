@@ -24,7 +24,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloVeiculo
         public RepositorioVeiculoTests()
         {
             Db.ExecutarSql("DELETE FROM TBVEICULO;");
-            //Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS;");
+            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS;");
             
             gv = new GrupoDeVeiculos();
 
@@ -40,7 +40,8 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloVeiculo
                 StatusVeiculo = StatusVeiculoEnum.Ativo,
                 CapacidadeTanque = 1000,
                 KmPercorrido = 8000,
-                Grupo = gv
+                Grupo = gv,
+                FotoVeiculo = new byte[] {}
             };
 
         }
@@ -89,6 +90,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloVeiculo
 
             repositorioVeiculo.SelecionarTodos().Count().Should().Be(0);
         }
+
     }
     
 }

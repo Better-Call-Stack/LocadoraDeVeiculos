@@ -33,18 +33,18 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 
         public override Veiculo ConverterRegistro(SqlDataReader leitorVeiculo)
         {
-            var id = Guid.Parse(leitorVeiculo["ID"].ToString());
-            var modelo = Convert.ToString(leitorVeiculo["MODELO"]);
-            var fabricante = Convert.ToString(leitorVeiculo["FABRICANTE"]);
-            var placa = Convert.ToString(leitorVeiculo["PLACA"]);
-            var cor = Convert.ToString(leitorVeiculo["COR"]);
-            var tipoCombustivel = Convert.ToInt32(leitorVeiculo["TIPOCOMBUSTIVEL"]);
-            var capacidadeDoTanque = Convert.ToDecimal(leitorVeiculo["CAPACIDADEDOTANQUE"]);
-            var ano = Convert.ToInt32(leitorVeiculo["ANO"]);
-            var kmpercorrido = Convert.ToInt32(leitorVeiculo["KMPERCORRIDO"]);
-            var statusVeiculo = Convert.ToInt32(leitorVeiculo["STATUSVEICULO"]);
-            byte[] fotoVeiculo = (byte[])leitorVeiculo["FOTOVEICULO"];
-
+            var id = Guid.Parse(leitorVeiculo["VEICULO_ID"].ToString());
+            var modelo = Convert.ToString(leitorVeiculo["VEICULO_MODELO"]);
+            var fabricante = Convert.ToString(leitorVeiculo["VEICULO_FABRICANTE"]);
+            var placa = Convert.ToString(leitorVeiculo["VEICULO_PLACA"]);
+            var cor = Convert.ToString(leitorVeiculo["VEICULO_COR"]);
+            int tipoCombustivel = Convert.ToInt32(leitorVeiculo["VEICULO_TIPOCOMBUSTIVEL"]);
+            var capacidadeDoTanque = Convert.ToDecimal(leitorVeiculo["VEICULO_CAPACIDADE"]);
+            var ano = Convert.ToInt32(leitorVeiculo["VEICULO_ANO"]);
+            var kmpercorrido = Convert.ToInt32(leitorVeiculo["VEICULO_KMPERCORRIDO"]);
+            var statusVeiculo = Convert.ToInt32(leitorVeiculo["VEICULO_STATUS"]);
+            byte[] fotoVeiculo = (byte[])leitorVeiculo["VEICULO_FOTO"];
+            
 
             Veiculo veiculo = new Veiculo();
             veiculo.Id = id;

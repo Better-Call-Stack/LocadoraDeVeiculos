@@ -13,8 +13,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
     {
        
       
-        byte[] imagemSelecionada = null;
-        Bitmap bmp;
+        byte[] imagemSelecionada;
 
         public TelaCadastroVeiculo(string modoTela, List<GrupoDeVeiculos> grupoDeVeiculos)
         {
@@ -140,8 +139,5 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                     pb_Veiculo.Image = new Bitmap(ms);
             }
         }
-
-
-
     }
 }

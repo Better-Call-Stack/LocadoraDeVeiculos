@@ -12,7 +12,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         public Veiculo()
         {
             Ano = 2022;
-            FotoVeiculo = default;
         }
 
         TipoCombustivelEnum tipoCombustivel;
@@ -58,7 +57,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         {
             get
             {
-                if (FotoVeiculo != null)
+                if (FotoVeiculo != null && FotoVeiculo.Length != 0)
                 {
 
                     using (MemoryStream ms = new MemoryStream(FotoVeiculo))
@@ -98,8 +97,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
                    StatusVeiculo == veiculo.StatusVeiculo &&
                    CapacidadeTanque == veiculo.CapacidadeTanque &&
                    Ano == veiculo.Ano &&
-                   KmPercorrido == veiculo.KmPercorrido &&
-                   FotoVeiculo == veiculo.FotoVeiculo;
+                   KmPercorrido == veiculo.KmPercorrido;
+                   //FotoVeiculo == veiculo.FotoVeiculo &&
+                   //Imagem == veiculo.Imagem;
         }
     }
 }
