@@ -19,7 +19,9 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloGrupoVeiculos
 
         public RepositorioGrupoVeiculosTests()
         {
-            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS; DBCC CHECKIDENT (TBGRUPOVEICULOS, RESEED, 0)");
+            Db.ExecutarSql("DELETE FROM TBPLANODECOBRANCA;");
+
+            Db.ExecutarSql("DELETE FROM TBGRUPOVEICULOS;");
 
             grupoVeiculos = new GrupoDeVeiculos();
             grupoVeiculos.Nome = "Impala";
@@ -31,7 +33,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloGrupoVeiculos
         {
             repositorio.Inserir(grupoVeiculos);
 
-            GrupoDeVeiculos gv = repositorio.SelecionarPorId(1);
+            GrupoDeVeiculos gv = repositorio.SelecionarPorId(grupoVeiculos.Id);
 
             gv.Should().NotBeNull().And.Be(grupoVeiculos);
 

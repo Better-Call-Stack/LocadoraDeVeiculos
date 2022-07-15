@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ModuloFuncionario;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +22,24 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
 
         public ValidationResult Inserir(Funcionario funcionario)
         {
+            Log.Logger.Debug("Tentando inserir funcionario... {@f}", funcionario);
+
             var resultadoValidacao = Validar(funcionario);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioFuncionario.Inserir(funcionario);
+                Log.Logger.Debug("Funcionario {FuncionarioId} inserido com sucesso", funcionario.Id);
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar inserir um Funcionario {FuncionarioId} - {Motivo}",
+                        funcionario.Id, erro.ErrorMessage);
+                }
 
+            }
             return resultadoValidacao;
         }
 
@@ -52,12 +66,27 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
 
         public ValidationResult Editar(Funcionario funcionario)
         {
+
+            Log.Logger.Debug("Tentando editar funcionario... {@f}", funcionario);
             var resultadoValidacao = Validar(funcionario);
 
             if (resultadoValidacao.IsValid)
+            {
                 repositorioFuncionario.Editar(funcionario);
+                Log.Logger.Debug("Funcionario {FuncionarioId} editado com sucesso", funcionario.Id);
+
+            }
+            else
+            {
+                foreach (var erro in resultadoValidacao.Errors)
+                {
+                    Log.Logger.Warning("Falha ao tentar editar um Funcionario {FuncionarioId} - {Motivo}",
+                        funcionario.Id, erro.ErrorMessage);
+                }
+            }
 
             return resultadoValidacao;
         }
     }
+   
 }

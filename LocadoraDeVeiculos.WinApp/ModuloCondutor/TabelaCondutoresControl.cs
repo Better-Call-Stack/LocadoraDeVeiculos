@@ -40,15 +40,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             }
         }
 
-        public int ObtemIdCondutorSelecionado()
+        public Guid ObtemIdCondutorSelecionado()
         {
-                return gridCondutores.SelecionarId<int>();
+                return gridCondutores.SelecionarId<Guid>();
         }
 
         private void gridCondutores_DoubleClick(object sender, EventArgs e)
         {
             TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(repositorioCliente.SelecionarTodos(), "Visualizacao");
-            int id = ObtemIdCondutorSelecionado();
+            Guid id = ObtemIdCondutorSelecionado();
             Condutor c = repositorioCondutor.SelecionarPorId(id);
 
             tela.Condutor = c;
