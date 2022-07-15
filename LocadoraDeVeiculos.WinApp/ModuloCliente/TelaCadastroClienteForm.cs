@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
         }
 
-        public Func<Cliente, ValidationResult> GravarRegistro { get; set; }
+        public Func<Cliente, Result<Cliente>> GravarRegistro { get; set; }
 
         private Cliente cliente;
 
@@ -101,13 +102,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 
             var resultadoValidacao = GravarRegistro(cliente);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
 
-                MessageBox.Show(erro, "Erro");
-
-                DialogResult = DialogResult.None;
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                      "Inserção de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    DialogResult = DialogResult.None;
+                }
             }
         }
 
@@ -125,9 +132,5 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             }
         }
 
-        private void TelaCadastroClienteForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

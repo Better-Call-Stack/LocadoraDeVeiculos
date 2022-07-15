@@ -1,6 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,10 +16,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
 {
     public partial class TabelaClientesControl : UserControl
     {
-        RepositorioCliente repositorio;
+        ServicoCliente servico;
 
 
-        public TabelaClientesControl(RepositorioCliente repositorio)
+        public TabelaClientesControl(ServicoCliente servico)
         {
             InitializeComponent();
             gridPessoaFisica.ConfigurarGridZebrado();
@@ -27,8 +28,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             gridPessoaJuridica.ConfigurarGridSomenteLeitura();
             gridPessoaFisica.ConfigurarColunaId();
             gridPessoaJuridica.ConfigurarColunaId();
-
-            this.repositorio = repositorio;
+            this.servico = servico;
         }
 
         internal void AtualizarRegistros(List<Cliente> clientes)
@@ -95,8 +95,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
         private void GridDoubleClickGenerico()
         {
             TelaCadastroClienteForm tela = new TelaCadastroClienteForm("Visualizacao");
+            
             Guid id = ObtemIdClienteSelecionado();
-            Cliente c = repositorio.SelecionarPorId(id);
+          
+            var resultado = servico.SelecionarPorId(id);
+            
+            Cliente c = resultado.Value;
 
             tela.Cliente = c;
             tela.ShowDialog();

@@ -224,7 +224,6 @@
             this.Name = "TelaCadastroClienteForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Cliente";
-            this.Load += new System.EventHandler(this.TelaCadastroClienteForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
