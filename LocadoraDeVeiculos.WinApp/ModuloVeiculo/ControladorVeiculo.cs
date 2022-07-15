@@ -82,7 +82,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             if (resultado == DialogResult.OK)
             {
-                repositorioVeiculo.Excluir(veiculoSelecionado);
+                servicoVeiculo.Excluir(veiculoSelecionado);
                 CarregarVeiculos();
             }
         }
@@ -110,10 +110,5 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
             var id = tabelaVeiculo.ObtemIdVeiculoSelecionado();
             return repositorioVeiculo.SelecionarPorId(id);
         }
-
-        //private bool ValidarVeiculoParaExcluir()
-        //{
-
-        //}
     }
 }

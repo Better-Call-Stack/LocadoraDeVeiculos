@@ -23,6 +23,23 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
             return resultadoValidacao;
         }
 
+        public ValidationResult Editar(Veiculo veiculo)
+        {
+            var resultadoValidacao = Validar(veiculo);
+
+            if (resultadoValidacao.IsValid)
+                repositorioVeiculo.Editar(veiculo);
+
+            return resultadoValidacao;
+        }
+
+        public ValidationResult Excluir(Veiculo veiculo)
+        {
+            repositorioVeiculo.Excluir(veiculo);
+
+            return new ValidationResult();
+        }
+
         private ValidationResult Validar(Veiculo veiculo)
         {
             validadorVeiculo = new ValidadorVeiculo();
@@ -42,16 +59,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
             return veiculoEncontrado != null &&
                    veiculoEncontrado.Placa == veiculo.Placa &&
                    veiculoEncontrado.Id != veiculo.Id;
-        }
-
-        public ValidationResult Editar(Veiculo veiculo)
-        {
-            var resultadoValidacao = Validar(veiculo);
-
-            if (resultadoValidacao.IsValid)
-                repositorioVeiculo.Editar(veiculo);
-
-            return resultadoValidacao;
         }
     }
 }
