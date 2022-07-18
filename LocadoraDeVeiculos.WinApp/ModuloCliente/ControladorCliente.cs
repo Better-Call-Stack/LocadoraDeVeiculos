@@ -117,7 +117,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             }
             else 
             {
-                MessageBox.Show(resultadoSelecao.Errors[0].Message, "Exclusão de Cliente"
+                MessageBox.Show(resultadoSelecao.Errors[0].Message, "Carregar Clientes"
                     , MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

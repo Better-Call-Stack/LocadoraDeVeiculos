@@ -2,6 +2,8 @@
 using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloCondutor;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraVeiculos.Aplicacao.ModuloCliente;
+using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,18 +18,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 {
     public partial class TabelaCondutoresControl : UserControl
     {
-        RepositorioCondutor repositorioCondutor;
-        RepositorioCliente repositorioCliente;
-        public TabelaCondutoresControl(RepositorioCondutor repositorioCondutor, RepositorioCliente repositorioCliente)
+        ServicoCondutor servicoCondutor;
+        ServicoCliente servicoCliente;
+        public TabelaCondutoresControl(ServicoCondutor servicoCondutor, ServicoCliente servicoCliente)
         {
             InitializeComponent();
 
             gridCondutores.ConfigurarGridZebrado();
             gridCondutores.ConfigurarGridSomenteLeitura();
             gridCondutores.ConfigurarGridZebrado();
-
-            this.repositorioCondutor = repositorioCondutor;
-            this.repositorioCliente = repositorioCliente;
+            this.servicoCondutor = servicoCondutor;
+            this.servicoCliente = servicoCliente;
         }
 
         internal void AtualizarRegistros(List<Condutor> condutores)
@@ -47,9 +48,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
         private void gridCondutores_DoubleClick(object sender, EventArgs e)
         {
-            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(repositorioCliente.SelecionarTodos(), "Visualizacao");
+            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(servicoCliente.SelecionarTodos().Value, "Visualizacao");
             Guid id = ObtemIdCondutorSelecionado();
-            Condutor c = repositorioCondutor.SelecionarPorId(id);
+            Condutor c = servicoCondutor.SelecionarPorId(id).Value;
 
             tela.Condutor = c;
             tela.ShowDialog();

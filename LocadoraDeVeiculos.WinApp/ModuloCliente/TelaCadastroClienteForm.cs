@@ -102,7 +102,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 if (erro.StartsWith("Falha no sistema"))
                 {
                     MessageBox.Show(erro,
-                      "Inserção de Funcionário", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                      "Inserção de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
