@@ -1,6 +1,7 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -10,16 +11,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
     public partial class TabelaTaxaControl : UserControl
     {
 
-        RepositorioTaxa repositorio;
+        ServicoTaxa servicoTaxa;
 
-        public TabelaTaxaControl(RepositorioTaxa repositorio)
+        public TabelaTaxaControl(ServicoTaxa servico)
         {
             InitializeComponent();
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
             grid.ConfigurarColunaId();
 
-            this.repositorio = repositorio;
+            this.servicoTaxa = servico;
         }
 
 
