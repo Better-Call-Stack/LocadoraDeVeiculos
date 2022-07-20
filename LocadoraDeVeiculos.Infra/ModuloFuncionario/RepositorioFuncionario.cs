@@ -48,14 +48,14 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
 
         protected override string sqlSelecionarPorId =>
             @"SELECT 
-                [ID],
-                [NOME],
-                [CPF],
-                [SALARIO],
-                [DATADEADMISSAO],
-                [LOGIN],
-                [SENHA],
-                [PERFIL]
+               [ID] FUNCIONARIO_ID,       
+               [NOME] FUNCIONARIO_NOME,
+               [CPF] FUNCIONARIO_CPF,
+               [SALARIO] FUNCIONARIO_SALARIO,
+               [DATADEADMISSAO] FUNCIONARIO_DATADEADMISSAO,
+               [LOGIN] FUNCIONARIO_LOGIN,
+               [SENHA] FUNCIONARIO_SENHA,
+               [PERFIL] FUNCIONARIO_PERFIL
             FROM
                 [TBFUNCIONARIO]
             WHERE 
@@ -63,35 +63,54 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
 
         protected override string sqlSelecionarTodos =>
             @"SELECT
-                [ID],
-                [NOME],
-                [CPF],
-                [SALARIO],
-                [DATADEADMISSAO],
-                [LOGIN],
-                [SENHA],
-                [PERFIL]
+                [ID] FUNCIONARIO_ID,       
+                [NOME] FUNCIONARIO_NOME,
+                [CPF] FUNCIONARIO_CPF,
+                [SALARIO] FUNCIONARIO_SALARIO,
+                [DATADEADMISSAO] FUNCIONARIO_DATADEADMISSAO,
+                [LOGIN] FUNCIONARIO_LOGIN,
+                [SENHA] FUNCIONARIO_SENHA,
+                [PERFIL] FUNCIONARIO_PERFIL
             FROM
                 [TBFUNCIONARIO]";
 
         private string sqlSelecionarPorCPF =>
             @"SELECT
-				[ID],
-				[NOME],
-				[CPF],
-				[SALARIO],
-				[DATADEADMISSAO],
-				[LOGIN],
-				[SENHA],
-				[PERFIL]
+				[ID] FUNCIONARIO_ID,       
+                [NOME] FUNCIONARIO_NOME,
+                [CPF] FUNCIONARIO_CPF,
+                [SALARIO] FUNCIONARIO_SALARIO,
+                [DATADEADMISSAO] FUNCIONARIO_DATADEADMISSAO,
+                [LOGIN] FUNCIONARIO_LOGIN,
+                [SENHA] FUNCIONARIO_SENHA,
+                [PERFIL] FUNCIONARIO_PERFIL
 			FROM
 				[TBFUNCIONARIO]
 			WHERE
 				[CPF] = @CPF";
+        private string sqlSelecionarPorLogin =>
+           @"SELECT 
+                   [ID] FUNCIONARIO_ID,       
+                   [NOME] FUNCIONARIO_NOME,
+                   [CPF] FUNCIONARIO_CPF,
+                   [SALARIO] FUNCIONARIO_SALARIO,
+                   [DATADEADMISSAO] FUNCIONARIO_DATADEADMISSAO,
+                   [LOGIN] FUNCIONARIO_LOGIN,
+                   [SENHA] FUNCIONARIO_SENHA,
+                   [PERFIL] FUNCIONARIO_PERFIL
+            FROM
+                [TBFUNCIONARIO]
+            WHERE 
+                [LOGIN] = @LOGIN";
 
         public Funcionario SelecionarFuncionarioPorCPF(string CPF)
         {
             return SelecionarPorParametro(sqlSelecionarPorCPF, new SqlParameter("CPF", CPF));
+        }
+
+        public Funcionario SelecionarFuncionarioPorLogin(string login)
+        {
+            return SelecionarPorParametro(sqlSelecionarPorLogin, new SqlParameter("LOGIN", login));
         }
     }
 }

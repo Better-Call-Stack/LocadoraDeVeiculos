@@ -62,13 +62,13 @@ namespace LocadoraDeVeiculos.WinApp
 
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("Funcionários", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
+            controladores.Add("Funcionários", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("Clientes", new ControladorCliente (servicoCliente));
             controladores.Add("Grupo de Veículos", new ControladorGrupoVeiculos(repositorioGrupoVeiculos, servicoGrupoVeiculos));
             controladores.Add("Planos de Cobrança", new ControladorPlanoDeCobranca(repositorioPlanoDeCobranca, servicoPlanoDeCobranca, repositorioGrupoVeiculos));
             controladores.Add("Taxas", new ControladorTaxa(repositorioTaxa, servicoTaxa));
             controladores.Add("Condutores", new ControladorCondutor(repositorioCondutor, servicoCondutor, repositorioCliente));
-            controladores.Add("Veículos", new ControladorVeiculo(repositorioVeiculo, servicoVeiculo, repositorioGrupoVeiculos));
+            controladores.Add("Veículos", new ControladorVeiculo(servicoVeiculo, servicoGrupoVeiculos));
         }
 
         private void ConfigurarTelaPrincipal(ToolStripMenuItem opcaoSelecionada)

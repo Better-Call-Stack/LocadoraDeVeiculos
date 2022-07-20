@@ -1,4 +1,4 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using System;
 using System.Windows.Forms;
@@ -15,7 +15,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         private Funcionario funcionario;
 
-        public Func<Funcionario, ValidationResult> GravarRegistro { get; set; }
+        public Func<Funcionario, Result<Funcionario>> GravarRegistro { get; set; }
 
         public Funcionario Funcionario
         {
@@ -55,15 +55,21 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
             var resultadoValidacao = GravarRegistro(funcionario);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
 
-                MessageBox.Show(erro, "Erro");
-
-                DialogResult = DialogResult.None;
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Cadastro de Colaborador.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    DialogResult = DialogResult.None;
+                }
             }
         }
-
+       
     }
 }

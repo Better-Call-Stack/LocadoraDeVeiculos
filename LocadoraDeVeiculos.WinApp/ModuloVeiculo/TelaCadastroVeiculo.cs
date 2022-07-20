@@ -6,13 +6,12 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
+using FluentResults;
 
 namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 {
     public partial class TelaCadastroVeiculo : Form
     {
-       
-      
         byte[] imagemSelecionada;
 
         public TelaCadastroVeiculo(string modoTela, List<GrupoDeVeiculos> grupoDeVeiculos)
@@ -30,7 +29,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         private Veiculo veiculo;
 
-        public Func<Veiculo, ValidationResult> GravarRegistro { get; set; }
+        public Func<Veiculo, Result<Veiculo>> GravarRegistro { get; set; }
 
         public Veiculo Veiculo
         {
@@ -101,13 +100,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             var resultadoValidacao = GravarRegistro(veiculo);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
 
-                MessageBox.Show(erro, "Erro");
-
-                DialogResult = DialogResult.None;
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Cadastro de Veículo.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    DialogResult = DialogResult.None;
+                }
             }
         }
 

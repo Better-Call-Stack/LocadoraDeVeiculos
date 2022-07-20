@@ -20,14 +20,14 @@ namespace LocadoraDeVeiculos.Infra.ModuloFuncionario
         }
         public override Funcionario ConverterRegistro(SqlDataReader leitorFuncionario)
         {
-            var id = Guid.Parse(leitorFuncionario["ID"].ToString());
-            var cpf = Convert.ToString(leitorFuncionario["CPF"]);
-            var nome = Convert.ToString(leitorFuncionario["NOME"]);
-            var salario = Convert.ToDecimal(leitorFuncionario["SALARIO"]);
-            var dataDeAdmissao = Convert.ToDateTime(leitorFuncionario["DATADEADMISSAO"]);
-            var login = Convert.ToString(leitorFuncionario["LOGIN"]);
-            var senha = Convert.ToString(leitorFuncionario["SENHA"]);
-            var perfil = (PerfilEnum)leitorFuncionario["PERFIL"];
+            var id = Guid.Parse(leitorFuncionario["FUNCIONARIO_ID"].ToString());
+            var cpf = Convert.ToString(leitorFuncionario["FUNCIONARIO_CPF"]);
+            var nome = Convert.ToString(leitorFuncionario["FUNCIONARIO_NOME"]);
+            var salario = Convert.ToDecimal(leitorFuncionario["FUNCIONARIO_SALARIO"]);
+            var dataDeAdmissao = Convert.ToDateTime(leitorFuncionario["FUNCIONARIO_DATADEADMISSAO"]);
+            var login = Convert.ToString(leitorFuncionario["FUNCIONARIO_LOGIN"]);
+            var senha = Convert.ToString(leitorFuncionario["FUNCIONARIO_SENHA"]);
+            var perfil = (PerfilEnum)leitorFuncionario["FUNCIONARIO_PERFIL"];
 
             Funcionario funcionario = new Funcionario();
             funcionario.Id = id;

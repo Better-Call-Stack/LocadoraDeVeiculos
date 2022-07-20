@@ -9,15 +9,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 {
     public partial class TabelaFuncionariosControl : UserControl
     {
-        RepositorioFuncionario repositorio;
-        public TabelaFuncionariosControl(RepositorioFuncionario repositorio)
+        
+        public TabelaFuncionariosControl()
         {
             InitializeComponent();
             GridFuncionarios.ConfigurarGridZebrado();
             GridFuncionarios.ConfigurarGridSomenteLeitura();
             GridFuncionarios.Columns.AddRange(ObterColunas());
             GridFuncionarios.ConfigurarColunaId();
-            this.repositorio = repositorio;
         }
 
         public DataGridViewColumn[] ObterColunas()

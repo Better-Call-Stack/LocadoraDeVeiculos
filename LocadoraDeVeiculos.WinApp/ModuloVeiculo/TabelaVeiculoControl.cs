@@ -2,6 +2,8 @@
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloVeiculo;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
+using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -10,16 +12,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 {
     public partial class TabelaVeiculoControl : UserControl
     {
-        RepositorioVeiculo repositorio;
-        RepositorioGrupoVeiculos repositorioGrupoVeiculos;
-        public TabelaVeiculoControl(RepositorioVeiculo repositorio, RepositorioGrupoVeiculos repositorioGrupoVeiculos)
+        ServicoVeiculo servicoVeiculo;
+        ServicoGrupoVeiculos servicoGrupoVeiculos;
+        public TabelaVeiculoControl(ServicoVeiculo servicoVeiculo, ServicoGrupoVeiculos servicoGrupoVeiculos)
         {
             InitializeComponent();
             gridVeiculo.ConfigurarGridZebrado();
             gridVeiculo.ConfigurarGridSomenteLeitura();
             gridVeiculo.ConfigurarColunaId();
-            this.repositorio = repositorio;
-            this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
+            this.servicoVeiculo = servicoVeiculo;
+            this.servicoGrupoVeiculos = servicoGrupoVeiculos;
         }
         public void AtualizarRegistros(List<Veiculo> veiculos)
         {
@@ -38,9 +40,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         private void gridVeiculo_DoubleClick(object sender, EventArgs e)
         {
-            TelaCadastroVeiculo tela = new TelaCadastroVeiculo("Visualizacao", repositorioGrupoVeiculos.SelecionarTodos());
+            TelaCadastroVeiculo tela = new TelaCadastroVeiculo("Visualizacao", servicoGrupoVeiculos.SelecionarTodos().Value);
             Guid id = ObtemIdVeiculoSelecionado();
-            Veiculo v = repositorio.SelecionarPorId(id);
+            Veiculo v = servicoVeiculo.SelecionarPorId(id).Value;
 
             tela.Veiculo = v;
             tela.ShowDialog();
