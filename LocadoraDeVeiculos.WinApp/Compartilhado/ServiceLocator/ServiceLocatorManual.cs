@@ -56,13 +56,13 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
             controladores = new Dictionary<string, ControladorBase>();
 
-            controladores.Add("ControladorFuncionario", new ControladorFuncionario(repositorioFuncionario, servicoFuncionario));
+            controladores.Add("ControladorFuncionario", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("ControladorCliente", new ControladorCliente(servicoCliente));
             controladores.Add("ControladorGrupoVeiculos", new ControladorGrupoVeiculos(servicoGrupoVeiculos));
             controladores.Add("ControladorPlanoDeCobranca", new ControladorPlanoDeCobranca(repositorioPlanoDeCobranca, servicoPlanoDeCobranca, repositorioGrupoVeiculos));
             controladores.Add("ControladorTaxa", new ControladorTaxa(servicoTaxa));
             controladores.Add("ControladorCondutor", new ControladorCondutor(servicoCondutor, servicoCliente));
-            controladores.Add("ControladorVeiculo", new ControladorVeiculo(repositorioVeiculo, servicoVeiculo, repositorioGrupoVeiculos));
+            controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo, servicoGrupoVeiculos));
         }
 
         internal ControladorBase Get<T>()

@@ -12,8 +12,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 {
     public class ControladorVeiculo : ControladorBase
     {
-        private readonly RepositorioVeiculo repositorioVeiculo;
-        private readonly RepositorioGrupoVeiculos repositorioGrupoVeiculos;
         private TabelaVeiculoControl tabelaVeiculo;
         private ServicoVeiculo servicoVeiculo;
         private ServicoGrupoVeiculos servicoGrupoVeiculos;
@@ -26,7 +24,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
         }
         public override void Inserir()
         {
-            TelaCadastroVeiculo tela = new TelaCadastroVeiculo("Cadastro", servicoGrupoVeiculos.SelecionarTodos());
+            TelaCadastroVeiculo tela = new TelaCadastroVeiculo("Cadastro", servicoGrupoVeiculos.SelecionarTodos().Value);
             tela.Veiculo = new Veiculo();
             tela.GravarRegistro = servicoVeiculo.Inserir;
 
@@ -60,7 +58,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             var veiculoSelecionado = resultado.Value;
 
-            var tela = new TelaCadastroVeiculo("Edição", servicoGrupoVeiculos.SelecionarTodos());
+            var tela = new TelaCadastroVeiculo("Edição", servicoGrupoVeiculos.SelecionarTodos().Value);
 
             tela.Veiculo = veiculoSelecionado.Clonar();
 
@@ -119,7 +117,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
         public override UserControl ObtemListagem()
         {
-            tabelaVeiculo = new TabelaVeiculoControl(repositorioVeiculo, repositorioGrupoVeiculos);
+            tabelaVeiculo = new TabelaVeiculoControl(servicoVeiculo, servicoGrupoVeiculos);
 
             CarregarVeiculos();
 
