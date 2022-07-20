@@ -118,13 +118,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
             return Result.Ok();
         }
 
-        public Result <List<GrupoDeVeiculos>>SelecionarTodos()
+        public Result<List<GrupoDeVeiculos>> SelecionarTodos()
         {
             try
             {
                 return Result.Ok(repositorioGrupoVeiculos.SelecionarTodos());
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 string msgError = "Falha no sistema ao tentar selecionar todos os grupos de veículos";
 
@@ -166,7 +166,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
             if (NomeDuplicado(grupoDeVeiculos))
                 errors.Add(new Error("Nome Duplicado"));
 
-            if(errors.Any())
+            if (errors.Any())
                 return Result.Fail(errors);
 
             return Result.Ok();
