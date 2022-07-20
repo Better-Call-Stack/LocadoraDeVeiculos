@@ -94,6 +94,8 @@ namespace LocadoraDeVeiculos.Infra.Compartilhado
             }
         }
 
+    
+
         public T SelecionarPorId(Guid id)
         {
             SqlConnection conexaoComBanco = new SqlConnection(enderecoBanco);
