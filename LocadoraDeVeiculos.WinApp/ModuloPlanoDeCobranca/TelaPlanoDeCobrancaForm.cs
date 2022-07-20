@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
@@ -56,7 +57,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
             }
         }
 
-        public Func<PlanoDeCobranca, ValidationResult> GravarRegistro { get; set; }
+        public Func<PlanoDeCobranca, Result<PlanoDeCobranca>> GravarRegistro { get; set; }
 
         private PlanoDeCobranca planoDeCobranca;
 
@@ -89,13 +90,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 
             var resultadoValidacao = GravarRegistro(planoDeCobranca);
 
-            if (resultadoValidacao.IsValid == false)
+            if (resultadoValidacao.IsFailed)
             {
-                string erro = resultadoValidacao.Errors[0].ErrorMessage;
+                string erro = resultadoValidacao.Errors[0].Message;
 
-                MessageBox.Show(erro, "Erro");
-
-                DialogResult = DialogResult.None;
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro,
+                    "Cadastro Plano de Cobrança.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    DialogResult = DialogResult.None;
+                }
             }
 
         }

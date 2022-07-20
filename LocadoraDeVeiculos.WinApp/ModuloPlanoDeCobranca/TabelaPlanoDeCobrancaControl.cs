@@ -2,6 +2,8 @@
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
+using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
+using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,18 +18,20 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 {
     public partial class TabelaPlanoDeCobrancaControl : UserControl
     {
-        RepositorioPlanoDeCobranca repositorioPlanoDeCobranca;
-        RepositorioGrupoVeiculos repositorioGrupoDeVeiculos;
+        ServicoPlanoDeCobranca servicoPlanoDeCobranca;
+        ServicoGrupoVeiculos servicoGrupoVeiculos;
+        /*RepositorioPlanoDeCobranca repositorioPlanoDeCobranca;
+        RepositorioGrupoVeiculos repositorioGrupoDeVeiculos;*/
 
-        public TabelaPlanoDeCobrancaControl(RepositorioPlanoDeCobranca repositorioPlanoDeCobranca, RepositorioGrupoVeiculos repositorioGrupoDeVeiculos)
+        public TabelaPlanoDeCobrancaControl(ServicoPlanoDeCobranca servicoPlanoDeCobranca, ServicoGrupoVeiculos servicoGrupoVeiculos)
         {
             InitializeComponent();
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
             grid.Columns.AddRange(ObterColunas());
             grid.ConfigurarColunaId();
-            this.repositorioPlanoDeCobranca = repositorioPlanoDeCobranca;
-            this.repositorioGrupoDeVeiculos = repositorioGrupoDeVeiculos;
+            this.servicoPlanoDeCobranca = servicoPlanoDeCobranca;
+            this.servicoGrupoVeiculos = servicoGrupoVeiculos;
         }
         public DataGridViewColumn[] ObterColunas()
         {
@@ -59,9 +63,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 
         private void grid_DoubleClick(object sender, EventArgs e)
         {
-            TelaPlanoDeCobrancaForm tela = new TelaPlanoDeCobrancaForm(repositorioGrupoDeVeiculos.SelecionarTodos(),"Visualizacao");
+            TelaPlanoDeCobrancaForm tela = new TelaPlanoDeCobrancaForm(servicoGrupoVeiculos.SelecionarTodos().Value,"Visualizacao");
             Guid id = ObtemIdPlanoDeCobrancaSelecionado();
-            PlanoDeCobranca p = repositorioPlanoDeCobranca.SelecionarPorId(id);
+            PlanoDeCobranca p = servicoPlanoDeCobranca.SelecionarPorId(id).Value;
 
             tela.PlanoDeCobranca = p;
             tela.ShowDialog();
