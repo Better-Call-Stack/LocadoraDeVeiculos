@@ -1,10 +1,14 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
@@ -121,7 +125,7 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
         {
             var resultado = servicoGrupoVeiculos.SelecionarTodos();
 
-            if(resultado.IsSuccess)
+            if (resultado.IsSuccess)
             {
                 List<GrupoDeVeiculos> grupoDeVeiculos = resultado.Value;
 
@@ -129,7 +133,7 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
             }
             else
             {
-                MessageBox.Show(resultado.Errors[0].Message, "Exclusão do Grupo de Veiculos", 
+                MessageBox.Show(resultado.Errors[0].Message, "Exclusão do Grupo de Veiculos",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
