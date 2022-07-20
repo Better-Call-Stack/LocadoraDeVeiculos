@@ -94,7 +94,7 @@ namespace LocadoraDeVeiculos.Infra.Compartilhado
             }
         }
 
-        }
+    
 
         public T SelecionarPorId(Guid id)
         {

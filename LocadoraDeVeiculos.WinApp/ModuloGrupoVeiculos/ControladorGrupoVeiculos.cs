@@ -3,6 +3,7 @@ using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
