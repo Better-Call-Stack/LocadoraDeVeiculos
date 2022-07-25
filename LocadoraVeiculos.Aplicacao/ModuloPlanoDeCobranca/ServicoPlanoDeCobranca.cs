@@ -22,37 +22,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
         public Result<PlanoDeCobranca> Inserir(PlanoDeCobranca planoDeCobranca)
         {
-            /*Log.Logger.Debug("Inserindo Plano de Cobrança {@pc}", planoDeCobranca);
-
-            var resultadoValidacao = Validar(planoDeCobranca);
-
-            if (resultadoValidacao.IsFailed)
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao inserir Plano de Cobrança {PlanoDeCobrancaId} - {Motivo}",
-                       planoDeCobranca.Id, erro.Message);
-                }
-
-                return Result.Fail(resultadoValidacao.Errors);
-            }
-
-            try
-            {
-                repositorioPlanoDeCobranca.Inserir(planoDeCobranca);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaId} inserido", planoDeCobranca.Id);
-
-                return Result.Ok(planoDeCobranca);
-
-            }
-            catch (Exception ex)
-            {
-                string msgErro = "Falha no sistema ao tentar iserir o plano de cobrança";
-
-                Log.Logger.Error(ex, msgErro + "{PlanoDeCobrancaId}", planoDeCobranca.Id);
-
-                return Result.Fail(msgErro);
-            }*/
             Log.Logger.Debug("Inserindo Plano de Cobrança {@pc}", planoDeCobranca);
 
             Result resultadoValidacao = Validar(planoDeCobranca);
@@ -81,21 +50,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
                 return Result.Fail(msgErro);
             }
-            /*if (resultadoValidacao.IsValid)
-            {
-                repositorioPlanoDeCobranca.Inserir(planoDeCobranca);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaId} inserido", planoDeCobranca.Id);
-            }
-            else
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao inserir Plano de Cobrança {PlanoDeCobrancaId} - {Motivo}: ", 
-                        planoDeCobranca.Id, erro.ErrorMessage);
-                }
-            }
-
-            return resultadoValidacao;*/
         }
 
         public Result<PlanoDeCobranca> Editar(PlanoDeCobranca planoDeCobranca)
@@ -131,35 +85,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
                 return Result.Fail(msgErro);
             }
-            /*Log.Logger.Debug("Editando Plano de Cobrança {@pc}", planoDeCobranca);
-
-            Result resultadoValidacao = Validar(planoDeCobranca);
-
-            if (resultadoValidacao.IsFailed)
-            {
-                foreach (var erro in resultadoValidacao.Errors)
-                {
-                    Log.Logger.Warning("Falha ao editar Plano de Cobrança {PlanoDeCobrancaId} - {Motivo}: ",
-                        planoDeCobranca.Id, erro.Message);
-                }
-                return Result.Fail(resultadoValidacao.Errors);
-            }
-            try
-            {
-                repositorioPlanoDeCobranca.Editar(planoDeCobranca);
-                Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaId} editado", planoDeCobranca.Id);
-
-                return Result.Ok(planoDeCobranca);
-            }
-            catch (Exception ex)
-            {
-                string msgErro = "Falha no sistema ao tentar editar o plano de cobrança";
-
-                Log.Logger.Error(ex, msgErro + "{PlanoDeCobrancaId}", planoDeCobranca.Id);
-
-                return Result.Fail(msgErro);
-            }
-            return Result.Ok();*/
         }
         public Result Excluir(PlanoDeCobranca planoDeCobranca)
         {
@@ -181,31 +106,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
                 return Result.Fail(msgErro);
             }
-            /*Log.Logger.Debug("Excluindo  Plano de Cobranca {@pc}", planoDeCobranca);
-
-            try
-            {
-                repositorioPlanoDeCobranca.Excluir(planoDeCobranca);
-                Log.Logger.Debug("Plano de Cobranca {PlanoDeCobrancaId} excluído", planoDeCobranca.Id);
-
-                return Result.Ok();
-            }
-            catch (Exception ex)
-            {
-                string msgErro = "Falha no sistema ao tentar excluir o plano de cobranca";
-
-                Log.Logger.Error(ex, msgErro + "{PlanoDeCobrancaId}", planoDeCobranca.Id);
-
-                return Result.Fail(msgErro);
-            }
-            return Result.Ok();
-            /* Log.Logger.Debug("Tentando excluir Plano de Cobranca... {@pc}", planoDeCobranca);
-
-             repositorioPlanoDeCobranca.Excluir(planoDeCobranca);
-
-             Log.Logger.Debug("Plano de Cobranca com Id = '{PlanoDeCobrancaId}' excluído", planoDeCobranca.Id);
-
-             return new ValidationResult();*/
         }
 
         public Result<List<PlanoDeCobranca>> SelecionarTodos()
@@ -260,16 +160,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
                 return Result.Fail(errors);
 
             return Result.Ok();
-
-            /*var validador = new ValidadorPlanoDeCobranca();
-
-            var resultadoValidacao = validador.Validate(planoDeCobranca);
-
-            if (planoDeCobranca.GrupoDeVeiculos != null)    
-                if (IdDuplicado(planoDeCobranca))
-                    resultadoValidacao.Errors.Add(new ValidationFailure("Erro", "Grupo de veiculos já possue plano de cobrança"));
-
-            return resultadoValidacao;*/
         }
 
         private bool IdDuplicado(PlanoDeCobranca planoDeCobranca)
