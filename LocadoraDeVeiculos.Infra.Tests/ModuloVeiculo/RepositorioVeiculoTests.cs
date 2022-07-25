@@ -5,11 +5,7 @@ using LocadoraDeVeiculos.Infra.Compartilhado;
 using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloVeiculo;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.Tests.ModuloVeiculo
 {
@@ -44,17 +40,18 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloVeiculo
             };
 
         }
-            [TestMethod]
-            public void Deve_Inserir_Veiculo()
-            {
-                repositorioGrupoVeiculos.Inserir(gv);
-                repositorioVeiculo.Inserir(veiculo);
 
-                Veiculo v = repositorioVeiculo.SelecionarPorId(veiculo.Id);
+        [TestMethod]
+        public void Deve_Inserir_Veiculo()
+        {
+            repositorioGrupoVeiculos.Inserir(gv);
+            repositorioVeiculo.Inserir(veiculo);
 
-                v.Should().NotBeNull().And.Be(veiculo);
+            Veiculo v = repositorioVeiculo.SelecionarPorId(veiculo.Id);
 
-            }
+            v.Should().NotBeNull().And.Be(veiculo);
+
+        }
 
         [TestMethod]
         public void Deve_Editar_Veiculo()
@@ -83,6 +80,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloVeiculo
         public void Deve_Excluir_Veiculo()
         {
             repositorioGrupoVeiculos.Inserir(gv);
+
             repositorioVeiculo.Inserir(veiculo);
 
             repositorioVeiculo.Excluir(veiculo);

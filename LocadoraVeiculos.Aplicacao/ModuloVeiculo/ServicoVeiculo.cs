@@ -20,7 +20,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
 
         public Result<Veiculo> Inserir(Veiculo veiculo)
         {
-            Log.Logger.Debug("Tentando inserir Veiculo... {@f}", veiculo);
+            Log.Logger.Debug("Tentando inserir Veiculo... {@v}", veiculo);
 
             Result resultadoValidacao = ValidarVeiculo(veiculo);
 
@@ -73,7 +73,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
             try
             {
                 repositorioVeiculo.Editar(veiculo);
-                Log.Logger.Debug("Funcionário {VeiculoId} editado com sucesso", veiculo.Id);
+                Log.Logger.Debug("Veículo {VeiculoId} editado com sucesso", veiculo.Id);
 
                 return Result.Ok(veiculo);
 
@@ -148,13 +148,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
 
             var resultadoValidacao = validador.Validate(veiculo);
 
-            List<Error> erros = new List<Error>(); //FluentResult
+            List<Error> erros = new List<Error>();
 
-            foreach (ValidationFailure item in resultadoValidacao.Errors) //FluentValidation            
+            foreach (ValidationFailure item in resultadoValidacao.Errors)             
                 erros.Add(new Error(item.ErrorMessage));
 
             if (PlacaDuplicada(veiculo))
-                erros.Add(new Error("CPF duplicado"));
+                erros.Add(new Error("Placa duplicada."));
 
             if (erros.Any())
                 return Result.Fail(erros);
