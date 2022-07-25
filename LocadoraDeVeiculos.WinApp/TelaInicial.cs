@@ -16,20 +16,22 @@ namespace LocadoraDeVeiculos.WinApp
     public partial class TelaInicial : Form
     {
         private ControladorBase controlador;
-        private ServiceLocatorManual serviceLocator;
+        private IServiceLocator serviceLocator;
 
-        public TelaInicial()
+        public TelaInicial(IServiceLocator serviceLocator)
         {
             InitializeComponent();
 
-            labelTipoCadastro.Text = String.Empty;
+            this.serviceLocator = serviceLocator;
+
+            labelTipoCadastro.Text = string.Empty;
         }
 
-       
+
 
         private void ConfigurarTelaPrincipal(ControladorBase controlador)
         {
-         //   controlador = controladores[tipo];
+           this.controlador = controlador;
 
             ConfigurarListagem();
              

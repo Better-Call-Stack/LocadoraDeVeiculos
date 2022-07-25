@@ -27,7 +27,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {
-    public class ServiceLocatorManual
+    public class ServiceLocatorManual : IServiceLocator
     {
         private Dictionary<string, ControladorBase> controladores;
 
@@ -65,13 +65,18 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo, servicoGrupoVeiculos));
         }
 
-        internal ControladorBase Get<T>()
+        public ControladorBase Get<T>()
         {
             var tipo = typeof(T);
 
             var nomeControlador = tipo.Name;
 
             return controladores[nomeControlador];
+        }
+
+        T IServiceLocator.Get<T>()
+        {
+            throw new NotImplementedException();
         }
     }
 }
