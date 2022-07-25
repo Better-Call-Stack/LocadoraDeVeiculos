@@ -9,10 +9,8 @@ namespace LocadoraDeVeiculos.Infra.ModuloVeiculo
 {
     public class MapeadorVeiculo : MapeadorBase<Veiculo>
     {
-        MapeadorGrupoVeiculos mapeadorGrupoDeVeiculos;
         public MapeadorVeiculo()
         {
-            this.mapeadorGrupoDeVeiculos = new MapeadorGrupoVeiculos();
         }
 
         public override void ConfigurarParametros(Veiculo veiculo, SqlCommand comando)
