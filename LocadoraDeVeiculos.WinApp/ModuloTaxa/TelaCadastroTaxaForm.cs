@@ -59,6 +59,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
                 }
                 else
                 {
+                    MessageBox.Show(erro,
+                 "Inserção de Taxa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     DialogResult = DialogResult.None;
                 }
             }

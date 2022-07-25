@@ -101,6 +101,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
                 }
                 else
                 {
+
+                    MessageBox.Show(erro,
+                  "Cadastro Plano de Cobrança.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DialogResult = DialogResult.None;
                 }
             }

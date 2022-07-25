@@ -111,6 +111,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 }
                 else
                 {
+                    MessageBox.Show(erro,
+                  "Cadastro de Veículo.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     DialogResult = DialogResult.None;
                 }
             }

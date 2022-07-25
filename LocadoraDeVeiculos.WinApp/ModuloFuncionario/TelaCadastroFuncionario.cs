@@ -66,6 +66,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
                 }
                 else
                 {
+                    MessageBox.Show(erro,
+                   "Cadastro de Colaborador.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     DialogResult = DialogResult.None;
                 }
             }

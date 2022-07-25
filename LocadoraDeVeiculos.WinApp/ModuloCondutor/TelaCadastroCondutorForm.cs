@@ -111,6 +111,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
                 }
                 else
                 {
+                    MessageBox.Show(erro,
+                      "Inserção de Condutor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DialogResult = DialogResult.None;
                 }
             }

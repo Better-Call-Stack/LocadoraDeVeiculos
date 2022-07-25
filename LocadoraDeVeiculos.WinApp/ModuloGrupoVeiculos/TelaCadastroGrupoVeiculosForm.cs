@@ -50,6 +50,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
                 }
                 else
                 {
+                    MessageBox.Show(erro, "Inserção grupo de veículos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     DialogResult = DialogResult.None;
                 }
             }

@@ -106,6 +106,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
                 }
                 else
                 {
+                    MessageBox.Show(erro,
+                      "Inserção de Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     DialogResult = DialogResult.None;
                 }
             }
