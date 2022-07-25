@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.WinApp
 
         private void ConfigurarTelaPrincipal(ControladorBase controlador)
         {
-         //   controlador = controladores[tipo];
+           this.controlador = controlador;
 
             ConfigurarListagem();
              
