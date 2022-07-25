@@ -5,7 +5,7 @@
     [Placa]              VARCHAR (7)    NOT NULL,
     [Cor]                VARCHAR (50)   NOT NULL,
     [TipoCombustivel]    INT            NOT NULL,
-    [CapacidadeDoTanque] DECIMAL (5, 2) NOT NULL,
+    [CapacidadeDoTanque] DECIMAL (18, 2) NOT NULL,
     [Ano]                INT            NOT NULL,
     [KmPercorrido]       INT            NULL,
     [GrupoVeiculos_Id]   UNIQUEIDENTIFIER            NOT NULL,
