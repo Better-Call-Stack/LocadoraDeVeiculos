@@ -162,41 +162,12 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             return Result.Ok();
         }
 
-        public Result<List<PlanoDeCobranca>> SelecionarTodos()
-        {
-            try
-            {
-                return Result.Ok(repositorioPlanoDeCobranca.SelecionarTodos());
-            }
-            catch (Exception ex)
-            {
-                string msgErro = "Falha no sistema ao tentar selecionar todos os Planos de Cobrança.";
-
-                Log.Logger.Error(ex, msgErro);
-
-                return Result.Fail(msgErro);
-            }
-        }
-
-        public Result<PlanoDeCobranca> SelecionarPorId(Guid id)
-        {
-            try
-            {
-                return Result.Ok(repositorioPlanoDeCobranca.SelecionarPorId(id));
-            }
-            catch (Exception ex)
-            {
-                string msgErro = "Falha no sistema ao tentar selecionar o plano de cobrança.";
-
-                Log.Logger.Error(ex, msgErro + "{PlanoDeCobrancaId}", id);
-
-                return Result.Fail(msgErro);
-            }
-        }
-
         private bool IdDuplicado(PlanoDeCobranca planoDeCobranca)
         {
-            var planoDeCobrancaEncontrado = repositorioPlanoDeCobranca.SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(planoDeCobranca.GrupoDeVeiculos.Id);
+            var planoDeCobrancaEncontrado = new PlanoDeCobranca();
+
+            if (planoDeCobranca.GrupoDeVeiculos != null)
+                planoDeCobrancaEncontrado = repositorioPlanoDeCobranca.SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(planoDeCobranca.GrupoDeVeiculos.Id);
 
             return planoDeCobrancaEncontrado != null &&
                    planoDeCobrancaEncontrado.Id != planoDeCobranca.Id;
