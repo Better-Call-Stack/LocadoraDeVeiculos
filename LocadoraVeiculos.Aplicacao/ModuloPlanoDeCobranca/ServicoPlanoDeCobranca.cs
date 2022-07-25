@@ -1,4 +1,5 @@
-﻿using FluentValidation.Results;
+﻿using FluentResults;
+using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
 using Serilog;
@@ -85,6 +86,38 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
                     resultadoValidacao.Errors.Add(new ValidationFailure("Erro", "Grupo de veiculos já possue plano de cobrança"));
 
             return resultadoValidacao;
+        }
+
+        public Result<List<PlanoDeCobranca>> SelecionarTodos()
+        {
+            try
+            {
+                return Result.Ok(repositorioPlanoDeCobranca.SelecionarTodos());
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao tentar selecionar todos os Planos de Cobrança.";
+
+                Log.Logger.Error(ex, msgErro);
+
+                return Result.Fail(msgErro);
+            }
+        }
+
+        public Result<PlanoDeCobranca> SelecionarPorId(Guid id)
+        {
+            try
+            {
+                return Result.Ok(repositorioPlanoDeCobranca.SelecionarPorId(id));
+            }
+            catch (Exception ex)
+            {
+                string msgErro = "Falha no sistema ao tentar selecionar o plano de cobrança.";
+
+                Log.Logger.Error(ex, msgErro + "{PlanoDeCobrancaId}", id);
+
+                return Result.Fail(msgErro);
+            }
         }
 
         private bool IdDuplicado(PlanoDeCobranca planoDeCobranca)

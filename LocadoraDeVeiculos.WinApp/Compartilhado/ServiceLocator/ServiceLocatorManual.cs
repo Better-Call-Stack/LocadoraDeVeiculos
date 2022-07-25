@@ -59,7 +59,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             controladores.Add("ControladorFuncionario", new ControladorFuncionario(servicoFuncionario));
             controladores.Add("ControladorCliente", new ControladorCliente(servicoCliente));
             controladores.Add("ControladorGrupoVeiculos", new ControladorGrupoVeiculos(servicoGrupoVeiculos));
-            controladores.Add("ControladorPlanoDeCobranca", new ControladorPlanoDeCobranca(repositorioPlanoDeCobranca, servicoPlanoDeCobranca, repositorioGrupoVeiculos));
+            controladores.Add("ControladorPlanoDeCobranca", new ControladorPlanoDeCobranca(servicoPlanoDeCobranca, servicoGrupoVeiculos));
             controladores.Add("ControladorTaxa", new ControladorTaxa(servicoTaxa));
             controladores.Add("ControladorCondutor", new ControladorCondutor(servicoCondutor, servicoCliente));
             controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo, servicoGrupoVeiculos));
