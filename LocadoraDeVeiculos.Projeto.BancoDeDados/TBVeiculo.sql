@@ -10,7 +10,7 @@
     [KmPercorrido]       INT            NULL,
     [GrupoVeiculos_Id]   UNIQUEIDENTIFIER            NOT NULL,
     [StatusVeiculo] INT NOT NULL, 
-    [FotoVeiculo] VARBINARY(MAX) NULL, 
+    [FotoVeiculo] VARBINARY(MAX) NOT NULL, 
     CONSTRAINT [PK_TbVeiculo] PRIMARY KEY CLUSTERED ([id] ASC),
     CONSTRAINT [FK_TbVeiculo_TBGrupoVeiculos] FOREIGN KEY ([GrupoVeiculos_Id]) REFERENCES [dbo].[TBGrupoVeiculos] ([Id])
 );
