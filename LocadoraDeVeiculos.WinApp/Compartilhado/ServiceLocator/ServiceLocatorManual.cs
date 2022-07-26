@@ -36,6 +36,15 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             InicializarControladores();
         }
 
+        public T Get<T>() where T : ControladorBase
+        {
+            var tipo = typeof(T);
+
+            var nomeControlador = tipo.Name;
+
+            return (T)controladores[nomeControlador];
+        }
+
         private void InicializarControladores()
         {
             var repositorioFuncionario = new RepositorioFuncionario();
@@ -65,18 +74,6 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo, servicoGrupoVeiculos));
         }
 
-        public ControladorBase Get<T>()
-        {
-            var tipo = typeof(T);
-
-            var nomeControlador = tipo.Name;
-
-            return controladores[nomeControlador];
-        }
-
-        T IServiceLocator.Get<T>()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
