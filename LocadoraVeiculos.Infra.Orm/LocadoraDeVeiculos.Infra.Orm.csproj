@@ -16,4 +16,14 @@
     <ProjectReference Include="..\LocadoraDeVeiculos.Dominio\LocadoraDeVeiculos.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ModuloCliente\" />
+    <Folder Include="ModuloCondutor\" />
+    <Folder Include="ModuloFuncionario\" />
+    <Folder Include="ModuloGrupoVeiculos\" />
+    <Folder Include="ModuloPlanoCobranca\" />
+    <Folder Include="ModuloTaxa\" />
+    <Folder Include="ModuloVeiculo\" />
+  </ItemGroup>
+
 </Project>
