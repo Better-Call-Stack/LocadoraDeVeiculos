@@ -6,6 +6,7 @@ using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.Orm.ModuloCliente;
+using LocadoraDeVeiculos.Infra.Orm.ModuloTaxa;
 using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
@@ -64,14 +65,14 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             var repositorioCliente = new RepositorioClienteOrm(contextoDadosOrm);
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculos();
             var repositorioPlanoDeCobranca = new RepositorioPlanoDeCobranca();
-            var repositorioTaxa = new RepositorioTaxa();
+            var repositorioTaxa = new RepositorioTaxaOrm(contextoDadosOrm);
             var repositorioCondutor = new RepositorioCondutor();
             var repositorioVeiculo = new RepositorioVeiculo();
 
             var servicoCliente = new ServicoCliente(repositorioCliente, contextoDadosOrm);
             var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
             var servicoPlanoDeCobranca = new ServicoPlanoDeCobranca(repositorioPlanoDeCobranca);
-            var servicoTaxa = new ServicoTaxa(repositorioTaxa);
+            var servicoTaxa = new ServicoTaxa(repositorioTaxa, contextoDadosOrm);
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
             var servicoCondutor = new ServicoCondutor(repositorioCondutor);
             var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo);
