@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.Orm
 {
-    public static class MigradorBancoDadosocadoraDeVeiculos
+    public static class MigradorBancoDadosLocadoraDeVeiculos
     {
         public static void AtualizarBancoDados()
         {

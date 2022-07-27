@@ -5,6 +5,7 @@ using LocadoraDeVeiculos.Infra.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ModuloVeiculo;
+using LocadoraDeVeiculos.Infra.Orm.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
@@ -19,8 +20,11 @@ using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
+using LocadoraVeiculos.Infra.Orm;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,15 +51,24 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
         private void InicializarControladores()
         {
+            var configuracao = new ConfigurationBuilder()
+          .SetBasePath(Directory.GetCurrentDirectory())
+          .AddJsonFile("ConfiguracaoAplicacao.json")
+          .Build();
+
+            var connectionString = configuracao.GetConnectionString("SqlServer");
+
+            var contextoDadosOrm = new LocadoraDeVeiculosDbContext(connectionString);
+
             var repositorioFuncionario = new RepositorioFuncionario();
-            var repositorioCliente = new RepositorioCliente();
+            var repositorioCliente = new RepositorioClienteOrm(contextoDadosOrm);
             var repositorioGrupoVeiculos = new RepositorioGrupoVeiculos();
             var repositorioPlanoDeCobranca = new RepositorioPlanoDeCobranca();
             var repositorioTaxa = new RepositorioTaxa();
             var repositorioCondutor = new RepositorioCondutor();
             var repositorioVeiculo = new RepositorioVeiculo();
 
-            var servicoCliente = new ServicoCliente(repositorioCliente);
+            var servicoCliente = new ServicoCliente(repositorioCliente, contextoDadosOrm);
             var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
             var servicoPlanoDeCobranca = new ServicoPlanoDeCobranca(repositorioPlanoDeCobranca);
             var servicoTaxa = new ServicoTaxa(repositorioTaxa);

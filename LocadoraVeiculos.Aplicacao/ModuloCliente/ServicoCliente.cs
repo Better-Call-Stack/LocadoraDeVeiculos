@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.ModuloCliente;
+using LocadoraDeVeiculos.Infra.Orm.ModuloCliente;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 {
     public class ServicoCliente
     {
-        private RepositorioCliente repositorioCliente;
-        private ValidadorCliente validadorCliente;
-        
+        private RepositorioClienteOrm repositorioCliente;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoCliente(RepositorioCliente repositorioCliente)
+        public ServicoCliente(RepositorioClienteOrm repositorioCliente, IContextoPersistencia contexto)
         {
             this.repositorioCliente = repositorioCliente;
+            this.contextoPersistencia = contexto;
         }
 
         public Result<Cliente> Inserir(Cliente cliente)
@@ -41,6 +42,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             try
             {
                 repositorioCliente.Inserir(cliente);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Cliente {ClienteId} inserido com sucesso", cliente.Id);
 
                 return Result.Ok(cliente);
@@ -77,6 +81,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             try
             {
                 repositorioCliente.Editar(cliente);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Cliente {ClienteId} editado com sucesso", cliente.Id);
 
                 return Result.Ok(cliente);
@@ -99,6 +106,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             try
             {
                 repositorioCliente.Excluir(cliente);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Cliente {ClienteId} excluído com sucesso", cliente.Id);
 
@@ -157,7 +166,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 
         private Result<Cliente> ValidarCliente(Cliente cliente)
         {
-            validadorCliente = new ValidadorCliente();
+            var validadorCliente = new ValidadorCliente();
 
             var resultadoValidacao = validadorCliente.Validate(cliente);
 

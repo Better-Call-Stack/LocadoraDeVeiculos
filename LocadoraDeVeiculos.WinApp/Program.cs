@@ -1,3 +1,4 @@
+using LocadoraDeVeiculos.Infra.Orm;
 using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 using LocadoraVeiculos.Infra.Logging;
 using Microsoft.Extensions.Configuration;
@@ -19,15 +20,16 @@ namespace LocadoraDeVeiculos.WinApp
         [STAThread]
         static void Main()
         {
+            MigradorBancoDadosLocadoraDeVeiculos.AtualizarBancoDados();
 
             ConfiguracaoLogsLocadora.ConfigurarEscritaLogs();
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var serviceLocatorAutofac = new ServiceLocatorComAutofac();
+            //var serviceLocatorAutofac = new ServiceLocatorComAutofac();
 
-            Application.Run(new TelaInicial(serviceLocatorAutofac));
+            Application.Run(new TelaInicial(new ServiceLocatorManual()));
         }
     }
 }
