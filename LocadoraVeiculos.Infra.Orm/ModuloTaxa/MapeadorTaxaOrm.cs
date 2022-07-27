@@ -15,9 +15,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloTaxa
         {
             builder.ToTable("TbTaxa");
             builder.Property(x => x.Id).ValueGeneratedNever();
-            builder.Property(x => x.Nome).HasColumnType("varchar(100)");
-            builder.Property(x => x.Valor).HasColumnType("decimal(18,2)");
-            builder.Property(x => x.Tipo).HasColumnType("int");
+            builder.Property(x => x.Nome).HasColumnType("varchar(100)").IsRequired();
+            builder.Property(x => x.Valor).HasColumnType("decimal(18,2)").IsRequired();
+            builder.Property(x => x.Tipo).HasConversion<int>().IsRequired();
 
         }
     }

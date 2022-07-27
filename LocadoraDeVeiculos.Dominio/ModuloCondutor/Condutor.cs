@@ -25,6 +25,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloCondutor
 
         public Cliente Cliente { get; set; }
 
+        public Guid ClienteId { get; set; }
+
         public override void Atualizar(Condutor registro)
         {
             throw new NotImplementedException();

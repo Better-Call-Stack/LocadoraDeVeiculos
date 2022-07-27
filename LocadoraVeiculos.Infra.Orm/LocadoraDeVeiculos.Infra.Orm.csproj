@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ModuloCondutor\" />
     <Folder Include="ModuloFuncionario\" />
     <Folder Include="ModuloGrupoVeiculos\" />
     <Folder Include="ModuloPlanoCobranca\" />

@@ -50,7 +50,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
 
             TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(servicoCliente.SelecionarTodos().Value, "Edicao");
 
-            tela.Condutor = condutorSelecionado.Clonar();
+            tela.Condutor = condutorSelecionado;
 
             tela.GravarRegistro = servicoCondutor.Editar;
 
