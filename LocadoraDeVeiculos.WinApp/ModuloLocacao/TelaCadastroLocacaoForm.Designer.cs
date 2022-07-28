@@ -30,14 +30,14 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSelecionarCliente = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cbxCondutor = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbxGrupoVeiculos = new System.Windows.Forms.ComboBox();
             this.cbxPlanoCobranca = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnVeiculo = new System.Windows.Forms.Button();
+            this.btnSelecionarVeiculo = new System.Windows.Forms.Button();
             this.txtVeiculo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtKmRodado = new System.Windows.Forms.TextBox();
@@ -76,14 +76,15 @@
             this.txtCliente.Size = new System.Drawing.Size(177, 23);
             this.txtCliente.TabIndex = 1;
             // 
-            // button1
+            // btnSelecionarCliente
             // 
-            this.button1.Location = new System.Drawing.Point(298, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Selecionar Cliente";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSelecionarCliente.Location = new System.Drawing.Point(298, 51);
+            this.btnSelecionarCliente.Name = "btnSelecionarCliente";
+            this.btnSelecionarCliente.Size = new System.Drawing.Size(109, 23);
+            this.btnSelecionarCliente.TabIndex = 2;
+            this.btnSelecionarCliente.Text = "Selecionar Cliente";
+            this.btnSelecionarCliente.UseVisualStyleBackColor = true;
+            this.btnSelecionarCliente.Click += new System.EventHandler(this.btnSelecionarCliente_Click);
             // 
             // label2
             // 
@@ -96,6 +97,7 @@
             // 
             // cbxCondutor
             // 
+            this.cbxCondutor.DisplayMember = "Nome";
             this.cbxCondutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCondutor.Enabled = false;
             this.cbxCondutor.FormattingEnabled = true;
@@ -115,22 +117,29 @@
             // 
             // cbxGrupoVeiculos
             // 
+            this.cbxGrupoVeiculos.DisplayMember = "Nome";
             this.cbxGrupoVeiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxGrupoVeiculos.FormattingEnabled = true;
             this.cbxGrupoVeiculos.Location = new System.Drawing.Point(144, 141);
             this.cbxGrupoVeiculos.Name = "cbxGrupoVeiculos";
             this.cbxGrupoVeiculos.Size = new System.Drawing.Size(136, 23);
             this.cbxGrupoVeiculos.TabIndex = 6;
+            this.cbxGrupoVeiculos.SelectedValueChanged += new System.EventHandler(this.cbxGrupoVeiculos_SelectedValueChanged);
             // 
             // cbxPlanoCobranca
             // 
             this.cbxPlanoCobranca.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPlanoCobranca.Enabled = false;
             this.cbxPlanoCobranca.FormattingEnabled = true;
+            this.cbxPlanoCobranca.Items.AddRange(new object[] {
+            "Diário",
+            "Km Controlado",
+            "Km Livre"});
             this.cbxPlanoCobranca.Location = new System.Drawing.Point(165, 232);
             this.cbxPlanoCobranca.Name = "cbxPlanoCobranca";
             this.cbxPlanoCobranca.Size = new System.Drawing.Size(136, 23);
             this.cbxPlanoCobranca.TabIndex = 10;
+            this.cbxPlanoCobranca.SelectedIndexChanged += new System.EventHandler(this.cbxPlanoCobranca_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -141,14 +150,16 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Plano de Cobrança:";
             // 
-            // btnVeiculo
+            // btnSelecionarVeiculo
             // 
-            this.btnVeiculo.Location = new System.Drawing.Point(256, 186);
-            this.btnVeiculo.Name = "btnVeiculo";
-            this.btnVeiculo.Size = new System.Drawing.Size(123, 23);
-            this.btnVeiculo.TabIndex = 13;
-            this.btnVeiculo.Text = "Selecionar Veículo";
-            this.btnVeiculo.UseVisualStyleBackColor = true;
+            this.btnSelecionarVeiculo.Enabled = false;
+            this.btnSelecionarVeiculo.Location = new System.Drawing.Point(256, 186);
+            this.btnSelecionarVeiculo.Name = "btnSelecionarVeiculo";
+            this.btnSelecionarVeiculo.Size = new System.Drawing.Size(123, 23);
+            this.btnSelecionarVeiculo.TabIndex = 13;
+            this.btnSelecionarVeiculo.Text = "Selecionar Veículo";
+            this.btnSelecionarVeiculo.UseVisualStyleBackColor = true;
+            this.btnSelecionarVeiculo.Click += new System.EventHandler(this.btnSelecionarVeiculo_Click);
             // 
             // txtVeiculo
             // 
@@ -343,7 +354,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtKmRodado);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.btnVeiculo);
+            this.Controls.Add(this.btnSelecionarVeiculo);
             this.Controls.Add(this.txtVeiculo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cbxPlanoCobranca);
@@ -352,7 +363,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbxCondutor);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSelecionarCliente);
             this.Controls.Add(this.txtCliente);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -370,14 +381,14 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCliente;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSelecionarCliente;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbxCondutor;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbxGrupoVeiculos;
         private System.Windows.Forms.ComboBox cbxPlanoCobranca;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnVeiculo;
+        private System.Windows.Forms.Button btnSelecionarVeiculo;
         private System.Windows.Forms.TextBox txtVeiculo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtKmRodado;

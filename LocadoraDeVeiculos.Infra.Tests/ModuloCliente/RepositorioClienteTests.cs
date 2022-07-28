@@ -3,6 +3,7 @@ using LocadoraDeVeiculos.Dominio.ModuloCliente;
 using LocadoraDeVeiculos.Infra.Compartilhado;
 using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.Infra.Orm;
+using LocadoraVeiculos.Infra.Orm;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,8 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloCliente
         public RepositorioClienteTests()
         {
 
-            MigradorBancoDadosLocadoraDeVeiculos.AtualizarBancoDados();
-
-
+            Db.ExecutarSql("DELETE FROM TBCLIENTE;");
+          
             cliente = new Cliente();
             cliente.Nome = "Teste";
             cliente.TipoPessoa = TipoPessoa.Juridica;
