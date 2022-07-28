@@ -14,6 +14,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
 
         public GrupoDeVeiculos GrupoDeVeiculos { get; set; }
 
+        public Guid GrupoDeVeiculosId { get; set; }
+
         public decimal ValorKmRodado_PlanoDiario { get; set; }
 
         public decimal ValorPorDia_PlanoDiario { get; set; }
@@ -48,6 +50,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca
             ValorPorDia_PlanoKmLivre = registro.ValorPorDia_PlanoKmLivre;
             ValorPorDia_PlanoKmLivre = registro.ValorPorDia_PlanoKmLivre;
             GrupoDeVeiculos = registro.GrupoDeVeiculos;
+            GrupoDeVeiculosId = registro.GrupoDeVeiculos.Id;
         }
 
 

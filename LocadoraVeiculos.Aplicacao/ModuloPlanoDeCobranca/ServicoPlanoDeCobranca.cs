@@ -1,7 +1,9 @@
 ﻿using FluentResults;
 using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
+using LocadoraDeVeiculos.Infra.Orm.ModuloPlanoCobranca;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -13,11 +15,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 {
     public class ServicoPlanoDeCobranca
     {
-        private RepositorioPlanoDeCobranca repositorioPlanoDeCobranca;
+        private RepositorioPlanoCobrancaOrm repositorioPlanoDeCobranca;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoPlanoDeCobranca(RepositorioPlanoDeCobranca repositorioPlanoDeCobranca)
+        public ServicoPlanoDeCobranca(RepositorioPlanoCobrancaOrm repositorioPlanoDeCobranca, IContextoPersistencia contextoPersistencia)
         {
             this.repositorioPlanoDeCobranca = repositorioPlanoDeCobranca;
+            this.contextoPersistencia = contextoPersistencia;
         }
 
         public Result<PlanoDeCobranca> Inserir(PlanoDeCobranca planoDeCobranca)
@@ -38,6 +42,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             try
             {
                 repositorioPlanoDeCobranca.Inserir(planoDeCobranca);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaId} inserido", planoDeCobranca.Id);
 
                 return Result.Ok(planoDeCobranca);
@@ -72,6 +79,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             try
             {
                 repositorioPlanoDeCobranca.Editar(planoDeCobranca);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Plano de Cobrança {PlanoDeCobrancaId} editado", planoDeCobranca.Id);
 
                 return Result.Ok(planoDeCobranca);
@@ -110,9 +120,17 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
         public Result<List<PlanoDeCobranca>> SelecionarTodos()
         {
+            Log.Logger.Debug("Tentando selecionar planos de cobrança...");
+
             try
             {
-                return Result.Ok(repositorioPlanoDeCobranca.SelecionarTodos());
+                var planoDeCobrancas = repositorioPlanoDeCobranca.SelecionarTodos(incluirGrupoVeiculos: true);
+
+                Log.Logger.Information("Planos de Cobrança selecionados com sucesso");
+
+                return Result.Ok(planoDeCobrancas);
+
+                //return Result.Ok(repositorioPlanoDeCobranca.SelecionarTodos());
             }
             catch (Exception ex)
             {
@@ -162,12 +180,22 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             return Result.Ok();
         }
 
-        private bool IdDuplicado(PlanoDeCobranca planoDeCobranca)
+        /*private bool IdDuplicado(PlanoDeCobranca planoDeCobranca)
         {
             var planoDeCobrancaEncontrado = new PlanoDeCobranca();
 
             if (planoDeCobranca.GrupoDeVeiculos != null)
                 planoDeCobrancaEncontrado = repositorioPlanoDeCobranca.SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(planoDeCobranca.GrupoDeVeiculos.Id);
+
+            return planoDeCobrancaEncontrado != null &&
+                   planoDeCobrancaEncontrado.Id != planoDeCobranca.Id;
+        }*/
+        private bool IdDuplicado(PlanoDeCobranca planoDeCobranca)
+        {
+            var planoDeCobrancaEncontrado = new PlanoDeCobranca();
+
+            if (planoDeCobranca.GrupoDeVeiculos != null)
+                planoDeCobrancaEncontrado = repositorioPlanoDeCobranca.SelecionarPorId(planoDeCobranca.GrupoDeVeiculos.Id);
 
             return planoDeCobrancaEncontrado != null &&
                    planoDeCobrancaEncontrado.Id != planoDeCobranca.Id;

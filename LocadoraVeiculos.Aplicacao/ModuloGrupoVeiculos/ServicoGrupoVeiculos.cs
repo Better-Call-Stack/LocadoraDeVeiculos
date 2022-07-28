@@ -10,16 +10,19 @@ using System.Text;
 using System.Threading.Tasks;
 using LocadoraDeVeiculos.Infra.Compartilhado;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Infra.Orm.ModuloGrupoVeiculos;
 
 namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 {
     public class ServicoGrupoVeiculos
     {
-        private RepositorioGrupoVeiculos repositorioGrupoVeiculos;
+        private RepositorioGrupoVeiculosOrm repositorioGrupoVeiculos;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoGrupoVeiculos(RepositorioGrupoVeiculos repositorioGrupoVeiculos)
+        public ServicoGrupoVeiculos(RepositorioGrupoVeiculosOrm repositorioGrupoVeiculos, IContextoPersistencia contextoPersistencia)
         {
             this.repositorioGrupoVeiculos = repositorioGrupoVeiculos;
+            this.contextoPersistencia = contextoPersistencia;
         }
 
         public Result<GrupoDeVeiculos> Inserir(GrupoDeVeiculos grupoDeVeiculos)
@@ -40,6 +43,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
             try
             {
                 repositorioGrupoVeiculos.Inserir(grupoDeVeiculos);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Grupo de Veiculos {GrupoDeVeiculosId} inserido", grupoDeVeiculos.Id);
 
                 return Result.Ok(grupoDeVeiculos);
@@ -72,6 +78,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
             try
             {
                 repositorioGrupoVeiculos.Editar(grupoDeVeiculos);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Grupo de Veiculos {GrupoDeVeiculosId} editado", grupoDeVeiculos.Id);
 
                 return Result.Ok(grupoDeVeiculos);
@@ -94,6 +103,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
             try
             {
                 repositorioGrupoVeiculos.Excluir(grupoDeVeiculos);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Grupo de Veiculos {GrupoDeVeiculosId} excluído", grupoDeVeiculos.Id);
 
                 return Result.Ok();
