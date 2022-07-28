@@ -56,14 +56,14 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnGravar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 54);
+            this.label1.Location = new System.Drawing.Point(36, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 15);
             this.label1.TabIndex = 0;
@@ -71,14 +71,14 @@
             // 
             // txtCliente
             // 
-            this.txtCliente.Location = new System.Drawing.Point(103, 51);
+            this.txtCliente.Location = new System.Drawing.Point(91, 51);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(177, 23);
             this.txtCliente.TabIndex = 1;
             // 
             // btnSelecionarCliente
             // 
-            this.btnSelecionarCliente.Location = new System.Drawing.Point(298, 51);
+            this.btnSelecionarCliente.Location = new System.Drawing.Point(278, 51);
             this.btnSelecionarCliente.Name = "btnSelecionarCliente";
             this.btnSelecionarCliente.Size = new System.Drawing.Size(109, 23);
             this.btnSelecionarCliente.TabIndex = 2;
@@ -89,7 +89,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 92);
+            this.label2.Location = new System.Drawing.Point(27, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 15);
             this.label2.TabIndex = 3;
@@ -101,7 +101,7 @@
             this.cbxCondutor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCondutor.Enabled = false;
             this.cbxCondutor.FormattingEnabled = true;
-            this.cbxCondutor.Location = new System.Drawing.Point(103, 84);
+            this.cbxCondutor.Location = new System.Drawing.Point(91, 84);
             this.cbxCondutor.Name = "cbxCondutor";
             this.cbxCondutor.Size = new System.Drawing.Size(177, 23);
             this.cbxCondutor.TabIndex = 4;
@@ -231,7 +231,7 @@
             // clbTaxas
             // 
             this.clbTaxas.FormattingEnabled = true;
-            this.clbTaxas.Location = new System.Drawing.Point(27, 374);
+            this.clbTaxas.Location = new System.Drawing.Point(36, 374);
             this.clbTaxas.Name = "clbTaxas";
             this.clbTaxas.Size = new System.Drawing.Size(334, 130);
             this.clbTaxas.TabIndex = 20;
@@ -239,7 +239,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(165, 345);
+            this.label9.Location = new System.Drawing.Point(180, 344);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(38, 15);
             this.label9.TabIndex = 21;
@@ -281,6 +281,7 @@
             // 
             // txtTotalPorDia
             // 
+            this.txtTotalPorDia.Enabled = false;
             this.txtTotalPorDia.Location = new System.Drawing.Point(103, 619);
             this.txtTotalPorDia.Name = "txtTotalPorDia";
             this.txtTotalPorDia.Size = new System.Drawing.Size(76, 23);
@@ -297,6 +298,7 @@
             // 
             // txtSubtotal
             // 
+            this.txtSubtotal.Enabled = false;
             this.txtSubtotal.Location = new System.Drawing.Point(311, 619);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.Size = new System.Drawing.Size(76, 23);
@@ -311,33 +313,34 @@
             this.label13.TabIndex = 28;
             this.label13.Text = "Subtotal Locação:";
             // 
-            // button2
+            // btnCancelar
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(291, 663);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(88, 32);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.Location = new System.Drawing.Point(291, 663);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(88, 32);
+            this.btnCancelar.TabIndex = 30;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnGravar
             // 
-            this.button3.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button3.Location = new System.Drawing.Point(180, 663);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 32);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "Visualizar";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnGravar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnGravar.Location = new System.Drawing.Point(180, 663);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(88, 32);
+            this.btnGravar.TabIndex = 31;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnVisualizar_Click);
             // 
             // TelaCadastroLocacaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(425, 707);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.ClientSize = new System.Drawing.Size(413, 707);
+            this.Controls.Add(this.btnGravar);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtSubtotal);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtTotalPorDia);
@@ -407,7 +410,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtSubtotal;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnGravar;
     }
 }

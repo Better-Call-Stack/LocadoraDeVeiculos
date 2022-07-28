@@ -1,8 +1,10 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.WinApp.Compartilhado;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
+using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloLocacao;
+using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
@@ -19,21 +21,28 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private ServicoCliente servicoCliente;
         private ServicoVeiculo servicoVeiculo;
         private ServicoGrupoVeiculos servicoGrupoVeiculos;
-        
+        private ServicoCondutor servicoCondutor;
+        private ServicoPlanoDeCobranca servicoPlanoCobranca;
+
+
         private TabelaLocacoesControl tabelaLocacao;
 
         public ControladorLocacao(ServicoLocacao servicoLocacao, ServicoCliente servicoCliente,
-            ServicoVeiculo servicoVeiculo, ServicoGrupoVeiculos servicoGrupoVeiculos)
+            ServicoVeiculo servicoVeiculo, ServicoGrupoVeiculos servicoGrupoVeiculos, ServicoCondutor servicoCondutor,
+            ServicoPlanoDeCobranca servicoPlanoCobranca)
         {
             this.servicoLocacao = servicoLocacao;
             this.servicoCliente = servicoCliente;
             this.servicoVeiculo = servicoVeiculo;
             this.servicoGrupoVeiculos = servicoGrupoVeiculos;
+            this.servicoCondutor = servicoCondutor;
+            this.servicoPlanoCobranca = servicoPlanoCobranca;
         }
-        
+
         public override void Inserir()
         {
-            TelaCadastroLocacaoForm tela = new TelaCadastroLocacaoForm(servicoCliente, servicoVeiculo, servicoGrupoVeiculos);
+            TelaCadastroLocacaoForm tela = new TelaCadastroLocacaoForm(servicoCliente, servicoVeiculo, servicoGrupoVeiculos,
+                servicoCondutor, servicoPlanoCobranca);
             tela.Locacao = new Locacao();
 
             tela.GravarRegistro = servicoLocacao.Inserir;
@@ -69,7 +78,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             var locacaoSelecionado = resultadoSelecao.Value;
 
-            TelaCadastroLocacaoForm tela = new TelaCadastroLocacaoForm(servicoCliente, servicoVeiculo, servicoGrupoVeiculos);
+            TelaCadastroLocacaoForm tela = new TelaCadastroLocacaoForm(servicoCliente, servicoVeiculo,
+                servicoGrupoVeiculos, servicoCondutor, servicoPlanoCobranca);
 
             tela.Locacao = locacaoSelecionado;
 

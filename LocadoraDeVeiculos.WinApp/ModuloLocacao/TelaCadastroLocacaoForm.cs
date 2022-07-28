@@ -1,13 +1,16 @@
 ﻿using FluentResults;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Dominio.ModuloGrupoVeiculos;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
+using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Dominio.ModuloVeiculo;
 using LocadoraVeiculos.Aplicacao.ModuloCliente;
 using LocadoraVeiculos.Aplicacao.ModuloCondutor;
 using LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos;
 using LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca;
+using LocadoraVeiculos.Aplicacao.ModuloTaxa;
 using LocadoraVeiculos.Aplicacao.ModuloVeiculo;
 using System;
 using System.Collections.Generic;
@@ -28,14 +31,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private ServicoCondutor servicoCondutor;
         private ServicoGrupoVeiculos servicoGrupoVeiculos;
         private ServicoPlanoDeCobranca servicoPlano;
+        private ServicoTaxa servicoTaxa;
              
         private Cliente cliente;
         private Veiculo veiculo;
         private GrupoDeVeiculos grupo;
         private PlanoDeCobranca plano;
+        private List<Taxa> taxas;
 
-        public TelaCadastroLocacaoForm(ServicoCliente servicoCliente, ServicoVeiculo servicoVeiculo, 
-            ServicoGrupoVeiculos servicoGrupoVeiculos)
+        public TelaCadastroLocacaoForm(ServicoCliente servicoCliente, ServicoVeiculo servicoVeiculo,
+            ServicoGrupoVeiculos servicoGrupoVeiculos, ServicoCondutor servicoCondutor, ServicoPlanoDeCobranca servicoPlano)
         {
             InitializeComponent();
             this.servicoCliente = servicoCliente;
@@ -44,9 +49,24 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             PovoarCbxGrupoVeiculos();
             AtualizarValoresPlano();
+            PovoarTaxas();
+            this.servicoCondutor = servicoCondutor;
+            this.servicoPlano = servicoPlano;
         }
 
-  
+        private void PovoarTaxas()
+        {
+            var resultadoSelecao = servicoTaxa.SelecionarTodos();
+
+            if (resultadoSelecao.IsSuccess)
+            {
+                foreach (var taxa in servicoTaxa.SelecionarTodos().Value)
+                {
+                    clbTaxas.Items.Add(taxa);
+                }
+            }
+        }
+
         public Func<Locacao, Result<Locacao>> GravarRegistro { get; set; }
 
         private Locacao locacao;
@@ -58,12 +78,35 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             {
                 locacao = value;
 
-                txtCliente.Text = locacao.Cliente.Nome;
-                cliente = locacao.Cliente;
+                if(locacao.Cliente != null)
+                {
+                    txtCliente.Text = locacao.Cliente.Nome;
+                    cliente = locacao.Cliente;
+
+                    cbxCondutor.SelectedItem = locacao.Condutor;
+
+                    cbxGrupoVeiculos.SelectedItem = locacao.Veiculo.Grupo;
+                    AtualizarValoresPlano();
+
+                    cbxPlanoCobranca.SelectedText = locacao.PlanoSelecionado;
+
+                    int posicao = 0;
+                    foreach (var taxaLocacao in locacao.Taxas)
+                    {
+                        foreach (var taxaLista in clbTaxas.Items)
+                        {
+                            if (taxaLocacao == taxaLista)
+                                clbTaxas.SetItemChecked(posicao, true);
+
+                            posicao++;
+                        }
+                    }
+
+                    dpLocacao.Value = locacao.DataLocacao;
+                    dpDevolucao.Value = locacao.PrevisaoDevolucao;
+                }
                 
-                cbxCondutor.SelectedItem = locacao.Condutor;
-                
-                cbxGrupoVeiculos.SelectedItem = locacao.Veiculo.Grupo;
+          
 
 
             }
@@ -91,10 +134,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         private void PovoarCbxCondutor()
         {
-            foreach (var c in servicoCondutor.SelecionarTodos().Value)
+            var resultadoSelecao = servicoCondutor.SelecionarTodos();
+
+            if (resultadoSelecao.IsSuccess)
             {
-                if(c.Cliente.Id == cliente.Id)
-                cbxCondutor.Items.Add(c);
+                foreach (var c in servicoCondutor.SelecionarTodos().Value)
+                {
+                    if (c.Cliente.Id == cliente.Id)
+                        cbxCondutor.Items.Add(c);
+                }
             }
         }
 
@@ -178,5 +226,37 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             }
         }
 
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            locacao.Cliente = cliente;
+            locacao.Condutor = (Condutor)cbxCondutor.SelectedItem;
+            locacao.PlanoSelecionado = cbxPlanoCobranca.Text;
+            locacao.Veiculo = veiculo;
+            locacao.PlanoDeCobranca = plano;
+            locacao.DataLocacao = dpLocacao.Value;
+            locacao.PrevisaoDevolucao = dpDevolucao.Value;
+            locacao.StatusLocacao = StatusLocacao.Aberta;
+
+
+
+
+            var resultadoValidacao = GravarRegistro(locacao);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro, "Inserção locação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show(erro, "Inserção locação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    DialogResult = DialogResult.None;
+                }
+            }
+        }
     }
 }

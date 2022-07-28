@@ -19,6 +19,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 
         public Decimal Valor { get; set; }
 
+        public DateTime DataLocacao { get; set; }
+
+        public DateTime PrevisaoDevolucao { get; set; }
+
         public string PlanoSelecionado { get; set; }
 
         public Veiculo Veiculo { get; set; }
