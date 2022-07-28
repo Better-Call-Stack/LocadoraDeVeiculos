@@ -46,28 +46,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             AtualizarValoresPlano();
         }
 
-        private void AtualizarValoresPlano()
-        {
-            if(cbxPlanoCobranca.SelectedItem == "Diário")
-            {
-             //   txtDiaria.Text =     ///////////////////////////////////////GRUPO VEICULO PRECISA DE PLANO 
-            }
-                
-        }
-
-        private void PovoarCbxGrupoVeiculos()
-        {
-            var grupos = servicoGrupoVeiculos.SelecionarTodos().Value;
-
-            if (grupos.Any()) 
-                btnSelecionarVeiculo.Enabled = true;
-
-            foreach (var grupo in grupos)
-            {
-                cbxGrupoVeiculos.Items.Add(grupo);
-            }
-        }
-
+  
         public Func<Locacao, Result<Locacao>> GravarRegistro { get; set; }
 
         private Locacao locacao;
@@ -149,13 +128,55 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             foreach (var p in servicoPlano.SelecionarTodos().Value)
             {
                 if (p.GrupoDeVeiculos == grupo)
-                    grupo = p.GrupoDeVeiculos;
+                    plano = p;
             }
         }
 
         private void cbxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
         {
+            AtualizarValoresPlano();
+        }
+
+        private void AtualizarValoresPlano()
+        {
+
+            switch (cbxPlanoCobranca.SelectedItem)
+            {
+
+                case "Diário":
+                    txtDiaria.Text = plano.ValorPorDia_PlanoDiario.ToString();
+                    txtKmRodado.Text = plano.ValorKmRodado_PlanoDiario.ToString();
+                    txtKmLivre.Text = "0";
+                    return;
+
+                case "Km Controlado":
+                    txtDiaria.Text = plano.ValorPorDia_PlanoKmControlado.ToString();
+                    txtKmRodado.Text = plano.ValorKmRodado_PlanoKmControlado.ToString();
+                    txtKmLivre.Text = plano.KmLivreIncluso_PlanoKmControlado.ToString();
+                    return;
+
+                case "Km Livre":
+                    txtDiaria.Text = plano.ValorPorDia_PlanoKmLivre.ToString();
+                    txtKmRodado.Text = "0";
+                    txtKmLivre.Text = "0";
+                    return;
+            }
+
 
         }
+
+        private void PovoarCbxGrupoVeiculos()
+        {
+            var grupos = servicoGrupoVeiculos.SelecionarTodos().Value;
+
+            if (grupos.Any())
+                btnSelecionarVeiculo.Enabled = true;
+
+            foreach (var grupo in grupos)
+            {
+                cbxGrupoVeiculos.Items.Add(grupo);
+            }
+        }
+
     }
 }
