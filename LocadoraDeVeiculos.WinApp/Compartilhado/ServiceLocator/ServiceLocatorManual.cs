@@ -6,6 +6,10 @@ using LocadoraDeVeiculos.Infra.ModuloPlanoDeCobranca;
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.Orm.ModuloCliente;
+using LocadoraDeVeiculos.Infra.Orm.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.Orm.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.Orm.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.Orm.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.Orm.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
@@ -63,18 +67,18 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
             var repositorioFuncionario = new RepositorioFuncionarioOrm(contextoDadosOrm);
             var repositorioCliente = new RepositorioClienteOrm(contextoDadosOrm);
-            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculos();
-            var repositorioPlanoDeCobranca = new RepositorioPlanoDeCobranca();
-            var repositorioTaxa = new RepositorioTaxa();
-            var repositorioCondutor = new RepositorioCondutor();
+            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosOrm(contextoDadosOrm);
+            var repositorioPlanoDeCobranca = new RepositorioPlanoCobrancaOrm(contextoDadosOrm);
+            var repositorioTaxa = new RepositorioTaxaOrm(contextoDadosOrm);
+            var repositorioCondutor = new RepositorioCondutorOrm(contextoDadosOrm);
             var repositorioVeiculo = new RepositorioVeiculo();
 
             var servicoCliente = new ServicoCliente(repositorioCliente, contextoDadosOrm);
-            var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
-            var servicoPlanoDeCobranca = new ServicoPlanoDeCobranca(repositorioPlanoDeCobranca);
-            var servicoTaxa = new ServicoTaxa(repositorioTaxa);
-            var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, contextoDadosOrm);
-            var servicoCondutor = new ServicoCondutor(repositorioCondutor);
+            var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos, contextoDadosOrm);
+            var servicoPlanoDeCobranca = new ServicoPlanoDeCobranca(repositorioPlanoDeCobranca, contextoDadosOrm);
+            var servicoTaxa = new ServicoTaxa(repositorioTaxa, contextoDadosOrm);
+            var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+            var servicoCondutor = new ServicoCondutor(repositorioCondutor, contextoDadosOrm);
             var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo);
 
             controladores = new Dictionary<string, ControladorBase>();

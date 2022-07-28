@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.ModuloCondutor;
+using LocadoraDeVeiculos.Infra.Orm.ModuloCondutor;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
 {
     public class ServicoCondutor
     {
-        private RepositorioCondutor repositorioCondutor;
-        private ValidadorCondutor validadorCondutor;
+        private RepositorioCondutorOrm repositorioCondutor;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoCondutor(RepositorioCondutor repositorioCondutor)
+        public ServicoCondutor(RepositorioCondutorOrm repositorioCondutor, IContextoPersistencia contexto)
         {
             this.repositorioCondutor = repositorioCondutor;
+            this.contextoPersistencia = contexto;
         }
 
         public Result<Condutor> Inserir(Condutor condutor)
@@ -42,6 +44,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             try
             {
                 repositorioCondutor.Inserir(condutor);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Condutor {CondutorId} inserido com sucesso", condutor.Id);
 
                 return Result.Ok(condutor);
@@ -78,6 +83,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             try
             {
                 repositorioCondutor.Editar(condutor);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Condutor {CondutorId} editado com sucesso", condutor.Id);
 
                 return Result.Ok(condutor);
@@ -100,6 +108,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
             try
             {
                 repositorioCondutor.Excluir(condutor);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Condutor {CondutorId} excluído com sucesso", condutor.Id);
 
@@ -158,7 +168,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCondutor
         private Result<Condutor> ValidarCondutor(Condutor condutor)
         {
 
-            validadorCondutor = new ValidadorCondutor();
+            var validadorCondutor = new ValidadorCondutor();
 
             var resultadoValidacao = validadorCondutor.Validate(condutor);
 

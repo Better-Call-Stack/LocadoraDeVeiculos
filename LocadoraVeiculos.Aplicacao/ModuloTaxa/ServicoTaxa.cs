@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.Orm.ModuloTaxa;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
 {
     public class ServicoTaxa
     {
+        private RepositorioTaxaOrm repositorioTaxa;
+        private IContextoPersistencia contextoPersistencia;
 
-        private RepositorioTaxa repositorioTaxa;
-        private ValidadorTaxa validadorTaxa;
-
-        public ServicoTaxa(RepositorioTaxa repositorio)
+        public ServicoTaxa(RepositorioTaxaOrm repositorioTaxa, IContextoPersistencia contexto)
         {
-            this.repositorioTaxa = repositorio;
+            this.repositorioTaxa = repositorioTaxa;
+            this.contextoPersistencia = contexto;
         }
 
         public Result<Taxa> Inserir(Taxa taxa)
@@ -43,6 +44,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
             try
             {
                 repositorioTaxa.Inserir(taxa);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Taxa {TaxaId} inserido com sucesso", taxa.Id);
 
                 return Result.Ok(taxa);
@@ -79,6 +83,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
             try
             {
                 repositorioTaxa.Editar(taxa);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Taxa {TaxaId} editada com sucesso", taxa.Id);
 
                 return Result.Ok(taxa);
@@ -101,6 +108,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
             try
             {
                 repositorioTaxa.Excluir(taxa);
+
+                contextoPersistencia.GravarDados();
 
                 Log.Logger.Information("Taxa {TaxaId} excluída com sucesso", taxa.Id);
 
@@ -159,7 +168,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
 
         public Result<Taxa> ValidarTaxa(Taxa taxa)
         {
-            validadorTaxa = new ValidadorTaxa();
+            var validadorTaxa = new ValidadorTaxa();
 
             var resultadoValidacao = validadorTaxa.Validate(taxa);
 
