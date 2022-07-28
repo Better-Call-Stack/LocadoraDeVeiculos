@@ -9,6 +9,8 @@ using LocadoraDeVeiculos.Infra.Orm.ModuloCliente;
 using LocadoraDeVeiculos.Infra.Orm.ModuloCondutor;
 using LocadoraDeVeiculos.Infra.Orm.ModuloOrm;
 using LocadoraDeVeiculos.Infra.Orm.ModuloTaxa;
+using LocadoraDeVeiculos.Infra.Orm.ModuloGrupoVeiculos;
+using LocadoraDeVeiculos.Infra.Orm.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
@@ -67,8 +69,8 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
             var repositorioFuncionario = new RepositorioFuncionario();
             var repositorioCliente = new RepositorioClienteOrm(contextoDadosOrm);
-            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculos();
-            var repositorioPlanoDeCobranca = new RepositorioPlanoDeCobranca();
+            var repositorioGrupoVeiculos = new RepositorioGrupoVeiculosOrm(contextoDadosOrm);
+            var repositorioPlanoDeCobranca = new RepositorioPlanoCobrancaOrm(contextoDadosOrm);
             var repositorioTaxa = new RepositorioTaxaOrm(contextoDadosOrm);
             var repositorioCondutor = new RepositorioCondutorOrm(contextoDadosOrm);
             var repositorioVeiculo = new RepositorioVeiculo();
@@ -76,8 +78,8 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
 
             var servicoCliente = new ServicoCliente(repositorioCliente, contextoDadosOrm);
-            var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos);
-            var servicoPlanoDeCobranca = new ServicoPlanoDeCobranca(repositorioPlanoDeCobranca);
+            var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos, contextoDadosOrm);
+            var servicoPlanoDeCobranca = new ServicoPlanoDeCobranca(repositorioPlanoDeCobranca, contextoDadosOrm);
             var servicoTaxa = new ServicoTaxa(repositorioTaxa, contextoDadosOrm);
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
             var servicoCondutor = new ServicoCondutor(repositorioCondutor, contextoDadosOrm);

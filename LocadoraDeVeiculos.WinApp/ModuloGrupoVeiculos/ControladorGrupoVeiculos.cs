@@ -63,7 +63,7 @@ namespace LocadoraDeVeiculos.WinApp.GrupoVeiculos
 
             var tela = new TelaCadastroGrupoVeiculosForm();
 
-            tela.GrupoDeVeiculos = grupoVeiculoSelecionado.Clonar();
+            tela.GrupoDeVeiculos = grupoVeiculoSelecionado; // Clonar();
 
             tela.GravarRegistro = servicoGrupoVeiculos.Editar;
 
