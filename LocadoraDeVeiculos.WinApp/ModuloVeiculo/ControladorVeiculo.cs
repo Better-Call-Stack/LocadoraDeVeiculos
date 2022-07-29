@@ -60,7 +60,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             var tela = new TelaCadastroVeiculo("Edição", servicoGrupoVeiculos.SelecionarTodos().Value);
 
-            tela.Veiculo = veiculoSelecionado.Clonar();
+            tela.Veiculo = veiculoSelecionado;
 
             tela.GravarRegistro = servicoVeiculo.Editar;
 
@@ -90,8 +90,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             var veiculoSelecionado = resultadoSelecao.Value;
 
-            if (veiculoSelecionado.StatusVeiculo == StatusVeiculoEnum.Ativo ||
-                veiculoSelecionado.StatusVeiculo == StatusVeiculoEnum.Manutenção)
+            if (veiculoSelecionado.StatusVeiculo != StatusVeiculoEnum.Inativo)
             {
                 MessageBox.Show("Só é possível excluir os dados de veículos inativos.",
                     "Veículo em uso.", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);

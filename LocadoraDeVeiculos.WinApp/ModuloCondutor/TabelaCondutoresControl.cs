@@ -24,29 +24,48 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
         {
             InitializeComponent();
 
-            gridCondutores.ConfigurarGridZebrado();
-            gridCondutores.ConfigurarGridSomenteLeitura();
-            gridCondutores.ConfigurarGridZebrado();
+            grid.ConfigurarGridZebrado();
+            grid.ConfigurarGridSomenteLeitura();
+            grid.ConfigurarGridZebrado();
+            grid.Columns.AddRange(ObterColunas());
             this.servicoCondutor = servicoCondutor;
             this.servicoCliente = servicoCliente;
+        }
+        public DataGridViewColumn[] ObterColunas()
+        {
+            var colunas = new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id", FillWeight=15F, Visible=false },
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "CPF", HeaderText = "CPF"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "CNH", HeaderText = "CNH"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "ValidadeCNH", HeaderText = "Validade CNH"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "cbxCliente", HeaderText = "Cliente"},
+            };
+
+            return colunas;
+        }
+        public Guid ObtemIdCondutorSelecionado()
+        {
+                return grid.SelecionarId<Guid>();
         }
 
         internal void AtualizarRegistros(List<Condutor> condutores)
         {
-            gridCondutores.Rows.Clear();
+            grid.Rows.Clear();
 
             foreach (var c in condutores)
             {
-                gridCondutores.Rows.Add(c.Id, c.Nome, c.CPF, c.CNH, c.ValidadeCNH.ToShortDateString(), c.Cliente.Nome);
+                grid.Rows.Add(c.Id, c.Nome, c.CPF, c.CNH, c.ValidadeCNH.ToShortDateString(), c.Cliente.Nome);
             }
         }
 
-        public Guid ObtemIdCondutorSelecionado()
-        {
-                return gridCondutores.SelecionarId<Guid>();
-        }
-
-        private void gridCondutores_DoubleClick(object sender, EventArgs e)
+        private void grid_DoubleClick(object sender, EventArgs e)
         {
             TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(servicoCliente.SelecionarTodos().Value, "Visualizacao");
             Guid id = ObtemIdCondutorSelecionado();

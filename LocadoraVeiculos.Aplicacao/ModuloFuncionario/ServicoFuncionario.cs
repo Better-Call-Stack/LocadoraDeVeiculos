@@ -1,7 +1,9 @@
 ﻿using FluentResults;
 using FluentValidation.Results;
+using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraDeVeiculos.Infra.ModuloFuncionario;
+using LocadoraDeVeiculos.Infra.Orm.ModuloFuncionario;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -11,11 +13,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
 {
     public class ServicoFuncionario
     {
-        private RepositorioFuncionario repositorioFuncionario;
+        private RepositorioFuncionarioOrm repositorioFuncionario;
+        private IContextoPersistencia contextoPersistencia;
 
-        public ServicoFuncionario(RepositorioFuncionario repositorioFuncionario)
+        public ServicoFuncionario(RepositorioFuncionarioOrm repositorioFuncionario, IContextoPersistencia contexto)
         {
-            this.repositorioFuncionario=repositorioFuncionario;
+            this.repositorioFuncionario = repositorioFuncionario;
+            this.contextoPersistencia = contexto;
         }
 
         public Result<Funcionario> Inserir(Funcionario funcionario)
@@ -39,13 +43,15 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             {
                 repositorioFuncionario.Inserir(funcionario);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Funcionário {FuncionarioId} inserido com sucesso", funcionario.Id);
 
                 return Result.Ok(funcionario);
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao tentar inserir o funcionário";
+                string msgErro = "Falha no sistema ao tentar cadastrar o colaborador.";
 
                 Log.Logger.Error(ex, msgErro + "{FuncionarioId}", funcionario.Id);
 
@@ -73,6 +79,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             try
             {
                 repositorioFuncionario.Editar(funcionario);
+
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Debug("Funcionário {FuncionarioId} editado com sucesso", funcionario.Id);
 
                 return Result.Ok(funcionario);
@@ -80,7 +89,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao tentar editar o funcionário";
+                string msgErro = "Falha no sistema ao tentar editar os dados.";
 
                 Log.Logger.Error(ex, msgErro + "{FuncionarioId}", funcionario.Id);
 
@@ -96,13 +105,15 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
             {
                 repositorioFuncionario.Excluir(funcionario);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Funcionario {FuncionarioId} excluído com sucesso", funcionario.Id);
 
                 return Result.Ok();
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao tentar excluir o funcionario";
+                string msgErro = "Falha no sistema ao tentar excluir os dados.";
 
                 Log.Logger.Error(ex, msgErro + "{FuncionarioId}", funcionario.Id);
 
@@ -148,9 +159,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloFuncionario
 
             var resultadoValidacao = validador.Validate(funcionario);
 
-            List<Error> erros = new List<Error>(); //FluentResult
+            List<Error> erros = new List<Error>(); 
 
-            foreach (ValidationFailure item in resultadoValidacao.Errors) //FluentValidation            
+            foreach (ValidationFailure item in resultadoValidacao.Errors)         
                 erros.Add(new Error(item.ErrorMessage));
 
             if (CpfDuplicado(funcionario))

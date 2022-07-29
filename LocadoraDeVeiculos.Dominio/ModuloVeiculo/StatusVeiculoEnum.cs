@@ -2,6 +2,6 @@
 {
     public enum StatusVeiculoEnum
     {
-        Ativo, Inativo, Manutenção
+        Disponível, Alugado, Indisponível, Manutenção, Inativo
     }
 }

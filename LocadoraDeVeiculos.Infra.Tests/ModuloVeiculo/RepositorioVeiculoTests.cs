@@ -32,7 +32,7 @@ namespace LocadoraDeVeiculos.Infra.Tests.ModuloVeiculo
                 Placa = "1234567",
                 Cor = "White",
                 TipoCombustivel = TipoCombustivelEnum.Gasolina,
-                StatusVeiculo = StatusVeiculoEnum.Ativo,
+                StatusVeiculo = StatusVeiculoEnum.Disponível,
                 CapacidadeTanque = 1000,
                 KmPercorrido = 8000,
                 Grupo = gv,
