@@ -13,17 +13,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
         public TabelaFuncionariosControl()
         {
             InitializeComponent();
-            GridFuncionarios.ConfigurarGridZebrado();
-            GridFuncionarios.ConfigurarGridSomenteLeitura();
-            GridFuncionarios.Columns.AddRange(ObterColunas());
-            GridFuncionarios.ConfigurarColunaId();
+            grid.ConfigurarGridZebrado();
+            grid.ConfigurarGridSomenteLeitura();
+            grid.Columns.AddRange(ObterColunas());
         }
 
         public DataGridViewColumn[] ObterColunas()
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "IDFuncionario", HeaderText = "Matricula"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id", FillWeight=15F, Visible=false },
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "CPFFuncionario", HeaderText = "CPF"},
 
@@ -43,16 +42,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloFuncionario
 
         public Guid ObtemIdFuncionarioSelecionado()
         {
-            return GridFuncionarios.SelecionarId<Guid>();
+            return grid.SelecionarId<Guid>();
         }
 
         public void AtualizarRegistros(List<Funcionario> funcionarios)
         {
-            GridFuncionarios.Rows.Clear();
+            grid.Rows.Clear();
 
             foreach (Funcionario f in funcionarios)
             {
-                GridFuncionarios.Rows.Add(f.Id, f.CPF, f.Nome, f.DataDeAdmissao.ToShortDateString(), f.Salario, f.Perfil, f.Login);
+                grid.Rows.Add(f.Id, f.CPF, f.Nome, f.DataDeAdmissao.ToShortDateString(), f.Salario, f.Perfil, f.Login);
             }
         }
 

@@ -104,6 +104,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             {
                 repositorioPlanoDeCobranca.Excluir(planoDeCobranca);
 
+                contextoPersistencia.GravarDados();
+
                 Log.Logger.Information("Plano de Cobranca {PlanoDeCobrancaId} excluído", planoDeCobranca.Id);
 
                 return Result.Ok();
