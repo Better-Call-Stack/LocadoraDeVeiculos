@@ -37,6 +37,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private Veiculo veiculo;
         private GrupoDeVeiculos grupo;
         private PlanoDeCobranca plano;
+        private List<Taxa> taxas = new List<Taxa>();
 
         public TelaCadastroLocacaoForm(ServicoCliente servicoCliente, ServicoVeiculo servicoVeiculo,
             ServicoGrupoVeiculos servicoGrupoVeiculos, ServicoCondutor servicoCondutor, ServicoPlanoDeCobranca servicoPlano
@@ -319,8 +320,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             
             foreach (Taxa taxa in clbTaxas.CheckedItems)
             {
-                locacao.Taxas.Add(taxa);
+                taxas.Add(taxa);
             }
+            locacao.Taxas = taxas;
 
             var resultadoValidacao = GravarRegistro(locacao);
 

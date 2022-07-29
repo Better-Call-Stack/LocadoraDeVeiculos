@@ -100,7 +100,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             if (id == Guid.Empty)
             {
-                MessageBox.Show("Selecione uma locaçãoo primeiro",
+                MessageBox.Show("Selecione uma locação primeiro",
                     "Exclusão de Locações", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
@@ -115,6 +115,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             }
 
             var locacaoSelecionada = resultadoSelecao.Value;
+
+            if (locacaoSelecionada.StatusLocacao == StatusLocacao.Aberta)
+            {
+                MessageBox.Show("Locação está em aberto!", "Exclusão de Locação",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
 
             if (MessageBox.Show("Deseja realmente excluir a locação?", "Exclusão de Locação",
                  MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
