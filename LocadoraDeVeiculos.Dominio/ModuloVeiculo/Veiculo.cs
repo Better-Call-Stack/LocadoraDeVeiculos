@@ -98,8 +98,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
                    CapacidadeTanque == veiculo.CapacidadeTanque &&
                    Ano == veiculo.Ano &&
                    KmPercorrido == veiculo.KmPercorrido;
-                   //FotoVeiculo == veiculo.FotoVeiculo &&
-                   //Imagem == veiculo.Imagem;
         }
     }
 }

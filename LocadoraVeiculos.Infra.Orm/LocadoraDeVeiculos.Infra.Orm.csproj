@@ -22,7 +22,6 @@
     <Folder Include="ModuloGrupoVeiculos\" />
     <Folder Include="ModuloPlanoCobranca\" />
     <Folder Include="ModuloTaxa\" />
-    <Folder Include="ModuloVeiculo\" />
   </ItemGroup>
 
 </Project>

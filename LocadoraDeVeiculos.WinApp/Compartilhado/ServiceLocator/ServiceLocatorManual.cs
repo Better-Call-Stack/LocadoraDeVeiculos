@@ -33,6 +33,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LocadoraDeVeiculos.Infra.Orm.ModuloVeiculo;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {
@@ -71,15 +72,15 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             var repositorioPlanoDeCobranca = new RepositorioPlanoCobrancaOrm(contextoDadosOrm);
             var repositorioTaxa = new RepositorioTaxaOrm(contextoDadosOrm);
             var repositorioCondutor = new RepositorioCondutorOrm(contextoDadosOrm);
-            var repositorioVeiculo = new RepositorioVeiculo();
+            var repositorioVeiculo = new RepositorioVeiculoOrm(contextoDadosOrm);
 
             var servicoCliente = new ServicoCliente(repositorioCliente, contextoDadosOrm);
             var servicoGrupoVeiculos = new ServicoGrupoVeiculos(repositorioGrupoVeiculos, contextoDadosOrm);
             var servicoPlanoDeCobranca = new ServicoPlanoDeCobranca(repositorioPlanoDeCobranca, contextoDadosOrm);
             var servicoTaxa = new ServicoTaxa(repositorioTaxa, contextoDadosOrm);
-            var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario);
+            var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, contextoDadosOrm);
             var servicoCondutor = new ServicoCondutor(repositorioCondutor, contextoDadosOrm);
-            var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo);
+            var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo, contextoDadosOrm);
 
             controladores = new Dictionary<string, ControladorBase>();
 
