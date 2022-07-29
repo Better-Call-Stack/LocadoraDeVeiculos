@@ -47,6 +47,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         public BotaoSelecionarForm(ServicoVeiculo servicoVeiculo, ServicoGrupoVeiculos servicoGrupoVeiculos, 
             GrupoDeVeiculos grupo)
         {
+            InitializeComponent();
+
             this.Text = "Selecionar Veiculo";
 
             this.servicoGrupoVeiculos = servicoGrupoVeiculos;

@@ -25,7 +25,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         public DataGridViewColumn[] ObterColunas()
         {
             var colunas = new DataGridViewColumn[]
-            {               
+            {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id", FillWeight=15F, Visible=false },
+
                 new DataGridViewTextBoxColumn { DataPropertyName = "Cliente", HeaderText = "Cliente"},
               
                 new DataGridViewTextBoxColumn { DataPropertyName = "Condutor", HeaderText = "Condutor"},
@@ -33,9 +35,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 new DataGridViewTextBoxColumn { DataPropertyName = "Veiculo", HeaderText = "Veiculo"},
                 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Plano", HeaderText = "Plano"},
-               
-                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"},
-               
+                              
                 new DataGridViewTextBoxColumn { DataPropertyName = "Status", HeaderText = "Status"}
 
             };
@@ -54,8 +54,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             foreach (Locacao locacao in locacoes)
             {
-                grid.Rows.Add(locacao.Cliente.Nome, locacao.Condutor.Nome, locacao.Veiculo.Modelo, locacao.PlanoSelecionado,
-                    locacao.Valor, locacao.StatusLocacao);
+                grid.Rows.Add(locacao.Id, locacao.Cliente.Nome, locacao.Condutor.Nome, locacao.Veiculo.Modelo, locacao.PlanoSelecionado,
+                    locacao.StatusLocacao);
             }
         }
     }

@@ -71,6 +71,7 @@
             // 
             // txtCliente
             // 
+            this.txtCliente.Enabled = false;
             this.txtCliente.Location = new System.Drawing.Point(91, 51);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(177, 23);
@@ -163,6 +164,7 @@
             // 
             // txtVeiculo
             // 
+            this.txtVeiculo.Enabled = false;
             this.txtVeiculo.Location = new System.Drawing.Point(91, 186);
             this.txtVeiculo.Name = "txtVeiculo";
             this.txtVeiculo.Size = new System.Drawing.Size(148, 23);
@@ -197,7 +199,7 @@
             // txtKmLivre
             // 
             this.txtKmLivre.Enabled = false;
-            this.txtKmLivre.Location = new System.Drawing.Point(165, 298);
+            this.txtKmLivre.Location = new System.Drawing.Point(166, 298);
             this.txtKmLivre.Name = "txtKmLivre";
             this.txtKmLivre.Size = new System.Drawing.Size(73, 23);
             this.txtKmLivre.TabIndex = 17;
@@ -205,16 +207,16 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(157, 280);
+            this.label7.Location = new System.Drawing.Point(144, 280);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(82, 15);
+            this.label7.Size = new System.Drawing.Size(118, 15);
             this.label7.TabIndex = 16;
-            this.label7.Text = "Valor Km Livre";
+            this.label7.Text = "Quantidade Km Livre";
             // 
             // txtDiaria
             // 
             this.txtDiaria.Enabled = false;
-            this.txtDiaria.Location = new System.Drawing.Point(274, 298);
+            this.txtDiaria.Location = new System.Drawing.Point(291, 298);
             this.txtDiaria.Name = "txtDiaria";
             this.txtDiaria.Size = new System.Drawing.Size(73, 23);
             this.txtDiaria.TabIndex = 19;
@@ -222,7 +224,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(274, 280);
+            this.label8.Location = new System.Drawing.Point(291, 280);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(66, 15);
             this.label8.TabIndex = 18;
@@ -230,11 +232,15 @@
             // 
             // clbTaxas
             // 
+            this.clbTaxas.CheckOnClick = true;
+            this.clbTaxas.Enabled = false;
             this.clbTaxas.FormattingEnabled = true;
             this.clbTaxas.Location = new System.Drawing.Point(36, 374);
             this.clbTaxas.Name = "clbTaxas";
+            this.clbTaxas.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.clbTaxas.Size = new System.Drawing.Size(334, 130);
             this.clbTaxas.TabIndex = 20;
+            this.clbTaxas.SelectedValueChanged += new System.EventHandler(this.clbTaxas_SelectedValueChanged);
             // 
             // label9
             // 
@@ -269,6 +275,7 @@
             this.dpDevolucao.Name = "dpDevolucao";
             this.dpDevolucao.Size = new System.Drawing.Size(86, 23);
             this.dpDevolucao.TabIndex = 25;
+            this.dpDevolucao.ValueChanged += new System.EventHandler(this.dpDevolucao_ValueChanged);
             // 
             // label11
             // 
@@ -286,6 +293,7 @@
             this.txtTotalPorDia.Name = "txtTotalPorDia";
             this.txtTotalPorDia.Size = new System.Drawing.Size(76, 23);
             this.txtTotalPorDia.TabIndex = 27;
+            this.txtTotalPorDia.Text = "0";
             // 
             // label12
             // 
@@ -303,6 +311,7 @@
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.Size = new System.Drawing.Size(76, 23);
             this.txtSubtotal.TabIndex = 29;
+            this.txtSubtotal.Text = "0";
             // 
             // label13
             // 
@@ -332,7 +341,7 @@
             this.btnGravar.TabIndex = 31;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
-            this.btnGravar.Click += new System.EventHandler(this.btnVisualizar_Click);
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // TelaCadastroLocacaoForm
             // 

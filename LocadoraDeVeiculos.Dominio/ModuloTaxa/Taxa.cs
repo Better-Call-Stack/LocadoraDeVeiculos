@@ -38,5 +38,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloTaxa
                    Valor == taxa.Valor &&
                    Tipo == taxa.Tipo;
         }
+
+        public override string ToString()
+        {
+            return Nome.PadRight(30) + " Valor: " + Valor + "  Tipo: " + Tipo;
+        }
     }
 }

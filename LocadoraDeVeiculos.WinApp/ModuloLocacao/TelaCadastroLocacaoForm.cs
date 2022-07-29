@@ -37,35 +37,24 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         private Veiculo veiculo;
         private GrupoDeVeiculos grupo;
         private PlanoDeCobranca plano;
-        private List<Taxa> taxas;
 
         public TelaCadastroLocacaoForm(ServicoCliente servicoCliente, ServicoVeiculo servicoVeiculo,
-            ServicoGrupoVeiculos servicoGrupoVeiculos, ServicoCondutor servicoCondutor, ServicoPlanoDeCobranca servicoPlano)
+            ServicoGrupoVeiculos servicoGrupoVeiculos, ServicoCondutor servicoCondutor, ServicoPlanoDeCobranca servicoPlano
+            ,ServicoTaxa servicoTaxa)
         {
             InitializeComponent();
             this.servicoCliente = servicoCliente;
             this.servicoVeiculo = servicoVeiculo;
             this.servicoGrupoVeiculos = servicoGrupoVeiculos;
+            this.servicoCondutor = servicoCondutor;
+            this.servicoPlano = servicoPlano;
+            this.servicoTaxa = servicoTaxa;
 
             PovoarCbxGrupoVeiculos();
             AtualizarValoresPlano();
             PovoarTaxas();
-            this.servicoCondutor = servicoCondutor;
-            this.servicoPlano = servicoPlano;
         }
 
-        private void PovoarTaxas()
-        {
-            var resultadoSelecao = servicoTaxa.SelecionarTodos();
-
-            if (resultadoSelecao.IsSuccess)
-            {
-                foreach (var taxa in servicoTaxa.SelecionarTodos().Value)
-                {
-                    clbTaxas.Items.Add(taxa);
-                }
-            }
-        }
 
         public Func<Locacao, Result<Locacao>> GravarRegistro { get; set; }
 
@@ -80,39 +69,113 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
                 if(locacao.Cliente != null)
                 {
+                    cbxPlanoCobranca.Enabled = true;
+                    cbxCondutor.Enabled = true;
+
+
                     txtCliente.Text = locacao.Cliente.Nome;
                     cliente = locacao.Cliente;
 
+
+                    PovoarCbxCondutor();
                     cbxCondutor.SelectedItem = locacao.Condutor;
 
                     cbxGrupoVeiculos.SelectedItem = locacao.Veiculo.Grupo;
                     AtualizarValoresPlano();
 
-                    cbxPlanoCobranca.SelectedText = locacao.PlanoSelecionado;
+                    int i = 0;
+                    foreach (var item in cbxPlanoCobranca.Items)
+                    {
+                        if (item.Equals(locacao.PlanoSelecionado))
+                            cbxPlanoCobranca.SelectedItem = cbxPlanoCobranca.Items[i];
+
+                        i++;
+                    }
+
+
+                    txtVeiculo.Text = locacao.Veiculo.Modelo;
+                    veiculo = locacao.Veiculo;
 
                     int posicao = 0;
                     foreach (var taxaLocacao in locacao.Taxas)
                     {
-                        foreach (var taxaLista in clbTaxas.Items)
+                        for(int j = 0; j < clbTaxas.Items.Count; j++)
                         {
-                            if (taxaLocacao == taxaLista)
+                            if (taxaLocacao == clbTaxas.Items[j])
                                 clbTaxas.SetItemChecked(posicao, true);
 
                             posicao++;
                         }
+                        posicao = 0;
                     }
 
                     dpLocacao.Value = locacao.DataLocacao;
                     dpDevolucao.Value = locacao.PrevisaoDevolucao;
+
                 }
-                
-          
-
-
             }
-
-
         }
+       
+        private void PovoarCbxGrupoVeiculos()
+        {
+            var grupos = servicoGrupoVeiculos.SelecionarTodos().Value;
+
+            if (grupos.Any())
+                btnSelecionarVeiculo.Enabled = true;
+
+            foreach (var grupo in grupos)
+            {
+                cbxGrupoVeiculos.Items.Add(grupo);
+            }
+        }
+
+        private void PovoarTaxas()
+        {
+            var resultadoSelecao = servicoTaxa.SelecionarTodos();
+
+
+            if (resultadoSelecao.IsSuccess)
+            {
+                List<Taxa> taxas = servicoTaxa.SelecionarTodos().Value;
+
+
+                foreach (var taxa in taxas)
+                {
+                    if(taxa.Tipo == TipoCalculoTaxa.Diario)
+                        clbTaxas.Items.Add(taxa);
+                } 
+                
+                foreach (var taxa in taxas)
+                {
+                    if(taxa.Tipo == TipoCalculoTaxa.Fixo)
+                        clbTaxas.Items.Add(taxa);
+                }
+            }
+        }
+       
+        private void PovoarCbxCondutor()
+        {
+            var resultadoSelecao = servicoCondutor.SelecionarTodos();
+
+            if (resultadoSelecao.IsSuccess)
+            {
+                foreach (var c in servicoCondutor.SelecionarTodos().Value)
+                {
+                    if (c.Cliente.Id == cliente.Id)
+                        cbxCondutor.Items.Add(c);
+                }
+            }
+        }
+        
+        private void ObtemPlanoCobranca()
+        {
+            foreach (var p in servicoPlano.SelecionarTodos().Value)
+            {
+                if (p.GrupoDeVeiculos == grupo)
+                    plano = p;
+            }
+        }
+       
 
         private void btnSelecionarCliente_Click(object sender, EventArgs e)
         {
@@ -132,20 +195,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             }
         }
 
-        private void PovoarCbxCondutor()
-        {
-            var resultadoSelecao = servicoCondutor.SelecionarTodos();
-
-            if (resultadoSelecao.IsSuccess)
-            {
-                foreach (var c in servicoCondutor.SelecionarTodos().Value)
-                {
-                    if (c.Cliente.Id == cliente.Id)
-                        cbxCondutor.Items.Add(c);
-                }
-            }
-        }
-
         private void btnSelecionarVeiculo_Click(object sender, EventArgs e)
         {
             BotaoSelecionarForm tela = new BotaoSelecionarForm(servicoVeiculo, servicoGrupoVeiculos, grupo);
@@ -159,9 +208,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             {
                 veiculo = tela.veiculo;
                 txtVeiculo.Text = veiculo.Modelo;
+                cbxPlanoCobranca.Enabled = true;
             }
         }
 
+        
         private void cbxGrupoVeiculos_SelectedValueChanged(object sender, EventArgs e)
         {
              grupo = (GrupoDeVeiculos)cbxGrupoVeiculos.SelectedItem;
@@ -170,19 +221,60 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             ObtemPlanoCobranca();
         }
-
-        private void ObtemPlanoCobranca()
-        {
-            foreach (var p in servicoPlano.SelecionarTodos().Value)
-            {
-                if (p.GrupoDeVeiculos == grupo)
-                    plano = p;
-            }
-        }
-
+        
         private void cbxPlanoCobranca_SelectedIndexChanged(object sender, EventArgs e)
         {
             AtualizarValoresPlano();
+
+            AtualizaValoresSubtotalEhDiaria();
+
+            clbTaxas.Enabled = true;
+        }
+
+        
+
+
+        private void AtualizaValoresSubtotalEhDiaria()
+        {
+            AtualizaValorDiaria();
+
+            AtualizaSubtotal();
+        }
+
+        private void AtualizaSubtotal()
+        {
+            decimal subtotal = 0;
+
+            foreach (Taxa item in clbTaxas.CheckedItems)
+            {
+                if (item.Tipo == TipoCalculoTaxa.Fixo)
+                    subtotal += item.Valor;
+            }
+
+            decimal totalPorDia = Decimal.Parse(txtTotalPorDia.Text);
+            subtotal += totalPorDia;
+
+
+            TimeSpan diasLocacao = dpDevolucao.Value - dpLocacao.Value;
+            subtotal *= diasLocacao.Days;
+
+
+            txtSubtotal.Text = subtotal.ToString();
+        }
+
+        private void AtualizaValorDiaria()
+        {
+            decimal valorTotalPorDia = 0;
+
+            foreach (Taxa item in clbTaxas.CheckedItems)
+            {
+                if (item.Tipo == TipoCalculoTaxa.Diario)
+                    valorTotalPorDia += item.Valor;
+            }
+
+            valorTotalPorDia += Decimal.Parse(txtDiaria.Text);
+
+            txtTotalPorDia.Text = valorTotalPorDia.ToString();
         }
 
         private void AtualizarValoresPlano()
@@ -213,20 +305,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
         }
 
-        private void PovoarCbxGrupoVeiculos()
-        {
-            var grupos = servicoGrupoVeiculos.SelecionarTodos().Value;
 
-            if (grupos.Any())
-                btnSelecionarVeiculo.Enabled = true;
-
-            foreach (var grupo in grupos)
-            {
-                cbxGrupoVeiculos.Items.Add(grupo);
-            }
-        }
-
-        private void btnVisualizar_Click(object sender, EventArgs e)
+        private void btnGravar_Click(object sender, EventArgs e)
         {
             locacao.Cliente = cliente;
             locacao.Condutor = (Condutor)cbxCondutor.SelectedItem;
@@ -236,9 +316,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             locacao.DataLocacao = dpLocacao.Value;
             locacao.PrevisaoDevolucao = dpDevolucao.Value;
             locacao.StatusLocacao = StatusLocacao.Aberta;
-
-
-
+            
+            foreach (Taxa taxa in clbTaxas.CheckedItems)
+            {
+                locacao.Taxas.Add(taxa);
+            }
 
             var resultadoValidacao = GravarRegistro(locacao);
 
@@ -257,6 +339,26 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                     DialogResult = DialogResult.None;
                 }
             }
+        }
+
+        private void dpDevolucao_ValueChanged(object sender, EventArgs e)
+        {
+            if (dpDevolucao.Value < dpLocacao.Value)
+            {
+                MessageBox.Show("Data de locação deve ser menor do que a data de devolução",
+                    "Inserção locação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              
+                dpDevolucao.Value = DateTime.Now;
+
+                return;
+            }
+
+            AtualizaSubtotal();
+        }
+
+        private void clbTaxas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            AtualizaValoresSubtotalEhDiaria();
         }
     }
 }

@@ -17,8 +17,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 
         private StatusLocacao statusLocacao;
 
-        public Decimal Valor { get; set; }
-
         public DateTime DataLocacao { get; set; }
 
         public DateTime PrevisaoDevolucao { get; set; }
@@ -29,7 +27,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
       
         public Guid VeiculoId { get; set; }
 
-        public Taxa[] Taxas { get; set; }
+        public List<Taxa> Taxas { get; set; }
 
         public Condutor Condutor { get; set; }
 
