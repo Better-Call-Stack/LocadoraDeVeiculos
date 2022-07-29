@@ -32,12 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtVeiculo = new System.Windows.Forms.TextBox();
-            this.txtQuilometragem = new System.Windows.Forms.TextBox();
+            this.Quilometragem = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DataDevolucao = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtValorGasolina = new System.Windows.Forms.TextBox();
+            this.ValorGasolina = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxVolumeTanque = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -79,12 +79,12 @@
             this.txtVeiculo.Size = new System.Drawing.Size(223, 27);
             this.txtVeiculo.TabIndex = 3;
             // 
-            // txtQuilometragem
+            // Quilometragem
             // 
-            this.txtQuilometragem.Location = new System.Drawing.Point(338, 62);
-            this.txtQuilometragem.Name = "txtQuilometragem";
-            this.txtQuilometragem.Size = new System.Drawing.Size(223, 27);
-            this.txtQuilometragem.TabIndex = 4;
+            this.Quilometragem.Location = new System.Drawing.Point(338, 62);
+            this.Quilometragem.Name = "Quilometragem";
+            this.Quilometragem.Size = new System.Drawing.Size(223, 27);
+            this.Quilometragem.TabIndex = 4;
             // 
             // label3
             // 
@@ -104,13 +104,13 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Data de Dovolução:";
             // 
-            // dateTimePicker1
+            // DataDevolucao
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(338, 126);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(223, 27);
-            this.dateTimePicker1.TabIndex = 8;
+            this.DataDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DataDevolucao.Location = new System.Drawing.Point(338, 126);
+            this.DataDevolucao.Name = "DataDevolucao";
+            this.DataDevolucao.Size = new System.Drawing.Size(223, 27);
+            this.DataDevolucao.TabIndex = 8;
             // 
             // label5
             // 
@@ -121,12 +121,12 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Valor da Gasolina:";
             // 
-            // txtValorGasolina
+            // ValorGasolina
             // 
-            this.txtValorGasolina.Location = new System.Drawing.Point(338, 191);
-            this.txtValorGasolina.Name = "txtValorGasolina";
-            this.txtValorGasolina.Size = new System.Drawing.Size(223, 27);
-            this.txtValorGasolina.TabIndex = 10;
+            this.ValorGasolina.Location = new System.Drawing.Point(338, 191);
+            this.ValorGasolina.Name = "ValorGasolina";
+            this.ValorGasolina.Size = new System.Drawing.Size(223, 27);
+            this.ValorGasolina.TabIndex = 10;
             // 
             // label6
             // 
@@ -200,12 +200,12 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBoxVolumeTanque);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtValorGasolina);
+            this.Controls.Add(this.ValorGasolina);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.DataDevolucao);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtQuilometragem);
+            this.Controls.Add(this.Quilometragem);
             this.Controls.Add(this.txtVeiculo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -227,12 +227,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtVeiculo;
-        private System.Windows.Forms.TextBox txtQuilometragem;
+        private System.Windows.Forms.TextBox Quilometragem;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DataDevolucao;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtValorGasolina;
+        private System.Windows.Forms.TextBox ValorGasolina;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxVolumeTanque;
         private System.Windows.Forms.Label label7;
