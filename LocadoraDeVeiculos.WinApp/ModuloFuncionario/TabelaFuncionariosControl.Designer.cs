@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GridFuncionarios = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.GridFuncionarios)).BeginInit();
+            this.grid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
-            // GridFuncionarios
+            // grid
             // 
-            this.GridFuncionarios.AllowUserToAddRows = false;
-            this.GridFuncionarios.AllowUserToDeleteRows = false;
-            this.GridFuncionarios.AllowUserToResizeRows = false;
-            this.GridFuncionarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GridFuncionarios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridFuncionarios.Location = new System.Drawing.Point(0, 0);
-            this.GridFuncionarios.Name = "GridFuncionarios";
-            this.GridFuncionarios.RowHeadersWidth = 51;
-            this.GridFuncionarios.RowTemplate.Height = 29;
-            this.GridFuncionarios.Size = new System.Drawing.Size(774, 477);
-            this.GridFuncionarios.TabIndex = 0;
+            this.grid.AllowUserToAddRows = false;
+            this.grid.AllowUserToDeleteRows = false;
+            this.grid.AllowUserToResizeRows = false;
+            this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(0, 0);
+            this.grid.Name = "grid";
+            this.grid.RowHeadersWidth = 51;
+            this.grid.RowTemplate.Height = 29;
+            this.grid.Size = new System.Drawing.Size(774, 477);
+            this.grid.TabIndex = 0;
             // 
             // TabelaFuncionariosControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.GridFuncionarios);
+            this.Controls.Add(this.grid);
             this.Name = "TabelaFuncionariosControl";
             this.Size = new System.Drawing.Size(774, 477);
-            ((System.ComponentModel.ISupportInitialize)(this.GridFuncionarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView GridFuncionarios;
+        private System.Windows.Forms.DataGridView grid;
     }
 }

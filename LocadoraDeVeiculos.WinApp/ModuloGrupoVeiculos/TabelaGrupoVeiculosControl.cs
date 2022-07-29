@@ -14,18 +14,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloGrupoVeiculos
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
             grid.Columns.AddRange(ObterColunas());
-            grid.ConfigurarColunaId();
         }
 
         public DataGridViewColumn[] ObterColunas()
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id", FillWeight=15F, Visible=false },
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
-
-
             };
 
             return colunas;

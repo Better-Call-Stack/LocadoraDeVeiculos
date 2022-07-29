@@ -27,7 +27,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
             grid.Columns.AddRange(ObterColunas());
-            grid.ConfigurarColunaId();
             this.servicoPlanoDeCobranca = servicoPlanoDeCobranca;
             this.servicoGrupoVeiculos = servicoGrupoVeiculos;
         }
@@ -35,10 +34,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
         {
             var colunas = new DataGridViewColumn[]
             {
-                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id"},
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id", FillWeight=15F, Visible=false },
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "comboBoxGrupoVeiculos", HeaderText = "Grupo de Veículos"},
-
             };
 
             return colunas;

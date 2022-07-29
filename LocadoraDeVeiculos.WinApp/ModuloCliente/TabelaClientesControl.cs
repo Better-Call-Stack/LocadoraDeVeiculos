@@ -20,9 +20,56 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             gridPessoaFisica.ConfigurarGridSomenteLeitura();
             gridPessoaJuridica.ConfigurarGridZebrado();
             gridPessoaJuridica.ConfigurarGridSomenteLeitura();
-            gridPessoaFisica.ConfigurarColunaId();
-            gridPessoaJuridica.ConfigurarColunaId();
+            gridPessoaFisica.Columns.AddRange(ObterColunasPessoaFisica());
+            gridPessoaJuridica.Columns.AddRange(ObterColunasPessoaJuridica());
             this.servico = servico;
+        }
+
+        public DataGridViewColumn[] ObterColunasPessoaFisica()
+        {
+            var colunas = new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id", FillWeight=15F, Visible=false },
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "CPF", HeaderText = "CPF"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Email", HeaderText = "Email"},
+            };
+
+            return colunas;
+        }
+        public DataGridViewColumn[] ObterColunasPessoaJuridica()
+        {
+            var colunas = new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id", FillWeight=15F, Visible=false },
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "CNPJ", HeaderText = "CNPJ"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Telefone", HeaderText = "Telefone"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Email", HeaderText = "Email"},
+            };
+
+            return colunas;
+        }
+
+        public Guid ObtemIdClienteSelecionado()
+        {
+            if (tabControl.SelectedTab.Name == "tabPessoaFisica")
+            {
+                return gridPessoaFisica.SelecionarId<Guid>();
+            }
+            else
+            {
+                return gridPessoaJuridica.SelecionarId<Guid>();
+            }
         }
 
         internal void AtualizarRegistros(List<Cliente> clientes)
@@ -68,17 +115,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCliente
             }
 
             return pessoasJuridicas;
-        }
-
-        public Guid ObtemIdClienteSelecionado()
-        {
-            if (tabControl.SelectedTab.Name == "tabPessoaFisica")
-            {
-                return gridPessoaFisica.SelecionarId<Guid>();
-            }
-            else
-                return gridPessoaJuridica.SelecionarId<Guid>();
-
         }
 
         private void gridPessoaFisica_MouseDoubleClick(object sender, MouseEventArgs e)

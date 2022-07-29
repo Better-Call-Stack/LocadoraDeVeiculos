@@ -18,11 +18,25 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
             InitializeComponent();
             grid.ConfigurarGridZebrado();
             grid.ConfigurarGridSomenteLeitura();
-            grid.ConfigurarColunaId();
-
+            grid.Columns.AddRange(ObterColunas());
             this.servicoTaxa = servico;
         }
 
+        public DataGridViewColumn[] ObterColunas()
+        {
+            var colunas = new DataGridViewColumn[]
+            {
+                new DataGridViewTextBoxColumn { DataPropertyName = "Id", HeaderText = "Id", FillWeight=15F, Visible=false },
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Nome", HeaderText = "Nome"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"},
+
+                new DataGridViewTextBoxColumn { DataPropertyName = "Tipo", HeaderText = "Tipo"},
+            };
+
+            return colunas;
+        }
 
         public void AtualizarRegistros(List<Taxa> taxas)
         {
