@@ -24,6 +24,21 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             this.servicoCondutor = servicoCondutor;
             this.servicoCliente = servicoCliente;
         }
+       
+        public override void Inserir()
+        {
+            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(servicoCliente.SelecionarTodos().Value, "Insercao");
+            tela.Condutor = new Condutor();
+
+            tela.GravarRegistro = servicoCondutor.Inserir;
+
+            DialogResult resultado = tela.ShowDialog();
+
+            if (resultado == DialogResult.OK)
+            {
+                CarregarCondutores();
+            }
+        }
 
         public override void Editar()
         {
@@ -95,20 +110,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloCondutor
             }
         }
 
-        public override void Inserir()
-        {
-            TelaCadastroCondutorForm tela = new TelaCadastroCondutorForm(servicoCliente.SelecionarTodos().Value, "Insercao");
-            tela.Condutor = new Condutor();
-
-            tela.GravarRegistro = servicoCondutor.Inserir;
-
-            DialogResult resultado = tela.ShowDialog();
-
-            if (resultado == DialogResult.OK)
-            {
-                CarregarCondutores();
-            }
-        }
 
         private void CarregarCondutores()
         {
