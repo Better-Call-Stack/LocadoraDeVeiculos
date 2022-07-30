@@ -54,5 +54,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloDevolucao
         protected override string sqlSelecionarPorId => throw new NotImplementedException();
 
         protected override string sqlSelecionarTodos => throw new NotImplementedException();
+
+
     }
 }
