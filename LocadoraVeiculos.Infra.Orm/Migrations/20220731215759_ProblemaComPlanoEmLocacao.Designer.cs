@@ -4,14 +4,16 @@ using LocadoraVeiculos.Infra.Orm;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 {
     [DbContext(typeof(LocadoraDeVeiculosDbContext))]
-    partial class LocadoraDeVeiculosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220731215759_ProblemaComPlanoEmLocacao")]
+    partial class ProblemaComPlanoEmLocacao
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,13 +181,16 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
+                    b.HasIndex("ClienteId")
+                        .IsUnique();
 
-                    b.HasIndex("CondutorId");
+                    b.HasIndex("CondutorId")
+                        .IsUnique();
 
                     b.HasIndex("PlanoDeCobrancaId");
 
-                    b.HasIndex("VeiculoId");
+                    b.HasIndex("VeiculoId")
+                        .IsUnique();
 
                     b.ToTable("TbLocacao");
                 });
@@ -308,14 +313,14 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", b =>
                 {
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloCliente.Cliente", "Cliente")
-                        .WithMany()
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .WithOne()
+                        .HasForeignKey("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", "ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloCondutor.Condutor", "Condutor")
-                        .WithMany()
-                        .HasForeignKey("CondutorId")
+                        .WithOne()
+                        .HasForeignKey("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", "CondutorId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -326,9 +331,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                         .IsRequired();
 
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloVeiculo.Veiculo", "Veiculo")
-                        .WithMany()
-                        .HasForeignKey("VeiculoId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .WithOne()
+                        .HasForeignKey("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", "VeiculoId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Cliente");

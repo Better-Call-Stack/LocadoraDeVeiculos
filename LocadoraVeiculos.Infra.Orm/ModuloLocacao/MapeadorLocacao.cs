@@ -15,10 +15,10 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloLocacao
         {
             builder.ToTable("TbLocacao");
             builder.Property(x => x.Id).ValueGeneratedNever();
-            builder.HasOne(x => x.Cliente).WithOne().IsRequired();
-            builder.HasOne(x => x.Condutor).WithOne().OnDelete(DeleteBehavior.NoAction);
-            builder.HasOne(x => x.PlanoDeCobranca).WithOne().IsRequired();
-            builder.HasOne(x => x.Veiculo).WithOne().IsRequired();
+            builder.HasOne(x => x.Cliente).WithMany().HasForeignKey(x => x.ClienteId).OnDelete(DeleteBehavior.NoAction); 
+            builder.HasOne(x => x.Condutor).WithMany().HasForeignKey(x => x.CondutorId).OnDelete(DeleteBehavior.NoAction); 
+            builder.HasOne(x => x.PlanoDeCobranca).WithMany().HasForeignKey(x => x.PlanoDeCobrancaId).OnDelete(DeleteBehavior.NoAction); 
+            builder.HasOne(x => x.Veiculo).WithMany().HasForeignKey(x => x.VeiculoId).OnDelete(DeleteBehavior.NoAction); ;
             builder.HasMany(x => x.Taxas);
             builder.Property(x => x.PlanoSelecionado).HasColumnType("varchar(15)");
             builder.Property(x => x.DataLocacao).HasColumnType("datetime").IsRequired();
