@@ -37,17 +37,23 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloDevolucao
         {
             return devolucao.SingleOrDefault(d => d.Id == id);
         }
-        public List<Devolucao> SelecionarTodos(bool incluirLocacao = false)
-        {
-            if (incluirLocacao)
-                return devolucao.Include(d => d.Locacao).ToList();
-
-            return devolucao.ToList();
-        }
-
         public List<Devolucao> SelecionarTodos()
         {
-            return devolucao.ToList();
+            /*if (incluirLocacao)
+                return devolucao.Include(d => d.Locacao).ToList();
+
+            return devolucao.ToList();*/
+
+            return devolucao
+                     .Include(x => x.Locacao)
+                     .Include(x => x.Locacao.Taxas)
+
+                     .ToList();
         }
+
+        /*public List<Devolucao> SelecionarTodos()
+        {
+            return devolucao.ToList();
+        }*/
     }
 }

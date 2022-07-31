@@ -37,6 +37,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LocadoraDeVeiculos.Infra.Orm.ModuloVeiculo;
+using LocadoraDeVeiculos.Infra.Orm.ModuloDevolucao;
+using LocadoraVeiculos.Aplicacao.ModuloDevolucao;
+using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {
@@ -77,6 +80,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             var repositorioCondutor = new RepositorioCondutorOrm(contextoDadosOrm);
             var repositorioVeiculo = new RepositorioVeiculoOrm(contextoDadosOrm);
             var repositorioLocacao = new RepositorioLocacaoOrm(contextoDadosOrm);
+            var repositorioDevolucao = new RepositorioDevolucaoOrm(contextoDadosOrm);
 
 
             var servicoCliente = new ServicoCliente(repositorioCliente, contextoDadosOrm);
@@ -87,6 +91,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             var servicoCondutor = new ServicoCondutor(repositorioCondutor, contextoDadosOrm);
             var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo, contextoDadosOrm);
             var servicoLocacao = new ServicoLocacao(repositorioLocacao, contextoDadosOrm);
+            var servicoDevolucao = new ServicoDevolucao(repositorioDevolucao, contextoDadosOrm);
 
             controladores = new Dictionary<string, ControladorBase>();
 
@@ -99,6 +104,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             controladores.Add("ControladorVeiculo", new ControladorVeiculo(servicoVeiculo, servicoGrupoVeiculos));
             controladores.Add("ControladorLocacao", new ControladorLocacao(servicoLocacao, servicoCliente, servicoVeiculo, 
                 servicoGrupoVeiculos, servicoCondutor, servicoPlanoDeCobranca, servicoTaxa));
+            controladores.Add("ControladorDevolucao", new ControladorDevolucao(servicoDevolucao, servicoLocacao, servicoTaxa));
         }
 
         

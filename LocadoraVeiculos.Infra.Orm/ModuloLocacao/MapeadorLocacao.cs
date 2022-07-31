@@ -16,7 +16,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloLocacao
             builder.ToTable("TbLocacao");
             builder.Property(x => x.Id).ValueGeneratedNever();
             builder.HasOne(x => x.Cliente).WithOne().IsRequired();
-            builder.HasOne(x => x.Condutor).WithOne().OnDelete(DeleteBehavior.NoAction);
+            builder.HasOne(x => x.Condutor).WithMany().OnDelete(DeleteBehavior.NoAction);
             builder.HasOne(x => x.PlanoDeCobranca).WithOne().IsRequired();
             builder.HasOne(x => x.Veiculo).WithOne().IsRequired();
             builder.HasMany(x => x.Taxas);

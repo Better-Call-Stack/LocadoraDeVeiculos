@@ -3,6 +3,7 @@ using LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator;
 using LocadoraDeVeiculos.WinApp.GrupoVeiculos;
 using LocadoraDeVeiculos.WinApp.ModuloCliente;
 using LocadoraDeVeiculos.WinApp.ModuloCondutor;
+using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
 using LocadoraDeVeiculos.WinApp.ModuloFuncionario;
 using LocadoraDeVeiculos.WinApp.ModuloLocacao;
 using LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca;
@@ -136,6 +137,11 @@ namespace LocadoraDeVeiculos.WinApp
         private void locaçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurarTelaPrincipal(serviceLocator.Get<ControladorLocacao>());
+        }
+
+        private void devoluçãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ConfigurarTelaPrincipal(serviceLocator.Get<ControladorDevolucao>());
         }
     }
 }

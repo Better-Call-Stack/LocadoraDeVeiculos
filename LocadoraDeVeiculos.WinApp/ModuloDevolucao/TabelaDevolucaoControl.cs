@@ -77,16 +77,20 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             }
         }
 
-        public void AtualizarRegistros(List<Locacao> locacoes, List<Devolucao> devolucoes)
+        public void AtualizarRegistrosAtivos(List<Locacao> locacoes)
         {
             gridAtivos.Rows.Clear();
-            gridInativo.Rows.Clear();
 
             foreach (var locacao in locacoes)
             {
                 gridAtivos.Rows.Add(locacao.Id, locacao.Cliente.Nome, locacao.Condutor.Nome, 
                     locacao.Veiculo.Modelo, locacao.PlanoSelecionado);
             }
+        }
+
+        public void AtualizarRegistrosInativos(List<Devolucao> devolucoes)
+        {
+            gridInativo.Rows.Clear();
 
             foreach (Devolucao devolucao in devolucoes)
             {
@@ -94,7 +98,5 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                     devolucao.Locacao.Condutor.Nome, devolucao.Locacao.Veiculo.Modelo, devolucao.DataDevolucao);
             }
         }
-
-
     }
 }

@@ -127,7 +127,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloDevolucao
 
             try
             {
-                var devolucoes = repositorioDevolucao.SelecionarTodos(incluirLocacao: true);
+                var devolucoes = repositorioDevolucao.SelecionarTodos();
 
                 Log.Logger.Information("Devoluções selecionadas com sucesso");
 

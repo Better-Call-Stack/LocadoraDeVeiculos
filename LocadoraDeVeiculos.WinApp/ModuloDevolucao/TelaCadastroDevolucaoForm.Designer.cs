@@ -1,6 +1,6 @@
 ﻿namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 {
-    partial class TelaCadastroDevolucao
+    partial class TelaCadastroDevolucaoForm
     {
         /// <summary>
         /// Required designer variable.
@@ -41,10 +41,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxVolumeTanque = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.listTaxasAdicionais = new System.Windows.Forms.ListBox();
             this.sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.btnVisualizar = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtValorTotal = new System.Windows.Forms.TextBox();
+            this.cklistTaxas = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // txtCliente
@@ -154,15 +156,6 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "Taxas Adicionais:";
             // 
-            // listTaxasAdicionais
-            // 
-            this.listTaxasAdicionais.FormattingEnabled = true;
-            this.listTaxasAdicionais.ItemHeight = 20;
-            this.listTaxasAdicionais.Location = new System.Drawing.Point(42, 256);
-            this.listTaxasAdicionais.Name = "listTaxasAdicionais";
-            this.listTaxasAdicionais.Size = new System.Drawing.Size(519, 124);
-            this.listTaxasAdicionais.TabIndex = 14;
-            // 
             // sqlCommandBuilder1
             // 
             this.sqlCommandBuilder1.DataAdapter = null;
@@ -179,24 +172,50 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // btnVisualizar
+            // btnSalvar
             // 
-            this.btnVisualizar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnVisualizar.Location = new System.Drawing.Point(361, 406);
-            this.btnVisualizar.Name = "btnVisualizar";
-            this.btnVisualizar.Size = new System.Drawing.Size(94, 29);
-            this.btnVisualizar.TabIndex = 16;
-            this.btnVisualizar.Text = "Visualizar";
-            this.btnVisualizar.UseVisualStyleBackColor = true;
+            this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnSalvar.Location = new System.Drawing.Point(361, 406);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(94, 29);
+            this.btnSalvar.TabIndex = 16;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
             // 
-            // TelaCadastroDevolucao
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(338, 233);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(104, 20);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Valor Total R$:";
+            // 
+            // txtValorTotal
+            // 
+            this.txtValorTotal.Location = new System.Drawing.Point(338, 256);
+            this.txtValorTotal.Name = "txtValorTotal";
+            this.txtValorTotal.Size = new System.Drawing.Size(223, 27);
+            this.txtValorTotal.TabIndex = 18;
+            // 
+            // cklistTaxas
+            // 
+            this.cklistTaxas.FormattingEnabled = true;
+            this.cklistTaxas.Location = new System.Drawing.Point(42, 256);
+            this.cklistTaxas.Name = "cklistTaxas";
+            this.cklistTaxas.Size = new System.Drawing.Size(223, 136);
+            this.cklistTaxas.TabIndex = 19;
+            // 
+            // TelaCadastroDevolucaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(605, 464);
-            this.Controls.Add(this.btnVisualizar);
+            this.Controls.Add(this.cklistTaxas);
+            this.Controls.Add(this.txtValorTotal);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.listTaxasAdicionais);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBoxVolumeTanque);
             this.Controls.Add(this.label6);
@@ -213,7 +232,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "TelaCadastroDevolucao";
+            this.Name = "TelaCadastroDevolucaoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Devolução";
             this.ResumeLayout(false);
@@ -236,9 +255,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxVolumeTanque;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox listTaxasAdicionais;
         private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button btnVisualizar;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtValorTotal;
+        private System.Windows.Forms.CheckedListBox cklistTaxas;
     }
 }
