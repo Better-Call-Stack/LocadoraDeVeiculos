@@ -123,6 +123,11 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             }
             catch (Exception ex)
             {
+             /*   if (ex != null && ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    throw new NaoPodeExcluirEsteRegistroException(ex);
+                    
+                }*/
                 string msgErro = "Falha no sistema ao tentar excluir o cliente";
 
                 Log.Logger.Error(ex, msgErro + "{ClienteId}", cliente.Id);

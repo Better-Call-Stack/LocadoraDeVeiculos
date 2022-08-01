@@ -24,6 +24,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
         public Locacao Locacao { get; set; }
         public Guid LocacaoId { get; set; }
 
+        public decimal Valor { get; set; }
+
         public List<Taxa> Taxas { get; set; }
 
         public decimal ValorGasolina { get; set; }

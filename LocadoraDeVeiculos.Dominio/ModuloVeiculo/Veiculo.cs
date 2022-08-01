@@ -72,9 +72,10 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         }
         
 
-        public override void Atualizar(Veiculo registro)
+        public void AtualizarStatusParaAlugado()
         {
-            throw new NotImplementedException();
+            StatusVeiculo = StatusVeiculoEnum.Alugado;
+
         }
 
         public Veiculo Clonar()
@@ -98,6 +99,11 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
                    CapacidadeTanque == veiculo.CapacidadeTanque &&
                    Ano == veiculo.Ano &&
                    KmPercorrido == veiculo.KmPercorrido;
+        }
+
+        public override void Atualizar(Veiculo registro)
+        {
+            throw new NotImplementedException();
         }
     }
 }

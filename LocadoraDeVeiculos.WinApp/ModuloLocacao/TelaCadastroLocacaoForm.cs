@@ -211,9 +211,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
             if (resultado == DialogResult.OK)
             {
-                veiculo = tela.veiculo;
-                txtVeiculo.Text = veiculo.Modelo;
-                cbxPlanoCobranca.Enabled = true;
+                if (tela.veiculo != null)
+                {
+                    veiculo = tela.veiculo;
+                    txtVeiculo.Text = veiculo.Modelo;
+                    cbxPlanoCobranca.Enabled = true;
+                }
             }
         }
 
@@ -329,6 +332,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 taxas.Add(taxa);
             }
             locacao.Taxas = taxas;
+            locacao.Veiculo.AtualizarStatusParaAlugado();
 
             var resultadoValidacao = GravarRegistro(locacao);
 

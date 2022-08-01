@@ -27,15 +27,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         public TelaCadastroDevolucaoForm(ServicoLocacao servicoLocacao, ServicoTaxa servicoTaxa, Locacao locacao)
         {
             InitializeComponent();
-            
+
             this.servicoLocacao = servicoLocacao;
             this.servicoTaxa = servicoTaxa;
             this.locacao = locacao;
 
-            CarregarTaxas();
-            AtualizarTotal();
-            CarregarLocacao();
+            txtValorTotal.Text = locacao.Subtotal.ToString();
+            dpPrevisao.Value = locacao.PrevisaoDevolucao;
 
+            CarregarTaxas();
+            CarregarLocacao();
+            AtualizarTotal();
         }
 
         public TelaCadastroDevolucaoForm()
@@ -46,19 +48,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private Locacao locacao;
 
         public Func<Devolucao, Result<Devolucao>> GravarRegistro { get; set; }
-        public Func<Locacao, Result<Locacao>> LocacaoRegistro { get; set; }
 
         public Devolucao Devolucao
         {
             get { return Devolucao; }
-            set 
-            { 
-                devolucao = value; 
+            set
+            {
+                devolucao = value;
 
-                if(devolucao.Locacao != null)
+                if (devolucao.Locacao != null)
                 {
                     comboBoxVolumeTanque.SelectedItem = devolucao.VolumeTanque;
-                    DataDevolucao.Value = devolucao.DataDevolucao;
+                    dpDevolucao.Value = devolucao.DataDevolucao;
                     txtQuilometragem.Text = devolucao.Quilometragem.ToString();
                     txtValorGasolina.Text = devolucao.ValorGasolina.ToString();
 
@@ -79,15 +80,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             }
         }
 
-        public Locacao Locacao
-        {
-            get => locacao;
-            set
-            {
-                locacao = value;
-            }
-        }
-
 
         public void CarregarTaxas()
         {
@@ -97,14 +89,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             {
                 List<Taxa> taxas = servicoTaxa.SelecionarTodos().Value;
 
-                foreach (var taxa in taxas)
-                {
-                    if (!locacao.Taxas.Contains(taxa))
-                    {
-                        if (taxa.Tipo == TipoCalculoTaxa.Diario)
-                            cklistTaxas.Items.Add(taxa);
-                    }
-                }
                 foreach (var taxa in taxas)
                 {
                     if (!locacao.Taxas.Contains(taxa))
@@ -120,53 +104,97 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         {
             txtCliente.Text = locacao.Cliente.Nome;
             txtCondutor.Text = locacao.Condutor.Nome;
-            txtVeiculo.Text = locacao.Veiculo.Modelo; 
+            txtVeiculo.Text = locacao.Veiculo.Modelo;
             txtPlano.Text = locacao.PlanoSelecionado;
         }
 
+
         private void AtualizarTotal()
         {
-            decimal total = 0;
+            double total = 0;
 
+            decimal ValorTaxas = CalculaValorTaxas();
+
+            decimal totalGasolina = CalculaTotalGasolina();
+
+            decimal subtotal = CalculaSubtotal();
+
+            decimal totalValorQuilometros = CalculaValorKms();
+
+            total = Convert.ToDouble(ValorTaxas + totalGasolina + subtotal + totalValorQuilometros);
+
+            TimeSpan diasAhMais = dpDevolucao.Value.Date - locacao.PrevisaoDevolucao.Date;
+
+            if (diasAhMais.Days > 0)
+            {
+                total += total * 0.1;
+            }
+
+            txtValorTotal.Text = total.ToString();
+        }
+
+
+        private decimal CalculaSubtotal()
+        {
+            decimal subtotal = 0;
+
+            TimeSpan diasAhMais = dpDevolucao.Value.Date - locacao.PrevisaoDevolucao.Date;
+
+            if (diasAhMais.Days > 0)
+                subtotal = locacao.Subtotal + (locacao.ValorDiario * diasAhMais.Days);
+            else
+                subtotal = locacao.Subtotal;
+
+            return subtotal;
+        }
+
+        private decimal CalculaValorTaxas()
+        {
             decimal ValorTaxas = 0;
             foreach (Taxa item in cklistTaxas.CheckedItems)
             {
                 ValorTaxas += item.Valor;
             }
 
-            decimal totalGasolina = (decimal)txtValorGasolina.Value * CalculaQuantidadeGasolinaFaltando();
+            return ValorTaxas;
+        }
 
-            
-            TimeSpan diasAhMais = DataDevolucao.Value.Date - locacao.PrevisaoDevolucao.Date;
+        private decimal CalculaValorKms()
+        {
+            decimal kmsRodados = txtQuilometragem.Value;
+            decimal totalValorQuilometros = 0;
 
-            decimal subtotal = locacao.Subtotal + (locacao.ValorDiario * diasAhMais.Days);
-
-            total = ValorTaxas + totalGasolina + subtotal;
-
-            if (diasAhMais.Days > 0)
+            switch (txtPlano.Text)
             {
-                total *= (10 / 100);
+                case "Diário":
+                    totalValorQuilometros = kmsRodados * locacao.PlanoDeCobranca.ValorKmRodado_PlanoDiario;
+                    break;
+
+                case "Km Controlado":
+
+                    decimal quantidadeQuilometrosParaPagar = kmsRodados - locacao.PlanoDeCobranca.KmLivreIncluso_PlanoKmControlado;
+
+                    if (quantidadeQuilometrosParaPagar > 0)
+                        totalValorQuilometros = quantidadeQuilometrosParaPagar * locacao.PlanoDeCobranca.ValorKmRodado_PlanoKmControlado;
+                    else
+                        totalValorQuilometros = 0;
+                    break;
+
+                case "Km Livre":
+                    totalValorQuilometros = 0;
+                    break;
             }
 
-            txtValorTotal.Text = total.ToString();
+            return totalValorQuilometros;
         }
 
-        private void comboBoxVolumeTanque_SelectedIndexChanged(object sender, EventArgs e)
+        private decimal CalculaTotalGasolina()
         {
-            decimal total = CalculaQuantidadeGasolinaFaltando();
+            double capacidadeTanque = (double)locacao.Veiculo.CapacidadeTanque;
 
-            txtValorTotalGasolina.Text = total.ToString();
+            double valorGasolina = Double.Parse(txtValorGasolina.Text);
 
-            AtualizarTotal();
-        }
-
-        private decimal CalculaQuantidadeGasolinaFaltando()
-        {
-            decimal capacidadeTanque = Locacao.Veiculo.CapacidadeTanque;
-
-            decimal valorGasolina = Decimal.Parse(txtValorGasolina.Text);
-
-            decimal total = 0;
+            double total = 0;
 
             switch (comboBoxVolumeTanque.SelectedItem)
             {
@@ -175,7 +203,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                     break;
 
                 case "2/5":
-                    total = valorGasolina * (capacidadeTanque * (3 / 5));
+                    total = valorGasolina * (capacidadeTanque * (3.0 / 5.0));
                     break;
 
                 case "Meio":
@@ -183,16 +211,81 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                     break;
 
                 case "4/5":
-                    total = valorGasolina * (capacidadeTanque * (1 / 5));
+                    total = valorGasolina * (capacidadeTanque * (1.0 / 5.0));
                     break;
 
                 case "Cheio":
                     total = 0;
                     break;
             }
+            txtValorTotalGasolina.Text = total.ToString();
 
-            return total;
+            return Convert.ToDecimal(total);
         }
 
+
+
+        private void comboBoxVolumeTanque_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            decimal total = CalculaTotalGasolina();
+
+            txtValorTotalGasolina.Text = total.ToString();
+
+            AtualizarTotal();
+        }
+
+        private void cklistTaxas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            AtualizarTotal();
+        }
+
+        private void txtQuilometragem_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarTotal();
+        }
+
+        private void txtValorGasolina_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarTotal();
+        }
+
+        private void DataDevolucao_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarTotal();
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            devolucao.VolumeTanque = comboBoxVolumeTanque.SelectedText;
+            devolucao.DataDevolucao = dpDevolucao.Value;
+            devolucao.Quilometragem = txtQuilometragem.Value;
+            devolucao.Valor = Convert.ToDecimal(txtValorTotal.Text);
+
+            foreach (Taxa taxa in cklistTaxas.CheckedItems)
+            {
+                taxas.Add(taxa);
+            }
+            locacao.Taxas = taxas;
+            locacao.Veiculo.AtualizarStatusParaAlugado();
+
+            var resultadoValidacao = GravarRegistro(devolucao);
+
+            if (resultadoValidacao.IsFailed)
+            {
+                string erro = resultadoValidacao.Errors[0].Message;
+
+                if (erro.StartsWith("Falha no sistema"))
+                {
+                    MessageBox.Show(erro, "Inserção devolução", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show(erro, "Inserção devolução", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    DialogResult = DialogResult.None;
+                }
+
+            }
+        }
     }
 }

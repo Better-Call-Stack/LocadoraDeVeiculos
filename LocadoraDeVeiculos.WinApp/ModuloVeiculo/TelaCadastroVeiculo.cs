@@ -50,7 +50,17 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
                 cmbGrupoVeiculo.SelectedItem = veiculo.Grupo;
                 imagemSelecionada = veiculo.FotoVeiculo;
                 pb_Veiculo.Image = veiculo.Imagem;
-  
+
+                if (veiculo.StatusVeiculo != null)
+                {
+                    if (veiculo.StatusVeiculo == StatusVeiculoEnum.Alugado)
+                    {
+                        cmbStatusVeiculo.Items.Add(StatusVeiculoEnum.Alugado);
+                        cmbStatusVeiculo.SelectedItem = StatusVeiculoEnum.Alugado;
+                        cmbStatusVeiculo.Enabled = false;
+                    }
+                }
+
             }
         }
 
@@ -70,8 +80,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloVeiculo
 
             foreach (var item in status)
             {
-                cmbStatusVeiculo.Items.Add(item);
+                if(!item.Equals(StatusVeiculoEnum.Alugado))
+                    cmbStatusVeiculo.Items.Add(item);
             }
+
+         
         }
         private void CarregarGrupoDeVeiculos(List<GrupoDeVeiculos> grupoDeVeiculos)
         {

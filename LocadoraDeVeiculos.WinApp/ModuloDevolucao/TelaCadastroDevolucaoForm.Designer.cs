@@ -34,7 +34,7 @@
             this.txtVeiculo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.DataDevolucao = new System.Windows.Forms.DateTimePicker();
+            this.dpDevolucao = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxVolumeTanque = new System.Windows.Forms.ComboBox();
@@ -53,6 +53,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCondutor = new System.Windows.Forms.TextBox();
+            this.dpPrevisao = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.txtValorGasolina)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuilometragem)).BeginInit();
             this.SuspendLayout();
@@ -105,29 +107,30 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(296, 77);
+            this.label4.Location = new System.Drawing.Point(415, 77);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 15);
+            this.label4.Size = new System.Drawing.Size(66, 15);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Data de Dovolução:";
+            this.label4.Text = "Devolução:";
             // 
-            // DataDevolucao
+            // dpDevolucao
             // 
-            this.DataDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DataDevolucao.Location = new System.Drawing.Point(296, 94);
-            this.DataDevolucao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DataDevolucao.Name = "DataDevolucao";
-            this.DataDevolucao.Size = new System.Drawing.Size(196, 23);
-            this.DataDevolucao.TabIndex = 8;
+            this.dpDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpDevolucao.Location = new System.Drawing.Point(406, 94);
+            this.dpDevolucao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dpDevolucao.Name = "dpDevolucao";
+            this.dpDevolucao.Size = new System.Drawing.Size(84, 23);
+            this.dpDevolucao.TabIndex = 8;
+            this.dpDevolucao.ValueChanged += new System.EventHandler(this.DataDevolucao_ValueChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(296, 125);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 15);
+            this.label5.Size = new System.Drawing.Size(137, 15);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Valor Atual Gasolina:";
+            this.label5.Text = "Valor Atual Combustível:";
             // 
             // label6
             // 
@@ -191,6 +194,7 @@
             this.btnSalvar.TabIndex = 16;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // label8
             // 
@@ -218,6 +222,7 @@
             this.cklistTaxas.Name = "cklistTaxas";
             this.cklistTaxas.Size = new System.Drawing.Size(455, 94);
             this.cklistTaxas.TabIndex = 19;
+            this.cklistTaxas.SelectedValueChanged += new System.EventHandler(this.cklistTaxas_SelectedValueChanged);
             // 
             // txtValorGasolina
             // 
@@ -226,14 +231,21 @@
             this.txtValorGasolina.Name = "txtValorGasolina";
             this.txtValorGasolina.Size = new System.Drawing.Size(195, 23);
             this.txtValorGasolina.TabIndex = 20;
+            this.txtValorGasolina.ValueChanged += new System.EventHandler(this.txtValorGasolina_ValueChanged);
             // 
             // txtQuilometragem
             // 
             this.txtQuilometragem.Location = new System.Drawing.Point(296, 46);
             this.txtQuilometragem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtQuilometragem.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.txtQuilometragem.Name = "txtQuilometragem";
             this.txtQuilometragem.Size = new System.Drawing.Size(195, 23);
             this.txtQuilometragem.TabIndex = 21;
+            this.txtQuilometragem.ValueChanged += new System.EventHandler(this.txtQuilometragem_ValueChanged);
             // 
             // label
             // 
@@ -289,11 +301,32 @@
             this.txtCondutor.Size = new System.Drawing.Size(196, 23);
             this.txtCondutor.TabIndex = 24;
             // 
+            // dpPrevisao
+            // 
+            this.dpPrevisao.Enabled = false;
+            this.dpPrevisao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpPrevisao.Location = new System.Drawing.Point(296, 94);
+            this.dpPrevisao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dpPrevisao.Name = "dpPrevisao";
+            this.dpPrevisao.Size = new System.Drawing.Size(84, 23);
+            this.dpPrevisao.TabIndex = 29;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(311, 77);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(54, 15);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Previsão:";
+            // 
             // TelaCadastroDevolucaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(529, 468);
+            this.Controls.Add(this.dpPrevisao);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.txtPlano);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -311,7 +344,7 @@
             this.Controls.Add(this.comboBoxVolumeTanque);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.DataDevolucao);
+            this.Controls.Add(this.dpDevolucao);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtVeiculo);
@@ -340,7 +373,7 @@
         private System.Windows.Forms.TextBox txtVeiculo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker DataDevolucao;
+        private System.Windows.Forms.DateTimePicker dpDevolucao;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxVolumeTanque;
@@ -359,5 +392,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtCondutor;
+        private System.Windows.Forms.DateTimePicker dpPrevisao;
+        private System.Windows.Forms.Label label11;
     }
 }
