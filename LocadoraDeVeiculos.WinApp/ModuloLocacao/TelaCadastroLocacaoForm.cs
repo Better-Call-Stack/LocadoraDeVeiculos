@@ -54,6 +54,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             PovoarCbxGrupoVeiculos();
             AtualizarValoresPlano();
             PovoarTaxas();
+
+            dpDevolucao.Value.AddDays(30);
         }
 
 
@@ -156,6 +158,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
        
         private void PovoarCbxCondutor()
         {
+            cbxCondutor.Items.Clear();
+
             var resultadoSelecao = servicoCondutor.SelecionarTodos();
 
             if (resultadoSelecao.IsSuccess)
@@ -246,18 +250,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         {
             decimal subtotal = 0;
 
+            decimal totalPorDia = Decimal.Parse(txtTotalPorDia.Text);
+            subtotal += totalPorDia;
+
+
+            TimeSpan diasLocacao = dpDevolucao.Value.Date - dpLocacao.Value.Date;
+            subtotal *= diasLocacao.Days;
+
             foreach (Taxa item in clbTaxas.CheckedItems)
             {
                 if (item.Tipo == TipoCalculoTaxa.Fixo)
                     subtotal += item.Valor;
             }
-
-            decimal totalPorDia = Decimal.Parse(txtTotalPorDia.Text);
-            subtotal += totalPorDia;
-
-
-            TimeSpan diasLocacao = dpDevolucao.Value - dpLocacao.Value;
-            subtotal *= diasLocacao.Days;
 
 
             txtSubtotal.Text = subtotal.ToString();
@@ -340,17 +344,29 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
                     DialogResult = DialogResult.None;
                 }
+
+                
             }
         }
 
         private void dpDevolucao_ValueChanged(object sender, EventArgs e)
         {
-            if (dpDevolucao.Value < dpLocacao.Value)
+            if (dpDevolucao.Value.AddSeconds(1) < dpLocacao.Value)
             {
                 MessageBox.Show("Data de locação deve ser menor do que a data de devolução",
                     "Inserção locação", MessageBoxButtons.OK, MessageBoxIcon.Error);
               
-                dpDevolucao.Value = DateTime.Now;
+                dpDevolucao.Value = DateTime.Now.AddDays(30);
+
+                return;
+            }    
+         
+            if (dpDevolucao.Value > dpLocacao.Value.AddDays(31))
+            {
+                MessageBox.Show("Locação pode ter no máximo 30 dias de aluguel",
+                    "Inserção locação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              
+                dpDevolucao.Value = DateTime.Now.AddDays(30);
 
                 return;
             }
