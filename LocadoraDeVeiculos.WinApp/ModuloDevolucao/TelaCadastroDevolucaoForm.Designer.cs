@@ -45,16 +45,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.cklistTaxas = new System.Windows.Forms.CheckedListBox();
-            this.ValorGasolina = new System.Windows.Forms.NumericUpDown();
-            this.Quilometragem = new System.Windows.Forms.NumericUpDown();
+            this.txtValorGasolina = new System.Windows.Forms.NumericUpDown();
+            this.txtQuilometragem = new System.Windows.Forms.NumericUpDown();
             this.label = new System.Windows.Forms.Label();
             this.txtValorTotalGasolina = new System.Windows.Forms.TextBox();
             this.txtPlano = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtCondutor = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.ValorGasolina)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Quilometragem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorGasolina)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuilometragem)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCliente
@@ -219,21 +219,21 @@
             this.cklistTaxas.Size = new System.Drawing.Size(455, 94);
             this.cklistTaxas.TabIndex = 19;
             // 
-            // ValorGasolina
+            // txtValorGasolina
             // 
-            this.ValorGasolina.Location = new System.Drawing.Point(296, 143);
-            this.ValorGasolina.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ValorGasolina.Name = "ValorGasolina";
-            this.ValorGasolina.Size = new System.Drawing.Size(195, 23);
-            this.ValorGasolina.TabIndex = 20;
+            this.txtValorGasolina.Location = new System.Drawing.Point(296, 143);
+            this.txtValorGasolina.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtValorGasolina.Name = "txtValorGasolina";
+            this.txtValorGasolina.Size = new System.Drawing.Size(195, 23);
+            this.txtValorGasolina.TabIndex = 20;
             // 
-            // Quilometragem
+            // txtQuilometragem
             // 
-            this.Quilometragem.Location = new System.Drawing.Point(296, 46);
-            this.Quilometragem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Quilometragem.Name = "Quilometragem";
-            this.Quilometragem.Size = new System.Drawing.Size(195, 23);
-            this.Quilometragem.TabIndex = 21;
+            this.txtQuilometragem.Location = new System.Drawing.Point(296, 46);
+            this.txtQuilometragem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtQuilometragem.Name = "txtQuilometragem";
+            this.txtQuilometragem.Size = new System.Drawing.Size(195, 23);
+            this.txtQuilometragem.TabIndex = 21;
             // 
             // label
             // 
@@ -300,8 +300,8 @@
             this.Controls.Add(this.txtCondutor);
             this.Controls.Add(this.txtValorTotalGasolina);
             this.Controls.Add(this.label);
-            this.Controls.Add(this.Quilometragem);
-            this.Controls.Add(this.ValorGasolina);
+            this.Controls.Add(this.txtQuilometragem);
+            this.Controls.Add(this.txtValorGasolina);
             this.Controls.Add(this.cklistTaxas);
             this.Controls.Add(this.txtValorTotal);
             this.Controls.Add(this.label8);
@@ -325,8 +325,8 @@
             this.Name = "TelaCadastroDevolucaoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Devolução";
-            ((System.ComponentModel.ISupportInitialize)(this.ValorGasolina)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Quilometragem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtValorGasolina)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuilometragem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -351,8 +351,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtValorTotal;
         private System.Windows.Forms.CheckedListBox cklistTaxas;
-        private System.Windows.Forms.NumericUpDown ValorGasolina;
-        private System.Windows.Forms.NumericUpDown Quilometragem;
+        private System.Windows.Forms.NumericUpDown txtValorGasolina;
+        private System.Windows.Forms.NumericUpDown txtQuilometragem;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.TextBox txtValorTotalGasolina;
         private System.Windows.Forms.TextBox txtPlano;

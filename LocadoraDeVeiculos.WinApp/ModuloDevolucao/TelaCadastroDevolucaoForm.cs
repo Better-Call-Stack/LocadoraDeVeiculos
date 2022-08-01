@@ -55,8 +55,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 {
                     comboBoxVolumeTanque.SelectedItem = devolucao.VolumeTanque;
                     DataDevolucao.Value = devolucao.DataDevolucao;
-                    Quilometragem.Text = devolucao.Quilometragem.ToString();
-                    ValorGasolina.Text = devolucao.ValorGasolina.ToString();
+                    txtQuilometragem.Text = devolucao.Quilometragem.ToString();
+                    txtValorGasolina.Text = devolucao.ValorGasolina.ToString();
 
                     int posicao = 0;
                     foreach (var taxa in devolucao.Taxas)
@@ -124,30 +124,43 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         {
             decimal total = 0;
 
+            decimal ValorTaxas = 0;
             foreach (Taxa item in cklistTaxas.CheckedItems)
             {
-               total += item.Valor;
+                ValorTaxas += item.Valor;
             }
 
+            decimal totalGasolina = (decimal)txtValorGasolina.Value * CalculaQuantidadeGasolinaFaltando();
 
-            TimeSpan diasAhMais = DataDevolucao.Value - locacao.PrevisaoDevolucao;
+            
+            TimeSpan diasAhMais = DataDevolucao.Value.Date - locacao.PrevisaoDevolucao.Date;
 
-            decimal subtotal = locacao.Valor + (valorDiario * diasAhMais);
+            decimal subtotal = locacao.Subtotal + (locacao.ValorDiario * diasAhMais.Days);
 
-            total = taxas + (valorGasolina * volumeTanque) + subtotal
+            total = ValorTaxas + totalGasolina + subtotal;
 
-
-
-
+            if (diasAhMais.Days > 0)
+            {
+                total *= (10 / 100);
+            }
 
             txtValorTotal.Text = total.ToString();
         }
 
         private void comboBoxVolumeTanque_SelectedIndexChanged(object sender, EventArgs e)
         {
+            decimal total = CalculaQuantidadeGasolinaFaltando();
+
+            txtValorTotalGasolina.Text = total.ToString();
+
+            AtualizarTotal();
+        }
+
+        private decimal CalculaQuantidadeGasolinaFaltando()
+        {
             decimal capacidadeTanque = Locacao.Veiculo.CapacidadeTanque;
 
-            decimal valorGasolina = Decimal.Parse(ValorGasolina.Text);
+            decimal valorGasolina = Decimal.Parse(txtValorGasolina.Text);
 
             decimal total = 0;
 
@@ -174,11 +187,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                     break;
             }
 
-            txtValorTotalGasolina.Text = total.ToString();
-
-            AtualizarTotal();
+            return total;
         }
 
-  
     }
 }
