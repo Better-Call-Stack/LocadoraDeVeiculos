@@ -28,7 +28,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
 
         public List<Taxa> Taxas { get; set; }
 
-        public decimal ValorGasolina { get; set; }
+        public decimal ValorCombustivel { get; set; }
         public decimal Quilometragem { get; set; }
         public DateTime DataDevolucao { get; set; }
 
@@ -36,7 +36,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
 
         public override void Atualizar(Devolucao registro)
         {
-            ValorGasolina = registro.ValorGasolina;
             Quilometragem = registro.Quilometragem;
             DataDevolucao = registro.DataDevolucao;
             Locacao = registro.Locacao;

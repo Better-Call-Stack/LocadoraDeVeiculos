@@ -83,8 +83,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             foreach (var locacao in locacoes)
             {
-                gridAtivos.Rows.Add(locacao.Id, locacao.Cliente.Nome, locacao.Condutor.Nome, 
-                    locacao.Veiculo.Modelo, locacao.PlanoSelecionado);
+                if (locacao.StatusLocacao == StatusLocacao.Aberta) {
+                    gridAtivos.Rows.Add(locacao.Id, locacao.Cliente.Nome, locacao.Condutor.Nome,
+                        locacao.Veiculo.Modelo, locacao.PlanoSelecionado);
+                }
             }
         }
 

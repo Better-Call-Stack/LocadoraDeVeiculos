@@ -15,7 +15,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloDevolucao
         {
             builder.ToTable("TBDevolucao");
             builder.Property(x => x.Id).ValueGeneratedNever();
-            builder.Property(x => x.ValorGasolina).HasColumnType("decimal(10,2)");
+            builder.Property(x => x.ValorCombustivel).HasColumnType("decimal(10,2)");
             builder.Property(x => x.Valor).HasColumnType("decimal(18,2)");
             builder.Property(x => x.Quilometragem).HasColumnType("decimal(18,2)");
             builder.Property(x => x.DataDevolucao).HasColumnType("date");

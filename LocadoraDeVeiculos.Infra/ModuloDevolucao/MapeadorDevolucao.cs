@@ -17,7 +17,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloDevolucao
         public override void ConfigurarParametros(Devolucao registro, SqlCommand comando)
         {
             comando.Parameters.AddWithValue("ID", registro.Id);
-            comando.Parameters.AddWithValue("VALORGASOLINA", registro.ValorGasolina);
+            comando.Parameters.AddWithValue("VALORGASOLINA", registro.ValorCombustivel);
             comando.Parameters.AddWithValue("QUILOMETRAGEM", registro.Quilometragem);
             comando.Parameters.AddWithValue("DATADEVOLUCAO", registro.DataDevolucao);
             comando.Parameters.AddWithValue("VOLUMETANQUE", registro.VolumeTanque);
@@ -35,7 +35,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloDevolucao
 
             Devolucao devolucao = new Devolucao();
             devolucao.Id = id;
-            devolucao.ValorGasolina = valorGasolina;
+            devolucao.ValorCombustivel = valorGasolina;
             devolucao.Quilometragem = quilometragem;
             devolucao.DataDevolucao = dataDevolucao;
             devolucao.VolumeTanque = volumeTanque;

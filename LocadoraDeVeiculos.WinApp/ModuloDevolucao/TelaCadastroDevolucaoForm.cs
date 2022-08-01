@@ -34,6 +34,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             txtValorTotal.Text = locacao.Subtotal.ToString();
             dpPrevisao.Value = locacao.PrevisaoDevolucao;
+            comboBoxVolumeTanque.SelectedIndex = 4;
 
             CarregarTaxas();
             CarregarLocacao();
@@ -61,7 +62,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                     comboBoxVolumeTanque.SelectedItem = devolucao.VolumeTanque;
                     dpDevolucao.Value = devolucao.DataDevolucao;
                     txtQuilometragem.Text = devolucao.Quilometragem.ToString();
-                    txtValorGasolina.Text = devolucao.ValorGasolina.ToString();
+                    txtValorGasolina.Text = devolucao.ValorCombustivel.ToString();
 
                     int posicao = 0;
                     foreach (var taxa in devolucao.Taxas)
@@ -256,17 +257,18 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            devolucao.VolumeTanque = comboBoxVolumeTanque.SelectedText;
+            devolucao.VolumeTanque = comboBoxVolumeTanque.SelectedItem.ToString();
             devolucao.DataDevolucao = dpDevolucao.Value;
+            devolucao.ValorCombustivel = txtValorGasolina.Value;
             devolucao.Quilometragem = txtQuilometragem.Value;
             devolucao.Valor = Convert.ToDecimal(txtValorTotal.Text);
+            devolucao.Locacao = locacao;
 
             foreach (Taxa taxa in cklistTaxas.CheckedItems)
             {
                 taxas.Add(taxa);
             }
-            locacao.Taxas = taxas;
-            locacao.Veiculo.AtualizarStatusParaAlugado();
+            devolucao.Taxas = taxas;
 
             var resultadoValidacao = GravarRegistro(devolucao);
 
@@ -284,6 +286,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
                     DialogResult = DialogResult.None;
                 }
+
+
+                devolucao.Locacao.StatusLocacao = StatusLocacao.Fechada;
+
 
             }
         }
