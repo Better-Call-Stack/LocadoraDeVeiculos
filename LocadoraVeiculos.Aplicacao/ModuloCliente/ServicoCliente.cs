@@ -113,27 +113,29 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
 
                 return Result.Ok();
             }
-            catch(NaoPodeExcluirEsteRegistroException ex)
-            {
-                string msgErro = $"O cliente {cliente.Nome} está relacionado com um condutor e não pode ser excluído";
-
-                Log.Logger.Error(ex, msgErro + "{ClienteId}", cliente.Id);
-
-                return Result.Fail(msgErro);
-            }
             catch (Exception ex)
             {
-             /*   if (ex != null && ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+               if (ex != null && ex.InnerException.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
                 {
-                    throw new NaoPodeExcluirEsteRegistroException(ex);
+                    string msgErroDelete = "";
+                    if (ex != null && ex.InnerException.Message.Contains("Condutor"))
+                         msgErroDelete = $"O cliente {cliente.Nome} está relacionado com um condutor e não pode ser excluído";
                     
-                }*/
+                    if (ex != null && ex.InnerException.Message.Contains("Locacao"))
+                         msgErroDelete = $"O cliente {cliente.Nome} está relacionado com uma locação e não pode ser excluído";
+
+                    Log.Logger.Error(ex, msgErroDelete + "{ClienteId}", cliente.Id);
+
+                    return Result.Fail(msgErroDelete);
+
+                }
                 string msgErro = "Falha no sistema ao tentar excluir o cliente";
 
                 Log.Logger.Error(ex, msgErro + "{ClienteId}", cliente.Id);
 
                 return Result.Fail(msgErro);
             }
+
         }
 
         public Result<List<Cliente>> SelecionarTodos()

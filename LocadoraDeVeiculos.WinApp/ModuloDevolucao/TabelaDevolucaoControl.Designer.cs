@@ -46,63 +46,67 @@
             this.tabelaControl.Controls.Add(this.tabInativo);
             this.tabelaControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabelaControl.Location = new System.Drawing.Point(0, 0);
-            this.tabelaControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabelaControl.Name = "tabelaControl";
             this.tabelaControl.SelectedIndex = 0;
-            this.tabelaControl.Size = new System.Drawing.Size(710, 545);
+            this.tabelaControl.Size = new System.Drawing.Size(621, 409);
             this.tabelaControl.TabIndex = 1;
             // 
             // tabAtivos
             // 
             this.tabAtivos.Controls.Add(this.gridAtivos);
-            this.tabAtivos.Location = new System.Drawing.Point(4, 29);
+            this.tabAtivos.Location = new System.Drawing.Point(4, 24);
+            this.tabAtivos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabAtivos.Name = "tabAtivos";
-            this.tabAtivos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAtivos.Size = new System.Drawing.Size(702, 512);
+            this.tabAtivos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabAtivos.Size = new System.Drawing.Size(613, 381);
             this.tabAtivos.TabIndex = 0;
-            this.tabAtivos.Text = "Ativos";
+            this.tabAtivos.Text = "Locações Ativas";
             this.tabAtivos.UseVisualStyleBackColor = true;
             // 
             // gridAtivos
             // 
             this.gridAtivos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridAtivos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridAtivos.Location = new System.Drawing.Point(3, 3);
+            this.gridAtivos.Location = new System.Drawing.Point(3, 2);
+            this.gridAtivos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridAtivos.Name = "gridAtivos";
             this.gridAtivos.RowHeadersWidth = 51;
             this.gridAtivos.RowTemplate.Height = 29;
-            this.gridAtivos.Size = new System.Drawing.Size(696, 506);
+            this.gridAtivos.Size = new System.Drawing.Size(607, 377);
             this.gridAtivos.TabIndex = 0;
             // 
             // tabInativo
             // 
             this.tabInativo.Controls.Add(this.gridInativo);
-            this.tabInativo.Location = new System.Drawing.Point(4, 29);
+            this.tabInativo.Location = new System.Drawing.Point(4, 24);
+            this.tabInativo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabInativo.Name = "tabInativo";
-            this.tabInativo.Padding = new System.Windows.Forms.Padding(3);
-            this.tabInativo.Size = new System.Drawing.Size(702, 512);
+            this.tabInativo.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabInativo.Size = new System.Drawing.Size(613, 381);
             this.tabInativo.TabIndex = 1;
-            this.tabInativo.Text = "Inativos";
+            this.tabInativo.Text = "Devoluções";
             this.tabInativo.UseVisualStyleBackColor = true;
             // 
             // gridInativo
             // 
             this.gridInativo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridInativo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridInativo.Location = new System.Drawing.Point(3, 3);
+            this.gridInativo.Location = new System.Drawing.Point(3, 2);
+            this.gridInativo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gridInativo.Name = "gridInativo";
             this.gridInativo.RowHeadersWidth = 51;
             this.gridInativo.RowTemplate.Height = 29;
-            this.gridInativo.Size = new System.Drawing.Size(696, 506);
+            this.gridInativo.Size = new System.Drawing.Size(607, 377);
             this.gridInativo.TabIndex = 0;
             // 
             // TabelaDevolucaoControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabelaControl);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "TabelaDevolucaoControl";
-            this.Size = new System.Drawing.Size(710, 545);
+            this.Size = new System.Drawing.Size(621, 409);
             this.tabelaControl.ResumeLayout(false);
             this.tabAtivos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridAtivos)).EndInit();

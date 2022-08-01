@@ -308,12 +308,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
                     DialogResult = DialogResult.None;
                 }
-
-
-                devolucao.Locacao.StatusLocacao = StatusLocacao.Fechada;
-
-
+                return;
             }
+            devolucao.Locacao.StatusLocacao = StatusLocacao.Fechada;
+            locacao.Veiculo.StatusVeiculo = Dominio.ModuloVeiculo.StatusVeiculoEnum.Disponível;
         }
     }
 }

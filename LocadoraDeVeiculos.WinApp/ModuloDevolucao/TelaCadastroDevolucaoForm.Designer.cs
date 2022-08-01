@@ -216,6 +216,7 @@
             // 
             // cklistTaxas
             // 
+            this.cklistTaxas.CheckOnClick = true;
             this.cklistTaxas.FormattingEnabled = true;
             this.cklistTaxas.Location = new System.Drawing.Point(35, 256);
             this.cklistTaxas.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);

@@ -131,7 +131,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
         {
-            return new ConfiguracaoToolboxLocacao();
+            return new ConfiguracaoToolboxDevolucao();
         }
 
         public override UserControl ObtemListagem()
@@ -151,12 +151,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             if (resultadoSelecaoAtivos.IsSuccess)
             {
                 List<Locacao> locacao = resultadoSelecaoAtivos.Value;
-                tabelaDevolucao.AtualizarRegistrosAtivos(locacao);
+                tabelaDevolucao.AtualizarLocacoes(locacao);
             }
             if (resultadoSelecaoInativos.IsSuccess)
             {
                 List<Devolucao> devolucao = resultadoSelecaoInativos.Value;
-                tabelaDevolucao.AtualizarRegistrosInativos(devolucao);
+                tabelaDevolucao.AtualizarDevolucoes(devolucao);
             }
             else
             {

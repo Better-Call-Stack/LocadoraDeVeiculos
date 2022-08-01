@@ -16,5 +16,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         public override string TooltipEditar => "Editar uma devolução";
 
         public override string TooltipExcluir => "Excluir uma devolução";
+
+        public override bool EditarHabilitado => false;
+
+        public override bool ExcluirHabilitado => false;
     }
 }

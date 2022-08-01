@@ -26,11 +26,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             gridAtivos.ConfigurarGridSomenteLeitura();
             gridInativo.ConfigurarGridZebrado();
             gridInativo.ConfigurarGridSomenteLeitura();
-            gridAtivos.Columns.AddRange(ObterColunasAtivos());
-            gridInativo.Columns.AddRange(ObterColunasInativo());
+            gridAtivos.Columns.AddRange(ObterColunasLocacoes());
+            gridInativo.Columns.AddRange(ObterColunasDevolucoes());
         }
 
-        public DataGridViewColumn[] ObterColunasAtivos()
+        public DataGridViewColumn[] ObterColunasLocacoes()
         {
             var colunas = new DataGridViewColumn[]
             {
@@ -47,7 +47,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             return colunas;
         }
-        public DataGridViewColumn[] ObterColunasInativo()
+        public DataGridViewColumn[] ObterColunasDevolucoes()
         {
             var colunas = new DataGridViewColumn[]
             {
@@ -58,8 +58,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 new DataGridViewTextBoxColumn { DataPropertyName = "Condutor", HeaderText = "Condutor"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "Veiculo", HeaderText = "Veiculo"},
+               
+                new DataGridViewTextBoxColumn { DataPropertyName = "DataPrevisao", HeaderText = "Previsao"},
 
                 new DataGridViewTextBoxColumn { DataPropertyName = "DataDevolucao", HeaderText = "Devolução"},
+               
+                new DataGridViewTextBoxColumn { DataPropertyName = "Valor", HeaderText = "Valor"},
             };
 
             return colunas;
@@ -77,7 +81,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             }
         }
 
-        public void AtualizarRegistrosAtivos(List<Locacao> locacoes)
+        public void AtualizarLocacoes(List<Locacao> locacoes)
         {
             gridAtivos.Rows.Clear();
 
@@ -90,14 +94,15 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             }
         }
 
-        public void AtualizarRegistrosInativos(List<Devolucao> devolucoes)
+        public void AtualizarDevolucoes(List<Devolucao> devolucoes)
         {
             gridInativo.Rows.Clear();
 
             foreach (Devolucao devolucao in devolucoes)
             {
                 gridInativo.Rows.Add(devolucao.Id, devolucao.Locacao.Cliente.Nome,
-                    devolucao.Locacao.Condutor.Nome, devolucao.Locacao.Veiculo.Modelo, devolucao.DataDevolucao);
+                    devolucao.Locacao.Condutor.Nome, devolucao.Locacao.Veiculo.Modelo, devolucao.Locacao.PrevisaoDevolucao.ToShortDateString(), 
+                    devolucao.DataDevolucao.ToShortDateString(), devolucao.Valor);
             }
         }
     }

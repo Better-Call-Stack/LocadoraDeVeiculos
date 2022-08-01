@@ -332,7 +332,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 taxas.Add(taxa);
             }
             locacao.Taxas = taxas;
-            locacao.Veiculo.AtualizarStatusParaAlugado();
 
             var resultadoValidacao = GravarRegistro(locacao);
 
@@ -350,9 +349,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
 
                     DialogResult = DialogResult.None;
                 }
-
                 
+                return;
             }
+
+            locacao.Veiculo.AtualizarStatusParaAlugado();
+
         }
 
         private void dpDevolucao_ValueChanged(object sender, EventArgs e)
