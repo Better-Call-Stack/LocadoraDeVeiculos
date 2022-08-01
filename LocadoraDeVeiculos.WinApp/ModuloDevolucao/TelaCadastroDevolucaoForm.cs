@@ -41,8 +41,20 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             AtualizarTotal();
         }
 
-        public TelaCadastroDevolucaoForm()
+        public TelaCadastroDevolucaoForm(ServicoLocacao servicoLocacao, ServicoTaxa servicoTaxa)
         {
+            InitializeComponent();
+
+            this.servicoLocacao = servicoLocacao;
+            this.servicoTaxa = servicoTaxa;
+
+            txtValorTotal.Text = locacao.Subtotal.ToString();
+            dpPrevisao.Value = locacao.PrevisaoDevolucao;
+            comboBoxVolumeTanque.SelectedIndex = 4;
+
+            CarregarTaxas();
+            CarregarLocacao();
+            AtualizarTotal();
         }
 
         private Devolucao devolucao;
@@ -252,6 +264,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         private void DataDevolucao_ValueChanged(object sender, EventArgs e)
         {
+            if(dpDevolucao.Value < locacao.DataLocacao)
+            {
+                MessageBox.Show("Data de devolução não pode ser menor do que a data de locação", "Inserção de devolução",
+                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                dpDevolucao.Value = DateTime.Now;
+
+                return;
+            }
+
             AtualizarTotal();
         }
 
