@@ -23,7 +23,8 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloLocacao
             builder.Property(x => x.PlanoSelecionado).HasColumnType("varchar(15)");
             builder.Property(x => x.DataLocacao).HasColumnType("datetime").IsRequired();
             builder.Property(x => x.PrevisaoDevolucao).HasColumnType("datetime").IsRequired();
-            builder.Property(x => x.Valor).HasColumnType("decimal(18,2)");
+            builder.Property(x => x.Subtotal).HasColumnType("decimal(18,2)");
+            builder.Property(x => x.ValorDiario).HasColumnType("decimal(18,2)");
             builder.Property(x => x.StatusLocacao).HasConversion<int>();
 
 

@@ -321,7 +321,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
             locacao.DataLocacao = dpLocacao.Value;
             locacao.PrevisaoDevolucao = dpDevolucao.Value;
             locacao.StatusLocacao = StatusLocacao.Aberta;
-            locacao.Valor = Decimal.Parse(txtSubtotal.Text);
+            locacao.Subtotal = Decimal.Parse(txtSubtotal.Text);
+            locacao.ValorDiario = Decimal.Parse(txtTotalPorDia.Text);
 
             foreach (Taxa taxa in clbTaxas.CheckedItems)
             {

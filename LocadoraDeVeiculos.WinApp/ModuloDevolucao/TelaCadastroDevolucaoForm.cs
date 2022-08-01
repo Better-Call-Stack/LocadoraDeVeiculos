@@ -133,8 +133,13 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                total += item.Valor;
             }
 
-            TimeSpan diasLocacao = DataDevolucao.Value - Locacao.DataLocacao;
-            total *= diasLocacao.Days;
+
+            TimeSpan diasAhMais = DataDevolucao.Value - locacao.PrevisaoDevolucao;
+
+            decimal subtotal = locacao.Valor + (valorDiario * diasAhMais);
+
+            total = taxas + (valorGasolina * volumeTanque) + subtotal
+
 
 
 
