@@ -17,7 +17,9 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
 
         private StatusLocacao statusLocacao;
 
-        public decimal Valor { get; set; }
+        public decimal Subtotal { get; set; }
+
+        public decimal ValorDiario { get; set; }
 
         public DateTime DataLocacao { get; set; }
 
