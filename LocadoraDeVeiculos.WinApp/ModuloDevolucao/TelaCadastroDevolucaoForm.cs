@@ -21,6 +21,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
     {
         TabelaDevolucaoControl tabelaDevolucao;
         TabelaLocacoesControl tabelaLocacoes;
+        TelaCadastroLocacaoForm telaLocacao;
         ServicoLocacao servicoLocacao;
         ServicoTaxa servicoTaxa;
         private List<Taxa> taxas = new List<Taxa>();
@@ -30,14 +31,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             InitializeComponent();
             this.servicoLocacao = servicoLocacao;
             this.servicoTaxa = servicoTaxa;
-            //this.taxas = new List<Taxa>();
             CarregarVolumeTanque();
             CarregarTaxas();
+            AtualizarTotal();
         }
 
         private Devolucao devolucao;
         private Locacao locacao;
+
         public Func<Devolucao, Result<Devolucao>> GravarRegistro { get; set; }
+        public Func<Locacao, Result<Locacao>> LocacaoRegistro { get; set; }
 
         public Devolucao Devolucao
         {
@@ -48,8 +51,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
                 if(devolucao.Locacao != null)
                 {
-                    txtCliente.Text = devolucao.Locacao.Cliente.Nome;
-                    txtVeiculo.Text = devolucao.Locacao.Veiculo.Modelo;
                     comboBoxVolumeTanque.SelectedItem = devolucao.VolumeTanque;
                     DataDevolucao.Value = devolucao.DataDevolucao;
                     Quilometragem.Text = devolucao.Quilometragem.ToString();
@@ -68,6 +69,16 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                         posicao = 0;
                     }
                 }
+            }
+        }
+
+        public Locacao Locacao
+        {
+            get => locacao;
+            set
+            {
+                locacao = value;
+                CarregarLocacao();
             }
         }
 
@@ -91,21 +102,73 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
                 foreach (var taxa in taxas)
                 {
-                    cklistTaxas.Items.Add(taxa);
+                    if (taxa.Tipo == TipoCalculoTaxa.Diario)
+                        cklistTaxas.Items.Add(taxa);
+                }
+                foreach (var taxa in taxas)
+                {
+                    if (taxa.Tipo == TipoCalculoTaxa.Fixo)
+                        cklistTaxas.Items.Add(taxa);
                 }
             }
         }
 
-        private void ConfigurarListagemLocacao()
+        private void CarregarLocacao()
         {
-            tabelaDevolucao = new TabelaDevolucaoControl();
-            tabelaDevolucao.AtualizarRegistrosAtivos(servicoLocacao.SelecionarTodos().Value);
+            txtCliente.Text = locacao.Cliente.Nome;
+            txtVeiculo.Text = locacao.Veiculo.Modelo;
+        }
 
-            Controls.Clear();
+        private void AtualizarTotal()
+        {
+            decimal total = 0;
 
-            tabelaDevolucao.Dock = DockStyle.Fill;
+            foreach (Taxa item in cklistTaxas.CheckedItems)
+            {
+               total += item.Valor;
+            }
 
-            Controls.Add(tabelaDevolucao);
+            TimeSpan diasLocacao = DataDevolucao.Value - Locacao.DataLocacao;
+            total *= diasLocacao.Days;
+
+
+            txtValorTotal.Text = total.ToString();
+        }
+
+        private void comboBoxVolumeTanque_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            decimal capacidadeTanque = Locacao.Veiculo.CapacidadeTanque;
+
+            decimal valorGasolina = Decimal.Parse(ValorGasolina.Text);
+
+            decimal total = 0;
+
+            switch (comboBoxVolumeTanque.SelectedItem)
+            {
+                case "Vazio":
+                    total = valorGasolina * capacidadeTanque;
+                    break;
+
+                case "2/5":
+                    total = valorGasolina * (capacidadeTanque * (3 / 5));
+                    break;
+
+                case "Meio":
+                    total = valorGasolina * (capacidadeTanque / 2);
+                    break;
+
+                case "4/5":
+                    total = valorGasolina * (capacidadeTanque * (1 / 5));
+                    break;
+
+                case "Cheio":
+                    total = 0;
+                    break;
+            }
+
+            txtValorTotalGasolina.Text = total.ToString();
+
+            AtualizarTotal();
         }
     }
 }

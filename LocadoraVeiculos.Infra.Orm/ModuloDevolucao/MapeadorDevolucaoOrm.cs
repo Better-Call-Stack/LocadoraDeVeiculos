@@ -18,9 +18,9 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloDevolucao
             builder.Property(x => x.ValorGasolina).HasColumnType("decimal(10,2)");
             builder.Property(x => x.Quilometragem).HasColumnType("decimal(18,2)");
             builder.Property(x => x.DataDevolucao).HasColumnType("date");
-            builder.Property(x => x.VolumeTanque).HasColumnType("int");
+            builder.Property(x => x.VolumeTanque).HasColumnType("varchar(10)");
             builder.HasOne(x => x.Locacao);
-            builder.HasOne(x => x.Taxa);
+            builder.HasMany(x => x.Taxas);
         }
     }
 }

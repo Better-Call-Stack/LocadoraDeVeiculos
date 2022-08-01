@@ -32,12 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtVeiculo = new System.Windows.Forms.TextBox();
-            this.Quilometragem = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.DataDevolucao = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
-            this.ValorGasolina = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxVolumeTanque = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -47,10 +45,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.cklistTaxas = new System.Windows.Forms.CheckedListBox();
+            this.ValorGasolina = new System.Windows.Forms.NumericUpDown();
+            this.Quilometragem = new System.Windows.Forms.NumericUpDown();
+            this.label = new System.Windows.Forms.Label();
+            this.txtValorTotalGasolina = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorGasolina)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Quilometragem)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCliente
             // 
+            this.txtCliente.Enabled = false;
             this.txtCliente.Location = new System.Drawing.Point(42, 62);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(223, 27);
@@ -76,17 +81,11 @@
             // 
             // txtVeiculo
             // 
+            this.txtVeiculo.Enabled = false;
             this.txtVeiculo.Location = new System.Drawing.Point(42, 126);
             this.txtVeiculo.Name = "txtVeiculo";
             this.txtVeiculo.Size = new System.Drawing.Size(223, 27);
             this.txtVeiculo.TabIndex = 3;
-            // 
-            // Quilometragem
-            // 
-            this.Quilometragem.Location = new System.Drawing.Point(338, 62);
-            this.Quilometragem.Name = "Quilometragem";
-            this.Quilometragem.Size = new System.Drawing.Size(223, 27);
-            this.Quilometragem.TabIndex = 4;
             // 
             // label3
             // 
@@ -119,16 +118,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(338, 167);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 20);
+            this.label5.Size = new System.Drawing.Size(146, 20);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Valor da Gasolina:";
-            // 
-            // ValorGasolina
-            // 
-            this.ValorGasolina.Location = new System.Drawing.Point(338, 191);
-            this.ValorGasolina.Name = "ValorGasolina";
-            this.ValorGasolina.Size = new System.Drawing.Size(223, 27);
-            this.ValorGasolina.TabIndex = 10;
+            this.label5.Text = "Valor Atual Gasolina:";
             // 
             // label6
             // 
@@ -142,10 +134,17 @@
             // comboBoxVolumeTanque
             // 
             this.comboBoxVolumeTanque.FormattingEnabled = true;
+            this.comboBoxVolumeTanque.Items.AddRange(new object[] {
+            "Vazio",
+            "2/5",
+            "Meio",
+            "4/5",
+            "Cheio"});
             this.comboBoxVolumeTanque.Location = new System.Drawing.Point(42, 190);
             this.comboBoxVolumeTanque.Name = "comboBoxVolumeTanque";
             this.comboBoxVolumeTanque.Size = new System.Drawing.Size(223, 28);
             this.comboBoxVolumeTanque.TabIndex = 12;
+            this.comboBoxVolumeTanque.SelectedIndexChanged += new System.EventHandler(this.comboBoxVolumeTanque_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -165,7 +164,7 @@
             // btnCancelar
             // 
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(467, 406);
+            this.btnCancelar.Location = new System.Drawing.Point(467, 477);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(94, 29);
             this.btnCancelar.TabIndex = 15;
@@ -175,7 +174,7 @@
             // btnSalvar
             // 
             this.btnSalvar.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSalvar.Location = new System.Drawing.Point(361, 406);
+            this.btnSalvar.Location = new System.Drawing.Point(361, 477);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(94, 29);
             this.btnSalvar.TabIndex = 16;
@@ -185,7 +184,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(338, 233);
+            this.label8.Location = new System.Drawing.Point(338, 403);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(104, 20);
             this.label8.TabIndex = 17;
@@ -193,7 +192,8 @@
             // 
             // txtValorTotal
             // 
-            this.txtValorTotal.Location = new System.Drawing.Point(338, 256);
+            this.txtValorTotal.Enabled = false;
+            this.txtValorTotal.Location = new System.Drawing.Point(338, 426);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(223, 27);
             this.txtValorTotal.TabIndex = 18;
@@ -203,14 +203,49 @@
             this.cklistTaxas.FormattingEnabled = true;
             this.cklistTaxas.Location = new System.Drawing.Point(42, 256);
             this.cklistTaxas.Name = "cklistTaxas";
-            this.cklistTaxas.Size = new System.Drawing.Size(223, 136);
+            this.cklistTaxas.Size = new System.Drawing.Size(519, 136);
             this.cklistTaxas.TabIndex = 19;
+            // 
+            // ValorGasolina
+            // 
+            this.ValorGasolina.Location = new System.Drawing.Point(338, 191);
+            this.ValorGasolina.Name = "ValorGasolina";
+            this.ValorGasolina.Size = new System.Drawing.Size(223, 27);
+            this.ValorGasolina.TabIndex = 20;
+            // 
+            // Quilometragem
+            // 
+            this.Quilometragem.Location = new System.Drawing.Point(338, 62);
+            this.Quilometragem.Name = "Quilometragem";
+            this.Quilometragem.Size = new System.Drawing.Size(223, 27);
+            this.Quilometragem.TabIndex = 21;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Location = new System.Drawing.Point(42, 403);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(144, 20);
+            this.label.TabIndex = 22;
+            this.label.Text = "Valor Total Gasolina:";
+            // 
+            // txtValorTotalGasolina
+            // 
+            this.txtValorTotalGasolina.Enabled = false;
+            this.txtValorTotalGasolina.Location = new System.Drawing.Point(42, 426);
+            this.txtValorTotalGasolina.Name = "txtValorTotalGasolina";
+            this.txtValorTotalGasolina.Size = new System.Drawing.Size(223, 27);
+            this.txtValorTotalGasolina.TabIndex = 23;
             // 
             // TelaCadastroDevolucaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(605, 464);
+            this.ClientSize = new System.Drawing.Size(605, 534);
+            this.Controls.Add(this.txtValorTotalGasolina);
+            this.Controls.Add(this.label);
+            this.Controls.Add(this.Quilometragem);
+            this.Controls.Add(this.ValorGasolina);
             this.Controls.Add(this.cklistTaxas);
             this.Controls.Add(this.txtValorTotal);
             this.Controls.Add(this.label8);
@@ -219,12 +254,10 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBoxVolumeTanque);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.ValorGasolina);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.DataDevolucao);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Quilometragem);
             this.Controls.Add(this.txtVeiculo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -235,6 +268,8 @@
             this.Name = "TelaCadastroDevolucaoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Devolução";
+            ((System.ComponentModel.ISupportInitialize)(this.ValorGasolina)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Quilometragem)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,12 +281,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtVeiculo;
-        private System.Windows.Forms.TextBox Quilometragem;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker DataDevolucao;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox ValorGasolina;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboBoxVolumeTanque;
         private System.Windows.Forms.Label label7;
@@ -261,5 +294,9 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtValorTotal;
         private System.Windows.Forms.CheckedListBox cklistTaxas;
+        private System.Windows.Forms.NumericUpDown ValorGasolina;
+        private System.Windows.Forms.NumericUpDown Quilometragem;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.TextBox txtValorTotalGasolina;
     }
 }

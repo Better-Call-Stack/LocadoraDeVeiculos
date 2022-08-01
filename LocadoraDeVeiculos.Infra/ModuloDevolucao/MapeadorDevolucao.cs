@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloDevolucao
             comando.Parameters.AddWithValue("DATADEVOLUCAO", registro.DataDevolucao);
             comando.Parameters.AddWithValue("VOLUMETANQUE", registro.VolumeTanque);
             comando.Parameters.AddWithValue("LOCACAO_ID", registro.Locacao.Id);
-            comando.Parameters.AddWithValue("TAXA_ID", registro.Taxa.Id); 
+            //comando.Parameters.AddWithValue("TAXA_ID", registro.Taxa.Id); 
         }
 
         public override Devolucao ConverterRegistro(SqlDataReader leitorDevolucao)
@@ -31,7 +31,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloDevolucao
             var valorGasolina = Convert.ToDecimal(leitorDevolucao["DV_VALORGASOLINA"]);
             var quilometragem = Convert.ToDecimal(leitorDevolucao["DV_QUILOMETRAGEM"]);
             var dataDevolucao = Convert.ToDateTime(leitorDevolucao["DV_DATADEVOLUCAO"]);
-            var volumeTanque = (VolumeTanque)leitorDevolucao["DV_VOLUMETANQUE"];
+            var volumeTanque = Convert.ToString(leitorDevolucao["DV_VOLUMETANQUE"]);
 
             Devolucao devolucao = new Devolucao();
             devolucao.Id = id;
@@ -42,7 +42,7 @@ namespace LocadoraDeVeiculos.Infra.ModuloDevolucao
 
             //depois descomentar
             //devolucao.Locacao = new MapeadorLocacao().ConverterRegistro(leitorDevolucao);
-            devolucao.Taxa = new MapeadorTaxa().ConverterRegistro(leitorDevolucao);
+            //devolucao.Taxa = new MapeadorTaxa().ConverterRegistro(leitorDevolucao);
 
             return devolucao;
         }

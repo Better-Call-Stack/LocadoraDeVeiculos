@@ -23,28 +23,14 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
         }
         public Locacao Locacao { get; set; }
         public Guid LocacaoId { get; set; }
-        public Taxa Taxa { get; set; }
-        public Guid TaxaId { get; set; }
 
-        /*public List<Taxa> Taxas
-        {
-            get; set;
-        }*/
+        public List<Taxa> Taxas { get; set; }
 
         public decimal ValorGasolina { get; set; }
         public decimal Quilometragem { get; set; }
         public DateTime DataDevolucao { get; set; }
 
-        public VolumeTanque volumeTanque;
-        public VolumeTanque VolumeTanque
-        {
-            get { return volumeTanque; }
-            set
-            {
-                volumeTanque = value;
-
-            }
-        }
+        public string VolumeTanque { get; set; }
 
         public override void Atualizar(Devolucao registro)
         {
@@ -53,8 +39,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
             DataDevolucao = registro.DataDevolucao;
             Locacao = registro.Locacao;
             LocacaoId = registro.Locacao.Id;
-            Taxa = registro.Taxa;
-            TaxaId = registro.Taxa.Id;
         }
     }
 }

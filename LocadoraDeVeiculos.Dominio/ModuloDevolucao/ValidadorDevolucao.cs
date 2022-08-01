@@ -22,7 +22,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloDevolucao
             RuleFor(x => x.DataDevolucao)
                 .NotEqual(DateTime.Today).WithMessage("A data de devolução não pode ser menor que o dia de hoje");
 
-            RuleFor(x => x.volumeTanque)
+            RuleFor(x => x.VolumeTanque)
                 .NotNull().WithMessage("O campo volume do tanque deve ser adicionado");
         }
     }
