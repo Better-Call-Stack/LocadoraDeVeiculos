@@ -65,12 +65,69 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            var id = tabelaDevolucao.ObtemIdSelecionado();
+
+            if (id == Guid.Empty)
+            {
+                MessageBox.Show("Selecione uma devolução",
+                    "Edição da Devolução", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var resultado = servicoDevolucao.SelecionarPorId(id);
+
+            if (resultado.IsFailed)
+            {
+                MessageBox.Show(resultado.Errors[0].Message,
+                    "Edição da Devolução", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var locacaoSelecionada = resultado.Value;
+
+            var tela = new TelaCadastroDevolucaoForm(servicoLocacao, servicoTaxa);
+
+            tela.Devolucao = locacaoSelecionada;
+
+            tela.GravarRegistro = servicoDevolucao.Editar;
+
+            if (tela.ShowDialog() == DialogResult.OK)
+                CarregarDevolucao();
         }
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            var id = tabelaDevolucao.ObtemIdSelecionado();
+
+            if (id == Guid.Empty)
+            {
+                MessageBox.Show("Selecione uma devolução primeiro",
+                    "Exclusão da Devolução", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            var resultadoSelecao = servicoDevolucao.SelecionarPorId(id);
+
+            if (resultadoSelecao.IsFailed)
+            {
+                MessageBox.Show(resultadoSelecao.Errors[0].Message,
+                    "Exclusão da Devolução", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var locacaoSelecionada = resultadoSelecao.Value;
+
+            if (MessageBox.Show("Deseja realmente excluir a Devolução?", "Exclusão da Devolução",
+                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                var resultadoExclusao = servicoDevolucao.Excluir(locacaoSelecionada);
+
+                if (resultadoExclusao.IsSuccess)
+                    CarregarDevolucao();
+                else
+                    MessageBox.Show(resultadoExclusao.Errors[0].Message,
+                        "Exclusão da Devolução", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public override ConfiguracaoToolboxBase ObtemConfiguracaoToolbox()
