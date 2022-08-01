@@ -29,9 +29,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         public TelaCadastroDevolucaoForm(ServicoLocacao servicoLocacao, ServicoTaxa servicoTaxa)
         {
             InitializeComponent();
+            
             this.servicoLocacao = servicoLocacao;
             this.servicoTaxa = servicoTaxa;
-            CarregarVolumeTanque();
+            
             CarregarTaxas();
             AtualizarTotal();
         }
@@ -57,13 +58,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                     ValorGasolina.Text = devolucao.ValorGasolina.ToString();
 
                     int posicao = 0;
-                    foreach (var taxa in devolucao.Locacao.Taxas)
+                    foreach (var taxa in devolucao.Taxas)
                     {
                         for (int j = 0; j < cklistTaxas.Items.Count; j++)
                         {
                             if (taxa == cklistTaxas.Items[j])
+                            {
                                 cklistTaxas.SetItemChecked(posicao, true);
-
+                            }
                             posicao++;
                         }
                         posicao = 0;
@@ -82,15 +84,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             }
         }
 
-        private void CarregarVolumeTanque()
-        {
-            var volumeTanque = Enum.GetValues(typeof(VolumeTanque));
-
-            foreach (var volume in volumeTanque)
-            {
-                comboBoxVolumeTanque.Items.Add(volume);
-            }
-        }
 
         private void CarregarTaxas()
         {
@@ -102,13 +95,19 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
                 foreach (var taxa in taxas)
                 {
-                    if (taxa.Tipo == TipoCalculoTaxa.Diario)
-                        cklistTaxas.Items.Add(taxa);
+                    if (locacao.Taxas.Contains(taxa))
+                    {
+                        if (taxa.Tipo == TipoCalculoTaxa.Diario)
+                            cklistTaxas.Items.Add(taxa);
+                    }
                 }
                 foreach (var taxa in taxas)
                 {
-                    if (taxa.Tipo == TipoCalculoTaxa.Fixo)
-                        cklistTaxas.Items.Add(taxa);
+                    if (locacao.Taxas.Contains(taxa))
+                    {
+                        if (taxa.Tipo == TipoCalculoTaxa.Fixo)
+                            cklistTaxas.Items.Add(taxa);
+                    }
                 }
             }
         }
