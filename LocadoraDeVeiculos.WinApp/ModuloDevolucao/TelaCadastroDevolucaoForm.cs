@@ -19,22 +19,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 {
     public partial class TelaCadastroDevolucaoForm : Form
     {
-        TabelaDevolucaoControl tabelaDevolucao;
-        TabelaLocacoesControl tabelaLocacoes;
-        TelaCadastroLocacaoForm telaLocacao;
+
         ServicoLocacao servicoLocacao;
         ServicoTaxa servicoTaxa;
         private List<Taxa> taxas = new List<Taxa>();
 
-        public TelaCadastroDevolucaoForm(ServicoLocacao servicoLocacao, ServicoTaxa servicoTaxa)
+        public TelaCadastroDevolucaoForm(ServicoLocacao servicoLocacao, ServicoTaxa servicoTaxa, Locacao locacao)
         {
             InitializeComponent();
             
             this.servicoLocacao = servicoLocacao;
             this.servicoTaxa = servicoTaxa;
-            
+            this.locacao = locacao;
+
             CarregarTaxas();
             AtualizarTotal();
+            CarregarLocacao();
+
         }
 
         private Devolucao devolucao;
@@ -80,12 +81,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
             set
             {
                 locacao = value;
-                CarregarLocacao();
             }
         }
 
 
-        private void CarregarTaxas()
+        public void CarregarTaxas()
         {
             var resultadoSelecao = servicoTaxa.SelecionarTodos();
 
@@ -95,7 +95,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
                 foreach (var taxa in taxas)
                 {
-                    if (locacao.Taxas.Contains(taxa))
+                    if (!locacao.Taxas.Contains(taxa))
                     {
                         if (taxa.Tipo == TipoCalculoTaxa.Diario)
                             cklistTaxas.Items.Add(taxa);
@@ -103,7 +103,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 }
                 foreach (var taxa in taxas)
                 {
-                    if (locacao.Taxas.Contains(taxa))
+                    if (!locacao.Taxas.Contains(taxa))
                     {
                         if (taxa.Tipo == TipoCalculoTaxa.Fixo)
                             cklistTaxas.Items.Add(taxa);
@@ -115,7 +115,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
         private void CarregarLocacao()
         {
             txtCliente.Text = locacao.Cliente.Nome;
-            txtVeiculo.Text = locacao.Veiculo.Modelo;
+            txtCondutor.Text = locacao.Condutor.Nome;
+            txtVeiculo.Text = locacao.Veiculo.Modelo; 
+            txtPlano.Text = locacao.PlanoSelecionado;
         }
 
         private void AtualizarTotal()
@@ -129,6 +131,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             TimeSpan diasLocacao = DataDevolucao.Value - Locacao.DataLocacao;
             total *= diasLocacao.Days;
+
+
 
 
             txtValorTotal.Text = total.ToString();
@@ -169,5 +173,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             AtualizarTotal();
         }
+
+  
     }
 }

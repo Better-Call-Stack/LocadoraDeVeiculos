@@ -50,9 +50,8 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
             var locacaoSelecionada = resultado.Value;
 
-            var tela = new TelaCadastroDevolucaoForm(servicoLocacao, servicoTaxa);
-            //tela.Devolucao = new Devolucao();
-            tela.Locacao = locacaoSelecionada;
+            var tela = new TelaCadastroDevolucaoForm(servicoLocacao, servicoTaxa, locacaoSelecionada);
+            tela.Devolucao = new Devolucao();
 
             tela.GravarRegistro = servicoDevolucao.Inserir;
 
