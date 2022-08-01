@@ -65,7 +65,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
 
             var tela = new TelaPlanoDeCobrancaForm(servicoGrupoVeiculos.SelecionarTodos().Value, "Edção");
 
-            tela.PlanoDeCobranca = planoDeCobrancaSelecionado; //Clonar();
+            tela.PlanoDeCobranca = planoDeCobrancaSelecionado; 
 
             tela.GravarRegistro = servicoPlanoDeCobranca.Editar;
 
