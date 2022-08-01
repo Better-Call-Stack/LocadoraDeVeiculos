@@ -23,6 +23,8 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
             RuleFor(x => x.PlanoSelecionado).NotNull().WithMessage("Selecione um plano de cobrança")
              .NotEmpty().WithMessage("Selecione um  plano de cobrança");
 
+            RuleFor(x => x.Condutor.ValidadeCNH).GreaterThan(DateTime.Now).WithMessage("CNH Vencida");
+
         }
     }
 }

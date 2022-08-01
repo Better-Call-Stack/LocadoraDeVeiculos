@@ -50,7 +50,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.dpLocacao = new System.Windows.Forms.DateTimePicker();
-            this.dpDevolucao = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.txtTotalPorDia = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -58,6 +57,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
+            this.dpDevolucao = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -268,15 +268,6 @@
             this.dpLocacao.Size = new System.Drawing.Size(86, 23);
             this.dpLocacao.TabIndex = 23;
             // 
-            // dpDevolucao
-            // 
-            this.dpDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dpDevolucao.Location = new System.Drawing.Point(165, 562);
-            this.dpDevolucao.Name = "dpDevolucao";
-            this.dpDevolucao.Size = new System.Drawing.Size(86, 23);
-            this.dpDevolucao.TabIndex = 25;
-            this.dpDevolucao.ValueChanged += new System.EventHandler(this.dpDevolucao_ValueChanged);
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -343,18 +334,27 @@
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
+            // dpDevolucao
+            // 
+            this.dpDevolucao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dpDevolucao.Location = new System.Drawing.Point(165, 562);
+            this.dpDevolucao.Name = "dpDevolucao";
+            this.dpDevolucao.Size = new System.Drawing.Size(86, 23);
+            this.dpDevolucao.TabIndex = 32;
+            this.dpDevolucao.ValueChanged += new System.EventHandler(this.dpDevolucao_ValueChanged);
+            // 
             // TelaCadastroLocacaoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(413, 707);
+            this.Controls.Add(this.dpDevolucao);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtSubtotal);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.txtTotalPorDia);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.dpDevolucao);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.dpLocacao);
             this.Controls.Add(this.label10);
@@ -413,7 +413,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DateTimePicker dpLocacao;
-        private System.Windows.Forms.DateTimePicker dpDevolucao;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtTotalPorDia;
         private System.Windows.Forms.Label label12;
@@ -421,5 +420,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGravar;
+        private System.Windows.Forms.DateTimePicker dpDevolucao;
     }
 }

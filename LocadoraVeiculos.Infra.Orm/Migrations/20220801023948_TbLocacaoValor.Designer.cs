@@ -4,14 +4,16 @@ using LocadoraVeiculos.Infra.Orm;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 {
     [DbContext(typeof(LocadoraDeVeiculosDbContext))]
-    partial class LocadoraDeVeiculosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220801023948_TbLocacaoValor")]
+    partial class TbLocacaoValor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,33 +101,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     b.HasIndex("ClienteId");
 
                     b.ToTable("TbCondutor");
-                });
-
-            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloDevolucao.Devolucao", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DataDevolucao")
-                        .HasColumnType("date");
-
-                    b.Property<Guid>("LocacaoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Quilometragem")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("ValorGasolina")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<string>("VolumeTanque")
-                        .HasColumnType("varchar(10)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LocacaoId");
-
-                    b.ToTable("TBDevolucao");
                 });
 
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloFuncionario.Funcionario", b =>
@@ -258,9 +233,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("DevolucaoId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid?>("LocacaoId")
                         .HasColumnType("uniqueidentifier");
 
@@ -275,8 +247,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DevolucaoId");
 
                     b.HasIndex("LocacaoId");
 
@@ -340,17 +310,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                     b.Navigation("Cliente");
                 });
 
-            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloDevolucao.Devolucao", b =>
-                {
-                    b.HasOne("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", "Locacao")
-                        .WithMany()
-                        .HasForeignKey("LocacaoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Locacao");
-                });
-
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", b =>
                 {
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloCliente.Cliente", "Cliente")
@@ -399,10 +358,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloTaxa.Taxa", b =>
                 {
-                    b.HasOne("LocadoraDeVeiculos.Dominio.ModuloDevolucao.Devolucao", null)
-                        .WithMany("Taxas")
-                        .HasForeignKey("DevolucaoId");
-
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", null)
                         .WithMany("Taxas")
                         .HasForeignKey("LocacaoId");
@@ -415,11 +370,6 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
                         .HasForeignKey("GrupoId");
 
                     b.Navigation("Grupo");
-                });
-
-            modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloDevolucao.Devolucao", b =>
-                {
-                    b.Navigation("Taxas");
                 });
 
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", b =>
