@@ -109,7 +109,14 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                     return;
                 }
 
-               veiculo = resultadoSelecao.Value;
+                if(resultadoSelecao.Value.StatusVeiculo != StatusVeiculoEnum.Disponível)
+                {
+                    MessageBox.Show("Veiculo não está disponível para locação",
+                    "Selecao de Veiculo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                veiculo = resultadoSelecao.Value;
             }
 
             if (painel.Controls[0] == tabelaClientes)
