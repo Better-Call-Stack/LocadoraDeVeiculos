@@ -48,9 +48,9 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            var locacaoSelecionada = resultado.Value;
+            var devolucaoSelecionada = resultado.Value;
 
-            var tela = new TelaCadastroDevolucaoForm(servicoLocacao, servicoTaxa, locacaoSelecionada);
+            var tela = new TelaCadastroDevolucaoForm(servicoLocacao, servicoTaxa, devolucaoSelecionada);
             tela.Devolucao = new Devolucao();
 
             tela.GravarRegistro = servicoDevolucao.Inserir;
@@ -82,11 +82,11 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            var locacaoSelecionada = resultado.Value;
+            var devolucaoSelecionada = resultado.Value;
 
-            var tela = new TelaCadastroDevolucaoForm(servicoLocacao, servicoTaxa);
+            var tela = new TelaCadastroDevolucaoForm();
 
-            tela.Devolucao = locacaoSelecionada;
+            tela.Devolucao = devolucaoSelecionada;
 
             tela.GravarRegistro = servicoDevolucao.Editar;
 
@@ -114,12 +114,12 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
                 return;
             }
 
-            var locacaoSelecionada = resultadoSelecao.Value;
+            var devolucaoSelecionada = resultadoSelecao.Value;
 
             if (MessageBox.Show("Deseja realmente excluir a Devolução?", "Exclusão da Devolução",
                  MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                var resultadoExclusao = servicoDevolucao.Excluir(locacaoSelecionada);
+                var resultadoExclusao = servicoDevolucao.Excluir(devolucaoSelecionada);
 
                 if (resultadoExclusao.IsSuccess)
                     CarregarDevolucao();

@@ -38,6 +38,10 @@ namespace LocadoraDeVeiculos.WinApp.ModuloDevolucao
 
         }
 
+        public TelaCadastroDevolucaoForm()
+        {
+        }
+
         private Devolucao devolucao;
         private Locacao locacao;
 
