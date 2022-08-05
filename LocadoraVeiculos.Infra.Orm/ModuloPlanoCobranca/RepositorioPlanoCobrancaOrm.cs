@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloPlanoCobranca;
 using LocadoraVeiculos.Infra.Orm;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,10 +15,10 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloPlanoCobranca
         private DbSet<PlanoDeCobranca> planoDeCobrancas;
         private readonly LocadoraDeVeiculosDbContext dbContext;
 
-        public RepositorioPlanoCobrancaOrm(LocadoraDeVeiculosDbContext dbContext)
+        public RepositorioPlanoCobrancaOrm(IContextoPersistencia dbContext)
         {
-            planoDeCobrancas = dbContext.Set<PlanoDeCobranca>();
-            this.dbContext = dbContext;
+            this.dbContext = (LocadoraDeVeiculosDbContext)dbContext;
+            planoDeCobrancas = this.dbContext.Set<PlanoDeCobranca>();
         }
         public void Inserir(PlanoDeCobranca novoRegistro)
         {
