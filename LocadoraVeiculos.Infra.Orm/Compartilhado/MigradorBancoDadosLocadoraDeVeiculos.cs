@@ -1,12 +1,7 @@
-﻿using LocadoraVeiculos.Infra.Orm;
+﻿using LocadoraDeVeiculos.Infra.Config;
+using LocadoraVeiculos.Infra.Orm;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.Orm
 {
@@ -14,14 +9,9 @@ namespace LocadoraDeVeiculos.Infra.Orm
     {
         public static void AtualizarBancoDados()
         {
-            var configuracao = new ConfigurationBuilder()
-              .SetBasePath(Directory.GetCurrentDirectory())
-              .AddJsonFile("ConfiguracaoAplicacao.json")
-              .Build();
+            var config = new ConfiguracaoAplicacaoLocadora();
 
-            var connectionString = configuracao.GetConnectionString("SqlServer");
-
-            var db = new LocadoraDeVeiculosDbContext(connectionString);
+            var db = new LocadoraDeVeiculosDbContext(config);
 
             var migracoesPendentes = db.Database.GetPendingMigrations();
 

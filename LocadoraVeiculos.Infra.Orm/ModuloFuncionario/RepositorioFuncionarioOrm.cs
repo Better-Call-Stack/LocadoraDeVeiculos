@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloFuncionario;
 using LocadoraVeiculos.Infra.Orm;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,10 +15,10 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloFuncionario
         private DbSet<Funcionario> funcionarios;
         private readonly LocadoraDeVeiculosDbContext dbContext;
 
-        public RepositorioFuncionarioOrm(LocadoraDeVeiculosDbContext dbContext)
+        public RepositorioFuncionarioOrm(IContextoPersistencia dbContext)
         {
-            funcionarios = dbContext.Set<Funcionario>();
-            this.dbContext = dbContext;
+            this.dbContext = (LocadoraDeVeiculosDbContext)dbContext;
+            funcionarios = this.dbContext.Set<Funcionario>();
         }
 
         public void Inserir(Funcionario novoRegistro)

@@ -40,6 +40,7 @@ using LocadoraDeVeiculos.Infra.Orm.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.Orm.ModuloDevolucao;
 using LocadoraVeiculos.Aplicacao.ModuloDevolucao;
 using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
+using LocadoraDeVeiculos.Infra.Config;
 using LocadoraDeVeiculos.Dominio.ModuloRelatorio;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
@@ -64,14 +65,9 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 
         private void InicializarControladores()
         {
-            var configuracao = new ConfigurationBuilder()
-          .SetBasePath(Directory.GetCurrentDirectory())
-          .AddJsonFile("ConfiguracaoAplicacao.json")
-          .Build();
+            var config = new ConfiguracaoAplicacaoLocadora();
 
-            var connectionString = configuracao.GetConnectionString("SqlServer");
-
-            var contextoDadosOrm = new LocadoraDeVeiculosDbContext(connectionString);
+            var contextoDadosOrm = new LocadoraDeVeiculosDbContext(config);
 
             var repositorioFuncionario = new RepositorioFuncionarioOrm(contextoDadosOrm);
             var repositorioCliente = new RepositorioClienteOrm(contextoDadosOrm);

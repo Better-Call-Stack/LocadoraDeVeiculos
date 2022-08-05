@@ -2,6 +2,7 @@
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloCliente;
+using LocadoraDeVeiculos.Infra.Config;
 using LocadoraDeVeiculos.Infra.ModuloCliente;
 using LocadoraDeVeiculos.Infra.Orm.ModuloCliente;
 using Serilog;

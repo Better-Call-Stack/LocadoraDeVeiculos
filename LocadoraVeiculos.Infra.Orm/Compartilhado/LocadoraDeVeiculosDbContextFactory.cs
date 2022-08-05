@@ -1,4 +1,5 @@
-﻿using LocadoraVeiculos.Infra.Orm;
+﻿using LocadoraDeVeiculos.Infra.Config;
+using LocadoraVeiculos.Infra.Orm;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -14,14 +15,9 @@ namespace LocadoraDeVeiculos.Infra.Orm
     {
         public LocadoraDeVeiculosDbContext CreateDbContext(string[] args)
         {
-            var configuracao = new ConfigurationBuilder()
-             .SetBasePath(Directory.GetCurrentDirectory())
-             .AddJsonFile("ConfiguracaoAplicacao.json")
-             .Build();
+            var config = new ConfiguracaoAplicacaoLocadora();
 
-            var connectionString = configuracao.GetConnectionString("SqlServer");
-
-            return new LocadoraDeVeiculosDbContext(connectionString);
+            return new LocadoraDeVeiculosDbContext(config);
         }
     }
 }
