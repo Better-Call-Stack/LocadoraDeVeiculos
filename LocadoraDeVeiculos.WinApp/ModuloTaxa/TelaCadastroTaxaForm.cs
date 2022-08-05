@@ -26,7 +26,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
 
 
                 txtNome.Text = taxa.Nome;
-                txtValor.Text = taxa.Valor.ToString();
+                txtValor.Value = taxa.Valor;
                 cbxTipoCalculo.SelectedItem = taxa.Tipo.ToString();
             }
         }
@@ -35,7 +35,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloTaxa
         {
 
             taxa.Nome = txtNome.Text;
-            taxa.Valor = Decimal.Parse(txtValor.Text);
+            taxa.Valor = Convert.ToDecimal(txtValor.Value);
 
             if (cbxTipoCalculo.SelectedItem == "Diario")
             {
