@@ -182,16 +182,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             return Result.Ok();
         }
 
-        /*private bool IdDuplicado(PlanoDeCobranca planoDeCobranca)
-        {
-            var planoDeCobrancaEncontrado = new PlanoDeCobranca();
-
-            if (planoDeCobranca.GrupoDeVeiculos != null)
-                planoDeCobrancaEncontrado = repositorioPlanoDeCobranca.SelecionarGrupoDeVeiculosDoPlanoDeCobrancaPorId(planoDeCobranca.GrupoDeVeiculos.Id);
-
-            return planoDeCobrancaEncontrado != null &&
-                   planoDeCobrancaEncontrado.Id != planoDeCobranca.Id;
-        }*/
         private bool IdDuplicado(PlanoDeCobranca planoDeCobranca)
         {
             var planoDeCobrancaEncontrado = new PlanoDeCobranca();

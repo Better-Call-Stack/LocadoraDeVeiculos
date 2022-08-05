@@ -30,28 +30,34 @@
         {
             this.tabControlPlanos = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.ValorPorDia_PlanoDiario = new System.Windows.Forms.TextBox();
+            this.ValorKmRodado_PlanoDiario = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.ValorKmRodado_PlanoDiario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
-            this.KmLivreIncluso_PlanoKmControlado = new System.Windows.Forms.TextBox();
-            this.ValorPorDia_PlanoKmControlado = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.ValorKmRodado_PlanoKmControlado = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.ValorPorDia_PlanoKmLivre = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBoxGrupoVeiculos = new System.Windows.Forms.ComboBox();
+            this.ValorPorDia_PlanoDiario = new System.Windows.Forms.NumericUpDown();
+            this.ValorKmRodado_PlanoKmControlado = new System.Windows.Forms.NumericUpDown();
+            this.ValorPorDia_PlanoKmControlado = new System.Windows.Forms.NumericUpDown();
+            this.KmLivreIncluso_PlanoKmControlado = new System.Windows.Forms.NumericUpDown();
+            this.ValorPorDia_PlanoKmLivre = new System.Windows.Forms.NumericUpDown();
             this.tabControlPlanos.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorKmRodado_PlanoDiario)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorPorDia_PlanoDiario)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorKmRodado_PlanoKmControlado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorPorDia_PlanoKmControlado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KmLivreIncluso_PlanoKmControlado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorPorDia_PlanoKmLivre)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlPlanos
@@ -68,8 +74,8 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.ValorPorDia_PlanoDiario);
-            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.ValorKmRodado_PlanoDiario);
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
@@ -79,12 +85,12 @@
             this.tabPage1.Text = "Plano Diário";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // ValorPorDia_PlanoDiario
+            // ValorKmRodado_PlanoDiario
             // 
-            this.ValorPorDia_PlanoDiario.Location = new System.Drawing.Point(21, 131);
-            this.ValorPorDia_PlanoDiario.Name = "ValorPorDia_PlanoDiario";
-            this.ValorPorDia_PlanoDiario.Size = new System.Drawing.Size(186, 27);
-            this.ValorPorDia_PlanoDiario.TabIndex = 3;
+            this.ValorKmRodado_PlanoDiario.Location = new System.Drawing.Point(22, 63);
+            this.ValorKmRodado_PlanoDiario.Name = "ValorKmRodado_PlanoDiario";
+            this.ValorKmRodado_PlanoDiario.Size = new System.Drawing.Size(185, 27);
+            this.ValorKmRodado_PlanoDiario.TabIndex = 4;
             // 
             // label2
             // 
@@ -94,14 +100,6 @@
             this.label2.Size = new System.Drawing.Size(98, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Valor Por Dia:";
-            // 
-            // ValorKmRodado_PlanoDiario
-            // 
-            this.ValorKmRodado_PlanoDiario.Location = new System.Drawing.Point(21, 63);
-            this.ValorKmRodado_PlanoDiario.Name = "ValorKmRodado_PlanoDiario";
-            this.ValorKmRodado_PlanoDiario.Size = new System.Drawing.Size(186, 27);
-            this.ValorKmRodado_PlanoDiario.TabIndex = 1;
-            this.ValorKmRodado_PlanoDiario.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -115,11 +113,11 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.KmLivreIncluso_PlanoKmControlado);
             this.tabPage2.Controls.Add(this.ValorPorDia_PlanoKmControlado);
-            this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.ValorKmRodado_PlanoKmControlado);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
@@ -138,20 +136,6 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Km Livre Incluso:";
             // 
-            // KmLivreIncluso_PlanoKmControlado
-            // 
-            this.KmLivreIncluso_PlanoKmControlado.Location = new System.Drawing.Point(237, 67);
-            this.KmLivreIncluso_PlanoKmControlado.Name = "KmLivreIncluso_PlanoKmControlado";
-            this.KmLivreIncluso_PlanoKmControlado.Size = new System.Drawing.Size(186, 27);
-            this.KmLivreIncluso_PlanoKmControlado.TabIndex = 8;
-            // 
-            // ValorPorDia_PlanoKmControlado
-            // 
-            this.ValorPorDia_PlanoKmControlado.Location = new System.Drawing.Point(22, 141);
-            this.ValorPorDia_PlanoKmControlado.Name = "ValorPorDia_PlanoKmControlado";
-            this.ValorPorDia_PlanoKmControlado.Size = new System.Drawing.Size(186, 27);
-            this.ValorPorDia_PlanoKmControlado.TabIndex = 7;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -160,13 +144,6 @@
             this.label3.Size = new System.Drawing.Size(98, 20);
             this.label3.TabIndex = 6;
             this.label3.Text = "Valor Por Dia:";
-            // 
-            // ValorKmRodado_PlanoKmControlado
-            // 
-            this.ValorKmRodado_PlanoKmControlado.Location = new System.Drawing.Point(22, 67);
-            this.ValorKmRodado_PlanoKmControlado.Name = "ValorKmRodado_PlanoKmControlado";
-            this.ValorKmRodado_PlanoKmControlado.Size = new System.Drawing.Size(186, 27);
-            this.ValorKmRodado_PlanoKmControlado.TabIndex = 5;
             // 
             // label4
             // 
@@ -188,13 +165,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Plano Km Livre";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // ValorPorDia_PlanoKmLivre
-            // 
-            this.ValorPorDia_PlanoKmLivre.Location = new System.Drawing.Point(21, 68);
-            this.ValorPorDia_PlanoKmLivre.Name = "ValorPorDia_PlanoKmLivre";
-            this.ValorPorDia_PlanoKmLivre.Size = new System.Drawing.Size(186, 27);
-            this.ValorPorDia_PlanoKmLivre.TabIndex = 9;
             // 
             // label6
             // 
@@ -245,6 +215,41 @@
             this.comboBoxGrupoVeiculos.Size = new System.Drawing.Size(186, 28);
             this.comboBoxGrupoVeiculos.TabIndex = 4;
             // 
+            // ValorPorDia_PlanoDiario
+            // 
+            this.ValorPorDia_PlanoDiario.Location = new System.Drawing.Point(22, 130);
+            this.ValorPorDia_PlanoDiario.Name = "ValorPorDia_PlanoDiario";
+            this.ValorPorDia_PlanoDiario.Size = new System.Drawing.Size(186, 27);
+            this.ValorPorDia_PlanoDiario.TabIndex = 5;
+            // 
+            // ValorKmRodado_PlanoKmControlado
+            // 
+            this.ValorKmRodado_PlanoKmControlado.Location = new System.Drawing.Point(22, 66);
+            this.ValorKmRodado_PlanoKmControlado.Name = "ValorKmRodado_PlanoKmControlado";
+            this.ValorKmRodado_PlanoKmControlado.Size = new System.Drawing.Size(186, 27);
+            this.ValorKmRodado_PlanoKmControlado.TabIndex = 10;
+            // 
+            // ValorPorDia_PlanoKmControlado
+            // 
+            this.ValorPorDia_PlanoKmControlado.Location = new System.Drawing.Point(22, 140);
+            this.ValorPorDia_PlanoKmControlado.Name = "ValorPorDia_PlanoKmControlado";
+            this.ValorPorDia_PlanoKmControlado.Size = new System.Drawing.Size(186, 27);
+            this.ValorPorDia_PlanoKmControlado.TabIndex = 11;
+            // 
+            // KmLivreIncluso_PlanoKmControlado
+            // 
+            this.KmLivreIncluso_PlanoKmControlado.Location = new System.Drawing.Point(237, 66);
+            this.KmLivreIncluso_PlanoKmControlado.Name = "KmLivreIncluso_PlanoKmControlado";
+            this.KmLivreIncluso_PlanoKmControlado.Size = new System.Drawing.Size(186, 27);
+            this.KmLivreIncluso_PlanoKmControlado.TabIndex = 12;
+            // 
+            // ValorPorDia_PlanoKmLivre
+            // 
+            this.ValorPorDia_PlanoKmLivre.Location = new System.Drawing.Point(22, 68);
+            this.ValorPorDia_PlanoKmLivre.Name = "ValorPorDia_PlanoKmLivre";
+            this.ValorPorDia_PlanoKmLivre.Size = new System.Drawing.Size(185, 27);
+            this.ValorPorDia_PlanoKmLivre.TabIndex = 10;
+            // 
             // TelaPlanoDeCobrancaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -264,10 +269,16 @@
             this.tabControlPlanos.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorKmRodado_PlanoDiario)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorPorDia_PlanoDiario)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorKmRodado_PlanoKmControlado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorPorDia_PlanoKmControlado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KmLivreIncluso_PlanoKmControlado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ValorPorDia_PlanoKmLivre)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,23 +288,23 @@
 
         private System.Windows.Forms.TabControl tabControlPlanos;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TextBox ValorPorDia_PlanoDiario;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox ValorKmRodado_PlanoDiario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox KmLivreIncluso_PlanoKmControlado;
-        private System.Windows.Forms.TextBox ValorPorDia_PlanoKmControlado;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox ValorKmRodado_PlanoKmControlado;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TextBox ValorPorDia_PlanoKmLivre;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBoxGrupoVeiculos;
+        private System.Windows.Forms.NumericUpDown ValorKmRodado_PlanoDiario;
+        private System.Windows.Forms.NumericUpDown ValorPorDia_PlanoDiario;
+        private System.Windows.Forms.NumericUpDown KmLivreIncluso_PlanoKmControlado;
+        private System.Windows.Forms.NumericUpDown ValorPorDia_PlanoKmControlado;
+        private System.Windows.Forms.NumericUpDown ValorKmRodado_PlanoKmControlado;
+        private System.Windows.Forms.NumericUpDown ValorPorDia_PlanoKmLivre;
     }
 }

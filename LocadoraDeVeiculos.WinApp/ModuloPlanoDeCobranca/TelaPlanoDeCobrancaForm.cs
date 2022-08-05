@@ -69,23 +69,23 @@ namespace LocadoraDeVeiculos.WinApp.ModuloPlanoDeCobranca
                 planoDeCobranca = value;
 
 
-                ValorKmRodado_PlanoDiario.Text = planoDeCobranca.ValorKmRodado_PlanoDiario.ToString();
-                ValorPorDia_PlanoDiario.Text = planoDeCobranca.ValorPorDia_PlanoDiario.ToString();
-                ValorKmRodado_PlanoKmControlado.Text = planoDeCobranca.ValorKmRodado_PlanoKmControlado.ToString();
-                KmLivreIncluso_PlanoKmControlado.Text = planoDeCobranca.KmLivreIncluso_PlanoKmControlado.ToString();
-                ValorPorDia_PlanoKmControlado.Text = planoDeCobranca.ValorPorDia_PlanoKmControlado.ToString();
-                ValorPorDia_PlanoKmLivre.Text = planoDeCobranca.ValorPorDia_PlanoKmLivre.ToString();
+                ValorKmRodado_PlanoDiario.Value = planoDeCobranca.ValorKmRodado_PlanoDiario;
+                ValorPorDia_PlanoDiario.Value = planoDeCobranca.ValorPorDia_PlanoDiario;
+                ValorKmRodado_PlanoKmControlado.Value = planoDeCobranca.ValorKmRodado_PlanoKmControlado;
+                KmLivreIncluso_PlanoKmControlado.Value = planoDeCobranca.KmLivreIncluso_PlanoKmControlado;
+                ValorPorDia_PlanoKmControlado.Value = planoDeCobranca.ValorPorDia_PlanoKmControlado;
+                ValorPorDia_PlanoKmLivre.Value = planoDeCobranca.ValorPorDia_PlanoKmLivre;
                 comboBoxGrupoVeiculos.SelectedItem = planoDeCobranca.GrupoDeVeiculos;
             }
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            planoDeCobranca.ValorKmRodado_PlanoDiario = Convert.ToDecimal(ValorKmRodado_PlanoDiario.Text);
-            planoDeCobranca.ValorPorDia_PlanoDiario = Convert.ToDecimal(ValorPorDia_PlanoDiario.Text);
-            planoDeCobranca.ValorKmRodado_PlanoKmControlado = Convert.ToDecimal(ValorKmRodado_PlanoKmControlado.Text);
-            planoDeCobranca.KmLivreIncluso_PlanoKmControlado = Convert.ToDecimal(KmLivreIncluso_PlanoKmControlado.Text);
-            planoDeCobranca.ValorPorDia_PlanoKmControlado = Convert.ToDecimal(ValorPorDia_PlanoKmControlado.Text);
-            planoDeCobranca.ValorPorDia_PlanoKmLivre = Convert.ToDecimal(ValorPorDia_PlanoKmLivre.Text);
+            planoDeCobranca.ValorKmRodado_PlanoDiario = Convert.ToDecimal(ValorKmRodado_PlanoDiario.Value);
+            planoDeCobranca.ValorPorDia_PlanoDiario = Convert.ToDecimal(ValorPorDia_PlanoDiario.Value);
+            planoDeCobranca.ValorKmRodado_PlanoKmControlado = Convert.ToDecimal(ValorKmRodado_PlanoKmControlado.Value);
+            planoDeCobranca.KmLivreIncluso_PlanoKmControlado = Convert.ToDecimal(KmLivreIncluso_PlanoKmControlado.Value);
+            planoDeCobranca.ValorPorDia_PlanoKmControlado = Convert.ToDecimal(ValorPorDia_PlanoKmControlado.Value);
+            planoDeCobranca.ValorPorDia_PlanoKmLivre = Convert.ToDecimal(ValorPorDia_PlanoKmLivre.Value);
             planoDeCobranca.GrupoDeVeiculos = (GrupoDeVeiculos)comboBoxGrupoVeiculos.SelectedItem;
 
             var resultadoValidacao = GravarRegistro(planoDeCobranca);
