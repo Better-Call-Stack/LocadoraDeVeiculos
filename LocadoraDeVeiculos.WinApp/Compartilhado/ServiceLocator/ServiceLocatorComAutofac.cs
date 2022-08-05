@@ -25,6 +25,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloLocacao;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {
@@ -62,7 +63,9 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             
             builder.RegisterType<RepositorioVeiculo>().AsSelf();
             builder.RegisterType<ServicoVeiculo>().AsSelf();
-            builder.RegisterType<ControladorVeiculo>().AsSelf();  
+            builder.RegisterType<ControladorVeiculo>().AsSelf();
+
+            builder.RegisterType<GeradorRelatorioLocacaoItextSharp>().AsSelf();
 
 
 

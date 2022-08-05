@@ -40,6 +40,7 @@ using LocadoraDeVeiculos.Infra.Orm.ModuloVeiculo;
 using LocadoraDeVeiculos.Infra.Orm.ModuloDevolucao;
 using LocadoraVeiculos.Aplicacao.ModuloDevolucao;
 using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
+using LocadoraDeVeiculos.Dominio.ModuloRelatorio;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {

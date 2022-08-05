@@ -2,6 +2,7 @@
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
+using LocadoraDeVeiculos.Dominio.ModuloRelatorio;
 using LocadoraDeVeiculos.Infra.Orm.ModuloOrm;
 using Serilog;
 using System;
@@ -17,11 +18,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
 
         private RepositorioLocacaoOrm repositorioLocacao;
         private IContextoPersistencia contextoPersistencia;
+        private IGeradorRelatorio geradorRelatorio;
 
-        public ServicoLocacao(RepositorioLocacaoOrm repositorioLocacao, IContextoPersistencia contexto)
+        public ServicoLocacao(RepositorioLocacaoOrm repositorioLocacao, IContextoPersistencia contexto, IGeradorRelatorio geradorRelatorio)
         {
             this.repositorioLocacao = repositorioLocacao;
             this.contextoPersistencia = contexto;
+            this.geradorRelatorio = geradorRelatorio;
         }
 
         public Result<Locacao> Inserir(Locacao locacao)
@@ -46,6 +49,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
                 repositorioLocacao.Inserir(locacao);
 
                 contextoPersistencia.GravarDados();
+
+                geradorRelatorio.GerarRelatorioPdf();
 
                 Log.Logger.Debug("Locacao {LocacaoId} inserido com sucesso", locacao.Id);
 
