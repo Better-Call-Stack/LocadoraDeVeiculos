@@ -1,4 +1,5 @@
-﻿using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
+﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraVeiculos.Infra.Orm;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -13,10 +14,10 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloDevolucao
     {
         private DbSet<Devolucao> devolucao;
         private readonly LocadoraDeVeiculosDbContext dbContext;
-        public RepositorioDevolucaoOrm(LocadoraDeVeiculosDbContext dbContext)
+        public RepositorioDevolucaoOrm(IContextoPersistencia dbContext)
         {
-            devolucao = dbContext.Set<Devolucao>();
-            this.dbContext = dbContext;
+            this.dbContext = (LocadoraDeVeiculosDbContext)dbContext;
+            devolucao = this.dbContext.Set<Devolucao>();
         }
         public void Inserir(Devolucao novoRegistro)
         {

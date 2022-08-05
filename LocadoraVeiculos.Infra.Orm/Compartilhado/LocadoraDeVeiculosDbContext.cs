@@ -1,4 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.Compartilhado;
+using LocadoraDeVeiculos.Infra.Config;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Serilog;
@@ -10,9 +11,9 @@ namespace LocadoraVeiculos.Infra.Orm
     {
         private string connectionString;
 
-        public LocadoraDeVeiculosDbContext(string connectionString)
+        public LocadoraDeVeiculosDbContext(ConfiguracaoAplicacaoLocadora configuracao)
         {
-            this.connectionString = connectionString;
+            this.connectionString = configuracao.ConnectionStrings.SqlServer;
         }
 
         public void GravarDados()

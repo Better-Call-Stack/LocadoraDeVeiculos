@@ -29,7 +29,7 @@ namespace LocadoraDeVeiculos.WinApp
 
             //var serviceLocatorAutofac = new ServiceLocatorComAutofac();
 
-            Application.Run(new TelaInicial(new ServiceLocatorManual()));
+            Application.Run(new TelaInicial(new ServiceLocatorComAutofac()));
         }
     }
 }
