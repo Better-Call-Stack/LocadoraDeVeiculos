@@ -29,6 +29,7 @@ using LocadoraVeiculos.Aplicacao.ModuloDevolucao;
 using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.Orm.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.Config;
+using LocadoraDeVeiculos.Infra.Pdf.ModuloLocacao;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {

@@ -27,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LocadoraDeVeiculos.Dominio\LocadoraDeVeiculos.Dominio.csproj" />
     <ProjectReference Include="..\LocadoraDeVeiculos.Infra.Pdf.ITextSharp\LocadoraDeVeiculos.Infra.Pdf.ITextSharp.csproj" />
+    <ProjectReference Include="..\LocadoraDeVeiculos.Infra.Pdf\LocadoraDeVeiculos.Infra.Pdf.csproj" />
     <ProjectReference Include="..\LocadoraDeVeiculos.Infra\LocadoraDeVeiculos.Infra.csproj" />
     <ProjectReference Include="..\LocadoraVeiculos.Aplicacao\LocadoraVeiculos.Aplicacao.csproj" />
     <ProjectReference Include="..\LocadoraVeiculos.Infra.Logging\LocadoraVeiculos.Infra.Logging.csproj" />

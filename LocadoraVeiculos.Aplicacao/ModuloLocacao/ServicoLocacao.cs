@@ -4,6 +4,7 @@ using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloRelatorio;
 using LocadoraDeVeiculos.Infra.Orm.ModuloOrm;
+using LocadoraVeiculos.Infra.Orm;
 using Serilog;
 using System;
 using System.Collections.Generic;

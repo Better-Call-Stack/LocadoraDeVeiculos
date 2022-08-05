@@ -42,6 +42,7 @@ using LocadoraVeiculos.Aplicacao.ModuloDevolucao;
 using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.Config;
 using LocadoraDeVeiculos.Dominio.ModuloRelatorio;
+using LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloLocacao;
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {
@@ -78,6 +79,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             var repositorioVeiculo = new RepositorioVeiculoOrm(contextoDadosOrm);
             var repositorioLocacao = new RepositorioLocacaoOrm(contextoDadosOrm);
             var repositorioDevolucao = new RepositorioDevolucaoOrm(contextoDadosOrm);
+            var geradorRelatorio = new GeradorRelatorioLocacaoItextSharp();
 
 
             var servicoCliente = new ServicoCliente(repositorioCliente, contextoDadosOrm);
@@ -87,7 +89,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, contextoDadosOrm);
             var servicoCondutor = new ServicoCondutor(repositorioCondutor, contextoDadosOrm);
             var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo, contextoDadosOrm);
-            var servicoLocacao = new ServicoLocacao(repositorioLocacao, contextoDadosOrm);
+            var servicoLocacao = new ServicoLocacao(repositorioLocacao, contextoDadosOrm, geradorRelatorio);
             var servicoDevolucao = new ServicoDevolucao(repositorioDevolucao, contextoDadosOrm);
 
             controladores = new Dictionary<string, ControladorBase>();
