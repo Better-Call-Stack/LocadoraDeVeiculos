@@ -51,7 +51,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
 
                 contextoPersistencia.GravarDados();
 
-                geradorRelatorio.GerarRelatorioPdf();
+                geradorRelatorio.GerarRelatorioPdf(locacao);
 
                 Log.Logger.Debug("Locacao {LocacaoId} inserido com sucesso", locacao.Id);
 

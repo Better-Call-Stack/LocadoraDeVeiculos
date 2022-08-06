@@ -9,7 +9,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloRelatorio
 {
     public interface IGeradorRelatorio
     {
-        public void GerarRelatorioPdf();
+        public void GerarRelatorioPdf(Locacao locacao);
 
     }
 }
