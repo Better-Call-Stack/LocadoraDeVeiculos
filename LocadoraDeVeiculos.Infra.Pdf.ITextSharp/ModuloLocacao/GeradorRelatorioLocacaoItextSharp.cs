@@ -176,48 +176,49 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloLocacao
 
             #region PLANOCOBRANCA
 
-            if (locacao.PlanoSelecionado == Dominio.ModuloPlanoCobranca.TipoPlano.Diario) //diario
+            if (locacao.PlanoSelecionado == "Diário")
             {
                 PdfPTable tabelaPlanoCobrancaDiario = new PdfPTable(2);
 
-                PdfPCell cellPlanoCobrancaDiario1 = new PdfPCell(new Phrase("Plano de Cobrança selecionado: Diário", fontBold));
+                PdfPCell cellPlanoCobrancaDiario1 = new PdfPCell(new Phrase("Plano Diário", fonteNegrito));
                 cellPlanoCobrancaDiario1.Colspan = 2;
                 cellPlanoCobrancaDiario1.HorizontalAlignment = Element.ALIGN_CENTER;
                 tabelaPlanoCobrancaDiario.AddCell(cellPlanoCobrancaDiario1);
 
-                tabelaPlanoCobrancaDiario.AddCell(new Phrase($"Valor por dia: R$ {locacao.PlanoCobranca.DiarioValorDia}", fontNormal));
-                tabelaPlanoCobrancaDiario.AddCell(new Phrase($"Valor por Km: R$ {locacao.PlanoCobranca.DiarioValorKm}", fontNormal));
-
+                tabelaPlanoCobrancaDiario.AddCell(new Phrase($"Valor por dia: R$ {locacao.PlanoDeCobranca.ValorPorDia_PlanoDiario}", fonteNormal));
+                tabelaPlanoCobrancaDiario.AddCell(new Phrase($"Valor por Km: R$ {locacao.PlanoDeCobranca.ValorKmRodado_PlanoDiario}", fonteNormal));
 
                 doc.Add(tabelaPlanoCobrancaDiario);
             }
-            else if (locacao.TipoPlanoSelecionado == Dominio.ModuloPlanoCobranca.TipoPlano.Controlado)
+
+            else if (locacao.PlanoSelecionado == "KmControlado")
             {
 
                 PdfPTable tabelaPlanoCobrancaControlado = new PdfPTable(3);
 
-                PdfPCell cellPlanoCobrancaControladoHeader = new PdfPCell(new Phrase("Plano de Cobrança selecionado: Km Controlado", fontBold));
+                PdfPCell cellPlanoCobrancaControladoHeader = new PdfPCell(new Phrase("Plano Quilometragem Limitada", fonteNegrito));
                 cellPlanoCobrancaControladoHeader.Colspan = 3;
                 cellPlanoCobrancaControladoHeader.HorizontalAlignment = Element.ALIGN_CENTER;
                 tabelaPlanoCobrancaControlado.AddCell(cellPlanoCobrancaControladoHeader);
 
-                tabelaPlanoCobrancaControlado.AddCell(new Phrase($"Valor por dia: R$ {locacao.PlanoCobranca.KmControladoValorDia}", fontNormal));
-                tabelaPlanoCobrancaControlado.AddCell(new Phrase($"Limite de Km: R$ {locacao.PlanoCobranca.KmControladoLimiteKm}", fontNormal));
-                tabelaPlanoCobrancaControlado.AddCell(new Phrase($"Valor por Km excedente: R$ {locacao.PlanoCobranca.KmControladoValorKm}", fontNormal));
+                tabelaPlanoCobrancaControlado.AddCell(new Phrase($"Valor por dia: R$ {locacao.PlanoDeCobranca.ValorPorDia_PlanoKmControlado}", fonteNormal));
+                tabelaPlanoCobrancaControlado.AddCell(new Phrase($"Quilometragem inclusa: {locacao.PlanoDeCobranca.KmLivreIncluso_PlanoKmControlado}", fonteNormal));
+                tabelaPlanoCobrancaControlado.AddCell(new Phrase($"Valor por Km excedente: R$ {locacao.PlanoDeCobranca.ValorKmRodado_PlanoKmControlado}", fonteNormal));
 
 
                 doc.Add(tabelaPlanoCobrancaControlado);
             }
-            else if (locacao.TipoPlanoSelecionado == Dominio.ModuloPlanoCobranca.TipoPlano.Livre)
+
+            else if (locacao.PlanoSelecionado == "Livre")
             {
 
                 PdfPTable tabelaPlanoCobrancaLivre = new PdfPTable(1);
 
-                PdfPCell cellPlanoCobrancaLivreHeader = new PdfPCell(new Phrase("Plano de Cobrança selecionado: Km Livre", fontBold));
+                PdfPCell cellPlanoCobrancaLivreHeader = new PdfPCell(new Phrase("Plano Quilometragem Livre", fonteNegrito));
                 cellPlanoCobrancaLivreHeader.HorizontalAlignment = Element.ALIGN_CENTER;
                 tabelaPlanoCobrancaLivre.AddCell(cellPlanoCobrancaLivreHeader);
 
-                tabelaPlanoCobrancaLivre.AddCell(new Phrase($"Valor por dia: R$ {locacao.PlanoCobranca.KmLivreValorDia}", fontNormal));
+                tabelaPlanoCobrancaLivre.AddCell(new Phrase($"Valor por dia: R$ {locacao.PlanoDeCobranca.ValorPorDia_PlanoKmLivre}", fonteNormal));
 
                 doc.Add(tabelaPlanoCobrancaLivre);
             }
@@ -225,23 +226,23 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloLocacao
             #endregion
 
             #region TAXAS
-            if (locacao.TaxasSelecionadas.Count > 0)
+            if (locacao.Taxas.Count > 0)
             {
 
                 PdfPTable tabelaTaxas = new PdfPTable(3);
 
-                PdfPCell cell1 = new PdfPCell(new Phrase("Taxas Selecionadas", fontBold));
+                PdfPCell cell1 = new PdfPCell(new Phrase("Taxas Selecionadas", fonteNegrito));
                 cell1.Colspan = 3;
                 cell1.HorizontalAlignment = Element.ALIGN_CENTER;
                 tabelaTaxas.AddCell(cell1);
 
-                tabelaTaxas.AddCell(new Phrase("Descrição", fontBold));
-                tabelaTaxas.AddCell(new Phrase("Valor", fontBold));
-                tabelaTaxas.AddCell(new Phrase("Tipo de Cálculo", fontBold));
+                tabelaTaxas.AddCell(new Phrase("Descrição", fonteNegrito));
+                tabelaTaxas.AddCell(new Phrase("Valor", fonteNegrito));
+                tabelaTaxas.AddCell(new Phrase("Tipo de Cálculo", fonteNegrito));
 
-                foreach (var t in locacao.TaxasSelecionadas)
+                foreach (var t in locacao.Taxas)
                 {
-                    if (t.TipoTaxa == Dominio.ModuloTaxa.TipoTaxa.TaxaLocacao)
+                    if (t.Tipo == Dominio.ModuloTaxa.TipoCalculoTaxa.)
                     {
                         tabelaTaxas.AddCell(new Phrase($"{t.Descricao}", fontNormal));
                         tabelaTaxas.AddCell(new Phrase($"{t.Valor}", fontNormal));
