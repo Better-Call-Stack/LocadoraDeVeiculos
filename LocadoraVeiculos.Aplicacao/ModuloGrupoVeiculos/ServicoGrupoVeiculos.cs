@@ -110,24 +110,27 @@ namespace LocadoraVeiculos.Aplicacao.ModuloGrupoVeiculos
 
                 return Result.Ok();
             }
-            catch (NaoPodeExcluirEsseRegistroException ex)
-            {
-                string msgErro = $"Grupo de veículos {grupoDeVeiculos.Nome} está relacionado com " +
-                    $"plano de cobrança e não pode ser excluido";
-
-                Log.Logger.Error(ex, msgErro + "{GrupoDeVeiculosId}", grupoDeVeiculos.Id);
-
-                return Result.Fail(msgErro);
-            }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao tentar excluir o grupo de veículos";
+                if (ex != null && ex.InnerException.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    string msgErroDelete = "";
+
+                    if (ex != null && ex.InnerException.Message.Contains("Veiculo"))
+                        msgErroDelete = $"Grupo de veículos {grupoDeVeiculos.Nome} está relacionada com um veículo e não pode ser excluído";
+
+                    Log.Logger.Error(ex, msgErroDelete + "{GrupoDeVeiculosId}", grupoDeVeiculos.Id);
+
+                    return Result.Fail(msgErroDelete);
+
+                }
+                string msgErro = "Falha no sistema ao tentar excluir a taxa";
 
                 Log.Logger.Error(ex, msgErro + "{GrupoDeVeiculosId}", grupoDeVeiculos.Id);
 
                 return Result.Fail(msgErro);
             }
-            return Result.Ok();
+
         }
 
         public Result<List<GrupoDeVeiculos>> SelecionarTodos()

@@ -19,7 +19,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloLocacao
             builder.HasOne(x => x.Condutor).WithMany().HasForeignKey(x => x.CondutorId).OnDelete(DeleteBehavior.NoAction); 
             builder.HasOne(x => x.PlanoDeCobranca).WithMany().HasForeignKey(x => x.PlanoDeCobrancaId).OnDelete(DeleteBehavior.NoAction); 
             builder.HasOne(x => x.Veiculo).WithMany().HasForeignKey(x => x.VeiculoId).OnDelete(DeleteBehavior.NoAction); ;
-            builder.HasMany(x => x.Taxas);
+            builder.HasMany(x => x.Taxas).WithOne().OnDelete(DeleteBehavior.NoAction);
             builder.Property(x => x.PlanoSelecionado).HasColumnType("varchar(15)");
             builder.Property(x => x.DataLocacao).HasColumnType("datetime").IsRequired();
             builder.Property(x => x.PrevisaoDevolucao).HasColumnType("datetime").IsRequired();

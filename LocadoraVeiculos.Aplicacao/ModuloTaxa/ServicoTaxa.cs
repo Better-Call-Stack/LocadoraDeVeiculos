@@ -115,16 +115,22 @@ namespace LocadoraVeiculos.Aplicacao.ModuloTaxa
 
                 return Result.Ok();
             }
-            catch (NaoPodeExcluirEsteRegistroException ex)
-            {
-                string msgErro = $"A taxa {taxa.Nome} está relacionada com um condutor e não pode ser excluída";
-
-                Log.Logger.Error(ex, msgErro + "{TaxaId}", taxa.Id);
-
-                return Result.Fail(msgErro);
-            }
             catch (Exception ex)
             {
+                if (ex != null && ex.InnerException.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    string msgErroDelete = "";
+                    if (ex != null && ex.InnerException.Message.Contains("Cliente"))
+                        msgErroDelete = $"A taxa {taxa.Nome} está relacionada com um cliente e não pode ser excluída";
+
+                    if (ex != null && ex.InnerException.Message.Contains("Locacao"))
+                        msgErroDelete = $"A taxa {taxa.Nome} está relacionada com uma locação e não pode ser excluída";
+
+                    Log.Logger.Error(ex, msgErroDelete + "{TaxaId}", taxa.Id);
+
+                    return Result.Fail(msgErroDelete);
+
+                }
                 string msgErro = "Falha no sistema ao tentar excluir a taxa";
 
                 Log.Logger.Error(ex, msgErro + "{TaxaId}", taxa.Id);
