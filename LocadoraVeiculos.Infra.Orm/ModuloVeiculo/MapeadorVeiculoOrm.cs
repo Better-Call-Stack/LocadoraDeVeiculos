@@ -21,8 +21,8 @@ namespace LocadoraDeVeiculos.Infra.Orm.ModuloVeiculo
             builder.Property(x => x.Cor).HasColumnType("varchar(100)");
             builder.Property(x => x.TipoCombustivel).HasColumnType("int");
             builder.Property(x => x.KmPercorrido).HasColumnType("int");
-            builder.Property(x => x.StatusVeiculo).HasColumnType("int");
-            builder.Property(x => x.StatusVeiculo).HasColumnType("varbinary(MAX)");
+            builder.Property(x => x.StatusVeiculo).HasConversion<int>();
+            builder.Property(x => x.FotoVeiculo).HasColumnType("varbinary(MAX)");
             builder.HasOne(x => x.Grupo);
         }
     }

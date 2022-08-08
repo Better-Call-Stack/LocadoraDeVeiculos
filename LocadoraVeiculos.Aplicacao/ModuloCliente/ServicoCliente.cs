@@ -116,7 +116,17 @@ namespace LocadoraVeiculos.Aplicacao.ModuloCliente
             }
             catch (Exception ex)
             {
-               if (ex != null && ex.InnerException.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                if (ex != null && ex.Message.Contains("The association between entities 'Condutor' and 'Locacao'"))
+                {
+                    string msgErroDelete = $"O cliente {cliente.Nome} está relacionado com um condutor e não pode ser excluído";
+
+                    Log.Logger.Error(ex, msgErroDelete + "{ClienteId}", cliente.Id);
+
+                    return Result.Fail(msgErroDelete);
+
+                }
+
+                if (ex != null && ex.InnerException.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
                 {
                     string msgErroDelete = "";
                     if (ex != null && ex.InnerException.Message.Contains("Condutor"))

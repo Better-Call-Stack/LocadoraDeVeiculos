@@ -86,7 +86,7 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             var servicoFuncionario = new ServicoFuncionario(repositorioFuncionario, contextoDadosOrm);
             var servicoCondutor = new ServicoCondutor(repositorioCondutor, contextoDadosOrm);
             var servicoVeiculo = new ServicoVeiculo(repositorioVeiculo, contextoDadosOrm);
-            var servicoLocacao = new ServicoLocacao(repositorioLocacao, contextoDadosOrm);
+            var servicoLocacao = new ServicoLocacao(repositorioLocacao, repositorioVeiculo, contextoDadosOrm);
             var servicoDevolucao = new ServicoDevolucao(repositorioDevolucao, contextoDadosOrm);
 
             controladores = new Dictionary<string, ControladorBase>();

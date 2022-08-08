@@ -353,8 +353,6 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
                 return;
             }
 
-            locacao.Veiculo.AtualizarStatusParaAlugado();
-
         }
 
         private void dpDevolucao_ValueChanged(object sender, EventArgs e)
