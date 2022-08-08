@@ -28,7 +28,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
         public string PlanoSelecionado { get; set; }
 
         public Veiculo Veiculo { get; set; }
-      
+
         public Guid VeiculoId { get; set; }
 
         public List<Taxa> Taxas { get; set; }
@@ -40,7 +40,7 @@ namespace LocadoraDeVeiculos.Dominio.ModuloLocacao
         public Cliente Cliente { get; set; }
 
         public Guid ClienteId { get; set; }
-        
+
         public PlanoDeCobranca PlanoDeCobranca { get; set; }
 
         public Guid PlanoDeCobrancaId { get; set; }
