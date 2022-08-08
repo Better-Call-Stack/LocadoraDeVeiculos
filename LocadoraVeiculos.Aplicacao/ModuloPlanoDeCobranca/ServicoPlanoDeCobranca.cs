@@ -112,7 +112,19 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao tentar excluir o plano de cobranca";
+                if (ex != null && ex.InnerException.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    string msgErroDelete = "";
+
+                    if (ex != null && ex.InnerException.Message.Contains("Veiculo"))
+                        msgErroDelete = $"O plano de cobrança do grupo de veiculos {planoDeCobranca.GrupoDeVeiculos} está relacionado com um veículo e não pode ser excluído";
+
+                    Log.Logger.Error(ex, msgErroDelete + "{PlanoDeCobrancaId}", planoDeCobranca.Id);
+
+                    return Result.Fail(msgErroDelete);
+
+                }
+                string msgErro = "Falha no sistema ao tentar excluir o veículo";
 
                 Log.Logger.Error(ex, msgErro + "{PlanoDeCobrancaId}", planoDeCobranca.Id);
 
@@ -132,7 +144,6 @@ namespace LocadoraVeiculos.Aplicacao.ModuloPlanoDeCobranca
 
                 return Result.Ok(planoDeCobrancas);
 
-                //return Result.Ok(repositorioPlanoDeCobranca.SelecionarTodos());
             }
             catch (Exception ex)
             {

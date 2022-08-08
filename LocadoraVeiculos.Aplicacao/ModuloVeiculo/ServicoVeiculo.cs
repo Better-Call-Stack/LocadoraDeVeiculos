@@ -113,7 +113,19 @@ namespace LocadoraVeiculos.Aplicacao.ModuloVeiculo
             }
             catch (Exception ex)
             {
-                string msgErro = "Falha no sistema ao tentar excluir o veículo.";
+                if (ex != null && ex.InnerException.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+                {
+                    string msgErroDelete = "";
+
+                    if (ex != null && ex.InnerException.Message.Contains("Locacao"))
+                        msgErroDelete = $"O veículo {veiculo.Modelo} está relacionado com uma locação e não pode ser excluído";
+
+                    Log.Logger.Error(ex, msgErroDelete + "{VeiculoId}", veiculo.Id);
+
+                    return Result.Fail(msgErroDelete);
+
+                }
+                string msgErro = "Falha no sistema ao tentar excluir o veículo";
 
                 Log.Logger.Error(ex, msgErro + "{VeiculoId}", veiculo.Id);
 
