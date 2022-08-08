@@ -72,12 +72,6 @@ namespace LocadoraDeVeiculos.Dominio.ModuloVeiculo
         }
         
 
-        public void AtualizarStatusParaAlugado()
-        {
-            StatusVeiculo = StatusVeiculoEnum.Alugado;
-
-        }
-
         public Veiculo Clonar()
         {
             return MemberwiseClone() as Veiculo;

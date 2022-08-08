@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Infra.Orm.ModuloOrm;
+using LocadoraDeVeiculos.Infra.Orm.ModuloVeiculo;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -14,14 +15,15 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
 {
     public class ServicoLocacao
     {
-
+        private RepositorioVeiculoOrm repositorioVeiculo;
         private RepositorioLocacaoOrm repositorioLocacao;
         private IContextoPersistencia contextoPersistencia;
 
-        public ServicoLocacao(RepositorioLocacaoOrm repositorioLocacao, IContextoPersistencia contexto)
+        public ServicoLocacao(RepositorioLocacaoOrm repositorioLocacao, RepositorioVeiculoOrm repositorioVeiculo, IContextoPersistencia contexto)
         {
             this.repositorioLocacao = repositorioLocacao;
             this.contextoPersistencia = contexto;
+            this.repositorioVeiculo = repositorioVeiculo;
         }
 
         public Result<Locacao> Inserir(Locacao locacao)
@@ -44,6 +46,9 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
             try
             {
                 repositorioLocacao.Inserir(locacao);
+
+                locacao.Veiculo.StatusVeiculo = LocadoraDeVeiculos.Dominio.ModuloVeiculo.StatusVeiculoEnum.Alugado;
+                repositorioVeiculo.Editar(locacao.Veiculo);
 
                 contextoPersistencia.GravarDados();
 
@@ -82,7 +87,15 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
 
             try
             {
+               /* Locacao locacaoComVeiculoAntigo = SelecionarPorId(locacao.Id).Value;
+                locacaoComVeiculoAntigo.Veiculo.StatusVeiculo = LocadoraDeVeiculos.Dominio.ModuloVeiculo.StatusVeiculoEnum.Disponível;
+                repositorioVeiculo.Editar(locacaoComVeiculoAntigo.Veiculo);*/
+
                 repositorioLocacao.Editar(locacao);
+
+                locacao.Veiculo.StatusVeiculo = LocadoraDeVeiculos.Dominio.ModuloVeiculo.StatusVeiculoEnum.Alugado;
+
+                repositorioVeiculo.Editar(locacao.Veiculo);
 
                 contextoPersistencia.GravarDados();
 

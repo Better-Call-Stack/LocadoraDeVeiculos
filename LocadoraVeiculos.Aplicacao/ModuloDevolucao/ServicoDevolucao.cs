@@ -4,6 +4,8 @@ using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.Orm.ModuloDevolucao;
+using LocadoraDeVeiculos.Infra.Orm.ModuloOrm;
+using LocadoraDeVeiculos.Infra.Orm.ModuloVeiculo;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -15,13 +17,18 @@ namespace LocadoraVeiculos.Aplicacao.ModuloDevolucao
 {
     public class ServicoDevolucao
     {
+        private RepositorioVeiculoOrm repositorioVeiculo;
+        private RepositorioLocacaoOrm repositorioLocacao;
         private RepositorioDevolucaoOrm repositorioDevolucao;
         private IContextoPersistencia contextoPersistencia;
 
-        public ServicoDevolucao(RepositorioDevolucaoOrm repositorioDevolucao, IContextoPersistencia contextoPersistencia)
+        public ServicoDevolucao(RepositorioDevolucaoOrm repositorioDevolucao, RepositorioLocacaoOrm repositorioLocacao, RepositorioVeiculoOrm repositorioVeiculo,
+            IContextoPersistencia contextoPersistencia)
         {
             this.repositorioDevolucao = repositorioDevolucao;
             this.contextoPersistencia = contextoPersistencia;
+            this.repositorioVeiculo = repositorioVeiculo;
+            this.repositorioLocacao = repositorioLocacao;
         }
 
         public Result<Devolucao> Inserir(Devolucao devolucao)
@@ -42,6 +49,12 @@ namespace LocadoraVeiculos.Aplicacao.ModuloDevolucao
             try
             {
                 repositorioDevolucao.Inserir(devolucao);
+
+                devolucao.Locacao.StatusLocacao = LocadoraDeVeiculos.Dominio.ModuloLocacao.StatusLocacao.Fechada;
+                devolucao.Locacao.Veiculo.StatusVeiculo = LocadoraDeVeiculos.Dominio.ModuloVeiculo.StatusVeiculoEnum.Disponível;
+
+                repositorioLocacao.Editar(devolucao.Locacao);
+                repositorioVeiculo.Editar(devolucao.Locacao.Veiculo);
 
                 contextoPersistencia.GravarDados();
 
