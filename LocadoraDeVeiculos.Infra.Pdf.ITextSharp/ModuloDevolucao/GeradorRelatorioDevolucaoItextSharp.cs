@@ -5,6 +5,7 @@ using System.IO;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
 using LocadoraDeVeiculos.Dominio.ModuloRelatorio.ModuloDevolucao;
+using System.Diagnostics;
 
 namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
 {
@@ -20,7 +21,7 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
 
             var nomeArquivo = localDoArquivo + GerarNomeArquivoPdfDevolucao(devolucao);
 
-            FileStream arquivoContrato = new FileStream(nomeArquivo, FileMode.Create, FileAccess.ReadWrite);
+            FileStream arquivoContrato = new FileStream(nomeArquivo, FileMode.Create);
 
             var doc = new Document(PageSize.A4);
 
@@ -80,7 +81,7 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
             $"Combustível: {devolucao.Locacao.Veiculo.TipoCombustivel}\n" +
             $"Capacidade do Tanque: {devolucao.Locacao.Veiculo.CapacidadeTanque}\n" +
             $"Quilometragem na data de contratação: {devolucao.Locacao.Veiculo.KmPercorrido}\n" +
-            $"Grupo: {devolucao.Locacao.Veiculo.Grupo}\n", fonteNormal);
+            $"Grupo: {devolucao.Locacao.Veiculo.Grupo.Nome}\n", fonteNormal);
 
 
             PdfPTable tabelaDatas = new PdfPTable(3);
@@ -292,8 +293,16 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
 
             doc.Close();
 
-            System.Diagnostics.Process.Start(nomeArquivo);
+            Process abrirPdf = new Process();
 
+            abrirPdf.StartInfo = new ProcessStartInfo()
+            {
+                CreateNoWindow = true,
+                UseShellExecute=true,
+                FileName = nomeArquivo
+            };
+
+            abrirPdf.Start();
         }
         #endregion
 

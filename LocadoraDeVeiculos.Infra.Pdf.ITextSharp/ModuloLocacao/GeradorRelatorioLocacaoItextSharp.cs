@@ -4,6 +4,7 @@ using iTextSharp.text.pdf.draw;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Dominio.ModuloRelatorio.ModuloLocacao;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloLocacao
@@ -232,7 +233,16 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloLocacao
 
             doc.Close();
 
-            System.Diagnostics.Process.Start(nomeArquivo);
+            Process abrirPdf = new Process();
+
+            abrirPdf.StartInfo = new ProcessStartInfo()
+            {
+                CreateNoWindow = true,
+                UseShellExecute=true,
+                FileName = nomeArquivo
+            };
+
+            abrirPdf.Start();
 
         }
         #endregion
