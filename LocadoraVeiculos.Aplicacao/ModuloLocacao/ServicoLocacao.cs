@@ -87,7 +87,15 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
 
             try
             {
+               /* Locacao locacaoComVeiculoAntigo = SelecionarPorId(locacao.Id).Value;
+                locacaoComVeiculoAntigo.Veiculo.StatusVeiculo = LocadoraDeVeiculos.Dominio.ModuloVeiculo.StatusVeiculoEnum.Disponível;
+                repositorioVeiculo.Editar(locacaoComVeiculoAntigo.Veiculo);*/
+
                 repositorioLocacao.Editar(locacao);
+
+                locacao.Veiculo.StatusVeiculo = LocadoraDeVeiculos.Dominio.ModuloVeiculo.StatusVeiculoEnum.Alugado;
+
+                repositorioVeiculo.Editar(locacao.Veiculo);
 
                 contextoPersistencia.GravarDados();
 

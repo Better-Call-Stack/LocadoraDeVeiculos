@@ -16,5 +16,7 @@ namespace LocadoraDeVeiculos.WinApp.ModuloLocacao
         public override string TooltipEditar => "Editar uma locação";
 
         public override string TooltipExcluir => "Excluir uma locação";
+
+        public override bool EditarHabilitado => false;
     }
 }
