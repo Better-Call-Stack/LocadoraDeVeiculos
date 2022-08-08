@@ -22,10 +22,13 @@ namespace LocadoraVeiculos.Aplicacao.ModuloDevolucao
         private RepositorioDevolucaoOrm repositorioDevolucao;
         private IContextoPersistencia contextoPersistencia;
 
-        public ServicoDevolucao(RepositorioDevolucaoOrm repositorioDevolucao, IContextoPersistencia contextoPersistencia)
+        public ServicoDevolucao(RepositorioDevolucaoOrm repositorioDevolucao, RepositorioLocacaoOrm repositorioLocacao, RepositorioVeiculoOrm repositorioVeiculo,
+            IContextoPersistencia contextoPersistencia)
         {
             this.repositorioDevolucao = repositorioDevolucao;
             this.contextoPersistencia = contextoPersistencia;
+            this.repositorioVeiculo = repositorioVeiculo;
+            this.repositorioLocacao = repositorioLocacao;
         }
 
         public Result<Devolucao> Inserir(Devolucao devolucao)
