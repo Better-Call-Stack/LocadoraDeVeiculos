@@ -129,9 +129,17 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
         {
             var validadorLocacao = new ValidadorLocacao();
 
-            var resultadoValidacao = validadorLocacao.Validate(locacao);
-
+            var resultadoValidacao = new ValidationResult();
             List<Error> erros = new List<Error>();
+
+
+            if (locacao.Condutor != null) 
+                resultadoValidacao = validadorLocacao.Validate(locacao);
+            else
+            {
+               erros.Add(new Error("Cliente não possui nenhum condutor"));
+            }
+
             foreach (ValidationFailure item in resultadoValidacao.Errors)
             {
                 erros.Add(new Error(item.ErrorMessage));
