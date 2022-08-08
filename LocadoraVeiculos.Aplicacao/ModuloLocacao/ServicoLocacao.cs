@@ -3,6 +3,7 @@ using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloLocacao;
 using LocadoraDeVeiculos.Infra.Orm.ModuloOrm;
+using LocadoraDeVeiculos.Infra.Orm.ModuloTaxa;
 using LocadoraDeVeiculos.Infra.Orm.ModuloVeiculo;
 using Serilog;
 using System;
@@ -15,15 +16,18 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
 {
     public class ServicoLocacao
     {
+        private RepositorioTaxaOrm repositorioTaxa;
         private RepositorioVeiculoOrm repositorioVeiculo;
         private RepositorioLocacaoOrm repositorioLocacao;
         private IContextoPersistencia contextoPersistencia;
 
-        public ServicoLocacao(RepositorioLocacaoOrm repositorioLocacao, RepositorioVeiculoOrm repositorioVeiculo, IContextoPersistencia contexto)
+        public ServicoLocacao(RepositorioLocacaoOrm repositorioLocacao, RepositorioVeiculoOrm repositorioVeiculo
+            , RepositorioTaxaOrm repositorioTaxa, IContextoPersistencia contexto)
         {
             this.repositorioLocacao = repositorioLocacao;
             this.contextoPersistencia = contexto;
             this.repositorioVeiculo = repositorioVeiculo;
+            this.repositorioTaxa = repositorioTaxa;
         }
 
         public Result<Locacao> Inserir(Locacao locacao)
@@ -49,6 +53,15 @@ namespace LocadoraVeiculos.Aplicacao.ModuloLocacao
 
                 locacao.Veiculo.StatusVeiculo = LocadoraDeVeiculos.Dominio.ModuloVeiculo.StatusVeiculoEnum.Alugado;
                 repositorioVeiculo.Editar(locacao.Veiculo);
+
+                if (locacao.Taxas.Any())
+                {
+                    foreach (var taxa in locacao.Taxas)
+                    {
+                        taxa.Locacoes.Add(locacao);
+                        repositorioTaxa.Editar(taxa);
+                    }
+                }
 
                 contextoPersistencia.GravarDados();
 
