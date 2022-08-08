@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LocadoraDeVeiculos.Dominio.ModuloRelatorio
+namespace LocadoraDeVeiculos.Dominio.ModuloRelatorio.ModuloLocacao
 {
-    public interface IGeradorRelatorio
+    public interface IGeradorRelatorioLocacao
     {
-        public void GerarRelatorioPdf(Locacao locacao);
+        public void GerarRelatorioPdfLocacao(Locacao locacao);
 
     }
 }

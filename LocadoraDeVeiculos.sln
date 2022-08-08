@@ -37,13 +37,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.Or
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{DA810A74-2BD6-4AAC-B74A-34413B178F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.Config", "LocadoraDeVeiculos.Infra.Config\LocadoraDeVeiculos.Infra.Config.csproj", "{0C105483-C515-470F-B536-F6D673B95BCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.Config", "LocadoraDeVeiculos.Infra.Config\LocadoraDeVeiculos.Infra.Config.csproj", "{0C105483-C515-470F-B536-F6D673B95BCF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PDf", "PDf", "{911EECE4-03E8-4A8D-8330-0831BD04D55E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.Pdf", "LocadoraDeVeiculos.Infra.Pdf\LocadoraDeVeiculos.Infra.Pdf.csproj", "{31440DDD-5028-417E-996B-978C36256E7F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocadoraDeVeiculos.Infra.Pdf.ITextSharp", "LocadoraDeVeiculos.Infra.Pdf.ITextSharp\LocadoraDeVeiculos.Infra.Pdf.ITextSharp.csproj", "{D70F8BB3-3FAA-4B75-A13A-7B714606A8D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocadoraDeVeiculos.Infra.Pdf.ITextSharp", "LocadoraDeVeiculos.Infra.Pdf.ITextSharp\LocadoraDeVeiculos.Infra.Pdf.ITextSharp.csproj", "{D70F8BB3-3FAA-4B75-A13A-7B714606A8D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,10 +91,6 @@ Global
 		{0C105483-C515-470F-B536-F6D673B95BCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C105483-C515-470F-B536-F6D673B95BCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C105483-C515-470F-B536-F6D673B95BCF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{31440DDD-5028-417E-996B-978C36256E7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31440DDD-5028-417E-996B-978C36256E7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31440DDD-5028-417E-996B-978C36256E7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31440DDD-5028-417E-996B-978C36256E7F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D70F8BB3-3FAA-4B75-A13A-7B714606A8D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D70F8BB3-3FAA-4B75-A13A-7B714606A8D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D70F8BB3-3FAA-4B75-A13A-7B714606A8D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -121,7 +115,6 @@ Global
 		{DA810A74-2BD6-4AAC-B74A-34413B178F5B} = {F6164A7F-DA48-4377-9E09-8E808DC2F851}
 		{0C105483-C515-470F-B536-F6D673B95BCF} = {DA810A74-2BD6-4AAC-B74A-34413B178F5B}
 		{911EECE4-03E8-4A8D-8330-0831BD04D55E} = {F6164A7F-DA48-4377-9E09-8E808DC2F851}
-		{31440DDD-5028-417E-996B-978C36256E7F} = {911EECE4-03E8-4A8D-8330-0831BD04D55E}
 		{D70F8BB3-3FAA-4B75-A13A-7B714606A8D0} = {911EECE4-03E8-4A8D-8330-0831BD04D55E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

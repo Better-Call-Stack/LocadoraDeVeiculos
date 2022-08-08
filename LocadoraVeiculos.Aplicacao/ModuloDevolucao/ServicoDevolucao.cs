@@ -2,8 +2,10 @@
 using FluentValidation.Results;
 using LocadoraDeVeiculos.Dominio.Compartilhado;
 using LocadoraDeVeiculos.Dominio.ModuloDevolucao;
+using LocadoraDeVeiculos.Dominio.ModuloRelatorio.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.Orm.ModuloDevolucao;
+using LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao;
 using Serilog;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,7 @@ namespace LocadoraVeiculos.Aplicacao.ModuloDevolucao
     {
         private RepositorioDevolucaoOrm repositorioDevolucao;
         private IContextoPersistencia contextoPersistencia;
+        private IGeradorRelatorioDevolucao geradorRelatorioDevolucao = new GeradorRelatorioDevolucaoItextSharp();
 
         public ServicoDevolucao(RepositorioDevolucaoOrm repositorioDevolucao, IContextoPersistencia contextoPersistencia)
         {
@@ -44,6 +47,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloDevolucao
                 repositorioDevolucao.Inserir(devolucao);
 
                 contextoPersistencia.GravarDados();
+                
+                geradorRelatorioDevolucao.GerarRelatorioDevolucaoPDF(devolucao);
 
                 Log.Logger.Debug("Devolução {DevolucaoId} inserido", devolucao.Id);
 
@@ -81,6 +86,8 @@ namespace LocadoraVeiculos.Aplicacao.ModuloDevolucao
                 repositorioDevolucao.Editar(devolucao);
 
                 contextoPersistencia.GravarDados();
+
+                geradorRelatorioDevolucao.GerarRelatorioDevolucaoPDF(devolucao);
 
                 Log.Logger.Debug("Devolução {DevolucaoId} editado", devolucao.Id);
 

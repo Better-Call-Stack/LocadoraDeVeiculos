@@ -29,7 +29,7 @@ using LocadoraVeiculos.Aplicacao.ModuloDevolucao;
 using LocadoraDeVeiculos.WinApp.ModuloDevolucao;
 using LocadoraDeVeiculos.Infra.Orm.ModuloPlanoCobranca;
 using LocadoraDeVeiculos.Infra.Config;
-using LocadoraDeVeiculos.Infra.Pdf.ModuloLocacao;
+
 
 namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
 {
@@ -90,8 +90,6 @@ namespace LocadoraDeVeiculos.WinApp.Compartilhado.ServiceLocator
             builder.RegisterType<RepositorioDevolucaoOrm>().AsSelf();
             builder.RegisterType<ServicoDevolucao>().AsSelf();
             builder.RegisterType<ControladorDevolucao>().AsSelf();
-
-            builder.RegisterType<GeradorRelatorioLocacaoItextSharp>().AsSelf();
 
 
 

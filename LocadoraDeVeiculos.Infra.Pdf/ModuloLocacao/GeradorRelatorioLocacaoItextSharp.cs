@@ -1,5 +1,5 @@
 ﻿using LocadoraDeVeiculos.Dominio.ModuloLocacao;
-using LocadoraDeVeiculos.Dominio.ModuloRelatorio;
+using LocadoraDeVeiculos.Dominio.ModuloRelatorio.ModuloLocacao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace LocadoraDeVeiculos.Infra.Pdf.ModuloLocacao
 {
-    public class GeradorRelatorioLocacaoItextSharp : IGeradorRelatorio
+    public class GeradorRelatorioLocacaoItextSharp : IGeradorRelatorioLocacao
     {
-        public void GerarRelatorioPdf()
+        public void GerarRelatorioPdfLocacao(Locacao locacao)
         {
             throw new NotImplementedException();
         }
