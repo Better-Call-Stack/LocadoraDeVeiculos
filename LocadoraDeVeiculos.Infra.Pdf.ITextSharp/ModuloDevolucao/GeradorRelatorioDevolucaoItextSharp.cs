@@ -80,8 +80,7 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
             $"Placa: {devolucao.Locacao.Veiculo.Placa}\n" +
             $"Combustível: {devolucao.Locacao.Veiculo.TipoCombustivel}\n" +
             $"Capacidade do Tanque: {devolucao.Locacao.Veiculo.CapacidadeTanque}\n" +
-            $"Quilometragem na data de contratação: {devolucao.Locacao.Veiculo.KmPercorrido}\n" +
-            $"Grupo: {devolucao.Locacao.Veiculo.Grupo.Nome}\n", fonteNormal);
+            $"Quilometragem na data de contratação: {devolucao.Locacao.Veiculo.KmPercorrido}\n");
 
 
             PdfPTable tabelaDatas = new PdfPTable(3);
@@ -215,7 +214,7 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
                 {
                     tabelaValores.AddCell(new Phrase($"Taxa de reabastecimento", fonteNormal));
 
-                    qtdComb = devolucao.Locacao.Veiculo.CapacidadeTanque / 2;
+                    qtdComb = devolucao.Locacao.Veiculo.CapacidadeTanque / (decimal)2.0;
 
                     tabelaValores.AddCell(new Phrase($" {devolucao.ValorCombustivel} x {qtdComb}L", fonteNormal));
 
@@ -226,7 +225,7 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
                 {
                     tabelaValores.AddCell(new Phrase($"Taxa de reabastecimento", fonteNormal));
 
-                    qtdComb = devolucao.Locacao.Veiculo.CapacidadeTanque * (3 / 5);
+                    qtdComb = devolucao.Locacao.Veiculo.CapacidadeTanque * (decimal)(3.0 / 5.0);
 
                     tabelaValores.AddCell(new Phrase($" {devolucao.ValorCombustivel} x {qtdComb}L", fonteNormal));
 
@@ -237,7 +236,7 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
                 {
                     tabelaValores.AddCell(new Phrase($"Taxa de reabastecimento.", fonteNormal));
 
-                    qtdComb = devolucao.Locacao.Veiculo.CapacidadeTanque * (1 / 5);
+                    qtdComb = devolucao.Locacao.Veiculo.CapacidadeTanque * (decimal)(1.0 / 5.0);
 
                     tabelaValores.AddCell(new Phrase($" {devolucao.ValorCombustivel} x {qtdComb}L", fonteNormal));
 
