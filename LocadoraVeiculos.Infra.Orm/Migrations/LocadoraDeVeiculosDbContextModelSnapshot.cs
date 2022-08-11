@@ -410,8 +410,7 @@ namespace LocadoraDeVeiculos.Infra.Orm.Migrations
 
                     b.HasOne("LocadoraDeVeiculos.Dominio.ModuloLocacao.Locacao", null)
                         .WithMany("Taxas")
-                        .HasForeignKey("LocacaoId")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("LocacaoId");
                 });
 
             modelBuilder.Entity("LocadoraDeVeiculos.Dominio.ModuloVeiculo.Veiculo", b =>
