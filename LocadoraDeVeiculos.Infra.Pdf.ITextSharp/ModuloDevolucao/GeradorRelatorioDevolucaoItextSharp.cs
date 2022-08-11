@@ -33,10 +33,10 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
             Chunk linebreak = new Chunk(new LineSeparator(2f, 100f, new BaseColor(192, 192, 192), Element.ALIGN_CENTER, -1));
 
 
-            Image logo = Image.GetInstance(Environment.CurrentDirectory + @"\iconeLocadora.png");
-            logo.ScaleToFit(70f, 60f);
-            logo.Alignment = Element.ALIGN_LEFT;
-            logo.Alignment = Element.ALIGN_TOP;
+            //Image logo = Image.GetInstance(Environment.CurrentDirectory + @"\iconeLocadora.png");
+            //logo.ScaleToFit(70f, 60f);
+            //logo.Alignment = Element.ALIGN_LEFT;
+            //logo.Alignment = Element.ALIGN_TOP;
 
 
             Paragraph titulo = new Paragraph("Informações de Devolução\n\n\n", FontFactory.GetFont("Arial", 14, Font.BOLD, new BaseColor(0, 0, 0)));
@@ -260,7 +260,7 @@ namespace LocadoraDeVeiculos.Infra.Pdf.ITextSharp.ModuloDevolucao
 
             doc.Open();
 
-            doc.Add(logo);
+            //doc.Add(logo);
             doc.Add(titulo);
             doc.Add(pulaLinha);
             doc.Add(tituloSecaoCliente);
